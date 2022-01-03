@@ -6,8 +6,6 @@ public class CameraControl : MonoBehaviour
 {
 
     public Transform player;
-    public Transform moveSpot;
-    public float moveLength;
     
     //#cameraDistance설명.0에 가까울 수록 멀리 볼 수 있음
     //#cameraDistance설명.1에 가까울 수록 플레이어 시야 고정
@@ -22,7 +20,6 @@ public class CameraControl : MonoBehaviour
     void setCameraMoving()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        moveSpot.position = new Vector3(mousePos.x, mousePos.y, -10);
-        transform.position = Vector3.Lerp(moveSpot.position, player.position + new Vector3(0,0,-10), cameraDistance);
+        transform.position = Vector3.Lerp(new Vector3(mousePos.x, mousePos.y, -10), player.position + new Vector3(0,0,-10), cameraDistance);
     }
 }
