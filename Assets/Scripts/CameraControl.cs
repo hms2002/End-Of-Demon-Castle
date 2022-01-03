@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,31 +7,22 @@ public class CameraControl : MonoBehaviour
 
     public Transform player;
     public Transform moveSpot;
-    public Transform moveSpot2;
     public float moveLength;
+    
+    //#cameraDistance설명.0에 가까울 수록 멀리 볼 수 있음
+    //#cameraDistance설명.1에 가까울 수록 플레이어 시야 고정
+    [Range(0.0f, 1.0f)]
+    public float cameraDistance;
 
-    int MAX_DISTANCE;
-
-    Vector2 dir;
-
-    // Start is called before the first frame update
-    void Start(){
-        MAX_DISTANCE = 20;
+    void Update(){
+        //#1.카메라가 플레이어 따라다님 + 커서 방향으로 위치 약간 쏠림 
+        setCameraMoving();
     }
 
-    // Update is called once per frame
-    void Update(){
-        
-        dir = new Vector2(Input.mousePosition.x/1600 - player.position.x, Input.mousePosition.y/900 - player.position.y).normalized;
-
-        //moveSpot.position = new Vector3(dir.x * moveLength, dir.y * moveLength, -10);
-        moveSpot.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
-        moveSpot2.position = new Vector3(dir.x, dir.y, -10);
-        float length = Vector3.Distance(transform.position, moveSpot.position);
-        
-        float fracDistance = length / MAX_DISTANCE;
-        Debug.Log("[Length] : " + length);
-        Debug.Log("[FracDistance] : " + fracDistance);
-        transform.localPosition = Vector3.Lerp(moveSpot.position, transform.position, 1);
+    void setCameraMoving()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        moveSpot.position = new Vector3(mousePos.x, mousePos.y, -10);
+        transform.position = Vector3.Lerp(moveSpot.position, player.position + new Vector3(0,0,-10), cameraDistance);
     }
 }
