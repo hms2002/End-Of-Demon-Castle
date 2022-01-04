@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //#.플레이어 이동
     float h;
     float v;
     public int speed;
-
+    //#.플레이어 대쉬
+    float curTime;
+    public float dashCoolTime;
+    public int dashPower;
     Rigidbody2D rigid;
     Animator animator;
 
@@ -15,11 +19,30 @@ public class Player : MonoBehaviour
     void Start(){
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        curTime = 0;
     }
 
     // Update is called once per frame
     void Update(){
         //#1.플레이어 이동
+        playerMove();
+        //#2.플레이어 대쉬
+        curTime -= Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.LeftShift) && curTime <= 0)
+        {
+            curTime = dashCoolTime;
+            animator.SetTrigger("DashOn");
+            speed+=dashPower;
+        }
+    }
+
+    private void FixedUpdate() {
+        //#1.플레이어 이동
+        rigid.velocity = new Vector2(h,v) * speed;
+    }
+
+    void playerMove()
+    {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");  
 
@@ -39,11 +62,10 @@ public class Player : MonoBehaviour
             animator.SetBool("GoIdle", true);
         else
             animator.SetBool("GoIdle", false);
-
     }
 
-    private void FixedUpdate() {
-        //#1.플레이어 이동
-        rigid.velocity = new Vector2(h,v) * speed;
+    public void dashEnd()
+    {
+        speed -= dashPower;
     }
 }

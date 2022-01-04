@@ -2256,10 +2256,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1160478603}
   - component: {fileID: 1160478602}
-  - component: {fileID: 1160478601}
   - component: {fileID: 1160478600}
   - component: {fileID: 1160478599}
   - component: {fileID: 1160478598}
+  - component: {fileID: 1160478601}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2317,6 +2317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  dashCoolTime: 5
+  dashPower: 51
 --- !u!95 &1160478601
 Animator:
   serializedVersion: 3
@@ -2448,7 +2450,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c93549acaf5fb854f9161c7e2300d454, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
