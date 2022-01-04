@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: ef4958e965e49ec47b3c684a3ace185b
+guid: a520e5b23c9b00d4096978b75cfc2ae1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1618325098754247853
-    second: Wall_Set_0
+      213: 670658294448837431
+    second: decoration2_0
   - first:
-      213: -5699217817785695970
-    second: Wall_Set_1
+      213: 4907280359072471638
+    second: decoration2_1
+  - first:
+      213: -2770300266302387757
+    second: decoration2_2
+  - first:
+      213: -5461037854326199307
+    second: decoration2_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -53,7 +59,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -86,33 +92,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall_Set_0
+      name: decoration2_0
       rect:
         serializedVersion: 2
         x: 1
@@ -126,14 +110,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c2380745a31bf442bcd7a7c5e7ebbfe
-      internalID: -1618325098754247853
+      spriteID: 219d61ee145118a42a8d42c3da68e993
+      internalID: 670658294448837431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall_Set_1
+      name: decoration2_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fbbac9dd772cd459a08b4a4bf0fcf5
+      internalID: 4907280359072471638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decoration2_2
       rect:
         serializedVersion: 2
         x: 1
@@ -147,8 +152,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b266f0b8d51d16e4e9d730f4dea04bcb
-      internalID: -5699217817785695970
+      spriteID: 92d14794ac0533e4d819bdd4d5703d12
+      internalID: -2770300266302387757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decoration2_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4623a44acd985c945ac8415d77b0a825
+      internalID: -5461037854326199307
       vertices: []
       indices: 
       edges: []
@@ -156,7 +182,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c12a8fde0843b2444bf74d04c6ba49e3
+    spriteID: 94090ac8acfc85d4181e16a62dc6bcb5
     internalID: 0
     vertices: []
     indices: 
