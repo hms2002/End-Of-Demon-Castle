@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         playerMove();
         //#2.플레이어 대쉬
         curTime -= Time.deltaTime;
-        if(Input.GetKeyDown(KeyCode.LeftShift) && curTime <= 0)
+        if(Input.GetKeyDown(KeyCode.Space) && curTime <= 0)
         {
             curTime = dashCoolTime;
             animator.SetTrigger("DashOn");
