@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2056401705261441480}
   - component: {fileID: 8621387009288466622}
   - component: {fileID: 2331371100606914245}
+  - component: {fileID: 479935664871252666}
   m_Layer: 0
   m_Name: oak_0
   m_TagString: CanBroke
@@ -117,3 +118,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.25, y: 1.25}
   m_Direction: 0
+--- !u!114 &479935664871252666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932572293738963436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd33c9246f20b554993da07eead2ec79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

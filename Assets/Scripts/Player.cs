@@ -132,8 +132,8 @@ public class Player : MonoBehaviour
         {
             if(collider.CompareTag("CanBroke"))
             {
-                Animator anim = collider.GetComponent<Animator>();
-                anim.SetTrigger("Break");
+                BreakableObj obj = collider.GetComponent<BreakableObj>();
+                obj.breakObj();
             }
         }
 
