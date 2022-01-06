@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //#.능력치
+    public int player_hp;
+
     //#.플레이어 이동
     public int speed;
     float h;
@@ -15,7 +18,8 @@ public class Player : MonoBehaviour
     float curTime;
     Rigidbody2D rigid;
     Animator animator;
-    GameObject attackArea;
+    GameObject sword;
+    SpriteRenderer swordSprite;
 
     void Start(){
         canMove = true;
@@ -23,8 +27,9 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         curTime = 0;
 
-        attackArea = transform.GetChild(0).gameObject;
-        attackArea.SetActive(false);
+        sword = transform.GetChild(0).gameObject;
+        sword.SetActive(false);
+        swordSprite = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void Update(){
@@ -33,11 +38,9 @@ public class Player : MonoBehaviour
         //#2.플레이어 대쉬
         dash();
         //#3.플레이어 공격
-        if(Input.GetMouseButtonDown(0)){
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 orientation = new Vector2(mousePos.x - transform.position.x, mousePos.y -  transform.position.y).normalized;
-            StartCoroutine("IAttack", orientation);
-        }
+        attack();
+        //#4.플레이어 사망
+        dead();
 
     }
 
@@ -82,24 +85,47 @@ public class Player : MonoBehaviour
         }
     }
 
+    void attack()
+    {
+        if(Input.GetMouseButtonDown(0)){
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 orientation = new Vector2(mousePos.x - transform.position.x, mousePos.y -  transform.position.y).normalized;
+            StartCoroutine("IAttack", orientation);
+        }
+    }
+
+    public void damaged(int damage)
+    {
+        player_hp -= damage;
+        dead();
+    }
+
+    void dead()
+    {
+        if(player_hp <= 0)
+            GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
     IEnumerator IDash()
     {
         canMove = false;
         rigid.AddForce(new Vector2(h*dashPower, v*dashPower));
+        gameObject.layer = 11;
         yield return new WaitForSeconds(0.3f);
         canMove = true;
+        gameObject.layer = 10;
     }
 
     IEnumerator IAttack(Vector2 orientation)
     {
-        attackArea.SetActive(true);
+        sword.SetActive(true);
         canMove = false;
 
         rigid.velocity = new Vector2(0,0);
-        /*        attackArea.transform.localPosition = new Vector3(orientation.x, orientation.y, 0);
+        /*        sword.transform.localPosition = new Vector3(orientation.x, orientation.y, 0);
         float Dot = Vector2.Dot(orientation, Vector2.right);
         float Angle = Mathf.Atan2(orientation.x, orientation.y);
-        attackArea.transform.rotation = Quaternion.Euler(new Vector3(0,0,Angle));*/
+        sword.transform.rotation = Quaternion.Euler(new Vector3(0,0,Angle));*/
 
     
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -108,24 +134,28 @@ public class Player : MonoBehaviour
         if(angle < 0) angle += 360;
         if(angle > 45f && angle < 135f) //위를 바라봅니다.
         {
-            attackArea.transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            sword.transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            swordSprite.sortingOrder = 9;
         }
-        else if (angle > 135f && angle < 225f) //위를 바라봅니다.
+        else if (angle > 135f && angle < 225f) //옆를 바라봅니다.
         {
-            attackArea.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            sword.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            swordSprite.sortingOrder = 10;
         }
-        else if (angle > 225f && angle < 315f) //위를 바라봅니다.
+        else if (angle > 225f && angle < 315f) //아래를 바라봅니다.
         {
-            attackArea.transform.rotation = Quaternion.AngleAxis(270, Vector3.forward);
+            sword.transform.rotation = Quaternion.AngleAxis(270, Vector3.forward);
+            swordSprite.sortingOrder = 10;
         }
-        else if (angle < 45f || angle > 315f) //위를 바라봅니다.
+        else if (angle < 45f || angle > 315f) //오른쪽을 바라봅니다.
         {
-            attackArea.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            swordSprite.sortingOrder = 10;
         }
 
         yield return new WaitForSeconds(0.3f);
         
-        attackArea.SetActive(false);
+        sword.SetActive(false);
         canMove = true;
     }
 }
