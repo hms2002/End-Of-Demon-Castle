@@ -149,24 +149,45 @@ public class Player : MonoBehaviour
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y,v2.x) * 180/Mathf.PI;
         if(angle < 0) angle += 360;
-        if(angle > 45f && angle < 135f) //위를 바라봅니다.
+        Debug.Log(angle);
+        if(angle <= 22.5f || angle > 337.5f) //오른쪽을 바라봅니다.
+        {
+            sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            swordSprite.sortingOrder = 10;
+        }
+        else if(22.5f <= angle && angle < 67.5f) //오른쪽위를 바라봅니다.
+        {
+            sword.transform.rotation = Quaternion.AngleAxis(45, Vector3.forward);
+            swordSprite.sortingOrder = 9;
+        }
+        else if(67.5f <= angle && angle < 112.5f) //위를 바라봅니다.
         {
             sword.transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
             swordSprite.sortingOrder = 9;
         }
-        else if (angle > 135f && angle < 225f) //옆를 바라봅니다.
+        else if(112.5f <= angle && angle < 157.5f) //왼쪽위를 바라봅니다.
+        {
+            sword.transform.rotation = Quaternion.AngleAxis(135, Vector3.forward);
+            swordSprite.sortingOrder = 9;
+        }
+        else if (157.5f <= angle && angle < 202.5f) //왼쪽을 바라봅니다.
         {
             sword.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
-        else if (angle > 225f && angle < 315f) //아래를 바라봅니다.
+        else if (202.5f <= angle && angle < 247.5f) //왼쪽아래를 바라봅니다.
+        {
+            sword.transform.rotation = Quaternion.AngleAxis(225, Vector3.forward);
+            swordSprite.sortingOrder = 10;
+        }
+        else if (247.5f <= angle && angle < 292.5f) //아래를 바라봅니다.
         {
             sword.transform.rotation = Quaternion.AngleAxis(270, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
-        else if (angle < 45f || angle > 315f) //오른쪽을 바라봅니다.
+        else if (292.5f <= angle && angle < 337.5f) //오른쪽아래를 바라봅니다.
         {
-            sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            sword.transform.rotation = Quaternion.AngleAxis(315, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
     }
