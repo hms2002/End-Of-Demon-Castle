@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7740201001070404435}
   m_Layer: 0
   m_Name: pot_2
-  m_TagString: Untagged
+  m_TagString: CanBroke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

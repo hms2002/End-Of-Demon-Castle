@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 386833257}
   - component: {fileID: 386833258}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4658,6 +4658,8 @@ MonoBehaviour:
   speed: 8
   dashCoolTime: 0.5
   dashPower: 400
+  atkPos: {fileID: 386833257}
+  boxSize: {x: 1.78, y: 1.66}
 --- !u!95 &1160478601
 Animator:
   serializedVersion: 3
@@ -4820,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237073584}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SwordPibot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

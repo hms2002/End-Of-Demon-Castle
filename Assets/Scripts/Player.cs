@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     float curTime;
     Rigidbody2D rigid;
     Animator animator;
+    //#.플레이어 공격
+    public Transform atkPos;
+    public Vector2 boxSize;
     GameObject sword;
     SpriteRenderer swordSprite;
 
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
         dash();
         //#3.플레이어 공격
         attack();
-        //#4.플레이어 사망
+        //#4.플레이어 사망체크
         dead();
 
     }
@@ -94,12 +97,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    //#.피해 입기
     public void damaged(int damage)
     {
         player_hp -= damage;
         dead();
     }
-
+    //#.죽기
     void dead()
     {
         if(player_hp <= 0)
@@ -122,12 +126,25 @@ public class Player : MonoBehaviour
         canMove = false;
 
         rigid.velocity = new Vector2(0,0);
-        /*        sword.transform.localPosition = new Vector3(orientation.x, orientation.y, 0);
-        float Dot = Vector2.Dot(orientation, Vector2.right);
-        float Angle = Mathf.Atan2(orientation.x, orientation.y);
-        sword.transform.rotation = Quaternion.Euler(new Vector3(0,0,Angle));*/
+        setSwordAngle();
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos.position, boxSize, 0);
+        foreach(Collider2D collider in collider2Ds)
+        {
+            if(collider.CompareTag("CanBroke"))
+            {
+                Animator anim = collider.GetComponent<Animator>();
+                anim.SetTrigger("Break");
+            }
+        }
 
-    
+        yield return new WaitForSeconds(0.3f);
+        
+        sword.SetActive(false);
+        canMove = true;
+    }
+
+    void setSwordAngle()
+    {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y,v2.x) * 180/Mathf.PI;
@@ -152,10 +169,10 @@ public class Player : MonoBehaviour
             sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
-
-        yield return new WaitForSeconds(0.3f);
-        
-        sword.SetActive(false);
-        canMove = true;
+    }
+    //#.공격 범위 유니티에서 그리기
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(atkPos.position, boxSize);
     }
 }
