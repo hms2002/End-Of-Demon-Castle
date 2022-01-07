@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 49ca52aa07c585442928c7a2fae028ed
+guid: a3a098b8e366036409d6bd794d5a4677
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3880529968885569102
-    second: Pillar_0
+      213: 6195177247164154639
+    second: Set_Dark_0
   - first:
-      213: -1592747150301918653
-    second: Pillar_1
-  - first:
-      213: 3201397677746351210
-    second: Pillar_2
+      213: -1611074843313335146
+    second: Set_Dark_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -93,49 +90,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pillar_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 67
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b6524fa8c279244c93b7aaf8f2d4681
-      internalID: 3880529968885569102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pillar_1
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 34
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a5167b24e95f0548bb2608b52aa2719
-      internalID: -1592747150301918653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pillar_2
+      name: Set_Dark_0
       rect:
         serializedVersion: 2
         x: 1
@@ -149,8 +104,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09cea4e66a8df004f8fa229990206b16
-      internalID: 3201397677746351210
+      spriteID: 6a9ca3abd360ff64191e0f8b7a266769
+      internalID: 6195177247164154639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Dark_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8490b30b912d0c043b6aab98dbb43830
+      internalID: -1611074843313335146
       vertices: []
       indices: 
       edges: []
@@ -158,7 +134,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 06d45c9a3d31fab4a894fdd5c1d05ea9
+    spriteID: 5afafd7e1aabf5944a7a83b8a2c6a9ee
     internalID: 0
     vertices: []
     indices: 
