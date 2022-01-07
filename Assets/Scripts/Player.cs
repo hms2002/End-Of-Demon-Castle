@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     Animator animator;
     //#.플레이어 공격
+    public float atkCoolTime = 0.3f;
+    bool onAttack;
     public GameObject attackEffect;
     public Transform atkPos;
     public Vector2 boxSize;
@@ -34,6 +36,8 @@ public class Player : MonoBehaviour
         sword = transform.GetChild(0).gameObject;
         sword.SetActive(false);
         swordSprite = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+    
+        onAttack = false;
     }
 
     void Update(){
@@ -92,6 +96,9 @@ public class Player : MonoBehaviour
     void attack()
     {
         if(Input.GetMouseButtonDown(0)){
+            if(onAttack)
+                return;
+            onAttack = true;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 orientation = new Vector2(mousePos.x - transform.position.x, mousePos.y -  transform.position.y).normalized;
             StartCoroutine("IAttack", orientation);
@@ -138,8 +145,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.3f);
-        
+        yield return new WaitForSeconds(atkCoolTime);
+
+        onAttack = false;
         sword.SetActive(false);
         canMove = true;
     }
@@ -153,43 +161,57 @@ public class Player : MonoBehaviour
         Debug.Log(angle);
         if(angle <= 22.5f || angle > 337.5f) //오른쪽을 바라봅니다.
         {
-            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.1f,0,0), Quaternion.AngleAxis(180, Vector3.forward));
-            Destroy(atkEffect, 0.3f);
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.4f,0,0), Quaternion.AngleAxis(180, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
         else if(22.5f <= angle && angle < 67.5f) //오른쪽위를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.2f,0.2f,0), Quaternion.AngleAxis(225, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(45, Vector3.forward);
             swordSprite.sortingOrder = 9;
         }
         else if(67.5f <= angle && angle < 112.5f) //위를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0,0.4f,0), Quaternion.AngleAxis(270, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
             swordSprite.sortingOrder = 9;
         }
         else if(112.5f <= angle && angle < 157.5f) //왼쪽위를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(-0.2f,0.2f,0), Quaternion.AngleAxis(315, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(135, Vector3.forward);
             swordSprite.sortingOrder = 9;
         }
         else if (157.5f <= angle && angle < 202.5f) //왼쪽을 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(-0.4f,0,0), Quaternion.AngleAxis(0, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
         else if (202.5f <= angle && angle < 247.5f) //왼쪽아래를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(-0.2f,-0.2f,0), Quaternion.AngleAxis(45, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(225, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
         else if (247.5f <= angle && angle < 292.5f) //아래를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0,-0.4f,0), Quaternion.AngleAxis(90, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(270, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }
         else if (292.5f <= angle && angle < 337.5f) //오른쪽아래를 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.2f,-0.2f,0), Quaternion.AngleAxis(135, Vector3.forward));
+            Destroy(atkEffect, atkCoolTime);
             sword.transform.rotation = Quaternion.AngleAxis(315, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }

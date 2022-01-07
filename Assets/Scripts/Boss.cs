@@ -18,10 +18,13 @@ public class Boss : MonoBehaviour
 
     private void PatternManager()
     {
+        int idx = 0;
         do
         {
             PatternNum = Random.Range(1, 3);
-        } while (PatternNum != PrePatternNum);
+            Debug.Log(PatternNum);
+            Debug.Log("IDX" + idx++);
+        } while (PatternNum == PrePatternNum);
 
         PrePatternNum = PatternNum;
 
