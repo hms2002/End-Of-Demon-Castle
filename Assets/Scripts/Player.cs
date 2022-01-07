@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     Animator animator;
     //#.플레이어 공격
+    public GameObject attackEffect;
     public Transform atkPos;
     public Vector2 boxSize;
     GameObject sword;
@@ -152,6 +153,8 @@ public class Player : MonoBehaviour
         Debug.Log(angle);
         if(angle <= 22.5f || angle > 337.5f) //오른쪽을 바라봅니다.
         {
+            GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.1f,0,0), Quaternion.AngleAxis(180, Vector3.forward));
+            Destroy(atkEffect, 0.3f);
             sword.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             swordSprite.sortingOrder = 10;
         }

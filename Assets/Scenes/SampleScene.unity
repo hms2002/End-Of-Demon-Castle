@@ -5596,6 +5596,8 @@ MonoBehaviour:
   speed: 8
   dashCoolTime: 0.5
   dashPower: 400
+  attackEffect: {fileID: 638757323613011312, guid: d317bbb3bfc44ac40b27beb41c5be4e4,
+    type: 3}
   atkPos: {fileID: 386833257}
   boxSize: {x: 1.78, y: 1.66}
 --- !u!95 &1160478601
