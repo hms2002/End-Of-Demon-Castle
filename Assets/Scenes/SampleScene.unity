@@ -625,39 +625,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 113925353}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &155289955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155289957}
-  - component: {fileID: 155289956}
-  m_Layer: 0
-  m_Name: BossDoor_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &127827308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127827307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb0d29f7e885f24f8f493b8bacb8d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BossHp: 700
-  PatternTime: 3.18
-  PatternNum: 1
-  PrePatternNum: 2
 --- !u!212 &127827309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -707,6 +674,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &155289955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155289957}
+  - component: {fileID: 127827309}
+  m_Layer: 0
+  m_Name: BossDoor_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &155289957
 Transform:
   m_ObjectHideFlags: 0
@@ -719,7 +703,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &188537571
 PrefabInstance:
@@ -1717,7 +1701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &587115146
 PrefabInstance:
@@ -17205,7 +17189,7 @@ PrefabInstance:
     - target: {fileID: 4535487948038069677, guid: ee596f3dae70ef048b8c4ff70871b966,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535487948038069673, guid: ee596f3dae70ef048b8c4ff70871b966,
         type: 3}
