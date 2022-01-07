@@ -8,8 +8,6 @@ public class Boss : MonoBehaviour
     public float PatternTime = 5f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
-    int[] a = new int[] { 1, 2, 3 };
-    int loopNum = 0;
 
     void Start()
     {
@@ -22,8 +20,6 @@ public class Boss : MonoBehaviour
         do
         {
             PatternNum = Random.Range(1, 3);
-            Debug.Log(PatternNum);
-            Debug.Log("IDX" + idx++);
         } while (PatternNum == PrePatternNum);
 
         PrePatternNum = PatternNum;
