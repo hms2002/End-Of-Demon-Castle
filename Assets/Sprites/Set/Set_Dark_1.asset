@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: wall_tile_many_10
+  m_Name: Set_Dark_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 4517270510382164399, guid: e116624e6f69b5f4ea07ca9eb917a03b,
+  m_Sprite: {fileID: -1611074843313335146, guid: a3a098b8e366036409d6bd794d5a4677,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
