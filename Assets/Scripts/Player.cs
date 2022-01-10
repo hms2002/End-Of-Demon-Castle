@@ -56,7 +56,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate() {
         //#1.플레이어 이동
         if(canMove)
-            rigid.velocity = new Vector2(h,v) * speed;
+        {
+            if(Mathf.Abs(h) == 1 && Mathf.Abs(v) == 1)
+            {
+                rigid.velocity = new Vector2(h,v) * (speed/1.5f);
+            }
+            else
+            {  
+                rigid.velocity = new Vector2(h,v) * speed;
+            }
+        }
     }
 
     void playerMove()
@@ -144,6 +153,9 @@ public class Player : MonoBehaviour
         curTime -= Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Space) && curTime <= 0)
         {
+            if(h == 0 && v == 0)
+                return;
+            
             curTime = dashCoolTime;
             animator.SetTrigger("DashOn");
             StartCoroutine("IDash");
