@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     float h;
     float v;
     bool canMove;
+    int playerOrient;
     //#.플레이어 대쉬
     public float dashCoolTime;
     public int dashPower;
@@ -65,21 +66,78 @@ public class Player : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");  
 
-        if(animator.GetInteger("hAxisRaw") != h){
-            animator.SetBool("isChange", true);
-            animator.SetInteger("hAxisRaw", (int)h);
-        }
-        else if(animator.GetInteger("vAxisRaw") != v){
-            animator.SetBool("isChange", true);
-            animator.SetInteger("vAxisRaw", (int)v);
-        }
-        else
-            animator.SetBool("isChange", false);
-
+        // if(animator.GetInteger("hAxisRaw") != h){
+        //     animator.SetBool("isChange", true);
+        //     animator.SetInteger("hAxisRaw", (int)h);
+        // }
+        // else if(animator.GetInteger("vAxisRaw") != v){
+        //     animator.SetBool("isChange", true);
+        //     animator.SetInteger("vAxisRaw", (int)v);
+        // }
+        // else
+        //     animator.SetBool("isChange", false);
+        setPlayerOrientation();
         if(h == 0 && v == 0)
             animator.SetBool("GoIdle", true);
         else
             animator.SetBool("GoIdle", false);
+    }
+    
+    void setPlayerOrientation()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 v2 = mousePos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(v2.y,v2.x) * 180/Mathf.PI;
+        if(angle < 0) angle += 360;
+        if(angle <= 22.5f || angle > 337.5f) //오른쪽을 바라봅니다.
+        {
+            if(playerOrient == 0)
+            {
+                animator.SetBool("isChange", false);
+                return;
+            }
+            playerOrient = 0;
+            animator.SetInteger("hAxisRaw", 1);
+            animator.SetInteger("vAxisRaw", 0);
+            animator.SetBool("isChange", true);
+            
+        }
+        else if(67.5f <= angle && angle < 112.5f) //위를 바라봅니다.
+        {
+            if(playerOrient == 1)
+            {
+                animator.SetBool("isChange", false);
+                return;
+            }
+            playerOrient = 1;
+            animator.SetInteger("hAxisRaw", 0);
+            animator.SetInteger("vAxisRaw", 1);
+            animator.SetBool("isChange", true);
+        }
+        else if (157.5f <= angle && angle < 202.5f) //왼쪽을 바라봅니다.
+        {
+            if(playerOrient == 2)
+            {
+                animator.SetBool("isChange", false);
+                return;
+            }
+            playerOrient = 2;
+            animator.SetInteger("hAxisRaw", -1);
+            animator.SetInteger("vAxisRaw", 0);
+            animator.SetBool("isChange", true);
+        }
+        else if (247.5f <= angle && angle < 292.5f) //아래를 바라봅니다.
+        {
+            if(playerOrient == 3)
+            {
+                animator.SetBool("isChange", false);
+                return;
+            }
+            playerOrient = 3;
+            animator.SetInteger("hAxisRaw", 0);
+            animator.SetInteger("vAxisRaw", -1);
+            animator.SetBool("isChange", true);
+        }
     }
 
     void dash(){
@@ -151,6 +209,7 @@ public class Player : MonoBehaviour
         sword.SetActive(false);
         canMove = true;
     }
+
 
     void setSwordAngle()
     {
