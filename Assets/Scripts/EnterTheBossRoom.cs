@@ -7,6 +7,12 @@ public class EnterTheBossRoom : MonoBehaviour
     public GameObject TextBox;
     public Transform destination;
     Player player;
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,11 +26,31 @@ public class EnterTheBossRoom : MonoBehaviour
     {
         Debug.Log("Player move away from the door");
 
+        animator.SetTrigger("close");
+
         TextBox.SetActive(false);
+    }
+
+    public void OpenDoor()
+    {
+        animator.SetTrigger("open");
+        TextBox.SetActive(false);
+        Invoke("GoToPos", 1.5f);
     }
 
     public void GoToPos()
     {
         player.gameObject.transform.position = destination.position;
+    }
+
+    public void FullOpen()
+    {
+        animator.SetBool("isOpen", true);
+        Invoke("Close", 1);
+    }
+
+    public void Close()
+    {
+        animator.SetBool("isOpen", false);
     }
 }
