@@ -19,6 +19,8 @@ public class EnterTheBossRoom : MonoBehaviour
         Debug.Log("Player reached the door");
         player = other.GetComponent<Player>();
 
+        player.playerConfine();
+
         TextBox.SetActive(true);
     }
 
@@ -27,6 +29,8 @@ public class EnterTheBossRoom : MonoBehaviour
         Debug.Log("Player move away from the door");
 
         animator.SetTrigger("close");
+
+        player.playerFree();
 
         TextBox.SetActive(false);
     }
@@ -40,6 +44,7 @@ public class EnterTheBossRoom : MonoBehaviour
 
     public void GoToPos()
     {
+        player.playerFree();
         player.gameObject.transform.position = destination.position;
     }
 
@@ -52,5 +57,6 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
+        player.playerFree();    
     }
 }

@@ -16,11 +16,12 @@ public class Player : MonoBehaviour
     //#.플레이어 대쉬
     public float dashCoolTime;
     public int dashPower;
-    float curTime;
+    float curDashCoolTime;
     Rigidbody2D rigid;
     Animator animator;
     //#.플레이어 공격
     public float atkCoolTime = 0.3f;
+    bool canAttack;
     bool onAttack;
     public GameObject attackEffect;
     public Transform atkPos;
@@ -32,13 +33,14 @@ public class Player : MonoBehaviour
         canMove = true;
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        curTime = 0;
+        curDashCoolTime = 0;
 
         sword = transform.GetChild(0).gameObject;
         sword.SetActive(false);
         swordSprite = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
     
         onAttack = false;
+        canAttack = true;
     }
 
     void Update(){
@@ -72,20 +74,12 @@ public class Player : MonoBehaviour
     {
         if(!canMove)
             return;
+        Debug.Log("Ent");
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");  
 
-        // if(animator.GetInteger("hAxisRaw") != h){
-        //     animator.SetBool("isChange", true);
-        //     animator.SetInteger("hAxisRaw", (int)h);
-        // }
-        // else if(animator.GetInteger("vAxisRaw") != v){
-        //     animator.SetBool("isChange", true);
-        //     animator.SetInteger("vAxisRaw", (int)v);
-        // }
-        // else
-        //     animator.SetBool("isChange", false);
         setPlayerOrientation();
+        
         if(h == 0 && v == 0)
             animator.SetBool("GoIdle", true);
         else
@@ -150,13 +144,13 @@ public class Player : MonoBehaviour
     }
 
     void dash(){
-        curTime -= Time.deltaTime;
-        if(Input.GetKeyDown(KeyCode.Space) && curTime <= 0)
+        curDashCoolTime -= Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.Space) && curDashCoolTime <= 0)
         {
             if(h == 0 && v == 0)
                 return;
             
-            curTime = dashCoolTime;
+            curDashCoolTime = dashCoolTime;
             animator.SetTrigger("DashOn");
             StartCoroutine("IDash");
 
@@ -166,6 +160,8 @@ public class Player : MonoBehaviour
     void attack()
     {
         if(Input.GetMouseButtonDown(0)){
+            if(!canAttack)
+                return;
             if(onAttack)
                 return;
             onAttack = true;
@@ -191,7 +187,10 @@ public class Player : MonoBehaviour
     IEnumerator IDash()
     {
         canMove = false;
-        rigid.AddForce(new Vector2(h*dashPower, v*dashPower));
+        if(Mathf.Abs(h) == 1  && Mathf.Abs(v) == 1)
+            rigid.AddForce(new Vector2(h*(dashPower/1.5f), v*(dashPower/1.5f)));        
+        else
+            rigid.AddForce(new Vector2(h*dashPower, v*dashPower));
         gameObject.layer = 11;
         yield return new WaitForSeconds(0.3f);
         canMove = true;
@@ -291,5 +290,26 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(atkPos.position, boxSize);
+    }
+    //#.문 열 때 플레이어 제어
+    public void playerConfine()
+    {
+        canMove = false;
+        canAttack = false;
+     
+        rigid.velocity = Vector2.zero;
+        Debug.Log(rigid.velocity);
+
+        animator.SetBool("isChange", true);
+        animator.SetBool("GoIdle", true);
+        animator.SetInteger("hAxisRaw", 0);
+        animator.SetInteger("vAxisRaw", 1);
+    }
+
+    public void playerFree()
+    {
+        canAttack = true;
+        canMove = true;
+        animator.SetBool("isChange", false);
     }
 }

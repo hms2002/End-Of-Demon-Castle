@@ -132,10 +132,10 @@ TextureImporter:
       name: BossDoor_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 168
-        width: 76
-        height: 70
+        x: 0
+        y: 164
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,7 +143,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0f7ef34dda01274e9cb9b53780180e8
+      spriteID: afbb945a403abd34aa733c7b4f071206
       internalID: 8066981835553427677
       vertices: []
       indices: 
@@ -153,10 +153,10 @@ TextureImporter:
       name: BossDoor_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 168
-        width: 76
-        height: 70
+        x: 80
+        y: 164
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,7 +164,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d78e17028e367f499388854f465ab66
+      spriteID: 0f52d3755440db7428c08cc586869148
       internalID: 6034755106238789113
       vertices: []
       indices: 
@@ -174,10 +174,10 @@ TextureImporter:
       name: BossDoor_2
       rect:
         serializedVersion: 2
-        x: 165
-        y: 168
-        width: 76
-        height: 70
+        x: 160
+        y: 164
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,7 +185,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e9c0078030af9a45a2e7c7c89a9cca5
+      spriteID: b44e3007372f6ce4ba4bac759ab605c6
       internalID: 7778102119440135104
       vertices: []
       indices: 
@@ -195,10 +195,10 @@ TextureImporter:
       name: BossDoor_3
       rect:
         serializedVersion: 2
-        x: 245
-        y: 168
-        width: 76
-        height: 70
+        x: 240
+        y: 164
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63a5749849c53d54b8b136fd64adbb89
+      spriteID: 862766228ba3881499e8decf0eced4f9
       internalID: -6877416527097752869
       vertices: []
       indices: 
@@ -216,10 +216,10 @@ TextureImporter:
       name: BossDoor_4
       rect:
         serializedVersion: 2
-        x: 327
-        y: 168
-        width: 76
-        height: 70
+        x: 320
+        y: 164
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,7 +227,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 940b3807915c30149a7d4792516b5a50
+      spriteID: e8a7181a0b0c61a4d821a7c45337df93
       internalID: -7143687899325420617
       vertices: []
       indices: 
@@ -237,10 +237,10 @@ TextureImporter:
       name: BossDoor_5
       rect:
         serializedVersion: 2
-        x: 2
-        y: 87
-        width: 76
-        height: 70
+        x: 0
+        y: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,7 +248,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7419558d42ea8f4286b89e3354d9b36
+      spriteID: be445ad5ac6edc442b7fee3171ee7b14
       internalID: -5061746547624992867
       vertices: []
       indices: 
@@ -258,10 +258,10 @@ TextureImporter:
       name: BossDoor_6
       rect:
         serializedVersion: 2
-        x: 84
-        y: 87
-        width: 76
-        height: 70
+        x: 80
+        y: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,7 +269,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fb7ad4d76225054f850ba75449cba1b
+      spriteID: a15150ecc9b7d5b458543b2e43e97e76
       internalID: -1122118285904227469
       vertices: []
       indices: 
@@ -279,10 +279,10 @@ TextureImporter:
       name: BossDoor_7
       rect:
         serializedVersion: 2
-        x: 164
-        y: 87
-        width: 76
-        height: 70
+        x: 160
+        y: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,7 +290,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e558d485b8fdf3047935bd05d57aa72e
+      spriteID: 06e59853fc7010d47b5e6ee99d1d1eb2
       internalID: 1932409275546981651
       vertices: []
       indices: 
@@ -300,10 +300,10 @@ TextureImporter:
       name: BossDoor_8
       rect:
         serializedVersion: 2
-        x: 246
-        y: 87
-        width: 76
-        height: 70
+        x: 240
+        y: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,7 +311,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a464f4da0a1d974f8f449e66b39997b
+      spriteID: c14fc64d083632548a123432ed279969
       internalID: -6095353930959920364
       vertices: []
       indices: 
@@ -321,10 +321,10 @@ TextureImporter:
       name: BossDoor_9
       rect:
         serializedVersion: 2
-        x: 326
-        y: 87
-        width: 76
-        height: 70
+        x: 320
+        y: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,7 +332,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e522fba389e384ba59afd32ed349c4
+      spriteID: db2345c79055ce54ab0393486b78a0d6
       internalID: 7829643009000809032
       vertices: []
       indices: 
@@ -342,10 +342,10 @@ TextureImporter:
       name: BossDoor_10
       rect:
         serializedVersion: 2
-        x: 3
-        y: 6
-        width: 76
-        height: 70
+        x: 0
+        y: 4
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,7 +353,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1c4046eb56c5ae44a9fc1881457f3cf
+      spriteID: ee2e4e0a4729171488d289f372b28524
       internalID: -4570767753863684750
       vertices: []
       indices: 
@@ -363,10 +363,10 @@ TextureImporter:
       name: BossDoor_11
       rect:
         serializedVersion: 2
-        x: 83
-        y: 6
-        width: 76
-        height: 70
+        x: 80
+        y: 4
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -374,7 +374,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c9b8292322c8b641bcaa133abc1bd9c
+      spriteID: 6f4d5937e592717409ae3bf8534644e5
       internalID: 9109010278754041183
       vertices: []
       indices: 
@@ -384,10 +384,10 @@ TextureImporter:
       name: BossDoor_12
       rect:
         serializedVersion: 2
-        x: 165
-        y: 6
-        width: 76
-        height: 70
+        x: 160
+        y: 4
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -395,7 +395,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ead7954284ef3cd46922833c70363622
+      spriteID: 9779a094985acba47bbe35fb235f583f
       internalID: -4446779973170154591
       vertices: []
       indices: 
@@ -405,10 +405,10 @@ TextureImporter:
       name: BossDoor_13
       rect:
         serializedVersion: 2
-        x: 246
-        y: 6
-        width: 76
-        height: 70
+        x: 240
+        y: 4
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,7 +416,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5822300aa1320d448a8903edd0b894b
+      spriteID: a3cd7457fe2ad6843a26bc62f8e15b96
       internalID: -6796997150575272500
       vertices: []
       indices: 
@@ -426,10 +426,10 @@ TextureImporter:
       name: BossDoor_14
       rect:
         serializedVersion: 2
-        x: 327
-        y: 6
-        width: 76
-        height: 70
+        x: 320
+        y: 4
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,7 +437,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6b81dedcb8fea24c9441151aae653de
+      spriteID: d23a718b6c25362448a197f7ccb02aa4
       internalID: -8321336653613565934
       vertices: []
       indices: 
