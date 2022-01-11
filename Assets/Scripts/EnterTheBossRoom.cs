@@ -17,6 +17,9 @@ public class EnterTheBossRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player reached the door");
+        if(!other.CompareTag("Player"))
+            return;
+            
         player = other.GetComponent<Player>();
 
         player.playerConfine();
@@ -27,6 +30,8 @@ public class EnterTheBossRoom : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("Player move away from the door");
+        if(!other.CompareTag("Player"))
+            return;
 
         animator.SetTrigger("close");
 

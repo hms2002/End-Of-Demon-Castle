@@ -29,8 +29,15 @@ public class Player : MonoBehaviour
     public Vector2 boxSize;
     GameObject sword;
     SpriteRenderer swordSprite;
+    //#.플레이어 화살
+    ObjectManager objectManager;
+    public float arrowSpeed = 10f;
+    public float arrowCoolTime = 1f;
+    float arrowCurTime = 0;
 
     void Start(){
+        objectManager = FindObjectOfType<ObjectManager>();
+
         canMove = true;
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -50,11 +57,13 @@ public class Player : MonoBehaviour
         //#2.플레이어 대쉬
         dash();
         //#3.플레이어 공격
-        attack();
+            //attack();
+        shotArrow();
         //#4.플레이어 사망체크
         dead();
 
     }
+
 
     private void FixedUpdate() {
         //#1.플레이어 이동
@@ -169,6 +178,28 @@ public class Player : MonoBehaviour
             Vector2 orientation = new Vector2(mousePos.x - transform.position.x, mousePos.y -  transform.position.y).normalized;
             StartCoroutine("IAttack", orientation);
         }
+    }
+
+    void shotArrow()
+    {       
+        arrowCurTime -= Time.deltaTime; 
+        if(Input.GetMouseButtonDown(0) && arrowCurTime < 0)
+        {
+            arrowCurTime = arrowCoolTime;
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 v2 = mousePos - (Vector2)transform.position;
+            float angle = Mathf.Atan2(v2.y,v2.x) * 180/Mathf.PI;
+
+            GameObject arrow = objectManager.MakeObj("Arrow");
+            Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
+            arrow.transform.position = transform.position;
+            arrow.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            Vector2 dir = v2.normalized;
+            arrowRb.AddForce(new Vector2(dir.x, dir.y) * arrowSpeed, ForceMode2D.Impulse);
+        }
+        else
+            return;
     }
 
     //#.피해 입기

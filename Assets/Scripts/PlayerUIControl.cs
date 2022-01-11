@@ -10,7 +10,6 @@ public class PlayerUIControl : MonoBehaviour
         player = GetComponent<Player>();
     }
     private void Update() {
-        Debug.Log(player.player_hp);
         sliderHp.value = player.player_hp;
     }
 }

@@ -10,7 +10,6 @@ public class BossUIControl : MonoBehaviour
         boss = GetComponent<Boss>();
     }
     private void Update() {
-        Debug.Log(boss.BossHp);
         sliderHp.value = boss.BossHp;
     }
 }
