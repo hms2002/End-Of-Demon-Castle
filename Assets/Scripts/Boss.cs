@@ -10,7 +10,6 @@ public class Boss : MonoBehaviour
     public int PrePatternNum = 0;
     public float BarrageSpeed = 30;
     public Player player;
-    public GameObject BarrageObj;
     public ObjectManager objectManager;
 
     void Start()
@@ -43,11 +42,16 @@ public class Boss : MonoBehaviour
         Invoke("PatternManager", PatternTime);
     }
 
+    private void Boss_Scw()
+    {
+
+    }
+
     private IEnumerator Pattern_1()
     {
         for (int i = 0; i < 6; i++)
         {
-            for (float angle = 0f; angle < 5.4; angle = angle + 1.8f)
+            for (float angle = 0.9f; angle < 5.4f; angle = angle + 1.8f)
             {
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 Barrage.transform.position = transform.position;
@@ -57,7 +61,7 @@ public class Boss : MonoBehaviour
                 playerdir += angledir;
                 rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
             }
-            for (float angle = 0f; angle < 5.4; angle = angle + 1.8f)
+            for (float angle = 0.9f; angle < 5.4f; angle = angle + 1.8f)
             {
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 Barrage.transform.position = transform.position;
@@ -67,8 +71,7 @@ public class Boss : MonoBehaviour
                 playerdir += angledir;
                 rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
             }
-
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
