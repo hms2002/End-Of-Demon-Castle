@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //#.능력치
-    public int player_hp;
+    public float player_hp;
 
     //#.플레이어 이동
     public int speed;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     Animator animator;
     //#.플레이어 공격
+    public int attackDamage;
     public float atkCoolTime = 0.3f;
     bool canAttack;
     bool onAttack;
@@ -74,7 +75,6 @@ public class Player : MonoBehaviour
     {
         if(!canMove)
             return;
-        Debug.Log("Ent");
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");  
 
@@ -211,6 +211,12 @@ public class Player : MonoBehaviour
             {
                 BreakableObj obj = collider.GetComponent<BreakableObj>();
                 obj.breakObj();
+            }
+            if(collider.CompareTag("Boss"))
+            {
+                Boss boss = collider.GetComponent<Boss>();
+                boss.damaged(attackDamage);
+                
             }
         }
 

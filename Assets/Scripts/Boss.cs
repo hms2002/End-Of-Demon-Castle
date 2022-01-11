@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public int BossHp = 700;
+    public float BossHp = 700;
     public float PatternTime = 5f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
@@ -75,5 +75,23 @@ public class Boss : MonoBehaviour
     private void Pattern_2()
     {
         Debug.Log("패턴2");
+    }
+
+        //#.피해 입기
+    public void damaged(int damage)
+    {
+        BossHp -= damage;
+        dead();
+    }
+    public void damaged(float damage)
+    {
+        BossHp -= damage;
+        dead();
+    }
+    //#.죽기
+    void dead()
+    {
+        if(BossHp <= 0)
+            GetComponent<SpriteRenderer>().color = Color.red;
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CanBroke
   - Border
+  - Boss
   layers:
   - Default
   - TransparentFX
