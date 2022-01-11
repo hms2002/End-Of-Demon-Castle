@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float dashCoolTime;
     public int dashPower;
     float curDashCoolTime;
+    public bool canDash = true;
     Rigidbody2D rigid;
     Animator animator;
     //#.플레이어 공격
@@ -156,6 +157,8 @@ public class Player : MonoBehaviour
         curDashCoolTime -= Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Space) && curDashCoolTime <= 0)
         {
+            if (!canDash)
+                return;
             if(h == 0 && v == 0)
                 return;
             
@@ -224,7 +227,10 @@ public class Player : MonoBehaviour
             rigid.AddForce(new Vector2(h*dashPower, v*dashPower));
         gameObject.layer = 11;
         yield return new WaitForSeconds(0.3f);
-        canMove = true;
+        if(canDash)
+        {
+            canMove = true;
+        }
         gameObject.layer = 10;
     }
 
@@ -333,7 +339,7 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         canAttack = false;
-     
+        canDash = false;
         rigid.velocity = Vector2.zero;
         Debug.Log(rigid.velocity);
 
@@ -347,6 +353,7 @@ public class Player : MonoBehaviour
     {
         canAttack = true;
         canMove = true;
+        canDash = true;
         animator.SetBool("isChange", false);
     }
 }

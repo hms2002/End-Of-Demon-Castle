@@ -11,7 +11,8 @@ public class Boss : MonoBehaviour
     public float BarrageSpeed = 30;
     public Player player;
     public ObjectManager objectManager;
-
+    public GameObject ShockwaveObj;
+    
     void Start()
     {
         PatternManager();
@@ -44,7 +45,7 @@ public class Boss : MonoBehaviour
 
     private void Boss_Scw()
     {
-
+        GameObject Shockwave = Instantiate(ShockwaveObj, transform.position, transform.rotation);
     }
 
     private IEnumerator Pattern_1()
