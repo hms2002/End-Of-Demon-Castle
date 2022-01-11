@@ -12,6 +12,8 @@ public class PlayerSkill : MonoBehaviour
     ActivateSkill F;
     ActivateSkill LeftShift;
 
+    float flameTimer;
+
     private void Awake()
     {
         Q = FireBreath;
@@ -48,7 +50,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            if (Input.GetKeyUp(KeyCode.Q)/* or 5초 카운트다운*/)
+            if (Input.GetKeyUp(KeyCode.Q) || /* or 5초 카운트다운*/)
             {
                 //원상복귀
             }
