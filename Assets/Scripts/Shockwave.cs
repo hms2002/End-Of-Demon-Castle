@@ -12,10 +12,11 @@ public class Shockwave : MonoBehaviour
     Vector3 ZeroScale = new Vector3(0,0,0);
     Vector3 Scaled = new Vector3(1, 1, 1);
 
-    void Start()
+    void OnEnable()
     {
         if (isCharged)
         {
+            isShocked = false;
             StartCoroutine(Charge());
         }
     }
@@ -45,36 +46,19 @@ public class Shockwave : MonoBehaviour
 
     IEnumerator Shock()
     {
-        for (float per = 0f; per <= 1f; per += 0.01f)
+        for (float per = 0f; per <= 1f; per += 0.03f)
         {
             transform.localScale = new Vector3(per, per, per);
 
             yield return new WaitForSeconds(Time.deltaTime);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("ㅋㅋ");
-        if(collision.gameObject.CompareTag("Player") && isShocked)
-        {
-            Debug.Log("zz");
-            Player player = gameObject.GetComponent<Player>();
-            Boss boss = gameObject.GetComponent<Boss>();
-            Rigidbody2D playerRig = gameObject.GetComponent<Rigidbody2D>();
-            player.damaged(Damage);
-            Vector2 playerdir = boss.transform.position - player.transform.position;
-
-            playerRig.AddForce(new Vector2(playerdir.normalized.x,playerdir.normalized.y)*100,ForceMode2D.Impulse); 
-        }
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ㅋㅋ");
         if (collision.gameObject.CompareTag("Player") && isShocked)
         {
-            Debug.Log("zz");
             player = collision.gameObject.GetComponent<Player>();
             Rigidbody2D playerRig = collision.gameObject.GetComponent<Rigidbody2D>();
             player.damaged(Damage);

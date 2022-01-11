@@ -50,7 +50,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(KeyCode.Q) || true/* or 5초 카운트다운*/)
             {
                 //원상복귀
             }

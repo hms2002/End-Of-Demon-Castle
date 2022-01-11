@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
 
     private void PatternManager()
     {
+        Boss_Scw();
         do
         {
             PatternNum = Random.Range(1, 3);
@@ -45,7 +46,8 @@ public class Boss : MonoBehaviour
 
     private void Boss_Scw()
     {
-        GameObject Shockwave = Instantiate(ShockwaveObj, transform.position, transform.rotation);
+        GameObject Shockwave = objectManager.MakeObj("Shockwave");
+        Shockwave.transform.position = transform.position;
     }
 
     private IEnumerator Pattern_1()

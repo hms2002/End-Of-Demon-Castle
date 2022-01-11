@@ -6,13 +6,16 @@ public class ObjectManager : MonoBehaviour
 {
     public GameObject BarragePrefab;
     public GameObject ArrowPrefab;
+    public GameObject ShockwavePrefab;
     GameObject[] Barrage;
     GameObject[] Arrow;
+    GameObject[] Shockwave;
     GameObject[] targetPool;
     void Awake()
     {
         Barrage = new GameObject[50];
         Arrow = new GameObject[30];
+        Shockwave = new GameObject[2];
 
         Generate();
     }
@@ -29,6 +32,11 @@ public class ObjectManager : MonoBehaviour
             Arrow[index] = Instantiate(ArrowPrefab);
             Arrow[index].SetActive(false);   
         }
+        for(int index = 0; index < Shockwave.Length; index++)
+        {
+            Shockwave[index] = Instantiate(ShockwavePrefab);
+            Shockwave[index].SetActive(false);
+        }
     }
 
     public GameObject MakeObj(string type)
@@ -40,6 +48,9 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "Arrow":
                 targetPool = Arrow;
+                break;
+            case "Shockwave":
+                targetPool = Shockwave;
                 break;
         }
 

@@ -23,7 +23,7 @@ public class EnterTheBossRoom : MonoBehaviour
         player = other.GetComponent<Player>();
 
         player.playerConfine();
-
+        player.lookUp();
         TextBox.SetActive(true);
     }
 
