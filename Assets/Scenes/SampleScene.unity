@@ -7424,7 +7424,7 @@ Transform:
   m_LocalScale: {x: 4.788, y: 7.511, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &932281200
 BoxCollider2D:
@@ -7464,6 +7464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320b6e36c134e94488253ef124a9bf75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 20
+  isFired: 0
 --- !u!1 &940101794
 GameObject:
   m_ObjectHideFlags: 0
@@ -18684,6 +18686,8 @@ MonoBehaviour:
     type: 3}
   ShockwavePrefab: {fileID: 1158071114931566148, guid: 5326fedb3183ed74e95360a1cf6f0d83,
     type: 3}
+  LaserPrefab: {fileID: 6071113184465622416, guid: e67941c14b29a9e44b3691c05f97a511,
+    type: 3}
 --- !u!4 &1618058074
 Transform:
   m_ObjectHideFlags: 0
@@ -19759,7 +19763,6 @@ RectTransform:
   m_Children:
   - {fileID: 444813779}
   - {fileID: 1428967564}
-  - {fileID: 1973147350}
   m_Father: {fileID: 77668538}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
