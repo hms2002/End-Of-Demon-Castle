@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnterTheBossRoom : MonoBehaviour
 {
+    public GameObject BossHpUI;
     public GameObject TextBox;
     public Transform destination;
     Player player;
@@ -49,6 +50,7 @@ public class EnterTheBossRoom : MonoBehaviour
 
     public void GoToPos()
     {
+        BossHpUI.SetActive(true);
         player.playerFree();
         player.gameObject.transform.position = destination.position;
     }
