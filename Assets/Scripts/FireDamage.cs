@@ -9,24 +9,31 @@ public class FireDamage : MonoBehaviour
 
     public int flameDamage = 20;
     float flameDamageTimer = 0;
+    BreakableObj breakableObj;
 
     private void OnEnable() {
         polygonCollider2D = GetComponent<PolygonCollider2D>();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
         int layer = collision.gameObject.layer;
 
         if (layer == 12)
         {
-            Debug.Log("데미지 테스트");
-            boss = collision.GetComponent<Boss>();
+            if(boss == null)
+                boss = collision.GetComponent<Boss>();
+
             boss.damaged(flameDamage);
+            Debug.Log("데미지 인게이지");
+        }
+        else if (collision.CompareTag("CanBroke"))
+        {
+            breakableObj = collision.GetComponent<BreakableObj>();
+            breakableObj.breakObj();
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         flameDamageTimer += Time.deltaTime;
         if (flameDamageTimer > 0.1f)
