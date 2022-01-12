@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireDamage : MonoBehaviour
 {
     Boss boss;
+    BreakableObj breakableObj;
     PolygonCollider2D polygonCollider2D;
 
     public int flameDamage = 20;
@@ -15,14 +16,17 @@ public class FireDamage : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
         int layer = collision.gameObject.layer;
 
-        if (layer == 12)
+        if (layer == 12) //보스 공격
         {
-            Debug.Log("데미지 테스트");
             boss = collision.GetComponent<Boss>();
             boss.damaged(flameDamage);
+        }
+        else if (collision.CompareTag("CanBroke"))
+        {
+            breakableObj = collision.GetComponent<BreakableObj>();
+            breakableObj.breakObj();
         }
     }
 
