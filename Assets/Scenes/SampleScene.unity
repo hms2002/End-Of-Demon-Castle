@@ -7035,7 +7035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcea2590abc23574ba90a4f49c47e47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossHpUI: {fileID: 0}
+  BossHpUI: {fileID: 1208596604}
   TextBox: {fileID: 1964061544}
   destination: {fileID: 431954248}
 --- !u!95 &877360753
@@ -8017,7 +8017,7 @@ MonoBehaviour:
   fireBreath: {fileID: 278253371921157653, guid: 5219239e333f3244aaf721cbb802018d,
     type: 3}
   flameDamage: 20
-  maxSkillTime: 0
+  maxSkillTime: 5.2
 --- !u!1001 &1163590088
 PrefabInstance:
   m_ObjectHideFlags: 0

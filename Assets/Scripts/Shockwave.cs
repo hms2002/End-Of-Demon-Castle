@@ -16,6 +16,7 @@ public class Shockwave : MonoBehaviour
     {
         if (isCharged)
         {
+            anim = GetComponent<Animator>();
             isShocked = false;
             StartCoroutine(Charge());
         }

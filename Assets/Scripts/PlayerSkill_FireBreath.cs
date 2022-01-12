@@ -11,7 +11,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
 
     public int flameDamage = 20;
     float flameTimer;
-    public float maxSkillTime;
+    public float maxSkillTime = 5f;
     bool isSkillOn;
 
     void Awake()
@@ -19,7 +19,6 @@ public class PlayerSkill_FireBreath : MonoBehaviour
         player = GetComponent<Player>();
         skillManager = GetComponent<PlayerSkill>();
         skillManager.q = FireBreath;
-        fireAnimator = GetComponent<Animator>();
 
         isSkillOn = false;
     }
@@ -39,6 +38,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
 
         GameObject fireEffect = Instantiate(fireBreath, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
 
+        fireAnimator = fireEffect.transform.GetChild(0).GetComponent<Animator>();
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();
