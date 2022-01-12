@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public float BossHp = 700;
-    public float PatternTime = 4f;
+    public float PatternTime = 5f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed = 30;
@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
 
     private void PatternManager()
     {
+        Boss_Scw();
         do
         {
             PatternNum = Random.Range(1, 3);
@@ -38,16 +39,15 @@ public class Boss : MonoBehaviour
             default:
                 break;
         }
+
+
+        Invoke("PatternManager", PatternTime);
     }
 
-    private IEnumerator Boss_Scw()
+    private void Boss_Scw()
     {
-        yield return new WaitForSeconds(4);
         GameObject Shockwave = objectManager.MakeObj("Shockwave");
         Shockwave.transform.position = transform.position;
-        while (Shockwave.activeSelf)
-            yield return new WaitForSeconds(0.1f);
-        Invoke("PatternManager", 1.5f);
     }
 
     private IEnumerator Pattern_1()
@@ -76,17 +76,11 @@ public class Boss : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
         }
-        StartCoroutine("Boss_Scw");
     }
 
     private void Pattern_2()
     {
-        GameObject Barrage = objectManager.MakeObj("Barrage");
-        Barrage.transform.position = transform.position;
-        Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
-        Vector2 playerdir = player.transform.position - transform.position;
-        rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
-        StartCoroutine("Boss_Scw");
+        Debug.Log("패턴2");
     }
 
         //#.피해 입기
