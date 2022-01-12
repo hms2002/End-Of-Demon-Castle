@@ -45,6 +45,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
 
     IEnumerator SpitFire(GameObject fireEffect)
     {
+        Debug.Log("Spit");
         while (isSkillOn)
         {
             flameTimer += Time.deltaTime;

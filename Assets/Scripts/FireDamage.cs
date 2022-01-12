@@ -10,12 +10,12 @@ public class FireDamage : MonoBehaviour
     public int flameDamage = 20;
     float flameDamageTimer = 0;
 
-    private void Start()
-    {
+    private void OnEnable() {
         polygonCollider2D = GetComponent<PolygonCollider2D>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject.name);
         int layer = collision.gameObject.layer;
 
         if (layer == 12)

@@ -16,23 +16,28 @@ public class PlayerSkill : MonoBehaviour
     {        
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            q();
+            if(q != null)
+                q();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            e();
+            if(e != null)
+                e();
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            r();
+            if(r != null)
+                r();
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            rMouseButton();
+            if(rMouseButton != null)
+                rMouseButton();
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            leftShift();
+            if(leftShift != null)
+                leftShift();
         }
     }
 }
