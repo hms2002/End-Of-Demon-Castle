@@ -11,19 +11,20 @@ public class Laser : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (!isFired)
-        {
-            StartCoroutine("Warning");
-        }
+        StartCoroutine("Warning");   
+    }
+  public IEnumerator Warning()
+    {
+        yield return new WaitForSeconds(1);
+        anim.SetTrigger("LaserOn");
+        StartCoroutine("Fire");
     }
 
     public IEnumerator Fire()
     {
-        gameObject.gameObject.layer = 11;
         isFired = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
-        isFired = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -33,12 +34,5 @@ public class Laser : MonoBehaviour
         {
             collision.GetComponent<Player>().damaged(Damage);
         }
-    }
-
-    public IEnumerator Warning()
-    {
-        yield return new WaitForSeconds(1);
-        anim.SetTrigger("LaserOn");
-        StartCoroutine("Fire");
     }
 }
