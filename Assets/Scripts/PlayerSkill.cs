@@ -4,71 +4,35 @@ using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
-    delegate void ActivateSkill();
-
-    ActivateSkill Q;
-    ActivateSkill E;
-    ActivateSkill R;
-    ActivateSkill F;
-    ActivateSkill LeftShift;
-
-    float flameTimer;
-
-    private void Awake()
-    {
-        Q = FireBreath;
-        E = Explosion;
-        R = IcePrison;
-    }
+    //스킬 키 적용
+    public delegate void ActivateSkill();
+    public ActivateSkill q;
+    public ActivateSkill e;
+    public ActivateSkill r;
+    public ActivateSkill rMouseButton;
+    public ActivateSkill leftShift;
 
     private void Update()
-    {
+    {        
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Q();
+            q();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            E();
+            e();
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            R();
+            r();
         }
-        else if (Input.GetKeyDown(KeyCode.F))
+        else if (Input.GetMouseButtonDown(1))
         {
-            F();
+            rMouseButton();
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            LeftShift();
+            leftShift();
         }
     }
-
-    //피격 스킬
-    public void FireBreath()
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (Input.GetKeyUp(KeyCode.Q) || true/* or 5초 카운트다운*/)
-            {
-                //원상복귀
-            }
-
-            //불 쏘기
-        }
-        Debug.Log("불 발사~!");
-    }
-
-    public void Explosion()
-    {
-        Debug.Log("펑");
-    }
-
-    public void IcePrison()
-    {
-        Debug.Log("으름 감옥~!");
-    }
-
-    //버프 스킬
 }
