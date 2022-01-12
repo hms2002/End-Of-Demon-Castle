@@ -10,7 +10,7 @@ public class Shockwave : MonoBehaviour
     public bool isShocked = false;
     Player player;
     Vector3 ZeroScale = new Vector3(0,0,0);
-    Vector3 Scaled = new Vector3(1, 1, 1);
+    Vector3 Scaled = new Vector3(4, 4, 1);
 
     void OnEnable()
     {
@@ -36,7 +36,7 @@ public class Shockwave : MonoBehaviour
     
     IEnumerator Charge()
     {
-        for(float per = 1f; per >= 0f; per -= 0.01f)
+        for(float per = 4f; per >= 0f; per -= 0.04f)
         {
             transform.localScale = new Vector3(per, per, per);
 
@@ -46,9 +46,9 @@ public class Shockwave : MonoBehaviour
 
     IEnumerator Shock()
     {
-        for (float per = 0f; per <= 1f; per += 0.03f)
+        for (float per = 0f; per <= 4f; per += 0.24f)
         {
-            transform.localScale = new Vector3(per, per, per);
+            transform.localScale = new Vector3(per, per, 1);
 
             yield return new WaitForSeconds(Time.deltaTime);
         }
