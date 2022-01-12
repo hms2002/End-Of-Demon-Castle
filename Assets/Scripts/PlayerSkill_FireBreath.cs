@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerSkill_FireBreath : MonoBehaviour
 {
     Player player;
-    public PlayerSkill skillManager;
+    PlayerSkill skillManager;
     public GameObject fireBreath;
     Animator fireAnimator;
 
-    public int flameDamage = 20;
-    float flameTimer;
+    float flameTimer = 0;
     public float maxSkillTime = 5f;
     bool isSkillOn;
 
@@ -18,7 +17,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
     {
         player = GetComponent<Player>();
         skillManager = GetComponent<PlayerSkill>();
-        skillManager.q = FireBreath;
+        skillManager.q += FireBreath;
 
         isSkillOn = false;
     }
@@ -49,7 +48,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
         while (isSkillOn)
         {
             flameTimer += Time.deltaTime;
-            Debug.Log("타이머 : " + flameTimer);
+            //Debug.Log("타이머 : " + flameTimer);
 
             if (Input.GetKeyUp(KeyCode.Q) || flameTimer > maxSkillTime)
             {
