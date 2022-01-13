@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public float arrowCoolTime = 1f;
     float arrowCurTime = 0;
 
+    //#.플레이어 죽음
+    bool isDead = false;
     public delegate void AboutDead();
     public AboutDead onDead;
 
@@ -222,8 +224,11 @@ public class Player : MonoBehaviour
     //#.죽기
     void dead()
     {
+        if(isDead)
+            return;
         if (player_hp <= 0)
         {
+            isDead = true;
             onDead();
         }
     }
