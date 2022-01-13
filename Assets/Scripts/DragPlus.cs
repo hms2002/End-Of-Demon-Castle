@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    Vector3 OriginPos;
+    private void Start() {
+        OriginPos = transform.position;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Start");
@@ -14,26 +18,15 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("Draging");
+        transform.position = eventData.position;
         //throw new System.NotImplementedException();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End");
+        transform.position = OriginPos;
         //throw new System.NotImplementedException();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     
 }
