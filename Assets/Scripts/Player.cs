@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     public float arrowCoolTime = 1f;
     float arrowCurTime = 0;
 
+    public delegate void AboutDead();
+    public AboutDead onDead;
+
     void Start()
     {
         objectManager = FindObjectOfType<ObjectManager>();
@@ -220,7 +223,9 @@ public class Player : MonoBehaviour
     void dead()
     {
         if (player_hp <= 0)
-            GetComponent<SpriteRenderer>().color = Color.red;
+        {
+            onDead();
+        }
     }
 
     IEnumerator IDash()
@@ -269,6 +274,7 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
+    
 
     void setSwordAngle()
     {
