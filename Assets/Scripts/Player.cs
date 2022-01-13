@@ -224,8 +224,12 @@ public class Player : MonoBehaviour
     //#.죽기
     void dead()
     {
-        if(isDead)
+        if (isDead)
+        {
+            rigid.velocity = Vector2.zero;
             return;
+        }
+
         if (player_hp <= 0)
         {
             isDead = true;
@@ -362,6 +366,11 @@ public class Player : MonoBehaviour
 
     public void playerFree()
     {
+        if (isDead)
+        {
+            rigid.velocity = Vector2.zero;
+            return;
+        }
         canAttack = true;
         canMove = true;
         canDash = true;
