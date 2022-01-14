@@ -70,7 +70,7 @@ public class ObjectManager : MonoBehaviour
             if (!targetPool[index].activeSelf)
             {
                 targetPool[index].SetActive(true);
-                return targetPool[index];
+                return targetPool[index];   
             }
         }
 

@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
     {
         do
         {
-            PatternNum = Random.Range(1, 3);
+            PatternNum = Random.Range(1, 5);
         } while (PatternNum == PrePatternNum);
 
         PrePatternNum = PatternNum;
@@ -29,13 +29,16 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine(Pattern_6());
+                StartCoroutine(Pattern_9());
                 break;
             case 2:
-                StartCoroutine(Pattern_6());
+                StartCoroutine(Pattern_9());
                 break;
             case 3:
-                StartCoroutine(Pattern_6());
+                StartCoroutine(Pattern_9());
+                break;
+            case 4:
+                StartCoroutine(Pattern_9());
                 break;
             default:
                 break;
@@ -108,6 +111,7 @@ public class Boss : MonoBehaviour
                 }
                 GameObject Laser = objectManager.MakeObj("Laser");
                 Laser.transform.position = new Vector2(-22 + (8 * i), 18.5f + yPlus);
+                Laser.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
             }
             yield return new WaitForSeconds(1f);
             for (int i = 1; i <= 4; i++)
@@ -130,6 +134,7 @@ public class Boss : MonoBehaviour
                 }
                 GameObject Laser = objectManager.MakeObj("Laser");
                 Laser.transform.position = new Vector2(22 - (8 * i), 18.5f + yPlus);
+                Laser.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
             }
             yield return new WaitForSeconds(1f);
         }
@@ -175,24 +180,68 @@ public class Boss : MonoBehaviour
         StartCoroutine("Boss_Scw");
     }
 
-    private IEnumerator Pattern_6()
+    public IEnumerator Pattern_6()
     {
         int RoundNum = 8;
         for (int j = 0; j < 2; j++)
         {
             for (int i = 0; i < RoundNum; i++)
             {
+                BarrageSpeed = 10;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
-                Barrage.transform.position = transform.position;
+                Barrage barrageLogic = Barrage.GetComponent<Barrage>();
+                barrageLogic.breakableLayer = 14;
+                Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 10, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 10);
+                Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
                 Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
-                Vector2 playerdir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum), Mathf.Sin(Mathf.PI * 2 * i / RoundNum));
-                rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+                Vector2 playerdir = player.transform.position - Barrage.transform.position;
+                Vector2 Forcedir = new Vector2(playerdir.normalized.x, playerdir.normalized.y);
+                rigid.AddForce(new Vector2(Forcedir.x, Forcedir.y) * BarrageSpeed, ForceMode2D.Impulse);
+                yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(3);
         }
         StartCoroutine("Boss_Scw");
     }
 
+    private IEnumerator Pattern_8()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            GameObject Barrage = objectManager.MakeObj("Barrage");
+            Barrage.transform.position = transform.position;
+            BarrageSpeed = 15f;
+            Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
+            Vector2 playerdir = player.transform.position - transform.position;
+            Vector2 angledir = new Vector2(Random.Range(-4f, 4f), 0);
+            playerdir += angledir;
+            rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
+        }
+        StartCoroutine("Boss_Scw");
+    }
+
+    private IEnumerator Pattern_9()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            GameObject Barrage = objectManager.MakeObj("Barrage");
+            Barrage.transform.position = transform.position;
+            BarrageSpeed = 15f;
+            Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
+            Vector2 playerdir = player.transform.position - transform.position; 
+            Vector2 angledir = new Vector2(Mathf.Sin(Mathf.PI * 48 * i / 50) * 2f, 0);
+            playerdir += angledir;
+            rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.05f);
+        }
+        StartCoroutine("Boss_Scw");
+    }
+
+    private IEnumerator Pattern_10()
+    {
+        yield return new WaitForSeconds(0.1f);
+    }
     //#.피해 입기
     public void damaged(int damage)
     {
