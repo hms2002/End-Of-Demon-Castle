@@ -10,6 +10,7 @@ public class PlayerUIControl : MonoBehaviour
     Animator playerAnimator;
     public GameObject canvas_dead; 
     public Image fadeImage_dead;
+    public Text retry;
     public GameObject retryButton;
 
     private void Start() {
@@ -34,14 +35,30 @@ public class PlayerUIControl : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        Color startColor = fadeImage_dead.color;
+        Color imageColor = fadeImage_dead.color;
 
         for (int i = 0; i < 200; i++)
         {
-            startColor.a += 0.01f;
-            fadeImage_dead.color = startColor;
+            imageColor.a += 0.01f;
+            fadeImage_dead.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
         retryButton.SetActive(true);
+    }
+
+    public void MousePointEnter()
+    {
+        Color textColor = retry.color;
+        textColor.g -= 1;
+        textColor.b -= 1f;
+        retry.color = textColor;
+    }
+
+    public void MousePointExit()
+    {
+        Color textColor = retry.color;
+        textColor.g += 1;
+        textColor.b += 1f;
+        retry.color = textColor;
     }
 }
