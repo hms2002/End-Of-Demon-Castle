@@ -27,7 +27,6 @@ public class FireDamage : MonoBehaviour
                 boss = collision.GetComponent<Boss>();
 
             boss.damaged(flameDamage);
-            Debug.Log("데미지 인게이지");
         }
         else if (collision.CompareTag("CanBroke"))
         {

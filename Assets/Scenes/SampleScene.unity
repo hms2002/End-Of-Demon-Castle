@@ -2214,8 +2214,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_GameObject: {fileID: 670298146}
-  m_CullTransparentMesh: 0
 --- !u!1 &685189825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,6 +3378,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &700155464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 974511350720430651, guid: 724cf84b6b918774e9c58e73dea2b583,
+    type: 3}
+  m_PrefabInstance: {fileID: 974511352514621637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &732275701
 GameObject:
   m_ObjectHideFlags: 0
@@ -8045,7 +8055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0325e8d5813d0b14d9a729b1dbd3c432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderHp: {fileID: 840460764}
+  sliderHp: {fileID: 1647120512}
   canvas_dead: {fileID: 679294911}
   fadeImage_dead: {fileID: 1272845549}
   retryButton: {fileID: 1972303401}
@@ -18181,6 +18191,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647120512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 384847969535717144, guid: a445eecd379e9ef4f963cac052aceab7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1913781093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1657367259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3292777368559556500, guid: adef8da56b67b4b4f8de9936ad91984e,
@@ -18506,7 +18528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5465bac67711734098e787aecfd2127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderHp: {fileID: 2105488126}
+  sliderHp: {fileID: 700155464}
 --- !u!4 &1780621098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3105927555115169744, guid: a88b0fc87482e574f97f3067eaeabde9,
@@ -19399,9 +19421,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1527117879}
-  - {fileID: 51805291}
+  m_Children: []
   m_Father: {fileID: 1448456596}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19422,6 +19442,46 @@ MonoBehaviour:
   m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 0}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &2117635996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20055,6 +20115,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 877360752}
+    - target: {fileID: 8334139378067202323, guid: 905dbaae12e8f1e4a8262b360f35a825,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8334139378363953859, guid: 905dbaae12e8f1e4a8262b360f35a825,
         type: 3}
       propertyPath: m_SortingOrder
