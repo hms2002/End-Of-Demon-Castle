@@ -38,6 +38,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
         GameObject fireEffect = Instantiate(fireBreath, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
 
         fireAnimator = fireEffect.transform.GetChild(0).GetComponent<Animator>();
+        fireEffect.transform.SetParent(transform);
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();

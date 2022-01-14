@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6071113184465622413}
   - component: {fileID: 6071113184465622412}
   m_Layer: 0
-  m_Name: Laser_0
+  m_Name: Laser_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6071113184465622416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.54, y: 25.65, z: 0}
-  m_LocalScale: {x: 5.25, y: 14.5, z: 1}
+  m_LocalScale: {x: 5.25, y: 14.500008, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &6071113184465622418
 SpriteRenderer:
   m_ObjectHideFlags: 0

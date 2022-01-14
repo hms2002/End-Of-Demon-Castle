@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
     public float arrowCoolTime = 1f;
     float arrowCurTime = 0;
 
+    //#.플레이어 죽음
+    bool isDead = false;
+    public delegate void AboutDead();
+    public AboutDead onDead;
+
     void Start()
     {
         objectManager = FindObjectOfType<ObjectManager>();
@@ -219,8 +224,17 @@ public class Player : MonoBehaviour
     //#.죽기
     void dead()
     {
+        if (isDead)
+        {
+            rigid.velocity = Vector2.zero;
+            return;
+        }
+
         if (player_hp <= 0)
-            GetComponent<SpriteRenderer>().color = Color.red;
+        {
+            isDead = true;
+            onDead();
+        }
     }
 
     IEnumerator IDash()
@@ -269,6 +283,7 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
+    
 
     void setSwordAngle()
     {
@@ -351,6 +366,11 @@ public class Player : MonoBehaviour
 
     public void playerFree()
     {
+        if (isDead)
+        {
+            rigid.velocity = Vector2.zero;
+            return;
+        }
         canAttack = true;
         canMove = true;
         canDash = true;
