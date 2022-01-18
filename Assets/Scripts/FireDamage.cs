@@ -26,7 +26,7 @@ public class FireDamage : MonoBehaviour
             if(boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(flameDamage);
+            boss.Damaged(flameDamage);
         }
         else if (collision.CompareTag("CanBroke"))
         {

@@ -34,11 +34,10 @@ public class PlayerSkill_FireBreath : MonoBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
-
         GameObject fireEffect = Instantiate(fireBreath, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
-
         fireAnimator = fireEffect.transform.GetChild(0).GetComponent<Animator>();
         fireEffect.transform.SetParent(transform);
+
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();
