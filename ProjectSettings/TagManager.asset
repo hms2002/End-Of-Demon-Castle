@@ -38,9 +38,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - slotUI
+  - skillUI
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: SkillSelect
+    uniqueID: 1936808141
     locked: 0
