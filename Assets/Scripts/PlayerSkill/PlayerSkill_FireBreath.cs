@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkill_FireBreath : MonoBehaviour
+//다형성을 위해 skill_ID 상속!
+public class PlayerSkill_FireBreath : Skill_ID
 {
     Player player;
     PlayerSkill skillManager;
-    public GameObject fireBreath;
+    GameObject fireBreath;
     Animator fireAnimator;
 
     float flameTimer = 0;
@@ -17,12 +18,13 @@ public class PlayerSkill_FireBreath : MonoBehaviour
     {
         player = GetComponent<Player>();
         skillManager = GetComponent<PlayerSkill>();
-        skillManager.q += FireBreath;
+        fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
 
+        maxSkillTime = 5f;
         isSkillOn = false;
     }
 
-    public void FireBreath()
+    public override void SkillOn()
     {
         if (isSkillOn)
         {
@@ -39,6 +41,7 @@ public class PlayerSkill_FireBreath : MonoBehaviour
 
         fireAnimator = fireEffect.transform.GetChild(0).GetComponent<Animator>();
         fireEffect.transform.SetParent(transform);
+        
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();
@@ -51,7 +54,8 @@ public class PlayerSkill_FireBreath : MonoBehaviour
             flameTimer += Time.deltaTime;
             //Debug.Log("타이머 : " + flameTimer);
 
-            if (Input.GetKeyUp(KeyCode.Q) || flameTimer > maxSkillTime)
+            //KeyCode.Q => skillKey로 변경함
+            if (Input.GetKeyUp(skillKey) || flameTimer > maxSkillTime)
             {
                 break;
             }
