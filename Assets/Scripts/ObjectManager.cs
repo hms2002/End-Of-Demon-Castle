@@ -8,10 +8,16 @@ public class ObjectManager : MonoBehaviour
     public GameObject ArrowPrefab;
     public GameObject ShockwavePrefab;
     public GameObject LaserPrefab;
+    public GameObject LaserPivotPrefab;
+    public GameObject BigBarragePrefab;
+    public GameObject AOEPrefab;
     GameObject[] Barrage;
     GameObject[] Arrow;
     GameObject[] Shockwave;
     GameObject[] Laser;
+    GameObject[] LaserPivot;
+    GameObject[] BigBarrage;
+    GameObject[] AOE;
     GameObject[] targetPool;
     void Awake()
     {
@@ -19,6 +25,9 @@ public class ObjectManager : MonoBehaviour
         Arrow = new GameObject[30];
         Shockwave = new GameObject[2];
         Laser = new GameObject[20];
+        LaserPivot = new GameObject[10];
+        BigBarrage = new GameObject[5];
+        AOE = new GameObject[11];
 
         Generate();
     }
@@ -45,6 +54,21 @@ public class ObjectManager : MonoBehaviour
             Laser[index] = Instantiate(LaserPrefab);
             Laser[index].SetActive(false);
         }
+        for (int index = 0; index < LaserPivot.Length; index++)
+        {
+            LaserPivot[index] = Instantiate(LaserPivotPrefab);
+            LaserPivot[index].SetActive(false);
+        }
+        for (int index = 0; index < BigBarrage.Length; index++)
+        {
+            BigBarrage[index] = Instantiate(BigBarragePrefab);
+            BigBarrage[index].SetActive(false);
+        }
+        for (int index = 0; index < AOE.Length; index++)
+        {
+            AOE[index] = Instantiate(AOEPrefab);
+            AOE[index].SetActive(false);
+        }
     }
 
     public GameObject MakeObj(string type)
@@ -62,6 +86,15 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "Laser":
                 targetPool = Laser;
+                break;
+            case "LaserPivot":
+                targetPool = LaserPivot;
+                break;
+            case "BigBarrage":
+                targetPool = BigBarrage;
+                break;
+            case "AOE":
+                targetPool = AOE;
                 break;
         }
 

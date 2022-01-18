@@ -11,7 +11,7 @@ public class PlayerSkill : MonoBehaviour
     public ActivateSkill r;
     public ActivateSkill rMouseButton;
     public ActivateSkill leftShift;
-
+    
     private void Update()
     {        
         if (Input.GetKeyDown(KeyCode.Q))
