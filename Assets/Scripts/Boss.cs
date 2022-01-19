@@ -9,12 +9,14 @@ public class Boss : MonoBehaviour
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed;
+    public bool damaged;
     public Player player;
     public ObjectManager objectManager;
     
     void Start()
     {
         PatternManager();
+        damaged = false;
     }
 
     private void PatternManager()
@@ -381,15 +383,17 @@ public class Boss : MonoBehaviour
         StartCoroutine("Boss_Scw");
     }
     //#.피해 입기
-    public void damaged(int damage)
+    public void Damaged(int damage)
     {
         BossHp -= damage;
         dead();
+        damaged = true;
     }
-    public void damaged(float damage)
+    public void Damaged(float damage)
     {
         BossHp -= damage;
         dead();
+        damaged = true;
     }
     //#.죽기
     void dead()

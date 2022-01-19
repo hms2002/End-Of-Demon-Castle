@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     //#.능력치
     public float player_hp;
+    public float maxHP;
 
     //#.플레이어 이동
     public int speed;
@@ -68,8 +69,8 @@ public class Player : MonoBehaviour
         //#3.플레이어 공격
         //attack();
         shotArrow();
-        //#4.플레이어 사망체크
-        dead();
+        //#4.플레이어 체력체크
+        PlayerHP();
 
     }
 
@@ -274,6 +275,21 @@ public class Player : MonoBehaviour
         player_hp -= damage;
         dead();
     }
+    //#.플레이어 체력
+    void PlayerHP()
+    {
+        HPLimit();
+        dead();
+    }
+    //#.플레이어 체력 제한
+    void HPLimit()
+    {
+        if (player_hp > maxHP)
+        {
+            player_hp = maxHP;
+        }
+    }
+
     //#.죽기
     void dead()
     {
@@ -333,7 +349,7 @@ public class Player : MonoBehaviour
             if (collider.CompareTag("Boss"))
             {
                 Boss boss = collider.GetComponent<Boss>();
-                boss.damaged(attackDamage);
+                boss.Damaged(attackDamage);
 
             }
         }
