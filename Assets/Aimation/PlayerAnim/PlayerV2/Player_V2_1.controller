@@ -67,6 +67,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4391478072808750293}
   m_Solo: 0
@@ -116,6 +119,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Die
     m_EventTreshold: 0
@@ -357,6 +363,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3606377156321488843}
   m_Solo: 0
@@ -382,7 +391,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2359839286911553528}
-    m_Position: {x: 150, y: 760, z: 0}
+    m_Position: {x: 160, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2863962308119015763}
     m_Position: {x: 210, y: -60, z: 0}
@@ -418,7 +427,7 @@ AnimatorStateMachine:
     m_Position: {x: 930, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9123245005457102423}
-    m_Position: {x: 170, y: 480, z: 0}
+    m_Position: {x: 200, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1188234621791869782}
     m_Position: {x: 480, y: 210, z: 0}
@@ -574,6 +583,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1352345484068881419}
   m_Solo: 0
@@ -678,6 +690,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: vAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1188234621791869782}
@@ -899,6 +914,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4973140883532377216}
   m_Solo: 0
@@ -1007,6 +1025,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2863016820952099211}
   m_Solo: 0
@@ -1087,6 +1108,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3447556729244169900}
   m_Solo: 0
@@ -1115,43 +1139,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: hAxisRaw
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: vAxisRaw
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: GoIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DashOn
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DashOn 0
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: isDie
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: Die
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1284,6 +1314,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: hAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8876030075171961859}
@@ -1514,6 +1547,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7023301664359936301}
   m_Solo: 0
@@ -1593,6 +1629,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: vAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3988181679886835593}
@@ -1705,6 +1744,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: hAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7474391022396329299}
   m_Solo: 0
@@ -1760,6 +1802,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: vAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7980045000782221836}
@@ -1844,6 +1889,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: DashOn
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 171821946060487741}
   m_Solo: 0
@@ -1874,6 +1922,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: hAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2863962308119015763}
@@ -1986,6 +2037,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: vAxisRaw
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6345528920685112793}
   m_Solo: 0
@@ -2016,6 +2070,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: hAxisRaw
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDie
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2359839286911553528}

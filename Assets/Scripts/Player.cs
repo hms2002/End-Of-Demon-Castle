@@ -42,9 +42,16 @@ public class Player : MonoBehaviour
     public delegate void AboutDead();
     public AboutDead onDead;
 
+    //#.플레이어 데미지
+    SpriteRenderer playerSprite;
+    public Material whiteMaterial;
+    public Material playerMaterial;
+
     void Start()
     {
+
         objectManager = FindObjectOfType<ObjectManager>();
+        playerSprite = GetComponent<SpriteRenderer>();
 
         canMove = true;
         rigid = GetComponent<Rigidbody2D>();
@@ -271,6 +278,7 @@ public class Player : MonoBehaviour
     //#.피해 입기
     public void damaged(int damage)
     {
+        StartCoroutine("ShowDamaged");
         player_hp -= damage;
         dead();
     }
@@ -288,6 +296,13 @@ public class Player : MonoBehaviour
             isDead = true;
             onDead();
         }
+    }
+
+    IEnumerator ShowDamaged()
+    {
+        playerSprite.material = whiteMaterial;
+        yield return new WaitForSeconds(0.1f);
+        playerSprite.material = playerMaterial;
     }
 
     IEnumerator IDash()

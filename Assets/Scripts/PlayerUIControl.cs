@@ -25,9 +25,10 @@ public class PlayerUIControl : MonoBehaviour
 
     void ShowGameOverScene()
     {
-        playerAnimator.SetTrigger("Die");
         canvas_dead.SetActive(true);
         player.playerConfine();
+        playerAnimator.SetBool("isDie", true);
+        playerAnimator.SetTrigger("Die");
         StartCoroutine(FadeIn_GameOver());
     }
 
