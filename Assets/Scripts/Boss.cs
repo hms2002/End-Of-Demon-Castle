@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public float BossHp = 700;
+    public bool wasHit;
     public float PatternTime = 4f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
@@ -15,6 +16,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         //PatternManager();
+        wasHit = false;
     }
 
     private void PatternManager()
@@ -385,11 +387,13 @@ public class Boss : MonoBehaviour
     {
         BossHp -= damage;
         dead();
+        wasHit = true;
     }
     public void damaged(float damage)
     {
         BossHp -= damage;
         dead();
+        wasHit = true;
     }
     //#.죽기
     void dead()

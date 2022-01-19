@@ -364,7 +364,7 @@ public class Player : MonoBehaviour
             if (collider.CompareTag("Boss"))
             {
                 Boss boss = collider.GetComponent<Boss>();
-                boss.Damaged(attackDamage);
+                boss.damaged(attackDamage);
 
             }
         }

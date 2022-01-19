@@ -54,10 +54,10 @@ public class PlayerSkill_Vampire : MonoBehaviour
                 break;
             }
 
-            if (boss.damaged == true)
+            if (boss.wasHit == true)
             {
                 healSkill.Heal(amountOfRecovery);
-                boss.damaged = false;
+                boss.wasHit = false;
             }
             
             yield return null;

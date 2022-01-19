@@ -17,7 +17,7 @@ public class Arrow : MonoBehaviour
         }
         if(Layer == 12)
         {
-            collision.GetComponent<Boss>().Damaged(Damage);
+            collision.GetComponent<Boss>().damaged(Damage);
             gameObject.SetActive(false);
         }
         if(collision.gameObject.tag == "Border")
