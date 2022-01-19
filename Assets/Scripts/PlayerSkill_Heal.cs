@@ -12,6 +12,7 @@ public class PlayerSkill_Heal : MonoBehaviour
     {
         player = GetComponent<Player>();
         animator = heal.GetComponent<Animator>();
+        heal = Resources.Load<GameObject>("Prefabs/Heal");
     }
 
     //플레이어 힐

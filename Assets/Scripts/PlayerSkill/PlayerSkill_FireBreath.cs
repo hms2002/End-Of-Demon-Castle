@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerSkill_FireBreath : Skill_ID
 {
     Player player;
-    PlayerSkill skillManager;
     GameObject fireBreath;
     Animator fireAnimator;
 
@@ -17,7 +16,6 @@ public class PlayerSkill_FireBreath : Skill_ID
     void Awake()
     {
         player = GetComponent<Player>();
-        skillManager = GetComponent<PlayerSkill>();
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
 
         maxSkillTime = 5f;

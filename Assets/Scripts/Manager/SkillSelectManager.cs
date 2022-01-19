@@ -78,6 +78,7 @@ public class SkillSelectManager : MonoBehaviour
                     switch (skills)
                     {
                         case 1:
+                            skillList.Add(player.AddComponent<PlayerSkill_Vampire>());
                             break;
                         case 2:
                             break;

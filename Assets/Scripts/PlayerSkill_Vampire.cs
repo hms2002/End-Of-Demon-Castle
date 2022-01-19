@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkill_Vampire : MonoBehaviour
+public class PlayerSkill_Vampire : Skill_ID
 {
     Player player;
     Boss boss;
-    PlayerSkill skillManager;
-    PlayerSkill_Heal healSkill;
+    public GameObject healSkill;
     public GameObject absorbBlood;
+    GameObject tempHeal;
     Animator vampireAnimator;
 
     bool isSkillOn;
@@ -19,31 +19,29 @@ public class PlayerSkill_Vampire : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-        boss = GameObject.Find("Boss").GetComponent<Boss>();
-        skillManager = GetComponent<PlayerSkill>();
-        healSkill = GetComponent<PlayerSkill_Heal>();
+        boss = FindObjectOfType<Boss>();
+        healSkill = Resources.Load<GameObject>("Prefabs/Heal");
+        absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
         vampireAnimator = absorbBlood.GetComponent<Animator>();
-
-        skillManager.e += Vampire;
 
         isSkillOn = false;
     }
 
-    void Vampire()
+    public override void SkillOn()
     {
         if (isSkillOn)
         {
             return;
         }
         isSkillOn = true;
-
+        
         StartCoroutine("Absorb");
     }
 
     IEnumerator Absorb()
     {
         GameObject aura = Instantiate(absorbBlood);
-
+        
         while (isSkillOn)
         {
             aura.transform.position = player.transform.position;
@@ -56,7 +54,10 @@ public class PlayerSkill_Vampire : MonoBehaviour
 
             if (boss.wasHit == true)
             {
-                healSkill.Heal(amountOfRecovery);
+                tempHeal = Instantiate(healSkill);
+                tempHeal.transform.position = player.transform.position;
+                player.player_hp += amountOfRecovery;
+                Destroy(tempHeal, 0.5f);
                 boss.wasHit = false;
             }
             
