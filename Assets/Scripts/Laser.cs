@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     Player player;
     Animator anim;
     BoxCollider2D boxCollider2D;
-    Vector3 HorizonScale = new Vector3(5.25f, 16.2f, 1);
+    Vector3 HorizonScale = new Vector3(4f, 16.1f, 1);
 
     void OnEnable()
     {
@@ -50,9 +50,17 @@ public class Laser : MonoBehaviour
             }
             else
             {
-                playerRig.AddForce(new Vector2(-1f, 0) * 30, ForceMode2D.Impulse);
+                SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+                if(!renderer.flipY)
+                {
+                    playerRig.AddForce(new Vector2(1f, 0) * 30, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    playerRig.AddForce(new Vector2(-1f, 0) * 30, ForceMode2D.Impulse);
+                }
             }
-            Invoke("InbokePlayerFree", 0.15f);
+            Invoke("InbokePlayerFree", 0.15f);  
         }
     }
 

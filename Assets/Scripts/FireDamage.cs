@@ -20,7 +20,7 @@ public class FireDamage : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         int layer = collision.gameObject.layer;
-
+        
         if (layer == 12)
         {
             if(boss == null)
