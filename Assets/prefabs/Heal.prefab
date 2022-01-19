@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5541386766557729452}
   - component: {fileID: 8083576255331280926}
-  - component: {fileID: 8574639894214622668}
   - component: {fileID: 3326921983505353065}
   m_Layer: 0
   m_Name: Heal
@@ -69,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 12
   m_Sprite: {fileID: -4989426964654344697, guid: 750f60396240263469f877d92b942bf5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -82,18 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8574639894214622668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 323258123078084948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c1421b5c38ae648a24187ed818a225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &3326921983505353065
 Animator:
   serializedVersion: 3

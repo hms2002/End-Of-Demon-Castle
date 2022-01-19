@@ -5,23 +5,25 @@ using UnityEngine;
 public class PlayerSkill_Vampire : MonoBehaviour
 {
     Player player;
-    PlayerSkill skillManager;
     Boss boss;
+    PlayerSkill skillManager;
+    PlayerSkill_Heal healSkill;
     public GameObject absorbBlood;
-    public GameObject heal;
     Animator vampireAnimator;
 
     bool isSkillOn;
     float durationTime;
-    public float maxSkillTime = 3.0f;
+    public float maxSkillTime = 10.0f;
     public int amountOfRecovery = 10;
 
     private void Awake()
     {
         player = GetComponent<Player>();
-        skillManager = GetComponent<PlayerSkill>();
         boss = GameObject.Find("Boss").GetComponent<Boss>();
+        skillManager = GetComponent<PlayerSkill>();
+        healSkill = GetComponent<PlayerSkill_Heal>();
         vampireAnimator = absorbBlood.GetComponent<Animator>();
+
         skillManager.e += Vampire;
 
         isSkillOn = false;
@@ -29,37 +31,40 @@ public class PlayerSkill_Vampire : MonoBehaviour
 
     void Vampire()
     {
+        if (isSkillOn)
+        {
+            return;
+        }
         isSkillOn = true;
+
         StartCoroutine("Absorb");
     }
 
     IEnumerator Absorb()
     {
+        GameObject aura = Instantiate(absorbBlood);
+
         while (isSkillOn)
         {
-
+            aura.transform.position = player.transform.position;
             durationTime += Time.deltaTime;
 
-            if (durationTime > maxSkillTime)
+            if (durationTime >= maxSkillTime)
             {
-                isSkillOn = false;
                 break;
             }
 
             if (boss.damaged == true)
             {
-                Heal();
+                healSkill.Heal(amountOfRecovery);
+                boss.damaged = false;
             }
             
             yield return null;
         }
 
-    }
-
-    void Heal()
-    {
-        vampireAnimator.SetTrigger("heal");
-        player.player_hp += amountOfRecovery;
-        boss.damaged = false;
+        durationTime = 0.0f;
+        Destroy(aura);
+        isSkillOn = false;
     }
 }
