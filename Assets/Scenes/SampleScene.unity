@@ -3438,6 +3438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81fd242343c6224b9c2c79132e4624d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSelect: 0
+  dragAndDropContainer: {fileID: 0}
+  isDragging: 0
 --- !u!4 &779843397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3105927555115169744, guid: a88b0fc87482e574f97f3067eaeabde9,
@@ -7858,6 +7861,8 @@ MonoBehaviour:
   player_hp: 80
   maxHP: 80
   speed: 8
+  dashEffect: {fileID: 2294366240884739402, guid: b3aa8fc1280ab6b49a8d159c4cbf36b3,
+    type: 3}
   dashCoolTime: 0.5
   dashPower: 400
   canDash: 1
@@ -7993,8 +7998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab6740e592b2934ab8c93fa94ec643b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBreath: {fileID: 278253371921157653, guid: 5219239e333f3244aaf721cbb802018d,
-    type: 3}
+  ID: 0
+  skillKey: 0
   maxSkillTime: 5
 --- !u!114 &1160478607
 MonoBehaviour:
@@ -18097,6 +18102,12 @@ MonoBehaviour:
   ShockwavePrefab: {fileID: 1158071114931566148, guid: 5326fedb3183ed74e95360a1cf6f0d83,
     type: 3}
   LaserPrefab: {fileID: 6071113184465622416, guid: e67941c14b29a9e44b3691c05f97a511,
+    type: 3}
+  LaserPivotPrefab: {fileID: 4444689249156143167, guid: f76d354161939b6408c55ac5604a259d,
+    type: 3}
+  BigBarragePrefab: {fileID: 3286068385202893149, guid: e018c460a9cf64b4cbf0f82f58513551,
+    type: 3}
+  AOEPrefab: {fileID: 3286068385202893149, guid: 10a04a7d49bcef24ba05c6fcad84c7fb,
     type: 3}
 --- !u!4 &1618058074
 Transform:
