@@ -30,7 +30,7 @@ public class SkillSelectManager : MonoBehaviour
                 skillList.Add(player.AddComponent<Skill_ID>());
                 continue;
             }
-                
+            
                 int job = skillSlot[i].skill.ID/10;
                 int skills = skillSlot[i].skill.ID % 10;
             switch(job)
@@ -70,7 +70,7 @@ public class SkillSelectManager : MonoBehaviour
                             skillList.Add(player.AddComponent<PlayerSkill_FireBreath>());
                             break;
                         case 2:
-                            //skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
+                            skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
                             break;
                     }
                     break;

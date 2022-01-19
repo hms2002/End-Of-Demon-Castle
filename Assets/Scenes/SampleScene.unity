@@ -20397,7 +20397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 41
   skillKey: 0
 --- !u!1 &1719268971 stripped
 GameObject:
@@ -20434,6 +20434,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   skillKey: 0
+--- !u!1001 &1720573770
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7844019667796435597, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_Name
+      value: ExplosionPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155194029410209162, guid: ccf6a241034f5a44d91f957943033736,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccf6a241034f5a44d91f957943033736, type: 3}
 --- !u!1 &1752184060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4323764020630608498, guid: 1f84cb97fd5314a4eb8980765a60a39c,
@@ -20763,7 +20832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 42
   skillKey: 0
 --- !u!1 &1904709306
 GameObject:
