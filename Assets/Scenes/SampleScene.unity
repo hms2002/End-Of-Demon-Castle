@@ -9521,7 +9521,7 @@ MonoBehaviour:
   dashPower: 400
   canDash: 1
   attackDamage: 300
-  atkCoolTime: 0.4
+  atkCoolTime: 0.25
   attackEffect: {fileID: 638757323613011312, guid: d317bbb3bfc44ac40b27beb41c5be4e4,
     type: 3}
   atkPos: {fileID: 386833257}

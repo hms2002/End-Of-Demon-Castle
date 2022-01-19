@@ -387,13 +387,21 @@ public class Boss : MonoBehaviour
     {
         BossHp -= damage;
         dead();
-        wasHit = true;
     }
     public void damaged(float damage)
     {
         BossHp -= damage;
         dead();
-        wasHit = true;
+    }
+    public void damaged(float damage, string attackType)
+    {
+        BossHp -= damage;
+        dead();
+
+        if (attackType == "sword")
+        {
+            wasHit = true;
+        }
     }
     //#.죽기
     void dead()

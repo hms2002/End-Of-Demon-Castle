@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     Animator animator;
     //#.플레이어 공격
     public int attackDamage;
-    public float atkCoolTime = 0.3f;
+    public float atkCoolTime = 0.25f;
     bool canAttack;
     bool onAttack;
     public GameObject attackEffect;
@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
         //#2.플레이어 대쉬
         dash();
         //#3.플레이어 공격
-        //attack();
-        shotArrow();
+        attack();
+        //shotArrow();
         //#4.플레이어 체력체크
         PlayerHP();
 
@@ -364,8 +364,7 @@ public class Player : MonoBehaviour
             if (collider.CompareTag("Boss"))
             {
                 Boss boss = collider.GetComponent<Boss>();
-                boss.damaged(attackDamage);
-
+                boss.damaged(attackDamage, "sword");
             }
         }
 
