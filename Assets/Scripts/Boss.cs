@@ -29,16 +29,16 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine(Pattern_11());
+               
                 break;
             case 2:
-                StartCoroutine(Pattern_11());
+       
                 break;
             case 3:
-                StartCoroutine(Pattern_12());
+              
                 break;
             case 4:
-                StartCoroutine(Pattern_12());
+                
                 break;
             default:
                 break;
