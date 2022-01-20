@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SkillSelectManager : MonoBehaviour
 {
     public GameObject player;
@@ -9,7 +9,9 @@ public class SkillSelectManager : MonoBehaviour
     public List<Skill_ID> skillList = new List<Skill_ID>();
     public GameObject slotParent;
 
-    public PlayerSkill playerSkill;
+    public Image[] shownSolts;
+
+    PlayerSkill playerSkill;
     private void Awake() {
         skillSlot = slotParent.GetComponentsInChildren<SkillSlot>();
         playerSkill = FindObjectOfType<PlayerSkill>();
@@ -25,6 +27,10 @@ public class SkillSelectManager : MonoBehaviour
 
         for(int i = 0; i < skillSlot.Length; i++)
         {
+            //스킬 이미지 플레이 화면에도 적용
+            shownSolts[i].sprite = skillSlot[i].gameObject.GetComponent<Image>().sprite;
+
+            //스킬슬롯 확인 후 컴포넌트 채우기 - switch문 까지 
             if(skillSlot[i].skill == null)
             {
                 skillList.Add(player.AddComponent<Skill_ID>());
@@ -51,6 +57,7 @@ public class SkillSelectManager : MonoBehaviour
                             skillList.Add(player.AddComponent<PlayerSkill_MultiShot>());
                             break;
                         case 2:
+                            skillList.Add(player.AddComponent<PlayerSkill_PortalArrow>());
                             break;
                     }
                     break;
@@ -60,6 +67,9 @@ public class SkillSelectManager : MonoBehaviour
                         case 1:
                             break;
                         case 2:
+                            break;
+                        case 3:
+                            skillList.Add(player.AddComponent<PlayerSkill_BackSteb>());
                             break;
                     }
                     break;
@@ -123,5 +133,6 @@ public class SkillSelectManager : MonoBehaviour
                 skillList[i].skillKey = KeyCode.LeftShift;
             }
         }
+        
     }
 }

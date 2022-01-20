@@ -11,9 +11,15 @@ public class PlayerSkill : MonoBehaviour
     public ActivateSkill r;
     public ActivateSkill rMouseButton;
     public ActivateSkill leftShift;
+    public bool canSkill;
+    private void Start() {
+        canSkill = true;
+    }
     
     private void Update()
     {        
+        if(canSkill == false)
+            return;
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if(q != null)
