@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     
     void Start()
     {
-        //PatternManager();
+        PatternManager();
         wasHit = false;
     }
 
