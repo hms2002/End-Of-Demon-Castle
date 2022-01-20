@@ -8,21 +8,39 @@ public class PlayerUIControl : MonoBehaviour
     public Slider sliderHp;
     Player player;
     Animator playerAnimator;
-    public GameObject canvas_dead; 
+    public GameObject canvas_dead;
+    public GameObject canvas_mainMenu;
     public Image fadeImage_dead;
-    public Text retry;
+    public GameObject startButton;
+    public GameObject optionButton;
+    public GameObject exitButton;
     public GameObject retryButton;
+    public Text start;
+    public Text option;
+    public Text exit;
+    public Text retry;
 
-    private void Start() {
+    private void Start()
+    {
         player = GetComponent<Player>();
         playerAnimator = player.GetComponent<Animator>();
         player.onDead += ShowGameOverScene;
+        ShowMainMenu();
     }
 
-    private void Update() {
+    private void Update()
+    {
         sliderHp.value = player.player_hp;
     }
 
+    //메인메뉴 세팅
+    void ShowMainMenu()
+    {
+        player.playerConfine();
+        canvas_mainMenu.SetActive(true);
+    }
+
+    //게임오버씬 세팅
     void ShowGameOverScene()
     {
         canvas_dead.SetActive(true);
@@ -47,19 +65,83 @@ public class PlayerUIControl : MonoBehaviour
         retryButton.SetActive(true);
     }
 
-    public void MousePointEnter()
+    //버튼 색상 변환
+    public void MousePointEnter(int buttonType)
     {
-        Color textColor = retry.color;
-        textColor.g -= 1;
-        textColor.b -= 1f;
-        retry.color = textColor;
-    }
+        Color textColor;
 
-    public void MousePointExit()
+        switch (buttonType)
+        {
+            case 0://start
+                textColor = start.color;
+                textColor.r += 1;
+                start.color = textColor;
+
+                break;
+
+            case 1://option
+                textColor = option.color;
+                textColor.r += 1;
+                option.color = textColor;
+
+                break;
+
+            case 2://exit
+                textColor = exit.color;
+                textColor.r += 1;
+                exit.color = textColor;
+
+                break;
+
+            case 3://retry
+                textColor = retry.color;
+                textColor.g -= 1;
+                textColor.b -= 1;
+                retry.color = textColor;
+
+                break;
+
+            default:
+                break;
+        }
+    }
+    public void MousePointExit(int buttonType)
     {
-        Color textColor = retry.color;
-        textColor.g += 1;
-        textColor.b += 1f;
-        retry.color = textColor;
+        Color textColor;
+
+        switch (buttonType)
+        {
+            case 0://start
+                textColor = start.color;
+                textColor.r -= 1;
+                start.color = textColor;
+
+                break;
+
+            case 1://option
+                textColor = option.color;
+                textColor.r -= 1;
+                option.color = textColor;
+
+                break;
+
+            case 2://exit
+                textColor = exit.color;
+                textColor.r -= 1;
+                exit.color = textColor;
+
+                break;
+
+            case 3://retry
+                textColor = retry.color;
+                textColor.g += 1;
+                textColor.b += 1;
+                retry.color = textColor;
+
+                break;
+
+            default:
+                break;
+        }
     }
 }
