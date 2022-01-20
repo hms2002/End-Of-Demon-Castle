@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour
     {
         do
         {
-            PatternNum = Random.Range(1, 5);
+            PatternNum = Random.Range(1, 3);
         } while (PatternNum == PrePatternNum);
 
         PrePatternNum = PatternNum;
@@ -31,18 +31,10 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-               
+                StartCoroutine("Pattern_12");
                 break;
             case 2:
-       
-                break;
-            case 3:
-              
-                break;
-            case 4:
-                
-                break;
-            default:
+                StartCoroutine("Pattern_12");
                 break;
         }
 
@@ -305,6 +297,7 @@ public class Boss : MonoBehaviour
         StartCoroutine("Boss_Scw");
     }
 
+    //패턴12 : 장판생기고 탄막난사
     public IEnumerator Pattern_12()
     {
         for (int j = 0; j < 2; j++)
@@ -379,7 +372,7 @@ public class Boss : MonoBehaviour
         {
             aoe[o].delete();
         }
-
+        yield return new WaitForSeconds(0);
         StartCoroutine("Boss_Scw");
     }
     //#.피해 입기
