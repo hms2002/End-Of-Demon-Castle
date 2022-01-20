@@ -51,6 +51,9 @@ public class SkillSelectManager : MonoBehaviour
                             skillList.Add(player.AddComponent<PlayerSkill_MultiShot>());
                             break;
                         case 2:
+                            
+                        case 3:
+                            skillList.Add(player.AddComponent<PlayerSkill_SniperArrow>());
                             break;
                     }
                     break;
@@ -60,6 +63,7 @@ public class SkillSelectManager : MonoBehaviour
                         case 1:
                             break;
                         case 2:
+                            skillList.Add(player.AddComponent<PlayerSkill_Venom>());
                             break;
                     }
                     break;
