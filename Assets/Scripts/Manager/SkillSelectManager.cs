@@ -57,6 +57,7 @@ public class SkillSelectManager : MonoBehaviour
                             skillList.Add(player.AddComponent<PlayerSkill_MultiShot>());
                             break;
                         case 2:
+                            skillList.Add(player.AddComponent<PlayerSkill_PortalArrow>());
                             break;
                         case 3:
                             skillList.Add(player.AddComponent<PlayerSkill_SniperArrow>());
