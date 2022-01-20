@@ -383,7 +383,6 @@ public class Player : MonoBehaviour
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
         if (angle < 0) angle += 360;
-        Debug.Log(angle);
         if (angle <= 22.5f || angle > 337.5f) //오른쪽을 바라봅니다.
         {
             GameObject atkEffect = Instantiate(attackEffect, transform.position + new Vector3(0.4f, 0, 0), Quaternion.AngleAxis(180, Vector3.forward));
@@ -498,6 +497,50 @@ public class Player : MonoBehaviour
         //플레이어가 커서 방향 바라보도록 설정
         playerOrient = -1;
         setPlayerOrientation();
+    }
+    public void playerConfine(string idx)
+    {
+        switch(idx)
+        {
+            case "Attack":
+                canAttack = false;
+                Debug.Log("S");
+                break;
+            case "Move":
+                canMove = false;
+                rigid.velocity = Vector2.zero;
+
+                //플레이어가 커서 방향 바라보도록 설정
+                playerOrient = -1;
+                setPlayerOrientation();
+                animator.SetBool("isChange", false);
+            break;
+            case "Dash":
+                canDash = false;
+            break;
+
+        }
+    }
+    public void playerFree(string idx)
+    {
+        switch(idx)
+        {
+            case "Attack":
+                canAttack = true;
+                break;
+            case "Move":
+                canMove = true;
+                rigid.velocity = Vector2.zero;
+
+                //플레이어가 커서 방향 바라보도록 설정
+                playerOrient = -1;
+                setPlayerOrientation();
+            break;
+            case "Dash":
+                canDash = true;
+            break;
+
+        }
     }
 
     public void lookUp()

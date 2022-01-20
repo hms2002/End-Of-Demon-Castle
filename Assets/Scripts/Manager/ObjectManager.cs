@@ -22,7 +22,7 @@ public class ObjectManager : MonoBehaviour
     void Awake()
     {
         Barrage = new GameObject[50];
-        Arrow = new GameObject[30];
+        Arrow = new GameObject[50];
         Shockwave = new GameObject[2];
         Laser = new GameObject[20];
         LaserPivot = new GameObject[10];
