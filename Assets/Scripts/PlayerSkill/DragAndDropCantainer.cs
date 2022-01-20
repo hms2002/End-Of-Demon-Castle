@@ -9,6 +9,7 @@ public class DragAndDropCantainer : MonoBehaviour
 {
     public Image image;
     public Skill_ID skill;
+    public SkillSlot skillSlot;
     //public DragPlus beforeSkill;
 
 

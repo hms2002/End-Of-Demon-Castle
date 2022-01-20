@@ -34,82 +34,84 @@ public class SkillSelectManager : MonoBehaviour
             if(skillSlot[i].skill == null)
             {
                 skillList.Add(player.AddComponent<Skill_ID>());
-                continue;
             }
-            
+            else{
                 int job = skillSlot[i].skill.ID/10;
                 int skills = skillSlot[i].skill.ID % 10;
-            switch(job)
-            {
-                case 1:
-                    switch (skills)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                    }
-                    break;
-                case 2:
-                    switch (skills)
-                    {
-                        case 1:
-                            skillList.Add(player.AddComponent<PlayerSkill_MultiShot>());
-                            break;
-                        case 2:
-                            skillList.Add(player.AddComponent<PlayerSkill_PortalArrow>());
-                            break;
-                        case 3:
-                            skillList.Add(player.AddComponent<PlayerSkill_SniperArrow>());
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (skills)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            skillList.Add(player.AddComponent<PlayerSkill_Venom>());
-                            break;
-                        case 3:
-                            skillList.Add(player.AddComponent<PlayerSkill_BackSteb>());
-                            break;
-                    }
-                    break;
-                case 4:
-                    switch (skills)
-                    {
-                        case 1:
-                            skillList.Add(player.AddComponent<PlayerSkill_FireBreath>());
-                            break;
-                        case 2:
-                            skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
-                            break;
-                    }
-                    break;
-                case 5:
-                    switch (skills)
-                    {
-                        case 1:
-                            skillList.Add(player.AddComponent<PlayerSkill_Vampire>());
-                            break;
-                        case 2:
-                            break;
-                    }
-                    break;
-                case 6:
-                    switch (skills)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                    }
-                    break;
-                default:
-                    break;
+                switch(job)
+                {
+                    case 1:
+                        switch (skills)
+                        {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (skills)
+                        {
+                            case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_MultiShot>());
+                                break;
+                            case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_PortalArrow>());
+                                break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_SniperArrow>());
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (skills)
+                        {
+                            case 1:
+                                break;
+                            case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_Venom>());
+                                break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_BackSteb>());
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (skills)
+                        {
+                            case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_FireBreath>());
+                                break;
+                            case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (skills)
+                        {
+                            case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_Vampire>());
+                                break;
+                            case 2:
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (skills)
+                        {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                        }
+                        break;
+                    default:
+                        skillList.Add(player.AddComponent<Skill_ID>());
+                        break;
+                }
             }
+
 
             if(i == 0)
             {

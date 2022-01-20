@@ -9,6 +9,5 @@ public class Skill_ID : MonoBehaviour
 
     public virtual void SkillOn()
     {
-
     }
 }

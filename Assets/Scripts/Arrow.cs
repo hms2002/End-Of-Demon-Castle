@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
             collision.GetComponent<Boss>().damaged(Damage);
             gameObject.SetActive(false);
         }
-        if(collision.gameObject.tag == "Border")
+        if(collision.gameObject.tag == "ArrowBorder")
         {
             gameObject.SetActive(false);
         }
