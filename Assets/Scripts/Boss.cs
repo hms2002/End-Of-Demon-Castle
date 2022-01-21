@@ -12,11 +12,13 @@ public class Boss : MonoBehaviour
     public float BarrageSpeed;
     public Player player;
     public ObjectManager objectManager;
-    
+    public SoundManager soundManager;
+
     void Start()
     {
         //PatternManager();
         wasHit = false;
+        soundManager.Play("Sound/BarrageSound");
     }
 
     private void PatternManager()
@@ -59,7 +61,7 @@ public class Boss : MonoBehaviour
             {
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 Barrage.transform.position = transform.position;
-                BarrageSpeed = 15f;
+                BarrageSpeed = 15f; 
                 Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
                 Vector2 playerdir = player.transform.position - transform.position;
                 Vector2 angledir = new Vector2(angle, angle / 2);
