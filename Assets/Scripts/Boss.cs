@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
     {
         //PatternManager();
         wasHit = false;
-        soundManager.Play("Sound/BarrageSound");
+        soundManager.Play("Sound/BossSound/BarrageSound");
     }
 
     private void PatternManager()
