@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSkill_PortalArrow : Skill_ID
 {
     GameObject portalArrow;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class PlayerSkill_PortalArrow : Skill_ID
 
     public override void SkillOn()
     {
+        soundManager.Play("Sound/BossSound/BarrageSound");
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;

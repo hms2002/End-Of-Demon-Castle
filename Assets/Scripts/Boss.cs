@@ -12,13 +12,12 @@ public class Boss : MonoBehaviour
     public float BarrageSpeed;
     public Player player;
     public ObjectManager objectManager;
-    public SoundManager soundManager;
 
     void Start()
     {
         //PatternManager();
         wasHit = false;
-        soundManager.Play("Sound/BossSound/BarrageSound");
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound");
         PatternManager();
     }
 
