@@ -52,9 +52,7 @@ public class SoundManager : MonoBehaviour
 			}
 
 			_audioSources[(int)Define.Sound.Bgm].loop = true; // bgm 재생기는 무한 반복 재생
-
-            _audioSources[(int)Define.Sound.Effect].volume = 0.6f; // effect 재생기는 소리 줄임
-        }
+		}
         else
         {
             for(int i = 0; i < (int)Define.Sound.MaxCount; i++)
@@ -64,7 +62,7 @@ public class SoundManager : MonoBehaviour
         }
 	}
 
-	public void Play(AudioClip audioClip, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+	public void Play(AudioClip audioClip, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
 	{
 		if (audioClip == null)
 			return;
@@ -76,6 +74,7 @@ public class SoundManager : MonoBehaviour
 				audioSource.Stop();
 
 			audioSource.pitch = pitch;
+			audioSource.volume = volume;
 			audioSource.clip = audioClip;
 			audioSource.Play();
 		}
@@ -83,7 +82,7 @@ public class SoundManager : MonoBehaviour
 		{
 			AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
 			audioSource.pitch = pitch;
-			audioSource.PlayOneShot(audioClip);
+			audioSource.PlayOneShot(audioClip,volume);
 		}
 	}
 
@@ -113,10 +112,10 @@ public class SoundManager : MonoBehaviour
 		return audioClip;
 	}
 
-	public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+	public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
 	{
 		AudioClip audioClip = GetOrAddAudioClip(path, type);
-		Play(audioClip, type, pitch);
+		Play(audioClip, volume, type, pitch);
 	}
 }
 
