@@ -32,6 +32,7 @@ public class BigBarrage : MonoBehaviour
                 Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
                 rigid.AddForce(new Vector2(Rounddir.x, Rounddir.y) * smallBarrageSpeed, ForceMode2D.Impulse);
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             gameObject.SetActive(false);
         }
     }
