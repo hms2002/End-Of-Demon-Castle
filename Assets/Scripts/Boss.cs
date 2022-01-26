@@ -293,13 +293,10 @@ public class Boss : MonoBehaviour
         {
             for (int i = 0; i < RoundNum; i++)
             {
-                barrageLogic[i].player = player;
-            }
-            for (int i = 0; i < RoundNum; i++)
-            {
                 BarrageSpeed = 18;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 barrageLogic[i] = Barrage.GetComponent<Barrage>();
+                barrageLogic[i].player = player;
                 barrageLogic[i].breakableLayer = 14;
                 Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
