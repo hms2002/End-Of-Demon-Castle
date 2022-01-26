@@ -15,13 +15,15 @@ public class Define
 
 public class SoundManager : MonoBehaviour
 {
-    AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
+    public AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
-    private void Start()
+ 
+    private void Awake()
     {
 		Init();
     }
+
     public void Init()
 	{
 		GameObject root = GameObject.Find("@Sound");
@@ -31,11 +33,12 @@ public class SoundManager : MonoBehaviour
 			Object.DontDestroyOnLoad(root);
 
 			string[] soundNames = System.Enum.GetNames(typeof(Define.Sound)); // "Bgm", "Effect"
+            Debug.Log(soundNames.Length);
 			for (int i = 0; i < soundNames.Length - 1; i++)
 			{
 				GameObject go = new GameObject { name = soundNames[i] };
 				_audioSources[i] = go.AddComponent<AudioSource>();
-				go.transform.parent = root.transform;
+                go.transform.parent = root.transform;
 			}
 
 			_audioSources[(int)Define.Sound.Bgm].loop = true; // bgm 재생기는 무한 반복 재생

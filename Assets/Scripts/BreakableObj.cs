@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BreakableObj : MonoBehaviour
 {
-    public int Hp = 2;
-    Animator anim;
+    public float Hp = 2;
+    protected Animator anim;
     bool isBroke;
     bool isFirst;
     private void Start() {
@@ -13,7 +13,7 @@ public class BreakableObj : MonoBehaviour
         isFirst = true;
         anim = GetComponent<Animator>();
     }
-    public virtual void breakObj()
+    public virtual void breakObj(float damage = 0)
     {
         if (isBroke)
             return;

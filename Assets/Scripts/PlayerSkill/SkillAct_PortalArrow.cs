@@ -9,7 +9,7 @@ public class SkillAct_PortalArrow : MonoBehaviour
 
     private void Awake() {
         objectManager = FindObjectOfType<ObjectManager>();
-        arrowSpeed = 15;
+        arrowSpeed = 25;
     }
     public void Shooting(float angle)
     {

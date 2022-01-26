@@ -19,6 +19,7 @@ public class Boss : MonoBehaviour
         //PatternManager();
         wasHit = false;
         soundManager.Play("Sound/BossSound/BarrageSound");
+        PatternManager();
     }
 
     private void PatternManager()
@@ -33,10 +34,10 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_12");
+                StartCoroutine("Pattern_1");
                 break;
             case 2:
-                StartCoroutine("Pattern_12");
+                StartCoroutine("Pattern_2");
                 break;
         }
 
