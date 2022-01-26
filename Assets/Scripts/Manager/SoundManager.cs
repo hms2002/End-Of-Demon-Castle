@@ -17,7 +17,17 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
+    public static SoundManager soundManager;
 
+    public static SoundManager GetInstance()
+    {
+        if(soundManager == null)
+        {
+            soundManager = FindObjectOfType<SoundManager>();
+        }
+
+        return soundManager;
+    }
  
     private void Awake()
     {

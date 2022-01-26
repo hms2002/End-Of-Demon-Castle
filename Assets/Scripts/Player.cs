@@ -110,6 +110,8 @@ public class Player : MonoBehaviour
     {
         if (!canMove)
             return;
+        if (isDead == true)
+            return;
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
 
