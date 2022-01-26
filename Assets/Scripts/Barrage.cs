@@ -7,7 +7,7 @@ public class Barrage : MonoBehaviour
     public int Damage = 10;
     public int breakableLayer = 8;
     public Player player;
-    public float time = 0.3f;
+    public float time = 0.25f;
 
     void OnEnable()
     {
@@ -39,7 +39,7 @@ public class Barrage : MonoBehaviour
     }
 
 
-    public IEnumerator TimeDiffernce()
+    public IEnumerator TimeDifference()
     {
         yield return new WaitForSeconds(time);
         float Speed = 15f;
@@ -47,5 +47,6 @@ public class Barrage : MonoBehaviour
         Vector2 playerdir = player.transform.position - transform.position;
         Vector2 Forcedir = new Vector2(playerdir.normalized.x, playerdir.normalized.y);
         rigid.AddForce(new Vector2(Forcedir.x, Forcedir.y) * Speed, ForceMode2D.Impulse);
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
     }
 }
