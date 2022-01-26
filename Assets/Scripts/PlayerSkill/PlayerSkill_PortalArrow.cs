@@ -21,7 +21,7 @@ public class PlayerSkill_PortalArrow : Skill_ID
 
     public override void SkillOn()
     {
-        soundManager.Play("Sound/BossSound/BarrageSound");
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal",Define.Sound.Effect, 0.6f);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
