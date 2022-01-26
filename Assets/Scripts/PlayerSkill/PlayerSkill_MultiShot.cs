@@ -57,9 +57,9 @@ public class PlayerSkill_MultiShot : Skill_ID
         effect.transform.rotation = v3Rotation;
         bowTemp.transform.rotation = v3RotationBow;
 
-        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotChargeSound");
-        yield return new WaitForSeconds(0.3f);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotChargeSound",15);
 
+        yield return new WaitForSeconds(0.3f);
 
 
         Destroy(effect);
@@ -72,7 +72,7 @@ public class PlayerSkill_MultiShot : Skill_ID
     void MultiShot(float angle)
     {
         
-        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotSound");
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotSound",0.5f);
         for(int i = 0; i < 7; i++)
         {
             GameObject arrow = objectManager.MakeObj("Arrow");

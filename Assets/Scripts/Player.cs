@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float maxHP;
 
     //#.플레이어 이동
+    AudioSource audioSrc;
     public int speed;
     float h;
     float v;
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        audioSrc = GetComponent<AudioSource>();
 
         objectManager = FindObjectOfType<ObjectManager>();
         playerSprite = GetComponent<SpriteRenderer>();
@@ -108,8 +110,18 @@ public class Player : MonoBehaviour
 
     void playerMove()
     {
+        if (rigid.velocity == Vector2.zero)
+            audioSrc.Stop();
         if (!canMove)
+        {
+            audioSrc.Stop();
             return;
+        }
+        else
+        {
+            if (!audioSrc.isPlaying)
+                audioSrc.Play();
+        }
         if (isDead == true)
             return;
         h = Input.GetAxisRaw("Horizontal");

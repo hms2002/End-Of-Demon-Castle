@@ -112,10 +112,19 @@ public class SoundManager : MonoBehaviour
 		return audioClip;
 	}
 
-	public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
 	{
 		AudioClip audioClip = GetOrAddAudioClip(path, type);
 		Play(audioClip, volume, type, pitch);
 	}
+
+    public void Play(AudioSource effectAudio, string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    {
+        AudioClip audioClip = GetOrAddAudioClip(path, type);
+
+        effectAudio.pitch = pitch;
+        
+        effectAudio.PlayOneShot(audioClip, volume);
+    }
 }
 
