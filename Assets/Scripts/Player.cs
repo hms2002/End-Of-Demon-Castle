@@ -380,6 +380,7 @@ public class Player : MonoBehaviour
     IEnumerator IAttack(Vector2 orientation)
     {
         sword.SetActive(true);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SwordSlash", 0.35f);
         canMove = false;
 
         rigid.velocity = new Vector2(0, 0);

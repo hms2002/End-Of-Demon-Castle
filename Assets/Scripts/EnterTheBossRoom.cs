@@ -42,6 +42,8 @@ public class EnterTheBossRoom : MonoBehaviour
     public void OpenDoor()
     {
         animator.SetTrigger("open");
+        SoundManager.GetInstance().Play("Sound/LevelSound/DoorCrumbling_Shorter", 0.35f);
+        SoundManager.GetInstance().Play("Sound/LevelSound/DoorOpen", 0.4f, Define.Sound.Effect, 0.55f);
         TextBox.SetActive(false);
         Invoke("GoToPos", 1.5f);
     }
