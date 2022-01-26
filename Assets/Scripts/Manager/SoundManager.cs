@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour
         }
 	}
 
-	public void Play(AudioClip audioClip, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+	public void Play(AudioClip audioClip, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
 	{
 		if (audioClip == null)
 			return;
@@ -74,6 +74,7 @@ public class SoundManager : MonoBehaviour
 				audioSource.Stop();
 
 			audioSource.pitch = pitch;
+			audioSource.volume = volume;
 			audioSource.clip = audioClip;
 			audioSource.Play();
 		}
@@ -81,7 +82,7 @@ public class SoundManager : MonoBehaviour
 		{
 			AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
 			audioSource.pitch = pitch;
-			audioSource.PlayOneShot(audioClip);
+			audioSource.PlayOneShot(audioClip, volume);
 		}
 	}
 
@@ -89,7 +90,7 @@ public class SoundManager : MonoBehaviour
 	{
 		if (path.Contains("Sound/") == false)
 			path = $"Sound/{path}"; // 📂Sound 폴더 안에 저장될 수 있도록
-	
+
 		AudioClip audioClip = null;
 
 		if (type == Define.Sound.Bgm) // BGM 배경음악 클립 붙이기
@@ -111,10 +112,10 @@ public class SoundManager : MonoBehaviour
 		return audioClip;
 	}
 
-	public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+	public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
 	{
 		AudioClip audioClip = GetOrAddAudioClip(path, type);
-		Play(audioClip, type, pitch);
+		Play(audioClip, volume, type, pitch);
 	}
 }
 
