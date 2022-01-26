@@ -381,6 +381,7 @@ public class Player : MonoBehaviour
     {
         sword.SetActive(true);
         canMove = false;
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SwordSlash", 0.5f);
 
         rigid.velocity = new Vector2(0, 0);
         setSwordAngle();
