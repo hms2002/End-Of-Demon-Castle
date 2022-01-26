@@ -21,10 +21,8 @@ public class SkillAct_PortalArrow : MonoBehaviour
     {
         while(true)
         {
-            if((int)Random.Range(0, 1) == 0)
-                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/ArrowSound1");
-            else
-                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/ArrowSound2");
+            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/ArrowSound1");
+
             GameObject arrow = objectManager.MakeObj("Arrow");
 
             Rigidbody2D arrowRigid = arrow.GetComponent<Rigidbody2D>();
