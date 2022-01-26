@@ -52,7 +52,15 @@ public class SoundManager : MonoBehaviour
 			}
 
 			_audioSources[(int)Define.Sound.Bgm].loop = true; // bgm 재생기는 무한 반복 재생
-		}
+            _audioSources[(int)Define.Sound.Effect].volume = 0.6f; // effect 재생기는 소리 줄임
+        }
+        else
+        {
+            for(int i = 0; i < (int)Define.Sound.MaxCount; i++)
+            {
+                _audioSources[i] = root.transform.GetChild(i).GetComponent<AudioSource>();
+            }
+        }
 	}
 
 	public void Play(AudioClip audioClip, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
