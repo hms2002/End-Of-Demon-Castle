@@ -20,7 +20,7 @@ public class PlayerSkill_MultiShot : Skill_ID
         skillEffect =  Resources.Load<GameObject>("Prefabs/MultiShotPivot");
         bow = Resources.Load<GameObject>("Prefabs/MultiShotBow_1");
         arrowSpeed = 15f;
-        coolTime = 10;
+        coolTime = 0.5f;
         curTime = 0;
     }
 
@@ -35,8 +35,6 @@ public class PlayerSkill_MultiShot : Skill_ID
 
         curTime = coolTime;
         StartCoroutine("HasDelay");
-        
-
     }
 
     IEnumerator HasDelay()
@@ -58,7 +56,11 @@ public class PlayerSkill_MultiShot : Skill_ID
 
         effect.transform.rotation = v3Rotation;
         bowTemp.transform.rotation = v3RotationBow;
+
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotChargeSound");
         yield return new WaitForSeconds(0.3f);
+
+
 
         Destroy(effect);
         Destroy(bowTemp);
@@ -68,7 +70,9 @@ public class PlayerSkill_MultiShot : Skill_ID
     }
 
     void MultiShot(float angle)
-    {   
+    {
+        
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotSound");
         for(int i = 0; i < 7; i++)
         {
             GameObject arrow = objectManager.MakeObj("Arrow");
