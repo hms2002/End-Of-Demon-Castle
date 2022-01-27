@@ -9,7 +9,7 @@ public class ExplosionDamage : MonoBehaviour
     public int Damage = 20;
     BreakableObj breakableObj;
 
-        void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         int layer = collision.gameObject.layer;
         if (layer == 12)
