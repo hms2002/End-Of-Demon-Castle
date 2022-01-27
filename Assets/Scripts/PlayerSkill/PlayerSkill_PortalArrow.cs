@@ -12,16 +12,10 @@ public class PlayerSkill_PortalArrow : Skill_ID
     {
         portalArrow = Resources.Load<GameObject>("Prefabs/PortalArrow");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public override void SkillOn()
     {
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound");
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal", 0.3f,Define.Sound.Effect, 0.7f);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;

@@ -5,9 +5,11 @@ using UnityEngine;
 public class SkillAct_PortalArrow : MonoBehaviour
 {
     ObjectManager objectManager;
+    AudioSource audioSource;
     int arrowSpeed;
 
     private void Awake() {
+        audioSource = GetComponent<AudioSource>();
         objectManager = FindObjectOfType<ObjectManager>();
         arrowSpeed = 25;
     }
@@ -21,6 +23,8 @@ public class SkillAct_PortalArrow : MonoBehaviour
     {
         while(true)
         {
+            SoundManager.GetInstance().Play(audioSource, "Sound/PlayerSound/SkillSound/ArrowSound1", 0.5f);
+
             GameObject arrow = objectManager.MakeObj("Arrow");
 
             Rigidbody2D arrowRigid = arrow.GetComponent<Rigidbody2D>();

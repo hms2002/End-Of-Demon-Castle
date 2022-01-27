@@ -36,7 +36,7 @@ public class PlayerSkill_BackSteb : Skill_ID
 
         backSteb = Resources.Load<GameObject>("Prefabs/BackSteb");
         
-        coolTime = 10;
+        coolTime = 0.5f;
         curTime = 0;
     }
 
@@ -48,6 +48,7 @@ public class PlayerSkill_BackSteb : Skill_ID
     {
         if(curTime > 0)
             return;
+
         curTime = coolTime;
         playerSkill.canSkill = false;
         setCursor.ChangeCursor("backSteb");
@@ -73,8 +74,12 @@ public class PlayerSkill_BackSteb : Skill_ID
                         float distance = Mathf.Abs(Vector2.Distance(transform.position, hit.transform.position));
                         if(distance <= 7)
                         {
-                            Destroy(Instantiate(backSteb, transform.position, transform.rotation), 0.4f);
-                            
+                            GameObject effect = Instantiate(backSteb, transform.position, transform.rotation);
+                            AudioSource effectAudio = effect.GetComponent<AudioSource>();
+                            Destroy(effect, 0.4f);
+
+                            SoundManager.GetInstance().Play(effectAudio, "Sound/PlayerSound/SkillSound/BackStepSound");
+
                             transform.position = hit.transform.CompareTag("Boss") ? hit.transform.position + (hit.transform.up * 1) : hit.transform.position + (hit.transform.up * 0.5f);
                             break;
                         }

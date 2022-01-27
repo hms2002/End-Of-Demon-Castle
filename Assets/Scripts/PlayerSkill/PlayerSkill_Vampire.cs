@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,6 @@ public class PlayerSkill_Vampire : Skill_ID
     public GameObject healSkill;
     public GameObject absorbBlood;
     GameObject tempHeal;
-    Animator vampireAnimator;
 
     bool isSkillOn;
     float durationTime;
@@ -22,7 +21,6 @@ public class PlayerSkill_Vampire : Skill_ID
         boss = FindObjectOfType<Boss>();
         healSkill = Resources.Load<GameObject>("Prefabs/Heal");
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
-        vampireAnimator = absorbBlood.GetComponent<Animator>();
 
         isSkillOn = false;
     }
@@ -34,14 +32,16 @@ public class PlayerSkill_Vampire : Skill_ID
             return;
         }
         isSkillOn = true;
-        
+
         StartCoroutine("Absorb");
     }
 
     IEnumerator Absorb()
     {
         GameObject aura = Instantiate(absorbBlood);
-        
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
+        StartCoroutine("PlayVampireLoopSound");
+
         while (isSkillOn)
         {
             aura.transform.position = player.transform.position;
@@ -54,18 +54,25 @@ public class PlayerSkill_Vampire : Skill_ID
 
             if (boss.wasHit == true)
             {
+                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireHit", 0.4f);
                 tempHeal = Instantiate(healSkill);
                 tempHeal.transform.position = player.transform.position;
                 player.player_hp += amountOfRecovery;
                 Destroy(tempHeal, 0.5f);
                 boss.wasHit = false;
             }
-            
+
             yield return null;
         }
 
         durationTime = 0.0f;
         Destroy(aura);
         isSkillOn = false;
+    }
+
+    IEnumerator PlayVampireLoopSound()
+    {
+        yield return new WaitForSeconds(0.6f);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireLoop", 0.3f);
     }
 }

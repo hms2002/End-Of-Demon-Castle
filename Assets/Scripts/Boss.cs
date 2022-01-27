@@ -15,9 +15,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        //PatternManager();
         wasHit = false;
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound");
         PatternManager();
     }
 
@@ -33,10 +31,10 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_1");
+                StartCoroutine("Pattern_11");
                 break;
             case 2:
-                StartCoroutine("Pattern_2");
+                StartCoroutine("Pattern_11");
                 break;
         }
 
@@ -79,6 +77,7 @@ public class Boss : MonoBehaviour
                 playerdir += angledir;
                 rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.5f);
         }
         StartCoroutine("Boss_Scw");
@@ -111,6 +110,7 @@ public class Boss : MonoBehaviour
                 Laser.transform.position = new Vector2(-22 + (8 * i), 18.5f + yPlus);
                 Laser.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/LaserSound", 0.1f);
             yield return new WaitForSeconds(1f);
             for (int i = 1; i <= 4; i++)
             {
@@ -134,6 +134,7 @@ public class Boss : MonoBehaviour
                 Laser.transform.position = new Vector2(22 - (8 * i), 18.5f + yPlus);
                 Laser.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/LaserSound", 0.1f);
             yield return new WaitForSeconds(1f);
         }
         StartCoroutine("Boss_Scw");
@@ -151,6 +152,7 @@ public class Boss : MonoBehaviour
                 Laser.transform.localScale = new Vector3(4f, 16.1f, 1);
                 Laser.transform.position = new Vector2(0, 12f + (8 * i));
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/LaserSound", 0.1f);
             yield return new WaitForSeconds(1f);
             for (int i = 1; i <= 2; i++)
             {
@@ -161,6 +163,7 @@ public class Boss : MonoBehaviour
                 Laser.transform.localScale = new Vector3(4f, 16.1f, 1);
                 Laser.transform.position = new Vector2(0, 16f + (8 * i));
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/LaserSound", 0.1f);
             yield return new WaitForSeconds(1f);
         }
         StartCoroutine("Boss_Scw");
@@ -177,6 +180,7 @@ public class Boss : MonoBehaviour
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.3f);
         }
         StartCoroutine("Boss_Scw");
@@ -201,6 +205,7 @@ public class Boss : MonoBehaviour
                 Vector2 Forcedir = new Vector2(playerdir.normalized.x, playerdir.normalized.y);
                 rigid.AddForce(new Vector2(Forcedir.x, Forcedir.y) * BarrageSpeed, ForceMode2D.Impulse);
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(3);
         }
         StartCoroutine("Boss_Scw");
@@ -235,6 +240,7 @@ public class Boss : MonoBehaviour
             Vector2 angledir = new Vector2(Random.Range(-4f, 4f), 0);
             playerdir += angledir;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
         StartCoroutine("Boss_Scw");
@@ -253,6 +259,7 @@ public class Boss : MonoBehaviour
             Vector2 angledir = new Vector2(Mathf.Sin( Mathf.PI * 25 *  i / 50) * 2f, 0);
             playerdir += angledir;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.05f);
         }
         StartCoroutine("Boss_Scw");
@@ -271,6 +278,7 @@ public class Boss : MonoBehaviour
             Rigidbody2D rigid = BigBarrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f,Define.Sound.Effect, 0.5f);
             yield return new WaitForSeconds(2f);
         }
         StartCoroutine("Boss_Scw");
@@ -280,21 +288,28 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_11()
     {
         int RoundNum = 12;
+        Barrage[] barrageLogic = new Barrage[RoundNum];
         for (int j = 0; j < 2; j++)
         {
             for (int i = 0; i < RoundNum; i++)
             {
-                BarrageSpeed = 15;
+                BarrageSpeed = 18;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
-                Barrage barrageLogic = Barrage.GetComponent<Barrage>();
-                barrageLogic.player = player;
-                barrageLogic.breakableLayer = 14;
+                barrageLogic[i] = Barrage.GetComponent<Barrage>();
+                barrageLogic[i].player = player;
+                barrageLogic[i].breakableLayer = 14;
                 Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
-                barrageLogic.time *= i;
-                barrageLogic.StartCoroutine("TimeDiffernce");
+                SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.05f, Define.Sound.Effect, 0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
+            for (int i = 0; i < RoundNum; i++)
+            {
+                barrageLogic[i].time *= i;
+                barrageLogic[i].StartCoroutine("TimeDifference");
+            }
+                yield return new WaitForSeconds(4);
         }
         StartCoroutine("Boss_Scw");
     }
@@ -367,6 +382,7 @@ public class Boss : MonoBehaviour
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.3f);
         }
         AOE[] aoe = FindObjectsOfType<AOE>();
@@ -403,5 +419,12 @@ public class Boss : MonoBehaviour
     {
         if(BossHp <= 0)
             GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    IEnumerator zz()
+    {
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 1f);
     }
 }
