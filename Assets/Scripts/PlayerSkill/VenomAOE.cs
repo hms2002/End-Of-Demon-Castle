@@ -9,9 +9,12 @@ public class VenomAOE : MonoBehaviour
     private float currentDamageTime;
     Animator anim;
     CapsuleCollider2D capsule;
+    AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        SoundManager.GetInstance().Play(audioSource, "Sound/PlayerSound/SkillSound/PoisonBottleBreak", 0.6f);
         capsule = gameObject.GetComponent<CapsuleCollider2D>();
         DamageTime = 0.5f;
         capsule.enabled = true;
