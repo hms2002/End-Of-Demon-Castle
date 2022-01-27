@@ -115,6 +115,7 @@ public class SkillSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHa
                 data.sprite = tempSprite;
                 skill = tempSkill;
             }
+            SoundManager.GetInstance().Play("Sound/SystemSound/ChangeSkillSlot");
         }
         else
         {
