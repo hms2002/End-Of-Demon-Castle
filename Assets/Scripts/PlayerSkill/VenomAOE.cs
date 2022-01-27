@@ -34,7 +34,7 @@ public class VenomAOE : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("zz");
+        /*Debug.Log("zz");*/
         if (collision.gameObject.CompareTag("Boss"))
         {
             if (currentDamageTime <= 0)
