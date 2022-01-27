@@ -549,7 +549,6 @@ public class Player : MonoBehaviour
         {
             case "Attack":
                 canAttack = false;
-                Debug.Log("S");
                 break;
             case "Move":
                 canMove = false;

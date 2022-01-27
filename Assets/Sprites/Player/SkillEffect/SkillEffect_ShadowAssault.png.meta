@@ -1,31 +1,25 @@
 fileFormatVersion: 2
-guid: 505b8fdd36502be4eb60c2410f664641
+guid: bb1b33f9da4064d4c9bcc3d0506c30eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6178231605275576746
-    second: pot2_restore_0
+      213: 6952667165978214355
+    second: SkillEffect_ShadowAssault_0
   - first:
-      213: 5594997908655130000
-    second: pot2_restore_1
+      213: 5938136913420426153
+    second: SkillEffect_ShadowAssault_1
   - first:
-      213: 4020646991605640849
-    second: pot2_restore_2
+      213: 5490728286980993954
+    second: SkillEffect_ShadowAssault_2
   - first:
-      213: 3431173467828001301
-    second: pot2_restore_3
+      213: -2472744075407677862
+    second: SkillEffect_ShadowAssault_3
   - first:
-      213: 488749062119166052
-    second: pot2_restore_4
+      213: 814895579557721224
+    second: SkillEffect_ShadowAssault_4
   - first:
-      213: 5454610440751129944
-    second: pot2_restore_5
-  - first:
-      213: 4937985981004103637
-    second: pot2_restore_6
-  - first:
-      213: -5120234870245789316
-    second: pot2_restore_7
+      213: -7615003040750876073
+    second: SkillEffect_ShadowAssault_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,151 +79,43 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pot2_restore_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 33
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3402f917739e574285ae88e496be382
-      internalID: -6178231605275576746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pot2_restore_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 33
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1838f57db54be3b43a136fe016d7394f
-      internalID: 5594997908655130000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pot2_restore_2
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 33
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 694a816a96066044aab74964e4d13e37
-      internalID: 4020646991605640849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pot2_restore_3
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 33
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e1cf4fe05c5a6e45a84887be7ed0a0e
-      internalID: 3431173467828001301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pot2_restore_4
+      name: SkillEffect_ShadowAssault_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f5a49a1c2945634b8d75732bac40b7e
-      internalID: 488749062119166052
+      spriteID: 3df37ad53f5dc7060800000000000000
+      internalID: 6952667165978214355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pot2_restore_5
+      name: SkillEffect_ShadowAssault_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6de669386ba0c3b409e5f1466044658f
-      internalID: 5454610440751129944
+      spriteID: 9ab1f08af00886250800000000000000
+      internalID: 5938136913420426153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pot2_restore_6
+      name: SkillEffect_ShadowAssault_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2bf50c15a50cac4d8f0c41ef9a17237
-      internalID: 4937985981004103637
+      spriteID: 2a3f0bf294cf23c40800000000000000
+      internalID: 5490728286980993954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pot2_restore_7
+      name: SkillEffect_ShadowAssault_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,8 +186,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9d7af63000cf214bb35ec9c5d1067bc
-      internalID: -5120234870245789316
+      spriteID: a56afd45d5c0fadd0800000000000000
+      internalID: -2472744075407677862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillEffect_ShadowAssault_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 884f29c46371f4b00800000000000000
+      internalID: 814895579557721224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillEffect_ShadowAssault_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a46889413125690800000000000000
+      internalID: -7615003040750876073
       vertices: []
       indices: 
       edges: []
@@ -309,7 +237,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 38063a371fbe8264c8b70a2394059ccf
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

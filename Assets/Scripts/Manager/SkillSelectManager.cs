@@ -67,6 +67,7 @@ public class SkillSelectManager : MonoBehaviour
                         switch (skills)
                         {
                             case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_ShadowAssault>());
                                 break;
                             case 2:
                                 skillList.Add(player.AddComponent<PlayerSkill_Venom>());
