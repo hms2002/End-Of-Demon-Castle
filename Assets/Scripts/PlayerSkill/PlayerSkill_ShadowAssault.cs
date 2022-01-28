@@ -54,7 +54,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
             Debug.Log(len);
             destination = Vector2.zero;
 
-            destination = (startPos + v2.normalized * len) - v2.normalized * 0.5f;
+            destination = (startPos + v2.normalized * len) - v2.normalized * 0.3f;
 
             //if (len > 1.5f)
             //{
