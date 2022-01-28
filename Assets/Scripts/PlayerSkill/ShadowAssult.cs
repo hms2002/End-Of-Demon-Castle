@@ -15,7 +15,6 @@ public class ShadowAssult : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("DD");
         int layer = collision.gameObject.layer;
 
         if (layer == 12)
