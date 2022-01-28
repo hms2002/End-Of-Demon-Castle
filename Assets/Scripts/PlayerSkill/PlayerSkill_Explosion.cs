@@ -18,7 +18,6 @@ public class PlayerSkill_Explosion : Skill_ID
     {
         player = GetComponent<Player>();
         Explosion = Resources.Load<GameObject>("Prefabs/ExplosionPivot");
-        
         isSkillOn = false;
     }
 
@@ -47,6 +46,7 @@ public class PlayerSkill_Explosion : Skill_ID
             float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
 
             GameObject ExplosionEffect = Instantiate(Explosion, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Explosion", 0.1f);
             StartCoroutine("SpitFire", ExplosionEffect);
             if(ChargeNum == ChargeMax)
             {

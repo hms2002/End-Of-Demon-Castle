@@ -8,17 +8,21 @@ public class PlayerSkill_FireBreath : Skill_ID
     Player player;
     GameObject fireBreath;
     Animator fireAnimator;
+    AudioSource soundPlayer;
+    public AudioClip sound1;
 
-    float flameTimer = 0;
-    public float maxSkillTime = 5f;
+    float coolTime = 7.0f;
+    float flameTimer = 0.0f;
+    public float maxSkillTime = 5.0f;
     bool isSkillOn;
 
     void Awake()
     {
         player = GetComponent<Player>();
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
+        sound1 = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/FireBreath");
 
-        maxSkillTime = 5f;
+        maxSkillTime = 5.0f;
         isSkillOn = false;
     }
 
@@ -30,6 +34,7 @@ public class PlayerSkill_FireBreath : Skill_ID
         }
         isSkillOn = true;
 
+
         //불 각도
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
@@ -37,7 +42,11 @@ public class PlayerSkill_FireBreath : Skill_ID
         GameObject fireEffect = Instantiate(fireBreath, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
         fireAnimator = fireEffect.transform.GetChild(0).GetComponent<Animator>();
         fireEffect.transform.SetParent(transform);
-        
+
+        //불 사운드
+        soundPlayer = fireEffect.GetComponent<AudioSource>();
+        soundPlayer.clip = sound1;
+
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();
@@ -45,10 +54,12 @@ public class PlayerSkill_FireBreath : Skill_ID
 
     IEnumerator SpitFire(GameObject fireEffect)
     {
+        soundPlayer.volume = 0.8f;
+        soundPlayer.Play();
+        
         while (isSkillOn)
         {
             flameTimer += Time.deltaTime;
-            //Debug.Log("타이머 : " + flameTimer);
 
             //KeyCode.Q => skillKey로 변경함
             if (Input.GetKeyUp(skillKey) || flameTimer > maxSkillTime)
@@ -57,12 +68,28 @@ public class PlayerSkill_FireBreath : Skill_ID
             }
             yield return null;
         }
+        StartCoroutine("VolumeDown");
 
         fireAnimator.SetTrigger("fireOff");
-        Destroy(fireEffect, 0.2f);
+        Destroy(fireEffect, 0.35f);
+        isSkillOn = false;
         yield return new WaitForSeconds(0.5f);
         player.playerFree();
-        isSkillOn = false;
         flameTimer = 0.0f;
+    }
+
+    IEnumerator VolumeDown()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            soundPlayer.volume -= 0.05f;
+
+            yield return new WaitForSeconds(0.01f);
+
+            if (soundPlayer.volume == 0)
+            {
+                break;
+            }
+        }
     }
 }

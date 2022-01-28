@@ -253,7 +253,7 @@ public class Player : MonoBehaviour
                 return;
             if (h == 0 && v == 0)
                 return;
-
+            SoundManager.GetInstance().Play("Sound/PlayerSound/DashSound", 2);
             curDashCoolTime = dashCoolTime;
             animator.SetTrigger("DashOn");
             StartCoroutine("IDash");
@@ -549,7 +549,6 @@ public class Player : MonoBehaviour
         {
             case "Attack":
                 canAttack = false;
-                Debug.Log("S");
                 break;
             case "Move":
                 canMove = false;

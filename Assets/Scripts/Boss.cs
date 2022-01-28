@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         wasHit = false;
-        PatternManager();
+        //PatternManager();
     }
 
     private void PatternManager()
@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
 
         PrePatternNum = PatternNum;
 
-        switch (PatternNum)
+        /*switch (PatternNum)
         {
             case 1:
                 StartCoroutine("Pattern_11");
@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
             case 2:
                 StartCoroutine("Pattern_11");
                 break;
-        }
+        }*/
 
     }
 
