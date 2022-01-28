@@ -110,7 +110,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
 
         if (hit)
         {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(hit.point, new Vector2(0.8f, 0.8f), 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(hit.point, new Vector2(0.5f, 0.5f), 0);
             foreach (Collider2D collider in collider2Ds)
             {
                 if (collider.CompareTag("Player"))
