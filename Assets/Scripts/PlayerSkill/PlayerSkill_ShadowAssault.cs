@@ -54,8 +54,16 @@ public class PlayerSkill_ShadowAssault : Skill_ID
             Debug.Log(len);
             destination = Vector2.zero;
 
-            destination = (startPos + v2.normalized * len) - v2.normalized * 0.5f;
+            if(len > 1)
+            {
+                destination = (startPos + v2.normalized * len) - v2.normalized * 0.5f;
+                canLerp = true;
+            }
+            else
+            {
+                canLerp = false;
 
+            }
             //if (len > 1.5f)
             //{
             //    destination = startPos + v2.normalized * len;
@@ -110,7 +118,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
 
         if (hit)
         {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(hit.point, new Vector2(0.5f, 0.5f), 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(hit.point, new Vector2(0.3f, 0.3f), 0);
             foreach (Collider2D collider in collider2Ds)
             {
                 if (collider.CompareTag("Player"))
