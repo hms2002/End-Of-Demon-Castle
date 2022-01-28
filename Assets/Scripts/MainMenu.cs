@@ -62,7 +62,6 @@ public class MainMenu : MonoBehaviour
             storyImage[i].color = imageColor;
         }
 
-        Debug.Log("¿Ô³ª?");
         FadeManager.GetInstance().StartCoroutine("FadeInAndOut", 5.0f);
         Invoke("StoryImageFalse", 1.5f);
     }
