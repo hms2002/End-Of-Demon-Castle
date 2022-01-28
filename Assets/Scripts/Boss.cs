@@ -426,8 +426,6 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
-            cristalLogic[i].objectManager = objectManager;
-            cristalLogic[i].player = player;
             cristalLogic[i].StartCoroutine("Pattern_13");
             yield return new WaitForSeconds(1f);
         }
