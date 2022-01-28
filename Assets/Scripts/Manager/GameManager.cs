@@ -6,61 +6,56 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Player player;
-    public GameObject canvas_mainMenu;
+    public static GameManager gameManager;
     public GameObject canvas_loading;
     public Image fadeImage_loading;
 
-    public void StartGame()
+    public static GameManager GetInstance()
     {
-        StartCoroutine(FadeIn_Loading());
-        canvas_loading.SetActive(true);
-    }
-
-    IEnumerator FadeIn_Loading()
-    {
-        Color imageColor = fadeImage_loading.color;
-
-        for (int i = 0; i < 100; i++)
+        if (gameManager == null)
         {
-            imageColor.a += 0.01f;
-            fadeImage_loading.color = imageColor;
-            yield return new WaitForSeconds(0.01f);
+            gameManager = FindObjectOfType<GameManager>();
         }
 
-        canvas_mainMenu.SetActive(false);
-        StartCoroutine(FadeOut_Loading());
+        return gameManager;
     }
 
-    IEnumerator FadeOut_Loading()
+    private void Start()
     {
-        player.playerFree();
-        Color imageColor = fadeImage_loading.color;
+        DontDestroyOnLoad(canvas_loading);
+        DontDestroyOnLoad(fadeImage_loading);
+        SceneManager.sceneLoaded += SceneSetting;
+    }
 
-        for (int i = 200; i > 0; i--)
+    void SceneSetting(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            imageColor.a -= 0.01f;
-            fadeImage_loading.color = imageColor;
-            yield return new WaitForSeconds(0.01f);
+            FadeManager.GetInstance().FadeOut(fadeImage_loading);
         }
+    }
 
-        canvas_loading.SetActive(false);
+    public void StartGame(int SceneNumber)
+    {
+        StartCoroutine(IStartGame(SceneNumber));        
+    }
+
+    IEnumerator IStartGame(int SceneNumber)
+    {
+        FadeManager.GetInstance().FadeIn(fadeImage_loading);
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(SceneNumber);
     }
 
     public void SeeOption()
     {
-        canvas_mainMenu.SetActive(false);
-        player.playerFree();
+        //canvas_mainMenu.SetActive(false);
+        //player.playerFree();
     }
 
     public void ExitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
-    }
-
-    public void ReZero(int SceneNumber)
-    {
-        SceneManager.LoadScene(SceneNumber);
     }
 }

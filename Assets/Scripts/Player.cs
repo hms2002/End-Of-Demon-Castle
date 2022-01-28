@@ -57,6 +57,19 @@ public class Player : MonoBehaviour
     public Material whiteMaterial;
     public Material playerMaterial;
 
+    //
+    public static Player player;
+
+    public static Player GetInstance()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
+
+        return player;
+    }
+
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
