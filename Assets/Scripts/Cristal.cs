@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Cristal : BreakableObj
 {
     Slider HpSlider;
-    
+    public ObjectManager objectManager;
+    public Player player;
 
     private void Awake()
     {
@@ -32,5 +33,21 @@ public class Cristal : BreakableObj
         }
 
         HpSlider.value = Hp;
+    }
+
+    public IEnumerator Pattern_13()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            float BarrageSpeed = Random.Range(6f, 15f);
+            GameObject Barrage = objectManager.MakeObj("Barrage");
+            Barrage.transform.position = transform.position;
+            Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
+            Vector2 playerdir = player.transform.position - transform.position;
+            Vector2 angledir = new Vector2(Random.Range(-5f, 5f), Random.Range(-2f, 2f));
+            playerdir += angledir;
+            rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.02f);
+        }
     }
 }

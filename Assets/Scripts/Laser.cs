@@ -46,18 +46,21 @@ public class Laser : MonoBehaviour
             player.playerConfine();
             if (transform.localScale != HorizonScale)
             {
-                playerRig.AddForce(new Vector2(0, -1f) * 30, ForceMode2D.Impulse);
+                playerRig.AddForce(new Vector2(0, -1f) * 15, ForceMode2D.Impulse);
+                boxCollider2D.enabled = false;
             }
             else
             {
                 SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
                 if(!renderer.flipY)
                 {
-                    playerRig.AddForce(new Vector2(1f, 0) * 30, ForceMode2D.Impulse);
+                    playerRig.AddForce(new Vector2(1f, 0) * 15, ForceMode2D.Impulse);
+                    boxCollider2D.enabled = false;
                 }
                 else
                 {
-                    playerRig.AddForce(new Vector2(-1f, 0) * 30, ForceMode2D.Impulse);
+                    playerRig.AddForce(new Vector2(-1f, 0) * 15, ForceMode2D.Impulse);
+                    boxCollider2D.enabled = false;
                 }
             }
             Invoke("InbokePlayerFree", 0.15f);  
