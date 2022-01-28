@@ -425,6 +425,10 @@ public class Boss : MonoBehaviour
         Cristal[] cristalLogic = new Cristal[4];
         for (int i = 0; i < 4; i++)
         {
+            if(cristal[i] == null)
+            {
+                continue;
+            }
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
             cristalLogic[i].StartCoroutine("Pattern_13");
             yield return new WaitForSeconds(1f);
