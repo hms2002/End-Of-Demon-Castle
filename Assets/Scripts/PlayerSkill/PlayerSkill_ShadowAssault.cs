@@ -54,7 +54,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
             Debug.Log(len);
             destination = Vector2.zero;
 
-            destination = (startPos + v2.normalized * len) - v2.normalized * 0.3f;
+            destination = (startPos + v2.normalized * len) - v2.normalized * 0.5f;
 
             //if (len > 1.5f)
             //{
@@ -108,8 +108,22 @@ public class PlayerSkill_ShadowAssault : Skill_ID
 
         Destroy(assultEffect.gameObject, 0.3f);
 
+        if (hit)
+        {
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(hit.point, new Vector2(0.8f, 0.8f), 0);
+            foreach (Collider2D collider in collider2Ds)
+            {
+                if (collider.CompareTag("Player"))
+                {
+                    BreakableObj obj = collider.GetComponent<BreakableObj>();
+                    player.transform.position = Vector2.Lerp(startPos, destination, 30 / 100.0f);
+                }
+            }
+        }
+
         playerSkill.canSkill = true;
         player.playerFree("Attack");
         player.playerFree("Move");
     }
+
 }
