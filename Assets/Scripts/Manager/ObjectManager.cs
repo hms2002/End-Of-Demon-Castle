@@ -21,7 +21,7 @@ public class ObjectManager : MonoBehaviour
     GameObject[] targetPool;
     void Awake()
     {
-        Barrage = new GameObject[50];
+        Barrage = new GameObject[150];
         Arrow = new GameObject[50];
         Shockwave = new GameObject[2];
         Laser = new GameObject[20];

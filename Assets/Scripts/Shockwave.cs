@@ -14,6 +14,7 @@ public class Shockwave : MonoBehaviour
 
     void OnEnable()
     {
+        GetComponent<CircleCollider2D>().enabled = true;
         if (isCharged)
         {
             anim = GetComponent<Animator>();
@@ -67,7 +68,7 @@ public class Shockwave : MonoBehaviour
 
             player.playerConfine();
             playerRig.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * 30, ForceMode2D.Impulse);
-
+            GetComponent<CircleCollider2D>().enabled = false;
             Invoke("InbokePlayerFree", 0.15f);
         }
     }

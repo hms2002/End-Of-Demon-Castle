@@ -12,11 +12,12 @@ public class Boss : MonoBehaviour
     public float BarrageSpeed;
     public Player player;
     public ObjectManager objectManager;
+    public GameObject[] cristal = new GameObject[4];
 
     void Start()
     {
         wasHit = false;
-        //PatternManager();
+        PatternManager();
     }
 
     private void PatternManager()
@@ -28,15 +29,42 @@ public class Boss : MonoBehaviour
 
         PrePatternNum = PatternNum;
 
-        /*switch (PatternNum)
+        switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_13");
                 break;
             case 2:
+                StartCoroutine("Pattern_13");
+                break;
+            /*case 3:
+                StartCoroutine("Pattern_3");
+                break;
+            case 4:
+                StartCoroutine("Pattern_5");
+                break;
+            case 5:
+                StartCoroutine("Pattern_6");
+                break;
+            case 6:
+                StartCoroutine("Pattern_7");
+                break;
+            case 7:
+                StartCoroutine("Pattern_8");
+                break;
+            case 8:
+                StartCoroutine("Pattern_9");
+                break;
+            case 9:
+                StartCoroutine("Pattern_10");
+                break;
+            case 10:
                 StartCoroutine("Pattern_11");
                 break;
-        }*/
+            case 11:
+                StartCoroutine("Pattern_12");
+                break;*/
+        }
 
     }
 
@@ -222,6 +250,7 @@ public class Boss : MonoBehaviour
             float angle = Mathf.Atan2(playerdir.y, playerdir.x) * 180 / Mathf.PI;
             if (angle < 0) angle += 360;
             Laser.transform.rotation = Quaternion.AngleAxis(angle + 90,Vector3.forward);
+            SoundManager.GetInstance().Play("Sound/BossSound/LaserSound", 0.1f);
             yield return new WaitForSeconds(1);
         }
         StartCoroutine("Boss_Scw");
@@ -297,12 +326,10 @@ public class Boss : MonoBehaviour
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 barrageLogic[i] = Barrage.GetComponent<Barrage>();
                 barrageLogic[i].player = player;
-                barrageLogic[i].breakableLayer = 14;
                 Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
-                SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.05f, Define.Sound.Effect, 0.5f);
-                yield return new WaitForSeconds(0.2f);
             }
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.05f, Define.Sound.Effect, 0.5f);
             yield return new WaitForSeconds(1);
             for (int i = 0; i < RoundNum; i++)
             {
@@ -391,6 +418,19 @@ public class Boss : MonoBehaviour
             aoe[o].delete();
         }
         yield return new WaitForSeconds(0);
+        StartCoroutine("Boss_Scw");
+    }
+    private IEnumerator Pattern_13()
+    {
+        Cristal[] cristalLogic = new Cristal[4];
+        for (int i = 0; i < 4; i++)
+        {
+            cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
+            cristalLogic[i].objectManager = objectManager;
+            cristalLogic[i].player = player;
+            cristalLogic[i].StartCoroutine("Pattern_13");
+            yield return new WaitForSeconds(1f);
+        }
         StartCoroutine("Boss_Scw");
     }
     //#.피해 입기
