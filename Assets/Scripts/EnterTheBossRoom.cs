@@ -87,7 +87,7 @@ public class EnterTheBossRoom : MonoBehaviour
 
     public void FightStart()
     {
-        Boss.GetInstance().PatternManager()
+        Boss.GetInstance().PatternManager();
 
         player.playerFree("Skill");
         player.playerFree();
