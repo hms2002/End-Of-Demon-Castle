@@ -53,7 +53,7 @@ public class FadeManager : MonoBehaviour
         //º¼·ý Á¶Àý
         yield return new WaitForSeconds(time / 5.0f);
         SoundManager.GetInstance().Play("Sound/SystemSound/SwordFight");
-        yield return new WaitForSeconds(time / 1.4f);
+        yield return new WaitForSeconds(time / 1.0f);
         FadeOut(loadingImage);
     }
 
