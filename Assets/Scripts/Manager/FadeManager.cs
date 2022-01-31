@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class FadeManager : MonoBehaviour
         }
         isFadeEnd = true;
         FadeIn(fadeImage);
-        //º¼·ý Á¶Àý
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(2.0f);
         FadeOut(fadeImage);
     }
@@ -53,7 +54,7 @@ public class FadeManager : MonoBehaviour
     {
         Image loadingImage = GameManager.GetInstance().fadeImage_loading;
         FadeIn(loadingImage);
-        //º¼·ý Á¶Àý
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(time / 5.0f);
         audioSource.clip = swordFight;
         audioSource.Play();

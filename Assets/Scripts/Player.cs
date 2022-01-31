@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public float player_hp;
     public float maxHP;
 
+    PlayerSkill playerSkill;
+
     //#.플레이어 이동
     AudioSource audioSrc;
     public int speed;
@@ -72,6 +74,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        playerSkill = GetComponent<PlayerSkill>();
+
         audioSrc = GetComponent<AudioSource>();
 
         objectManager = FindObjectOfType<ObjectManager>();
@@ -551,7 +555,9 @@ public class Player : MonoBehaviour
         canMove = true;
         canDash = true;
         animator.SetBool("isChange", false);
-        
+
+        Debug.Log("넌 자유야");
+
         //플레이어가 커서 방향 바라보도록 설정
         playerOrient = -1;
         setPlayerOrientation();
@@ -575,12 +581,16 @@ public class Player : MonoBehaviour
             case "Dash":
                 canDash = false;
             break;
+            case "Skill":
+                playerSkill.canSkill = false;
+                break;
 
         }
     }
     public void playerFree(string idx)
     {
-        switch(idx)
+        Debug.Log("넌 자유야22");
+        switch (idx)
         {
             case "Attack":
                 canAttack = true;
@@ -596,6 +606,9 @@ public class Player : MonoBehaviour
             case "Dash":
                 canDash = true;
             break;
+            case "Skill":
+                playerSkill.canSkill = true;
+                break;
 
         }
     }

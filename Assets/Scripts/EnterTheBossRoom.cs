@@ -1,9 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class EnterTheBossRoom : MonoBehaviour
 {
+    public static EnterTheBossRoom enterTheBoss;
+    public static EnterTheBossRoom GetInstance()
+    {
+        if (enterTheBoss == null)
+        {
+            enterTheBoss = FindObjectOfType<EnterTheBossRoom>();
+        }
+
+        return enterTheBoss;
+
+    }
+
     public GameObject BossHpUI;
     public GameObject TextBox;
     public Transform destination;
@@ -34,13 +46,17 @@ public class EnterTheBossRoom : MonoBehaviour
 
         animator.SetTrigger("close");
 
-        player.playerFree();
+        //player.playerFree();
 
         TextBox.SetActive(false);
     }
 
     public void OpenDoor()
     {
+        FadeManager.GetInstance().FadeIn(GameManager.GetInstance().fadeImage_loading);
+        player.playerConfine("Skill");
+        player.playerConfine();
+
         animator.SetTrigger("open");
         SoundManager.GetInstance().Play("Sound/LevelSound/DoorCrumbling_Shorter", 0.35f);
         SoundManager.GetInstance().Play("Sound/LevelSound/DoorOpen", 0.4f, Define.Sound.Effect, 0.55f);
@@ -51,8 +67,10 @@ public class EnterTheBossRoom : MonoBehaviour
     public void GoToPos()
     {
         BossHpUI.SetActive(true);
-        player.playerFree();
+        //player.playerFree();
         player.gameObject.transform.position = destination.position;
+
+        TextManager.GetInstance().BossTextOn(0);
     }
 
     public void FullOpen()
@@ -64,6 +82,16 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
-        player.playerFree();    
+        //player.playerFree();    
+    }
+
+    public void FightStart()
+    {
+        Boss.GetInstance().PatternManager();
+
+        player.playerFree("Skill");
+        player.playerFree();
+
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.5f, Define.Sound.Bgm, 0.5f);
     }
 }
