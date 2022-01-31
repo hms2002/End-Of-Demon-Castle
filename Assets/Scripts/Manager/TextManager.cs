@@ -49,7 +49,6 @@ public class TextManager : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }
-
     
 
     IEnumerator IBossTextOn(int scriptNum)
