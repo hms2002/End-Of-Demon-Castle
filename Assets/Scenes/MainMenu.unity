@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 297351}
   - component: {fileID: 297353}
   - component: {fileID: 297352}
+  - component: {fileID: 297354}
+  - component: {fileID: 297355}
   m_Layer: 5
   m_Name: MainImage
   m_TagString: Untagged
@@ -198,6 +200,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297350}
   m_CullTransparentMesh: 1
+--- !u!95 &297354
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9cd5f71f73e30414997911624099d8ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &297355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acb5560b9966c746bafbe19c2f11065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  images:
+  - {fileID: 2768025658899192050, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
+  - {fileID: 4728329843470418316, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
+  - {fileID: -8938753590455541987, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
+  - {fileID: 3204655549442252077, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
+  - {fileID: -5557835313862272182, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
+  - {fileID: 5153924614836896733, guid: 59fae9bcd29f99d4293aaeabfc9562e0, type: 3}
 --- !u!1 &191658052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc25f1f63b4abd4392938780212f9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFadeEnd: 0
 --- !u!4 &1563156746
 Transform:
   m_ObjectHideFlags: 0
