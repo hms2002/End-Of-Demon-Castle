@@ -36,7 +36,14 @@ public class MainMenu : MonoBehaviour
                     {
                         return;
                     }
-                    Skip();
+                    CutSceneSkip();
+                    count++;
+
+                    break;
+
+                case 2:
+
+                    SwordSoundSkip();
                     count++;
 
                     break;
@@ -49,7 +56,7 @@ public class MainMenu : MonoBehaviour
         canvas_mainImage.SetActive(false);
     }
 
-    public void Skip()
+    public void CutSceneSkip()
     {
         StopCoroutine("Polaroid");
 
@@ -64,6 +71,13 @@ public class MainMenu : MonoBehaviour
 
         FadeManager.GetInstance().StartCoroutine("FadeInAndOut", 5.0f);
         Invoke("StoryImageFalse", 1.5f);
+    }
+
+    public void SwordSoundSkip()
+    {
+        FadeManager.GetInstance().StopCoroutine("FadeInAndOut");
+        FadeManager.GetInstance().audioSource.Stop();
+        FadeManager.GetInstance().StartCoroutine("FadeOut", GameManager.GetInstance().fadeImage_loading);
     }
 
     IEnumerator Polaroid()
