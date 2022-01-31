@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void Skip()
     {
+        SoundManager.GetInstance().stopBGM();
         StopCoroutine("Polaroid");
 
         Color imageColor;
@@ -61,6 +62,7 @@ public class MainMenu : MonoBehaviour
             imageColor.a = 1;
             storyImage[i].color = imageColor;
         }
+        
 
         FadeManager.GetInstance().StartCoroutine("FadeInAndOut", 5.0f);
         Invoke("StoryImageFalse", 1.5f);
@@ -90,5 +92,6 @@ public class MainMenu : MonoBehaviour
     void StoryImageFalse()
     {
         storyImage[1].transform.parent.gameObject.SetActive(false);
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_FrontOf_BossRoomDoor", 0.3f, Define.Sound.Bgm, 4);
     }
 }

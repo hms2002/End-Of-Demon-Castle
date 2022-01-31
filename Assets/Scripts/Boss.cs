@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    public static Boss boss;
+    public static Boss GetInstance()
+    {
+        if (boss == null)
+        {
+            boss = FindObjectOfType<Boss>();
+        }
+
+        return boss;
+
+    }
+
     public float BossHp = 700;
     public bool wasHit;
     public float PatternTime = 4f;
@@ -17,10 +29,9 @@ public class Boss : MonoBehaviour
     void Start()
     {
         wasHit = false;
-        PatternManager();
     }
 
-    private void PatternManager()
+    public void PatternManager()
     {
         do
         {
