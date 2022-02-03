@@ -104,6 +104,7 @@ public class SkillSelectManager : MonoBehaviour
                             case 1:
                                 break;
                             case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_HealAOE>());
                                 break;
                         }
                         break;
