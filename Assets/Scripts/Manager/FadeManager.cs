@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
     public static FadeManager fadeManager;
+    public AudioSource audioSource;
+    public AudioClip swordFight;
     public bool isFadeEnd;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        audioSource = GetComponent<AudioSource>();
         isFadeEnd = false;
     }
 
@@ -42,7 +46,7 @@ public class FadeManager : MonoBehaviour
         }
         isFadeEnd = true;
         FadeIn(fadeImage);
-        //º¼·ý Á¶Àý
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(2.0f);
         FadeOut(fadeImage);
     }
@@ -50,10 +54,11 @@ public class FadeManager : MonoBehaviour
     {
         Image loadingImage = GameManager.GetInstance().fadeImage_loading;
         FadeIn(loadingImage);
-        //º¼·ý Á¶Àý
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(time / 5.0f);
-        SoundManager.GetInstance().Play("Sound/SystemSound/SwordFight");
-        yield return new WaitForSeconds(time / 1.4f);
+        audioSource.clip = swordFight;
+        audioSource.Play();
+        yield return new WaitForSeconds(time / 1.0f);
         FadeOut(loadingImage);
     }
 
@@ -79,9 +84,9 @@ public class FadeManager : MonoBehaviour
         Color imageColor = fadeImage.color;
         imageColor.a = 1.0f;
 
-        for (int i = 100; i > 0; i--)
+        for (int i = 50; i > 0; i--)
         {
-            imageColor.a -= 0.01f;
+            imageColor.a -= 0.02f;
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
