@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
 public class Define
 {
 	public enum Sound
@@ -18,6 +19,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     public static SoundManager soundManager;
+
+
+    float _volume = 0;
+    bool isBGMStarting = false;
 
     public static SoundManager GetInstance()
     {
@@ -63,7 +68,7 @@ public class SoundManager : MonoBehaviour
         }
 	}
 
-	public void Play(AudioClip audioClip, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+	public void Play(AudioClip audioClip, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float BGMChangeSpeed = 1, float pitch = 1.0f)
 	{
 		if (audioClip == null)
 			return;
@@ -71,13 +76,11 @@ public class SoundManager : MonoBehaviour
 		if (type == Define.Sound.Bgm) // BGM 배경음악 재생
 		{
 			AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
-			if (audioSource.isPlaying)
-				audioSource.Stop();
 
+            audioSource.clip = audioClip;
 			audioSource.pitch = pitch;
-			audioSource.volume = volume;
-			audioSource.clip = audioClip;
-			audioSource.Play();
+			_volume = volume;
+            StartCoroutine("ChangeBGM", BGMChangeSpeed);
 		}
 		else // Effect 효과음 재생
 		{
@@ -113,10 +116,10 @@ public class SoundManager : MonoBehaviour
 		return audioClip;
 	}
 
-    public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    public void Play(string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float BGMChangeSpeed = 1, float pitch = 1.0f)
 	{
 		AudioClip audioClip = GetOrAddAudioClip(path, type);
-		Play(audioClip, volume, type, pitch);
+		Play(audioClip, volume, type, BGMChangeSpeed, pitch);
 	}
 
     public void Play(AudioSource effectAudio, string path, float volume = 1.0f, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
@@ -126,6 +129,64 @@ public class SoundManager : MonoBehaviour
         effectAudio.pitch = pitch;
         
         effectAudio.PlayOneShot(audioClip, volume);
+    }
+
+    public void stopBGM(float term = 0)
+    {
+        StartCoroutine("StopBGM", term);
+    }
+
+    IEnumerator StartBGM(float BGMChangeSpeed)
+    {
+        isBGMStarting = true;
+        AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
+        audioSource.volume = 0;
+        audioSource.Play();
+       
+        for (int i = 0; i < 100; i++)
+        {
+            _audioSources[(int)Define.Sound.Bgm].volume  += (float)(_volume / 100.0f);
+            yield return new WaitForSeconds(0.1f * BGMChangeSpeed);
+        }
+
+        yield return new WaitForSeconds(audioSource.clip.length - 15);
+
+        isBGMStarting = false;
+        StartCoroutine("StopBGM", 0);
+    }
+
+    IEnumerator StopBGM(float term)
+    {
+        if (isBGMStarting)
+            StopCoroutine("StartBGM");
+
+        float vol = _audioSources[(int)Define.Sound.Bgm].volume;
+
+        for (int i = 0; i < 50; i++)
+        {
+            _audioSources[(int)Define.Sound.Bgm].volume -= (float)(vol / 50.0f);
+            yield return new WaitForSeconds(0.05f * term);
+        }
+    }
+
+    IEnumerator ChangeBGM(float BGMChangeSpeed)
+    {
+        AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
+        if (audioSource.isPlaying == false)
+        {
+            StartCoroutine("StartBGM", BGMChangeSpeed);
+        }
+        else
+        {
+            StartCoroutine("StopBGM", BGMChangeSpeed);
+
+            yield return new WaitForSeconds(2.5f);
+
+            if (audioSource.isPlaying)
+                audioSource.Stop();
+            StartCoroutine("StartBGM", BGMChangeSpeed);
+        }
+        yield return new WaitForSeconds(0);
     }
 }
 

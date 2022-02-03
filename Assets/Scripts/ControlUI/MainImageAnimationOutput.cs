@@ -14,11 +14,12 @@ public class MainImageAnimationOutput : MonoBehaviour
         image = GetComponent<Image>();
         cnt = 0;
         StartCoroutine("AnimateImage");
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_MainMenu", 0.3f, Define.Sound.Bgm);
+        Debug.Log(";");
     }
 
     IEnumerator AnimateImage()
     {
-
         while(true)
         {
             if (cnt == images.Length)

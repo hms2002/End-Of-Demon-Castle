@@ -17,7 +17,6 @@ public class PlayerSkill_MultiShot : Skill_ID
     {
         player = GetComponent<Player>();
         objectManager = FindObjectOfType<ObjectManager>();
-        skillEffect =  Resources.Load<GameObject>("Prefabs/MultiShotPivot");
         bow = Resources.Load<GameObject>("Prefabs/MultiShotBow_1");
         arrowSpeed = 15f;
         coolTime = 0.5f;
@@ -44,25 +43,20 @@ public class PlayerSkill_MultiShot : Skill_ID
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
-
-        GameObject effect = Instantiate(skillEffect);
+        
         GameObject bowTemp = Instantiate(bow);
-
-        effect.transform.position = transform.position;
+        
         bowTemp.transform.position = transform.position;
 
         Quaternion v3Rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         Quaternion v3RotationBow = Quaternion.AngleAxis(angle - 135f, Vector3.forward);
-
-        effect.transform.rotation = v3Rotation;
+        
         bowTemp.transform.rotation = v3RotationBow;
 
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotChargeSound",15);
 
         yield return new WaitForSeconds(0.3f);
-
-
-        Destroy(effect);
+        
         Destroy(bowTemp);
         player.playerFree();
 
