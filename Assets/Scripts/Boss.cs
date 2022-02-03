@@ -32,10 +32,10 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_14");
                 break;
             case 2:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_14");
                 break;
             /*case 3:
                 StartCoroutine("Pattern_3");
@@ -435,6 +435,22 @@ public class Boss : MonoBehaviour
         }
         StartCoroutine("Boss_Scw");
     }
+
+    private IEnumerator Pattern_14()
+    {
+        Cristal[] cristalLogic = new Cristal[4];
+        for (int i = 0; i < 4; i++)
+        {
+            if (cristal[i] == null)
+            {
+                continue;
+            }
+            cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
+            cristalLogic[i].StartCoroutine("Pattern_14");
+            yield return new WaitForSeconds(1f);
+        }
+        StartCoroutine("Boss_Scw");
+    }
     //#.피해 입기
     public void damaged(int damage)
     {
@@ -461,12 +477,5 @@ public class Boss : MonoBehaviour
     {
         if(BossHp <= 0)
             GetComponent<SpriteRenderer>().color = Color.red;
-    }
-
-    IEnumerator zz()
-    {
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
-        yield return new WaitForSeconds(0.5f);
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 1f);
     }
 }
