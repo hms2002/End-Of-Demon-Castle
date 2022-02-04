@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject canvas_loading;
     public Image fadeImage_loading;
 
+
     public static GameManager GetInstance()
     {
         if (gameManager == null)
