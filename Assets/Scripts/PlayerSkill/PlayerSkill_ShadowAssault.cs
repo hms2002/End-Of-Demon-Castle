@@ -42,6 +42,9 @@ public class PlayerSkill_ShadowAssault : Skill_ID
         {
             return;
         }
+
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/ShadowAssult");
+
         curTime = coolTime;
         player.playerConfine("Attack");
         player.playerConfine("Move");

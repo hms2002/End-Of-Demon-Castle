@@ -19,6 +19,9 @@ public class EnterTheBossRoom : MonoBehaviour
     public GameObject BossHpUI;
     public GameObject TextBox;
     public Transform destination;
+
+    bool isGoPosOn = false;
+
     Player player;
     Animator animator;
 
@@ -46,22 +49,30 @@ public class EnterTheBossRoom : MonoBehaviour
 
         animator.SetTrigger("close");
 
-        //player.playerFree();
+        if(!isGoPosOn)
+            player.playerFree();
 
         TextBox.SetActive(false);
     }
 
     public void OpenDoor()
     {
+        isGoPosOn = true;
+
         FadeManager.GetInstance().FadeIn(GameManager.GetInstance().fadeImage_loading);
         player.playerConfine("Skill");
         player.playerConfine();
 
         animator.SetTrigger("open");
         SoundManager.GetInstance().Play("Sound/LevelSound/DoorCrumbling_Shorter", 0.35f);
-        SoundManager.GetInstance().Play("Sound/LevelSound/DoorOpen", 0.4f, Define.Sound.Effect, 0.55f);
+        Invoke("DelayPlay", 0.3f);
         TextBox.SetActive(false);
         Invoke("GoToPos", 1.5f);
+    }
+
+    void DelayPlay()
+    {
+        SoundManager.GetInstance().Play("Sound/LevelSound/DoorOpen", 0.4f, Define.Sound.Effect, 0.55f);
     }
 
     public void GoToPos()
@@ -82,7 +93,7 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
-        //player.playerFree();    
+        player.playerFree();    
     }
 
     public void FightStart()

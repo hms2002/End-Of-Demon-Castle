@@ -129,6 +129,10 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(h, v) * speed;
             }
         }
+        else
+        {
+            Debug.Log("잡았다");
+        }
     }
 
     void playerMove()
@@ -563,7 +567,7 @@ public class Player : MonoBehaviour
         canDash = true;
         animator.SetBool("isChange", false);
 
-        Debug.Log("넌 자유야");
+//        Debug.Log("넌 자유야");
 
         //플레이어가 커서 방향 바라보도록 설정
         playerOrient = -1;
