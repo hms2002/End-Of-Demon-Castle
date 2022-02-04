@@ -17,33 +17,34 @@ public class PlayerSkill : MonoBehaviour
     }
     
     private void Update()
-    {        
-        if(canSkill == false)
-            return;
-        if (Input.GetKeyDown(KeyCode.Q))
+    {
+        if (canSkill)
         {
-            if(q != null)
-                q();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(e != null)
-                e();
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            if(r != null)
-                r();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            if(rMouseButton != null)
-                rMouseButton();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            if(leftShift != null)
-                leftShift();
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (q != null)
+                    q();
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (e != null)
+                    e();
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (r != null)
+                    r();
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                if (rMouseButton != null)
+                    rMouseButton();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (leftShift != null)
+                    leftShift();
+            }
         }
     }
 }

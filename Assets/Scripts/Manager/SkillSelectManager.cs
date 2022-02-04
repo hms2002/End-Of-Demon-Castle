@@ -44,6 +44,7 @@ public class SkillSelectManager : MonoBehaviour
                         switch (skills)
                         {
                             case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_WhirlWind>());
                                 break;
                             case 2:
                                 break;
