@@ -33,25 +33,25 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_1");
                 break;
             case 2:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_5");
                 break;
             case 3:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_6");
                 break;
             case 4:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_9");
                 break;
             case 5:
                 StartCoroutine("Pattern_11");
                 break;
             case 6:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_13");
                 break;
             case 7:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_14");
                 break;
             /*
             case 8:
