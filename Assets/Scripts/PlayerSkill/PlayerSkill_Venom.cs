@@ -16,11 +16,13 @@ public class PlayerSkill_Venom : Skill_ID
     {
         player = GetComponent<Player>();
         VenomBottle = Resources.Load<GameObject>("Prefabs/VenomBottle");
+        coolTimeSlider.maxValue = cooltime;
     }
 
     void Update()
     {
-        curtime -= Time.deltaTime;      
+        curtime -= Time.deltaTime;
+        coolTimeSlider.value = curtime;
     }
 
     public override void SkillOn()
