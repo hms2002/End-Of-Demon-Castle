@@ -11,10 +11,13 @@ public class SkillSelectManager : MonoBehaviour
 
     public Image[] shownSolts;
 
+    GameObject text;
+
     PlayerSkill playerSkill;
     private void Awake() {
         skillSlot = slotParent.GetComponentsInChildren<SkillSlot>();
         playerSkill = FindObjectOfType<PlayerSkill>();
+        text = null;
     }
 
     public void EndSelect()
@@ -25,6 +28,11 @@ public class SkillSelectManager : MonoBehaviour
             skillList.RemoveAt(0);
         }
 
+        if(text != null)
+        {
+            Destroy(text);
+            text = null;
+        }
         for(int i = 0; i < skillSlot.Length; i++)
         {
             //스킬 이미지 플레이 화면에도 적용
@@ -85,6 +93,9 @@ public class SkillSelectManager : MonoBehaviour
                                 break;
                             case 2:
                                 skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
+                                text = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SKillCountText"));
+                                text.transform.SetParent(shownSolts[i].transform);
+                                text.transform.localPosition = new Vector3(0, 0, 0);
                                 break;
                         }
                         break;
@@ -114,6 +125,7 @@ public class SkillSelectManager : MonoBehaviour
                 }
             }
 
+            skillList[i].coolTimeSlider = shownSolts[i].transform.GetChild(0).GetComponent<Slider>();
 
             if(i == 0)
             {

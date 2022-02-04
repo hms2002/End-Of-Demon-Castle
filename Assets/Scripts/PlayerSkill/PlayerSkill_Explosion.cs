@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSkill_Explosion : Skill_ID
 {
     Player player;
     GameObject Explosion;
+    Text text;
 
     public float cooltime = 0.5f;
     public float curtime = 0f;
@@ -13,6 +15,7 @@ public class PlayerSkill_Explosion : Skill_ID
     public const int ChargeMax = 5;
     public int ChargeNum = 5;
     bool isSkillOn;
+    bool isOnce = true;
 
     void Awake()
     {
@@ -24,6 +27,19 @@ public class PlayerSkill_Explosion : Skill_ID
     void Update()
     {
         curtime -= Time.deltaTime;
+        if (coolTimeSlider != null)
+        {
+            if (isOnce)
+            {
+                isOnce = false;
+                coolTimeSlider.maxValue = cooltime;
+                text = coolTimeSlider.transform.parent.GetChild(1).GetComponent<Text>();
+                text.text = ChargeNum.ToString();
+            }
+            coolTimeSlider.value = curtime;
+            
+        }
+            
         if (ChargeNum == ChargeMax)
         {
             StopCoroutine("Charge");
@@ -53,6 +69,7 @@ public class PlayerSkill_Explosion : Skill_ID
                 StartCoroutine("Charge");
             }
             ChargeNum -= 1;
+            text.text = ChargeNum.ToString();
             
             player.playerConfine();
         }
@@ -69,9 +86,12 @@ public class PlayerSkill_Explosion : Skill_ID
     IEnumerator Charge()
     {
         yield return new WaitForSeconds(Chargetime);
+
+
         if (ChargeNum < ChargeMax)
         {
             ChargeNum += 1;
+            text.text = ChargeNum.ToString();
             Debug.Log(ChargeNum);
             StartCoroutine("Charge");
         }

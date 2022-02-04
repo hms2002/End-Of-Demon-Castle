@@ -20,7 +20,7 @@ public class SniperArrow : MonoBehaviour
             collision.GetComponent<Boss>().damaged(Damage);
             Destroy(gameObject);
         }
-        if(collision.gameObject.tag == "Border")
+        if(collision.gameObject.tag == "ArrowBorder")
         {
             Destroy(gameObject);
         }

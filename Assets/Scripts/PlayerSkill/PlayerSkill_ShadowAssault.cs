@@ -9,8 +9,12 @@ public class PlayerSkill_ShadowAssault : Skill_ID
     PlayerSkill playerSkill;
     GameObject shadowAssult;
     GameObject bul;
+
     int layerMask;
     bool canLerp;
+
+    float coolTime;
+    float curTime;
 
     void Start()
     {
@@ -20,10 +24,25 @@ public class PlayerSkill_ShadowAssault : Skill_ID
         layerMask = 1 << LayerMask.NameToLayer("Wall");
         shadowAssult = Resources.Load<GameObject>("Prefabs/ShadowAssultPivot");
         bul = Resources.Load<GameObject>("Prefabs/torch_side_0");
+
+        coolTime = 13;
+        curTime = 0;
+        coolTimeSlider.maxValue = coolTime;
+    }
+
+    private void Update()
+    {
+        curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()
     {
+        if(curTime > 0)
+        {
+            return;
+        }
+        curTime = coolTime;
         player.playerConfine("Attack");
         player.playerConfine("Move");
 

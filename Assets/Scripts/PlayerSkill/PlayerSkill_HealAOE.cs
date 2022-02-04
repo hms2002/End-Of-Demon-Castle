@@ -20,11 +20,14 @@ public class PlayerSkill_HealAOE : Skill_ID
         player = GetComponent<Player>();
 
         healAOE_DurationTime = 3;
+
+        coolTimeSlider.maxValue = skillCoolTime;
     }
 
     private void FixedUpdate()
     {
         curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()

@@ -12,6 +12,10 @@ public class PlayerSkill_FireBreath : Skill_ID
     public AudioClip sound1;
 
     float coolTime = 7.0f;
+    float curTime = 0f;
+    bool isInitSlider = false;
+
+
     float flameTimer = 0.0f;
     public float maxSkillTime = 5.0f;
     bool isSkillOn;
@@ -26,14 +30,30 @@ public class PlayerSkill_FireBreath : Skill_ID
         isSkillOn = false;
     }
 
+    private void Update()
+    {
+        curTime -= Time.deltaTime;
+        if(coolTimeSlider)
+        {
+            if(!isInitSlider)
+            {
+                coolTimeSlider.maxValue = coolTime;
+                isInitSlider = true;
+            }
+            coolTimeSlider.value = curTime;
+        }
+    }
+
     public override void SkillOn()
     {
+        if (curTime > 0)
+            return;
         if (isSkillOn)
         {
             return;
         }
         isSkillOn = true;
-
+        curTime = coolTime;
 
         //불 각도
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

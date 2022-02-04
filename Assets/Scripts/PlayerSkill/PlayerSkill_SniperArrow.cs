@@ -24,11 +24,14 @@ public class PlayerSkill_SniperArrow : Skill_ID
         arrowSpeed = 25f;
         coolTime = 10;
         curTime = 0;
+
+        coolTimeSlider.maxValue = coolTime;
     }
 
     private void Update()
     {
         curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()

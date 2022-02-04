@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour
     public bool canDash = true;
     Rigidbody2D rigid;
     Animator animator;
+        //대쉬 쿨타임 슬라이더
+        public Slider dashCoolTimeImage;
+
     //#.플레이어 공격
     public int attackDamage;
         //공격 딜레이
@@ -74,6 +78,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        dashCoolTimeImage.maxValue = dashCoolTime;
+
         playerSkill = GetComponent<PlayerSkill>();
 
         audioSrc = GetComponent<AudioSource>();
@@ -264,6 +270,7 @@ public class Player : MonoBehaviour
     void dash()
     {
         curDashCoolTime -= Time.deltaTime;
+        dashCoolTimeImage.value = curDashCoolTime;
         if (Input.GetKeyDown(KeyCode.Space) && curDashCoolTime <= 0)
         {
             if (!canDash)

@@ -15,6 +15,11 @@ public class PlayerSkill_Vampire : Skill_ID
     public float maxSkillTime = 10.0f;
     public int amountOfRecovery = 10;
 
+    float coolTime;
+    float curTime;
+
+    bool isSliderInit = false;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -23,10 +28,32 @@ public class PlayerSkill_Vampire : Skill_ID
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
 
         isSkillOn = false;
+
+        curTime = 0;
+        coolTime = 25;
+    }
+
+    private void Update()
+    {
+        curTime -= Time.deltaTime;
+        if(coolTimeSlider != null)
+        {
+            if(!isSliderInit)
+            {
+                coolTimeSlider.maxValue = coolTime;
+                isSliderInit = true;
+            }
+            coolTimeSlider.value = curTime;
+        }
     }
 
     public override void SkillOn()
     {
+        if(curTime > 0)
+        {
+            return;
+        }
+        curTime = coolTime;
         if (isSkillOn)
         {
             return;

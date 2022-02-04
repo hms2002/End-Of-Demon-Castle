@@ -5,16 +5,27 @@ using UnityEngine;
 public class PlayerSkill_PortalArrow : Skill_ID
 {
     GameObject portalArrow;
-    
 
-    // Start is called before the first frame update
+    float coolTime = 20;
+    float curTime = 0;
+    
     void Start()
     {
         portalArrow = Resources.Load<GameObject>("Prefabs/PortalArrow");
+        coolTimeSlider.maxValue = coolTime;
     }
-    
+
+    private void Update()
+    {
+        curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
+    }
+
     public override void SkillOn()
     {
+        if (curTime > 0)
+            return;
+        curTime = coolTime;
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal", 0.3f,Define.Sound.Effect, 0.7f);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
