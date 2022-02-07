@@ -8,9 +8,12 @@ public class Barrage : MonoBehaviour
     public int breakableLayer = 8;
     public Player player;
     public float time = 0.25f;
+    public Cristal cristalLogic;
+    public static readonly WaitForSeconds waitForSecond = new WaitForSeconds(1f);
 
     void OnEnable()
     {
+        player = Player.GetInstance();
         time = 0.3f;
         breakableLayer = 8;
     }
@@ -38,7 +41,6 @@ public class Barrage : MonoBehaviour
         }
     }
 
-
     public IEnumerator TimeDifference()
     {
         yield return new WaitForSeconds(time);
@@ -48,5 +50,15 @@ public class Barrage : MonoBehaviour
         Vector2 Forcedir = new Vector2(playerdir.normalized.x, playerdir.normalized.y);
         rigid.AddForce(new Vector2(Forcedir.x, Forcedir.y) * Speed, ForceMode2D.Impulse);
         SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
+    }
+
+    public IEnumerator TimeDifferencePattern_14()
+    {
+        yield return waitForSecond;
+        int Speed = 14;
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        Vector2 Forcedir = player.transform.position - transform.position;
+        rigid.velocity = Vector3.zero;
+        rigid.AddForce(new Vector2(Forcedir.normalized.x, Forcedir.normalized.y) * Speed , ForceMode2D.Impulse);
     }
 }
