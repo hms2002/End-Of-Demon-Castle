@@ -37,7 +37,7 @@ public class Bottle : MonoBehaviour
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "ArrowBorder")
+        if (collision.gameObject.tag == "Border")
         {   
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(gameObject);

@@ -25,7 +25,6 @@ public class Boss : MonoBehaviour
     public Player player;
     public ObjectManager objectManager;
     public GameObject[] cristal = new GameObject[4];
-    public static readonly WaitForSeconds waitForSecond = new WaitForSeconds(1f);
 
     void Start()
     {
@@ -36,7 +35,7 @@ public class Boss : MonoBehaviour
     {
         do
         {
-            PatternNum = Random.Range(1, 8);
+            PatternNum = Random.Range(1, 3);
         } while (PatternNum == PrePatternNum);
 
         PrePatternNum = PatternNum;
@@ -49,22 +48,21 @@ public class Boss : MonoBehaviour
             case 2:
                 StartCoroutine("Pattern_13");
                 break;
-            case 3:
-                StartCoroutine("Pattern_13");
+            /*case 3:
+                StartCoroutine("Pattern_3");
                 break;
             case 4:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_5");
                 break;
             case 5:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_6");
                 break;
             case 6:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_7");
                 break;
             case 7:
-                StartCoroutine("Pattern_13");
+                StartCoroutine("Pattern_8");
                 break;
-            /*
             case 8:
                 StartCoroutine("Pattern_9");
                 break;
@@ -76,34 +74,19 @@ public class Boss : MonoBehaviour
                 break;
             case 11:
                 StartCoroutine("Pattern_12");
-                break;
-            */
+                break;*/
         }
 
     }
 
     private IEnumerator Boss_Scw()
     {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(4);
         GameObject Shockwave = objectManager.MakeObj("Shockwave");
         Shockwave.transform.position = transform.position;
         while (Shockwave.activeSelf)
             yield return new WaitForSeconds(0.1f);
-        Invoke("PatternManager", 1f);
-    }
-    private IEnumerator Boss_CristalSet()
-    {
-        Invoke("PatternManager", 1f);
-        for (int i = 0; i < 4; i++)
-        {
-            cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.red;
-        }
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 4; i++)
-        {
-            cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
-        }
-
+        Invoke("PatternManager", 1.5f);
     }
 
     //패턴1 : 부채꼴 모양 발사
@@ -136,7 +119,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.5f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
 
     //패턴2 : 레이저 세로발사
@@ -239,7 +222,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.3f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
 
     //패턴6 : 맵밖에서 원형으로 감싸는 탄막
@@ -264,7 +247,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(3);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
 
     //패턴7 : 플레이어 방향으로 레이저
@@ -319,7 +302,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.05f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
 
     //패턴10 : 큰 탄막 터지면 작은탄막
@@ -353,7 +336,6 @@ public class Boss : MonoBehaviour
                 BarrageSpeed = 18;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 barrageLogic[i] = Barrage.GetComponent<Barrage>();
-                barrageLogic[i].breakableLayer = 14;
                 barrageLogic[i].player = player;
                 Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
@@ -367,7 +349,7 @@ public class Boss : MonoBehaviour
             }
                 yield return new WaitForSeconds(4);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
 
     //패턴12 : 장판생기고 탄막난사
@@ -452,35 +434,17 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_13()
     {
         Cristal[] cristalLogic = new Cristal[4];
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if(cristal[i] == null || cristal[i+2] == null)
+            if(cristal[i] == null)
             {
                 continue;
             }
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
             cristalLogic[i].StartCoroutine("Pattern_13");
-            cristalLogic[i+2] = cristal[i+2].GetComponentInChildren<Cristal>();
-            cristalLogic[i+2].StartCoroutine("Pattern_13");
             yield return new WaitForSeconds(1f);
         }
-        StartCoroutine("Boss_CristalSet");
-    }
-
-    private IEnumerator Pattern_14()
-    {
-        Cristal[] cristalLogic = new Cristal[4];
-        for (int i = 0; i < 4; i++)
-        {
-            if (cristal[i] == null)
-            {
-                continue;
-            }
-            cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
-            cristalLogic[i].StartCoroutine("Pattern_14");
-            yield return waitForSecond;
-        }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Scw");
     }
     //#.피해 입기
     public void damaged(int damage)
@@ -508,5 +472,12 @@ public class Boss : MonoBehaviour
     {
         if(BossHp <= 0)
             GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    IEnumerator zz()
+    {
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 1f);
     }
 }

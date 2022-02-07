@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Image fadeImage_loading;
     public Button enterBossroomBtn;
 
-
     public static GameManager GetInstance()
     {
         if (gameManager == null)
