@@ -89,8 +89,22 @@ public class Boss : MonoBehaviour
         Invoke("PatternManager", 1.5f);
     }
 
-    //패턴1 : 부채꼴 모양 발사
-    private IEnumerator Pattern_1()
+    private IEnumerator Boss_CristalSet()
+    {
+        Invoke("PatternManager", 1f);
+        for (int i = 0; i < 4; i++)
+        {
+            cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.red;
+        }
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 4; i++)
+        {
+            cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
+        }
+    }
+
+        //패턴1 : 부채꼴 모양 발사
+        private IEnumerator Pattern_1()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -119,7 +133,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.5f);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
     }
 
     //패턴2 : 레이저 세로발사
@@ -222,7 +236,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.3f);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
     }
 
     //패턴6 : 맵밖에서 원형으로 감싸는 탄막
@@ -247,7 +261,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(3);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
     }
 
     //패턴7 : 플레이어 방향으로 레이저
@@ -302,7 +316,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.05f);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
     }
 
     //패턴10 : 큰 탄막 터지면 작은탄막
@@ -336,6 +350,7 @@ public class Boss : MonoBehaviour
                 BarrageSpeed = 18;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 barrageLogic[i] = Barrage.GetComponent<Barrage>();
+                barrageLogic[i].breakableLayer = 14;
                 barrageLogic[i].player = player;
                 Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
@@ -349,7 +364,7 @@ public class Boss : MonoBehaviour
             }
                 yield return new WaitForSeconds(4);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
     }
 
     //패턴12 : 장판생기고 탄막난사
@@ -434,19 +449,47 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_13()
     {
         Cristal[] cristalLogic = new Cristal[4];
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
-            if(cristal[i] == null)
+            if (cristal[i] == null)
             {
+                cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
+                cristalLogic[i + 2].StartCoroutine("Pattern_13");
+                continue;
+            }
+            else if (cristal[i + 2] == null)
+            {
+                cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
+                cristalLogic[i].StartCoroutine("Pattern_13");
                 continue;
             }
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
             cristalLogic[i].StartCoroutine("Pattern_13");
+            cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
+            cristalLogic[i + 2].StartCoroutine("Pattern_13");
             yield return new WaitForSeconds(1f);
         }
-        StartCoroutine("Boss_Scw");
+        StartCoroutine("Boss_CristalSet");
+    }
+
+    private IEnumerator Pattern_14()
+    {
+        Cristal[] cristalLogic = new Cristal[4];
+        for (int i = 0; i < 4; i++)
+        {
+            if (cristal[i] == null)
+            {
+                continue;
+            }
+            cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
+            cristalLogic[i].StartCoroutine("Pattern_14");
+            yield return new WaitForSeconds(1f);
+        }
+        StartCoroutine("Boss_CristalSet");
     }
     //#.피해 입기
+
+
     public void damaged(int damage)
     {
         BossHp -= damage;
