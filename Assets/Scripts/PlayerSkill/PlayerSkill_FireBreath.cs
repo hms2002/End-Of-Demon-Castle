@@ -16,8 +16,8 @@ public class PlayerSkill_FireBreath : Skill_ID
     bool isInitSlider = false;
 
 
-    float flameTimer = 0.0f;
-    public float maxSkillTime = 5.0f;
+    float flameDuration = 0.0f;
+    public float maxSkillDuration = 5.0f;
     bool isSkillOn;
 
     void Awake()
