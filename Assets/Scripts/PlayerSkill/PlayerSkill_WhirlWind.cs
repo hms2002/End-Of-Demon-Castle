@@ -35,26 +35,26 @@ public class PlayerSkill_WhirlWind : Skill_ID
 
     public override void SkillOn()
     {
-        if (isSkillOn)
+        if (isSkillOn && howLongUsedSkill > 0.7f)
         {
-            StopCoroutine(ActiveWhirlwind());
+            Destroy(bladeEffect);
+
             return;
         }
+        isSkillOn = true;
+        GameObject bladeEffect = Instantiate(whirlwind);
 
         /*if (howLongUsedSkill > 0)
         {
             return;
         }*/
         //howLongUsedSkill = coolTime; 다시 눌렀을 때 정지시키기 위해 잠시 보류
-        isSkillOn = true;
 
-        StartCoroutine(ActiveWhirlwind());
+        ActiveWhirlwind(bladeEffect);
     }
 
-    IEnumerator ActiveWhirlwind()
+    void ActiveWhirlwind(GameObject bladeEffect)
     {
-        GameObject bladeEffect = Instantiate(whirlwind);
-
         player.speed = 5.0f;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
@@ -69,8 +69,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
             {
                 break;
             }
-
-            yield return null;
         }
 
         player.speed = 8.0f;

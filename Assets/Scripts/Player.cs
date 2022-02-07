@@ -383,6 +383,8 @@ public class Player : MonoBehaviour
     IEnumerator IDash()
     {
         canMove = false;
+        playerSkill.canSkill = false;
+
         if (Mathf.Abs(h) == 1 && Mathf.Abs(v) == 1)
             rigid.AddForce(new Vector2(h * (dashPower / 1.5f), v * (dashPower / 1.5f)));
         else
@@ -397,6 +399,7 @@ public class Player : MonoBehaviour
         if (canDash)
         {
             canMove = true;
+            playerSkill.canSkill = true;
         }
         gameObject.layer = 10;
         
@@ -594,7 +597,6 @@ public class Player : MonoBehaviour
                 canDash = false;
                 break;
             case "Skill":
-                Debug.Log("스키ㅣㅣㅣ일 멈춰");
                 playerSkill.canSkill = false;
                 break;
 
