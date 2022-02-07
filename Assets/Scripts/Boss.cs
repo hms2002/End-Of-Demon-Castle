@@ -33,25 +33,25 @@ public class Boss : MonoBehaviour
         switch (PatternNum)
         {
             case 1:
-                StartCoroutine("Pattern_1");
+                StartCoroutine("Pattern_13");
                 break;
             case 2:
-                StartCoroutine("Pattern_5");
+                StartCoroutine("Pattern_13");
                 break;
             case 3:
-                StartCoroutine("Pattern_6");
+                StartCoroutine("Pattern_13");
                 break;
             case 4:
-                StartCoroutine("Pattern_9");
+                StartCoroutine("Pattern_13");
                 break;
             case 5:
-                StartCoroutine("Pattern_11");
+                StartCoroutine("Pattern_13");
                 break;
             case 6:
                 StartCoroutine("Pattern_13");
                 break;
             case 7:
-                StartCoroutine("Pattern_14");
+                StartCoroutine("Pattern_13");
                 break;
             /*
             case 8:
@@ -441,14 +441,16 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_13()
     {
         Cristal[] cristalLogic = new Cristal[4];
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
-            if(cristal[i] == null)
+            if(cristal[i] == null || cristal[i+2] == null)
             {
                 continue;
             }
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
             cristalLogic[i].StartCoroutine("Pattern_13");
+            cristalLogic[i+2] = cristal[i+2].GetComponentInChildren<Cristal>();
+            cristalLogic[i+2].StartCoroutine("Pattern_13");
             yield return new WaitForSeconds(1f);
         }
         StartCoroutine("Boss_CristalSet");
