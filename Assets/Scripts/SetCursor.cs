@@ -23,6 +23,9 @@ public class SetCursor : MonoBehaviour
             case "backSteb":
                 Cursor.SetCursor(cursorImg[1], Vector2.zero, CursorMode.ForceSoftware);
             break;
+            case "magicCircle":
+                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+            break;
         }
 
     }
