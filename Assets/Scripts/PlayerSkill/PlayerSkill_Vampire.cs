@@ -11,8 +11,6 @@ public class PlayerSkill_Vampire : Skill_ID
     GameObject tempHeal;
 
     bool isSkillOn;
-    float coolTime = 25.0f;
-    float howLongUsedSkill = 0.0f;
     float skillDuration = 0.0f;
     float maxSkillDuration = 3.0f;
     int amountOfRecovery = 10;
@@ -49,11 +47,6 @@ public class PlayerSkill_Vampire : Skill_ID
         }
     }
 
-    private void Update()
-    {
-        howLongUsedSkill -= Time.deltaTime;
-    }
-
     public override void SkillOn()
     {
         if(curTime > 0)
@@ -61,12 +54,12 @@ public class PlayerSkill_Vampire : Skill_ID
             return;
         }
         curTime = coolTime;
+
         if (isSkillOn)
         {
             return;
         }
         isSkillOn = true;
-        howLongUsedSkill = coolTime;
 
         StartCoroutine("Absorb");
     }

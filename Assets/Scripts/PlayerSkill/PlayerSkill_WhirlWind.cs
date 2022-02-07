@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerSkill_WhirlWind : Skill_ID
 {
     Player player;
-    SpriteRenderer playerSprite;
     AudioSource playerAudioSource;
     GameObject whirlwind;
 
@@ -16,12 +15,9 @@ public class PlayerSkill_WhirlWind : Skill_ID
     float skillDuration = 0.0f;
     float maxSkillDuration = 10.0f;
 
-    //AudioSource 
-
     void Awake()
     {
         player = GetComponent<Player>();
-        playerSprite = player.GetComponent<SpriteRenderer>();
         playerAudioSource = player.GetComponent<AudioSource>();
         whirlwind = Resources.Load<GameObject>("Prefabs/Whirlwind_Ver2");
         isSkillOn = false;
@@ -59,7 +55,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
     {
         GameObject bladeEffect = Instantiate(whirlwind);
 
-        player.speed = 14.0f;
+        player.speed = 5.0f;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
         player.playerConfine("Skill");
