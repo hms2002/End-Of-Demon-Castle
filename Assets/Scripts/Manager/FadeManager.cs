@@ -46,7 +46,6 @@ public class FadeManager : MonoBehaviour
         }
         isFadeEnd = true;
         FadeIn(fadeImage);
-        //���� ����
         yield return new WaitForSeconds(2.0f);
         FadeOut(fadeImage);
     }
@@ -54,7 +53,6 @@ public class FadeManager : MonoBehaviour
     {
         Image loadingImage = GameManager.GetInstance().fadeImage_loading;
         FadeIn(loadingImage);
-        //���� ����
         yield return new WaitForSeconds(time / 5.0f);
         audioSource.clip = swordFight;
         audioSource.Play();

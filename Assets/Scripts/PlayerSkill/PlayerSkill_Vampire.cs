@@ -11,9 +11,11 @@ public class PlayerSkill_Vampire : Skill_ID
     GameObject tempHeal;
 
     bool isSkillOn;
-    float durationTime;
-    public float maxSkillTime = 10.0f;
-    public int amountOfRecovery = 10;
+    float coolTime = 25.0f;
+    float howLongUsedSkill = 0.0f;
+    float skillDuration = 0.0f;
+    float maxSkillDuration = 3.0f;
+    int amountOfRecovery = 10;
 
     float coolTime;
     float curTime;
@@ -47,6 +49,11 @@ public class PlayerSkill_Vampire : Skill_ID
         }
     }
 
+    private void Update()
+    {
+        howLongUsedSkill -= Time.deltaTime;
+    }
+
     public override void SkillOn()
     {
         if(curTime > 0)
@@ -59,6 +66,7 @@ public class PlayerSkill_Vampire : Skill_ID
             return;
         }
         isSkillOn = true;
+        howLongUsedSkill = coolTime;
 
         StartCoroutine("Absorb");
     }
@@ -67,14 +75,14 @@ public class PlayerSkill_Vampire : Skill_ID
     {
         GameObject aura = Instantiate(absorbBlood);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
-        StartCoroutine("PlayVampireLoopSound");
+        StartCoroutine(PlayVampireLoopSound());
 
         while (isSkillOn)
         {
             aura.transform.position = player.transform.position;
-            durationTime += Time.deltaTime;
+            skillDuration += Time.deltaTime;
 
-            if (durationTime >= maxSkillTime)
+            if (skillDuration >= maxSkillDuration)
             {
                 break;
             }
@@ -92,7 +100,7 @@ public class PlayerSkill_Vampire : Skill_ID
             yield return null;
         }
 
-        durationTime = 0.0f;
+        skillDuration = 0.0f;
         Destroy(aura);
         isSkillOn = false;
     }

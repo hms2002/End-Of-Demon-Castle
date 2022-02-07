@@ -33795,7 +33795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 11
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!1 &4323764020020171010

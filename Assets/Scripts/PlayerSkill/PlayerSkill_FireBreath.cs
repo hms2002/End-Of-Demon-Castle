@@ -26,7 +26,7 @@ public class PlayerSkill_FireBreath : Skill_ID
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
         sound1 = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/FireBreath");
 
-        maxSkillTime = 5.0f;
+        maxSkillDuration = 5.0f;
         isSkillOn = false;
     }
 
@@ -79,10 +79,9 @@ public class PlayerSkill_FireBreath : Skill_ID
         
         while (isSkillOn)
         {
-            flameTimer += Time.deltaTime;
+            flameDuration += Time.deltaTime;
 
-            //KeyCode.Q => skillKey로 변경함
-            if (Input.GetKeyUp(skillKey) || flameTimer > maxSkillTime)
+            if (Input.GetKeyUp(skillKey) || flameDuration > maxSkillDuration)
             {
                 break;
             }
@@ -95,7 +94,7 @@ public class PlayerSkill_FireBreath : Skill_ID
         isSkillOn = false;
         yield return new WaitForSeconds(0.5f);
         player.playerFree();
-        flameTimer = 0.0f;
+        flameDuration = 0.0f;
     }
 
     IEnumerator VolumeDown()

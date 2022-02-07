@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     //#.플레이어 이동
     AudioSource audioSrc;
-    public int speed;
+    public float speed;
     float h;
     float v;
     bool canMove;
@@ -565,6 +565,7 @@ public class Player : MonoBehaviour
         canAttack = true;
         canMove = true;
         canDash = true;
+        playerSkill.canSkill = true;
         animator.SetBool("isChange", false);
 
 //        Debug.Log("넌 자유야");
@@ -588,11 +589,12 @@ public class Player : MonoBehaviour
                 playerOrient = -1;
                 setPlayerOrientation();
                 animator.SetBool("isChange", false);
-            break;
+                break;
             case "Dash":
                 canDash = false;
-            break;
+                break;
             case "Skill":
+                Debug.Log("스키ㅣㅣㅣ일 멈춰");
                 playerSkill.canSkill = false;
                 break;
 
@@ -618,6 +620,7 @@ public class Player : MonoBehaviour
                 canDash = true;
             break;
             case "Skill":
+                Debug.Log("스키ㅣㅣㅣ일 멈추지마");
                 playerSkill.canSkill = true;
                 break;
 
