@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     bool isDead = false;
     public delegate void AboutDead();
     public AboutDead onDead;
+    public bool zhonya = false;
 
     //#.플레이어 데미지
     SpriteRenderer playerSprite;
@@ -338,9 +339,12 @@ public class Player : MonoBehaviour
     //#.피해 입기
     public void damaged(int damage)
     {
-        StartCoroutine("ShowDamaged");
-        player_hp -= damage;
-        dead();
+        if (zhonya == false)
+        {
+            StartCoroutine("ShowDamaged");
+            player_hp -= damage;
+            dead();
+        }
     }
     //#.플레이어 체력
     void PlayerHP()
@@ -375,6 +379,7 @@ public class Player : MonoBehaviour
 
     IEnumerator ShowDamaged()
     {
+        Debug.Log("야 됐냐?");
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;
@@ -604,7 +609,6 @@ public class Player : MonoBehaviour
     }
     public void playerFree(string idx)
     {
-        Debug.Log("넌 자유야22");
         switch (idx)
         {
             case "Attack":
@@ -622,7 +626,6 @@ public class Player : MonoBehaviour
                 canDash = true;
             break;
             case "Skill":
-                Debug.Log("스키ㅣㅣㅣ일 멈추지마");
                 playerSkill.canSkill = true;
                 break;
 

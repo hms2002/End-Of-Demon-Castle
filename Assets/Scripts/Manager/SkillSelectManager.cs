@@ -118,6 +118,9 @@ public class SkillSelectManager : MonoBehaviour
                             case 2:
                                 skillList.Add(player.AddComponent<PlayerSkill_HealAOE>());
                                 break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_Pray>());
+                                break;
                         }
                         break;
                     default:
