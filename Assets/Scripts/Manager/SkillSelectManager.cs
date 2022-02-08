@@ -114,6 +114,7 @@ public class SkillSelectManager : MonoBehaviour
                         switch (skills)
                         {
                             case 1:
+                                skillList.Add(player.AddComponent<PlayerSkill_Cross_Attack>());
                                 break;
                             case 2:
                                 skillList.Add(player.AddComponent<PlayerSkill_HealAOE>());

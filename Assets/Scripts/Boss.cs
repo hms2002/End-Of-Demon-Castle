@@ -26,6 +26,7 @@ public class Boss : MonoBehaviour
     public ObjectManager objectManager;
     public GameObject[] cristal = new GameObject[4];
 
+
     void Start()
     {
         wasHit = false;
