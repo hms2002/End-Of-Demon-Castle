@@ -22,12 +22,12 @@ public class ShadowAssult : MonoBehaviour
             if (boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(damage);
+            boss.damaged(damage + DamageControler.GetInstance().GetMonoDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(damage + DamageControler.GetInstance().GetMonoDamage());
         }
     }
 }

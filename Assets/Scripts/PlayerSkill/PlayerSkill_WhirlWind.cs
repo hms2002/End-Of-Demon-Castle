@@ -55,6 +55,8 @@ public class PlayerSkill_WhirlWind : Skill_ID
     {
         GameObject bladeEffect = Instantiate(whirlwind);
 
+        float tempPlayerOriginSpeed = player.speed;
+
         player.speed = 5.0f;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
@@ -71,7 +73,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
             }
         }
 
-        player.speed = 8.0f;
+        player.speed = tempPlayerOriginSpeed;
         player.playerFree();
 
         isSkillOn = false;

@@ -34,7 +34,7 @@ public class Cross : MonoBehaviour
             if (boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(Damage);
+            boss.damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
             collid.enabled = false;
             isfire = false;
         }
@@ -42,7 +42,7 @@ public class Cross : MonoBehaviour
         {
             Debug.Log("zz");
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(Damage + DamageControler.GetInstance().GetMonoDamage());
             collid.enabled = false;
             isfire = false;
         }

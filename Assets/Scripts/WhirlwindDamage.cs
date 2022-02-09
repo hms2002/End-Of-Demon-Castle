@@ -27,13 +27,13 @@ public class WhirlwindDamage : MonoBehaviour
                 boss = collision.GetComponent<Boss>();
             }
 
-            boss.damaged(damage);
+            boss.damaged(damage + DamageControler.GetInstance().GetDotDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             Debug.Log("¿Ô³ª?");
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(damage + DamageControler.GetInstance().GetDotDamage());
         }
     }
 

@@ -17,6 +17,7 @@ public class FireDamage : MonoBehaviour
     {
         originLocalPos = transform.localPosition;
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+       
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -28,12 +29,12 @@ public class FireDamage : MonoBehaviour
             if(boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(flameDamage);
+            boss.damaged(flameDamage + DamageControler.GetInstance().GetDotDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(flameDamage + DamageControler.GetInstance().GetDotDamage());
         }
     }
 
