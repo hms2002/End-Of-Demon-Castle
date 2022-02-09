@@ -11,7 +11,8 @@ public class PlayerSkill_WhirlWind : Skill_ID
 
     bool isSkillOn;
     float coolTime = 10.0f;
-    float howLongUsedSkill = 0.0f;
+    float curTime;
+    bool isSliderInit = false;
     float skillDuration = 0.0f;
     float maxSkillDuration = 10.0f;
 
@@ -25,7 +26,17 @@ public class PlayerSkill_WhirlWind : Skill_ID
     
     void Update()
     {
-        howLongUsedSkill -= Time.deltaTime;
+        Debug.Log(isSkillOn);
+        curTime -= Time.deltaTime;
+        if (coolTimeSlider != null)
+        {
+            if (!isSliderInit)
+            {
+                coolTimeSlider.maxValue = coolTime;
+                isSliderInit = true;
+            }
+            coolTimeSlider.value = curTime;
+        }
 
         if (isSkillOn)
         {
@@ -42,11 +53,11 @@ public class PlayerSkill_WhirlWind : Skill_ID
         }
         isSkillOn = true;
 
-        /*if (howLongUsedSkill > 0)
+        if (curTime > 0)
         {
             return;
-        }*/
-        //howLongUsedSkill = coolTime; 다시 눌렀을 때 정지시키기 위해 잠시 보류
+        }
+        curTime = coolTime;
 
         StartCoroutine(ActiveWhirlwind());
     }
@@ -62,6 +73,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
 
         while (isSkillOn)
         {
+            Debug.Log("드갔나");
             bladeEffect.transform.position = player.transform.position;
             skillDuration += Time.deltaTime;
 
