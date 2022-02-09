@@ -13,12 +13,14 @@ public class PillarOfFire : MonoBehaviour
     float flameDamage = 15f;
     float flameDamageTimer = 0;
     bool isDarkFlameOn = false;
+    bool isSetMigicCircleDone = false;
 
     private void OnEnable()
     {
         darkFlame = Resources.Load<GameObject>("Prefabs/DarkFlame");
 
         boxCollider2D = GetComponent<BoxCollider2D>();
+        transform.GetChild(0).gameObject.SetActive(false);
 
         flameDamage = 15f;
         flameDamageTimer = 0;
@@ -69,6 +71,9 @@ public class PillarOfFire : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isSetMigicCircleDone)
+            return;
+
         flameDamageTimer += Time.deltaTime;
 
         if (flameDamageTimer >= 1)
@@ -87,6 +92,9 @@ public class PillarOfFire : MonoBehaviour
 
     IEnumerator After4()
     {
+        yield return new WaitForSeconds(0.5f);
+        isSetMigicCircleDone = true;
+        transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(4);
         boxCollider2D.enabled = false;
         isDarkFlameOn = true;
