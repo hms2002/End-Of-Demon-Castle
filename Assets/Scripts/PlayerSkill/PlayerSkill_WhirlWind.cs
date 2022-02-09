@@ -40,13 +40,13 @@ public class PlayerSkill_WhirlWind : Skill_ID
             StopCoroutine(ActiveWhirlwind());
             return;
         }
+        isSkillOn = true;
 
         /*if (howLongUsedSkill > 0)
         {
             return;
         }*/
         //howLongUsedSkill = coolTime; 다시 눌렀을 때 정지시키기 위해 잠시 보류
-        isSkillOn = true;
 
         StartCoroutine(ActiveWhirlwind());
     }
@@ -69,8 +69,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
             {
                 break;
             }
-
-            yield return null;
         }
 
         player.speed = 8.0f;
@@ -79,5 +77,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
         isSkillOn = false;
         Destroy(bladeEffect);
         skillDuration = 0.0f;
+
+        yield return null;
     }
 }
