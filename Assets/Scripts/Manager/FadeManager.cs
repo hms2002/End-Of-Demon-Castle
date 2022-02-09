@@ -17,6 +17,16 @@ public class FadeManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFadeEnd = false;
     }
+    private void Start()
+    {
+        if(fadeManager != null)
+        {
+            if(fadeManager != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     public static FadeManager GetInstance()
     {

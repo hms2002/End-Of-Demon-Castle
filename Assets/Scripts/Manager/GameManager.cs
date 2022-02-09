@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManager;
+    private static GameManager gameManager;
     public GameObject canvas_loading;
     public Image fadeImage_loading;
     public Button enterBossroomBtn;
 
     public static GameManager GetInstance()
     {
+
         if (gameManager == null)
         {
             gameManager = FindObjectOfType<GameManager>();
         }
-
         return gameManager;
     }
 
@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(canvas_loading);
         DontDestroyOnLoad(fadeImage_loading);
         SceneManager.sceneLoaded += SceneSetting;
+        
+        if(gameManager != null)
+        {
+            if (gameManager != this)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void SceneSetting(Scene scene, LoadSceneMode mode)

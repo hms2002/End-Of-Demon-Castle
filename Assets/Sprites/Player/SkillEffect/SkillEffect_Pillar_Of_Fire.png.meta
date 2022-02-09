@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 36fb9448649b7174ab53425c214582c3
+guid: 79a300af405e74f40842a8a1ec3e1f82
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7003310351092445219
+    second: SkillEffect_Pillar_Of_Fire_0
+  - first:
+      213: 3794882295412536122
+    second: SkillEffect_Pillar_Of_Fire_1
+  - first:
+      213: 8878059695484020345
+    second: SkillEffect_Pillar_Of_Fire_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +50,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 63
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +98,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SkillEffect_Pillar_Of_Fire_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 370
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3207ea0c8a1c03160800000000000000
+      internalID: 7003310351092445219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillEffect_Pillar_Of_Fire_1
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 2
+        width: 370
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33bb7e67512aa430800000000000000
+      internalID: 3794882295412536122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillEffect_Pillar_Of_Fire_2
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 2
+        width: 370
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976a90c4144353b70800000000000000
+      internalID: 8878059695484020345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -130,10 +130,6 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(h, v) * speed;
             }
         }
-        else
-        {
-            Debug.Log("잡았다");
-        }
     }
 
     void playerMove()

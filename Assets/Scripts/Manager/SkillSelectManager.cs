@@ -107,6 +107,7 @@ public class SkillSelectManager : MonoBehaviour
                                 skillList.Add(player.AddComponent<PlayerSkill_Vampire>());
                                 break;
                             case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_PillarOfFire>());
                                 break;
                         }
                         break;
