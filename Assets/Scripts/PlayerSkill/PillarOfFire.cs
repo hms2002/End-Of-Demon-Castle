@@ -41,7 +41,7 @@ public class PillarOfFire : MonoBehaviour
 
                 GameObject darkTemp = Instantiate(darkFlame, boss.transform);
                 darkFlame.transform.localPosition = new Vector3(0, 0, 0);
-                boss.damaged(flameDamage);
+                boss.damaged(flameDamage + DamageControler.GetInstance().GetMonoDamage());
             }
             else if (collision.CompareTag("CanBroke"))
             {
@@ -50,7 +50,7 @@ public class PillarOfFire : MonoBehaviour
                 Debug.Log("DD");
                 GameObject darkTemp = Instantiate(darkFlame, breakableObj.transform);
                 darkFlame.transform.localPosition = new Vector3(0, 0, 0);
-                breakableObj.breakObj(flameDamage);
+                breakableObj.breakObj(flameDamage + DamageControler.GetInstance().GetMonoDamage());
             }
             return;
         }

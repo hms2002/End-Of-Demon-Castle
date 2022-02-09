@@ -42,7 +42,7 @@ public class VenomAOE : MonoBehaviour
         {
             if (currentDamageTime <= 0)
             {
-                collision.GetComponent<Boss>().damaged(Damage);
+                collision.GetComponent<Boss>().damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
 
                 currentDamageTime = DamageTime;
             }

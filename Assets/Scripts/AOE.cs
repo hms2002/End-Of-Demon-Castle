@@ -31,7 +31,7 @@ public class AOE : MonoBehaviour
         {
             if (currentDamageTime <= 0)
             {
-                collision.GetComponent<Player>().damaged(Damage);
+                collision.GetComponent<Player>().damaged(Damage + (int)DamageControler.GetInstance().GetDotDamage());
 
                 currentDamageTime = DamageTime;
             }
