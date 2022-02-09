@@ -2037,6 +2037,7 @@ MonoBehaviour:
   PatternNum: 0
   PrePatternNum: 0
   BarrageSpeed: 0
+  BossSpeed: 0
   player: {fileID: 1160478600}
   objectManager: {fileID: 1618058073}
   cristal:
@@ -2046,6 +2047,9 @@ MonoBehaviour:
   - {fileID: 341062355}
   CristalNum: 4
   boxCollider: {fileID: 0}
+  Phase2: 0
+  BossStop: 1
+  rigid: {fileID: 0}
 --- !u!212 &179191267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2929,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
@@ -3680,7 +3684,7 @@ PrefabInstance:
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
