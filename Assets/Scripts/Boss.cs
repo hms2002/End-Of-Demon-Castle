@@ -11,9 +11,7 @@ public class Boss : MonoBehaviour
         {
             boss = FindObjectOfType<Boss>();
         }
-
         return boss;
-
     }
 
     public float BossHp = 700;
@@ -25,59 +23,122 @@ public class Boss : MonoBehaviour
     public Player player;
     public ObjectManager objectManager;
     public GameObject[] cristal = new GameObject[4];
-
+    public int CristalNum = 4;
+    public BoxCollider2D boxCollider;
+    public bool Phase2;
 
     void Start()
     {
         wasHit = false;
+        boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    void Update()
+    {
+        if (!boxCollider.enabled)
+        {
+            if (CristalNum == 0)
+            {
+                boxCollider.enabled = true;
+                Phase2 = true;
+            }
+        }
     }
 
     public void PatternManager()
     {
-        do
+        if (!Phase2)
         {
-            PatternNum = Random.Range(1, 3);
-        } while (PatternNum == PrePatternNum);
+            do
+            {
+                PatternNum = Random.Range(1, 3);
+            } while (PatternNum == PrePatternNum);
 
-        PrePatternNum = PatternNum;
+            PrePatternNum = PatternNum;
 
-        switch (PatternNum)
-        {
-            case 1:
-                StartCoroutine("Pattern_13");
-                break;
-            case 2:
-                StartCoroutine("Pattern_13");
-                break;
-            /*case 3:
-                StartCoroutine("Pattern_3");
-                break;
-            case 4:
-                StartCoroutine("Pattern_5");
-                break;
-            case 5:
-                StartCoroutine("Pattern_6");
-                break;
-            case 6:
-                StartCoroutine("Pattern_7");
-                break;
-            case 7:
-                StartCoroutine("Pattern_8");
-                break;
-            case 8:
-                StartCoroutine("Pattern_9");
-                break;
-            case 9:
-                StartCoroutine("Pattern_10");
-                break;
-            case 10:
-                StartCoroutine("Pattern_11");
-                break;
-            case 11:
-                StartCoroutine("Pattern_12");
-                break;*/
+            switch (PatternNum)
+            {
+                case 1:
+                    StartCoroutine("Pattern_13");
+                    break;
+                case 2:
+                    StartCoroutine("Pattern_13");
+                    break;
+                    /*case 3:
+                        StartCoroutine("Pattern_3");
+                        break;
+                    case 4:
+                        StartCoroutine("Pattern_5");
+                        break;
+                    case 5:
+                        StartCoroutine("Pattern_6");
+                        break;
+                    case 6:
+                        StartCoroutine("Pattern_7");
+                        break;
+                    case 7:
+                        StartCoroutine("Pattern_8");
+                        break;
+                    case 8:
+                        StartCoroutine("Pattern_9");
+                        break;
+                    case 9:
+                        StartCoroutine("Pattern_10");
+                        break;
+                    case 10:
+                        StartCoroutine("Pattern_11");
+                        break;
+                    case 11:
+                        StartCoroutine("Pattern_12");
+                        break;*/
+            }
         }
+        if(Phase2)
+        {
+            do
+            {
+                PatternNum = Random.Range(1, 3);
+            } while (PatternNum == PrePatternNum);
 
+            PrePatternNum = PatternNum;
+
+            switch (PatternNum)
+            {
+                case 1:
+                    StartCoroutine("Pattern_13");
+                    break;
+                case 2:
+                    StartCoroutine("Pattern_13");
+                    break;
+                    /*case 3:
+                        StartCoroutine("Pattern_3");
+                        break;
+                    case 4:
+                        StartCoroutine("Pattern_5");
+                        break;
+                    case 5:
+                        StartCoroutine("Pattern_6");
+                        break;
+                    case 6:
+                        StartCoroutine("Pattern_7");
+                        break;
+                    case 7:
+                        StartCoroutine("Pattern_8");
+                        break;
+                    case 8:
+                        StartCoroutine("Pattern_9");
+                        break;
+                    case 9:
+                        StartCoroutine("Pattern_10");
+                        break;
+                    case 10:
+                        StartCoroutine("Pattern_11");
+                        break;
+                    case 11:
+                        StartCoroutine("Pattern_12");
+                        break;*/
+            }
+        }
     }
 
     private IEnumerator Boss_Scw()
@@ -103,9 +164,16 @@ public class Boss : MonoBehaviour
             cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
         }
     }
+    private IEnumerator Boss_Set()
+    {
+        Invoke("PatternManager", 1f);
+        gameObject.GetComponent<SpriteRenderer>().material.color = Color.magenta;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
+    }
 
-        //패턴1 : 부채꼴 모양 발사
-        private IEnumerator Pattern_1()
+    //패턴1 : 부채꼴 모양 발사
+    private IEnumerator Pattern_1()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -134,7 +202,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.5f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Set");
     }
 
     //패턴2 : 레이저 세로발사
@@ -237,7 +305,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.3f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Set");
     }
 
     //패턴6 : 맵밖에서 원형으로 감싸는 탄막
@@ -262,7 +330,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(3);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Set");
     }
 
     //패턴7 : 플레이어 방향으로 레이저
@@ -317,7 +385,7 @@ public class Boss : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.05f);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Set");
     }
 
     //패턴10 : 큰 탄막 터지면 작은탄막
@@ -365,9 +433,9 @@ public class Boss : MonoBehaviour
             }
                 yield return new WaitForSeconds(4);
         }
-        StartCoroutine("Boss_CristalSet");
+        StartCoroutine("Boss_Set");
     }
-
+        
     //패턴12 : 장판생기고 탄막난사
     public IEnumerator Pattern_12()
     {
@@ -447,23 +515,29 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(0);
         StartCoroutine("Boss_Scw");
     }
+
     private IEnumerator Pattern_13()
     {
         Cristal[] cristalLogic = new Cristal[4];
         for (int i = 0; i < 2; i++)
         {
+            if (cristal[i] == null && cristal[i + 2] == null)
+            {
+                continue;
+            }
             if (cristal[i] == null)
             {
                 cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
                 cristalLogic[i + 2].StartCoroutine("Pattern_13");
                 continue;
             }
-            else if (cristal[i + 2] == null)
+            if (cristal[i + 2] == null)
             {
                 cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
                 cristalLogic[i].StartCoroutine("Pattern_13");
                 continue;
             }
+
             cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
             cristalLogic[i].StartCoroutine("Pattern_13");
             cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
@@ -516,12 +590,5 @@ public class Boss : MonoBehaviour
     {
         if(BossHp <= 0)
             GetComponent<SpriteRenderer>().color = Color.red;
-    }
-
-    IEnumerator zz()
-    {
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
-        yield return new WaitForSeconds(0.5f);
-        SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 1f);
     }
 }

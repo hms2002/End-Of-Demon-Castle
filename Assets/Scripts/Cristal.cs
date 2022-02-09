@@ -32,6 +32,7 @@ public class Cristal : BreakableObj
         else
         {
             Hp = 0;
+            Boss.GetInstance().CristalNum -= 1;
             Destroy(transform.parent.gameObject);
         }
 
