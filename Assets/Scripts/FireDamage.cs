@@ -7,16 +7,19 @@ public class FireDamage : MonoBehaviour
     Boss boss;
     PolygonCollider2D polygonCollider2D;
 
-    public int flameDamage = 20;
+    int flameDamage = 10;
     float flameDamageTimer = 0;
     BreakableObj breakableObj;
 
     Vector3 originLocalPos;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         originLocalPos = transform.localPosition;
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+       
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         int layer = collision.gameObject.layer;
@@ -26,12 +29,12 @@ public class FireDamage : MonoBehaviour
             if(boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(flameDamage);
+            boss.damaged(flameDamage + DamageControler.GetInstance().GetDotDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(flameDamage + DamageControler.GetInstance().GetDotDamage());
         }
     }
 
@@ -40,6 +43,7 @@ public class FireDamage : MonoBehaviour
         transform.parent.transform.localPosition = Vector3.zero;
         transform.localPosition = originLocalPos;
         flameDamageTimer += Time.deltaTime;
+
         if (flameDamageTimer > 0.1f)
         {
             if (polygonCollider2D.enabled)

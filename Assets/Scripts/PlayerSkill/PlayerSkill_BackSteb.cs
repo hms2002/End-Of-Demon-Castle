@@ -36,12 +36,15 @@ public class PlayerSkill_BackSteb : Skill_ID
 
         backSteb = Resources.Load<GameObject>("Prefabs/BackSteb");
         
-        coolTime = 0.5f;
+        coolTime = 10f;
         curTime = 0;
+
+        coolTimeSlider.maxValue = coolTime;
     }
 
     private void Update() {
         curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()

@@ -19,12 +19,15 @@ public class PlayerSkill_MultiShot : Skill_ID
         objectManager = FindObjectOfType<ObjectManager>();
         bow = Resources.Load<GameObject>("Prefabs/MultiShotBow_1");
         arrowSpeed = 15f;
-        coolTime = 0.5f;
+        coolTime = 10f;
         curTime = 0;
+
+        coolTimeSlider.maxValue = coolTime;
     }
 
     private void Update() {
         curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()

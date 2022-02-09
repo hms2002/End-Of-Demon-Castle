@@ -17,12 +17,12 @@ public class ExplosionDamage : MonoBehaviour
             if (boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(Damage);
+            boss.damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(Damage + DamageControler.GetInstance().GetMonoDamage());
         }
     }
 }

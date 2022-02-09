@@ -11,9 +11,14 @@ public class PlayerSkill_Vampire : Skill_ID
     GameObject tempHeal;
 
     bool isSkillOn;
-    float durationTime;
-    public float maxSkillTime = 10.0f;
-    public int amountOfRecovery = 10;
+    float skillDuration = 0.0f;
+    float maxSkillDuration = 3.0f;
+    int amountOfRecovery = 10;
+
+    float coolTime;
+    float curTime;
+
+    bool isSliderInit = false;
 
     private void Awake()
     {
@@ -23,10 +28,33 @@ public class PlayerSkill_Vampire : Skill_ID
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
 
         isSkillOn = false;
+
+        curTime = 0;
+        coolTime = 25;
+    }
+
+    private void Update()
+    {
+        curTime -= Time.deltaTime;
+        if(coolTimeSlider != null)
+        {
+            if(!isSliderInit)
+            {
+                coolTimeSlider.maxValue = coolTime;
+                isSliderInit = true;
+            }
+            coolTimeSlider.value = curTime;
+        }
     }
 
     public override void SkillOn()
     {
+        if(curTime > 0)
+        {
+            return;
+        }
+        curTime = coolTime;
+
         if (isSkillOn)
         {
             return;
@@ -40,14 +68,14 @@ public class PlayerSkill_Vampire : Skill_ID
     {
         GameObject aura = Instantiate(absorbBlood);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
-        StartCoroutine("PlayVampireLoopSound");
+        StartCoroutine(PlayVampireLoopSound());
 
         while (isSkillOn)
         {
             aura.transform.position = player.transform.position;
-            durationTime += Time.deltaTime;
+            skillDuration += Time.deltaTime;
 
-            if (durationTime >= maxSkillTime)
+            if (skillDuration >= maxSkillDuration)
             {
                 break;
             }
@@ -65,7 +93,7 @@ public class PlayerSkill_Vampire : Skill_ID
             yield return null;
         }
 
-        durationTime = 0.0f;
+        skillDuration = 0.0f;
         Destroy(aura);
         isSkillOn = false;
     }

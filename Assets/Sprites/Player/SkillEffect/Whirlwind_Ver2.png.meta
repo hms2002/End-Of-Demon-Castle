@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: c3eb9ad3a3e90be438f0003e9314da49
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6785536073009792368
+    second: Whirlwind_Ver2_0
+  - first:
+      213: 2860877591589037811
+    second: Whirlwind_Ver2_1
+  - first:
+      213: -1142859613770491663
+    second: Whirlwind_Ver2_2
+  - first:
+      213: -9157839505398817755
+    second: Whirlwind_Ver2_3
+  - first:
+      213: 5374942337678962336
+    second: Whirlwind_Ver2_4
+  - first:
+      213: -2111274829608009147
+    second: Whirlwind_Ver2_5
+  - first:
+      213: -7503976470186823351
+    second: Whirlwind_Ver2_6
+  - first:
+      213: -5001645419104811252
+    second: Whirlwind_Ver2_7
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18, y: 16}
+        - {x: -32, y: 4}
+        - {x: -32, y: -15}
+        - {x: -10, y: -31}
+        - {x: 11, y: -31}
+        - {x: 33, y: -13}
+        - {x: 33, y: 5}
+        - {x: 17, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075095a6b111b2e50800000000000000
+      internalID: 6785536073009792368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18, y: 15}
+        - {x: -32, y: 4}
+        - {x: -32, y: -13}
+        - {x: -6, y: -31}
+        - {x: 9, y: -31}
+        - {x: 33, y: -12}
+        - {x: 33, y: 5}
+        - {x: 17, y: 15}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f62a801301e3b720800000000000000
+      internalID: 2860877591589037811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -33, y: 4}
+        - {x: -33, y: -12}
+        - {x: -6, y: -30}
+        - {x: 11, y: -30}
+        - {x: 34, y: -14}
+        - {x: 34, y: 5}
+        - {x: 18, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8d1158c3fb320f0800000000000000
+      internalID: -1142859613770491663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -13, y: 16}
+        - {x: -34, y: 4}
+        - {x: -34, y: -13}
+        - {x: -6, y: -31}
+        - {x: 10, y: -31}
+        - {x: 34, y: -12}
+        - {x: 34, y: 5}
+        - {x: 17, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c1aaa7d71d8e080800000000000000
+      internalID: -9157839505398817755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_4
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18, y: 16}
+        - {x: -32, y: 2}
+        - {x: -32, y: -11}
+        - {x: -4, y: -31}
+        - {x: 9, y: -31}
+        - {x: 32, y: -12}
+        - {x: 32, y: 5}
+        - {x: 18, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aeef851491a79a40800000000000000
+      internalID: 5374942337678962336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_5
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18, y: 16}
+        - {x: -33, y: 6}
+        - {x: -33, y: -9}
+        - {x: -5, y: -31}
+        - {x: 6, y: -31}
+        - {x: 33, y: -9}
+        - {x: 33, y: 2}
+        - {x: 17, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542cdfd7abe33b2e0800000000000000
+      internalID: -2111274829608009147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_6
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18, y: 16}
+        - {x: -33, y: 4}
+        - {x: -33, y: -11}
+        - {x: -4, y: -31}
+        - {x: 8, y: -31}
+        - {x: 33, y: -10}
+        - {x: 33, y: 6}
+        - {x: 17, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 941ff9b78258cd790800000000000000
+      internalID: -7503976470186823351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whirlwind_Ver2_7
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -20, y: 15}
+        - {x: -34, y: 3}
+        - {x: -34, y: -12}
+        - {x: -3, y: -31}
+        - {x: 9, y: -31}
+        - {x: 34, y: -10}
+        - {x: 34, y: 5}
+        - {x: 21, y: 15}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c074ccdbdf5969ab0800000000000000
+      internalID: -5001645419104811252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

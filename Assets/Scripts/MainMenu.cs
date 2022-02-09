@@ -42,7 +42,10 @@ public class MainMenu : MonoBehaviour
                     break;
 
                 case 2:
-
+                    if (FadeManager.GetInstance().isFadeEnd)
+                    {
+                        return;
+                    }
                     SwordSoundSkip();
                     count++;
 
@@ -80,6 +83,12 @@ public class MainMenu : MonoBehaviour
         FadeManager.GetInstance().StopCoroutine("FadeInAndOut");
         FadeManager.GetInstance().audioSource.Stop();
         FadeManager.GetInstance().StartCoroutine("FadeOut", GameManager.GetInstance().fadeImage_loading);
+        Invoke("ChangeImg", 0.9f);
+    }
+
+    void ChangeImg()
+    {
+        storyImage[0].transform.parent.gameObject.SetActive(false);
     }
 
     IEnumerator Polaroid()

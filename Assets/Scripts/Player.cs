@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
 
     //#.플레이어 이동
     AudioSource audioSrc;
-    public int speed;
+    public float speed;
     float h;
     float v;
     bool canMove;
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour
     public bool canDash = true;
     Rigidbody2D rigid;
     Animator animator;
+        //대쉬 쿨타임 슬라이더
+        public Slider dashCoolTimeImage;
+
     //#.플레이어 공격
     public int attackDamage;
         //공격 딜레이
@@ -53,6 +57,7 @@ public class Player : MonoBehaviour
     bool isDead = false;
     public delegate void AboutDead();
     public AboutDead onDead;
+    public bool zhonya = false;
 
     //#.플레이어 데미지
     SpriteRenderer playerSprite;
@@ -74,6 +79,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        dashCoolTimeImage.maxValue = dashCoolTime;
+
         playerSkill = GetComponent<PlayerSkill>();
 
         audioSrc = GetComponent<AudioSource>();
@@ -264,6 +271,7 @@ public class Player : MonoBehaviour
     void dash()
     {
         curDashCoolTime -= Time.deltaTime;
+        dashCoolTimeImage.value = curDashCoolTime;
         if (Input.GetKeyDown(KeyCode.Space) && curDashCoolTime <= 0)
         {
             if (!canDash)
@@ -327,9 +335,12 @@ public class Player : MonoBehaviour
     //#.피해 입기
     public void damaged(int damage)
     {
-        StartCoroutine("ShowDamaged");
-        player_hp -= damage;
-        dead();
+        if (zhonya == false)
+        {
+            StartCoroutine("ShowDamaged");
+            player_hp -= damage;
+            dead();
+        }
     }
     //#.플레이어 체력
     void PlayerHP()
@@ -364,6 +375,7 @@ public class Player : MonoBehaviour
 
     IEnumerator ShowDamaged()
     {
+        Debug.Log("야 됐냐?");
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;
@@ -372,6 +384,8 @@ public class Player : MonoBehaviour
     IEnumerator IDash()
     {
         canMove = false;
+        playerSkill.canSkill = false;
+
         if (Mathf.Abs(h) == 1 && Mathf.Abs(v) == 1)
             rigid.AddForce(new Vector2(h * (dashPower / 1.5f), v * (dashPower / 1.5f)));
         else
@@ -386,6 +400,7 @@ public class Player : MonoBehaviour
         if (canDash)
         {
             canMove = true;
+            playerSkill.canSkill = true;
         }
         gameObject.layer = 10;
         
@@ -554,9 +569,10 @@ public class Player : MonoBehaviour
         canAttack = true;
         canMove = true;
         canDash = true;
+        playerSkill.canSkill = true;
         animator.SetBool("isChange", false);
 
-        Debug.Log("넌 자유야");
+//        Debug.Log("넌 자유야");
 
         //플레이어가 커서 방향 바라보도록 설정
         playerOrient = -1;
@@ -577,10 +593,10 @@ public class Player : MonoBehaviour
                 playerOrient = -1;
                 setPlayerOrientation();
                 animator.SetBool("isChange", false);
-            break;
+                break;
             case "Dash":
                 canDash = false;
-            break;
+                break;
             case "Skill":
                 playerSkill.canSkill = false;
                 break;
@@ -589,7 +605,6 @@ public class Player : MonoBehaviour
     }
     public void playerFree(string idx)
     {
-        Debug.Log("넌 자유야22");
         switch (idx)
         {
             case "Attack":

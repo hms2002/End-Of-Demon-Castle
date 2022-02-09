@@ -17,6 +17,16 @@ public class FadeManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFadeEnd = false;
     }
+    private void Start()
+    {
+        if(fadeManager != null)
+        {
+            if(fadeManager != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     public static FadeManager GetInstance()
     {
@@ -46,7 +56,6 @@ public class FadeManager : MonoBehaviour
         }
         isFadeEnd = true;
         FadeIn(fadeImage);
-        //���� ����
         yield return new WaitForSeconds(2.0f);
         FadeOut(fadeImage);
     }
@@ -54,7 +63,6 @@ public class FadeManager : MonoBehaviour
     {
         Image loadingImage = GameManager.GetInstance().fadeImage_loading;
         FadeIn(loadingImage);
-        //���� ����
         yield return new WaitForSeconds(time / 5.0f);
         audioSource.clip = swordFight;
         audioSource.Play();
@@ -83,7 +91,7 @@ public class FadeManager : MonoBehaviour
         fadeImage.transform.parent.gameObject.SetActive(true);
         Color imageColor = fadeImage.color;
         imageColor.a = 1.0f;
-
+        yield return new WaitForSeconds(0.5f);
         for (int i = 50; i > 0; i--)
         {
             imageColor.a -= 0.02f;

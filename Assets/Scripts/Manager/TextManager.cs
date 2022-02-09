@@ -33,6 +33,13 @@ public class TextManager : MonoBehaviour
         " "//5
     };
 
+    private string[] bossPhase2Scenario =
+    {
+        " ",
+        "오호... 네 녀석 꽤나 강력하구나...",
+        "그럼... 이 몸이 살짝 움직여 볼까?",
+        " "
+    };
     #endregion
     private void Start()
     {
@@ -43,6 +50,11 @@ public class TextManager : MonoBehaviour
     public void BossTextOn(int scriptNum)
     {
         StartCoroutine("IBossTextOn", scriptNum);
+    }
+
+    public void BossPhase2On(int scriptNum)
+    {
+        StartCoroutine("IBossPhase2On", scriptNum);
     }
 
     public void TextClose()
@@ -110,6 +122,74 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
 
             EnterTheBossRoom.GetInstance().FightStart();
+        }
+    }
+
+    IEnumerator IBossPhase2On(int scriptNum)
+    {
+        if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
+        {
+
+            transform.GetChild(0).gameObject.SetActive(true);
+            text.text = "";
+            for (; bossPhase2Scenario[scriptNum] != " ";)
+            {
+                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < bossPhase2Scenario[scriptNum].Length; i++)//해당 대사의 길이만큼 반복하며 텍스트를 점점 띄우기
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                        break;
+
+                    //sizeCtrl.Fix(i + 1);
+                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                    text.text = bossPhase2Scenario[scriptNum].Substring(0, i + 1);
+                    yield return new WaitForSeconds(delay);
+                }
+
+                text.text = bossPhase2Scenario[scriptNum];
+
+                yield return new WaitForSeconds(0.5f);
+                while (true)
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.Log(1);
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(Time.deltaTime);
+                }
+                scriptNum++;
+            }
+            transform.GetChild(0).gameObject.SetActive(false);
+
+        }
+
+        if (scriptNum == 0)
+        {
+            Barrage[] barrage = FindObjectsOfType<Barrage>();
+
+            for (int i = 0; i < barrage.Length; i++)
+            {
+                barrage[i].enabled = false;
+            }
+
+            FadeManager.GetInstance().FadeOut(GameManager.GetInstance().fadeImage_loading);
+
+            yield return new WaitForSeconds(1.3f);
+
+            CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
+            yield return new WaitForSeconds(2f);
+
+            BossPhase2On(1);
+        }
+        if (scriptNum == 3)
+        {
+            CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
+
+            yield return new WaitForSeconds(1.5f);
+            Boss.GetInstance().BossStop = true;
+            Boss.GetInstance().PatternManager();
         }
     }
 }
