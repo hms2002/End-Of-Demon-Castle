@@ -2044,6 +2044,8 @@ MonoBehaviour:
   - {fileID: 1656865104}
   - {fileID: 237759873}
   - {fileID: 341062355}
+  CristalNum: 4
+  boxCollider: {fileID: 0}
 --- !u!212 &179191267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2118,7 +2120,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179191265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
