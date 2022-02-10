@@ -60,12 +60,12 @@ public class PillarOfFire : MonoBehaviour
             if (boss == null)
                 boss = collision.GetComponent<Boss>();
 
-            boss.damaged(flameDamage);
+            boss.damaged(flameDamage + DamageControler.GetInstance().GetMonoDamage());
         }
         else if (collision.CompareTag("CanBroke"))
         {
             breakableObj = collision.GetComponent<BreakableObj>();
-            breakableObj.breakObj();
+            breakableObj.breakObj(flameDamage + DamageControler.GetInstance().GetMonoDamage());
         }
     }
 

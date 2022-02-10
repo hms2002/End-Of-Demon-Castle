@@ -10,7 +10,7 @@ public class SkillSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHa
     Sprite defaultImg;
     public DragAndDropCantainer dragAndDropContainer;
     public DragPlus beforeDrag;
-    
+
     public bool canSelect;
     public bool isDragging = false;
 
@@ -71,7 +71,6 @@ public class SkillSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHa
             skill = dragAndDropContainer.skill;
         }
 
-        
         isDragging = false;
         // Reset Contatiner
         dragAndDropContainer.image.sprite = null;

@@ -55,6 +55,10 @@ public class SkillSelectManager : MonoBehaviour
                                 skillList.Add(player.AddComponent<PlayerSkill_WhirlWind>());
                                 break;
                             case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_ChargeAttack>());
+                                break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_FastSword>());
                                 break;
                         }
                         break;
@@ -90,13 +94,16 @@ public class SkillSelectManager : MonoBehaviour
                         switch (skills)
                         {
                             case 1:
-                                skillList.Add(player.AddComponent<PlayerSkill_FireBreath>());
-                                break;
-                            case 2:
                                 skillList.Add(player.AddComponent<PlayerSkill_Explosion>());
                                 text = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SKillCountText"));
                                 text.transform.SetParent(shownSolts[i].transform);
                                 text.transform.localPosition = new Vector3(0, 0, 0);
+                                break;
+                            case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_FireBreath>());
+                                break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_Thunder>());
                                 break;
                         }
                         break;

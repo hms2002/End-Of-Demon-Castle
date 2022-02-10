@@ -18,6 +18,7 @@ public class DamageControler : MonoBehaviour
 
     float dotDamage = 0;
     float monoDamage = 0;
+    float chargeDamage = 0;
 
     public void UpgradeDamage()
     {
@@ -31,9 +32,28 @@ public class DamageControler : MonoBehaviour
         monoDamage = 0;
     }
 
+    public void SetChargeDamage(int idx)
+    {
+        switch (idx)
+        {
+            case 0:
+                chargeDamage = 35;
+                break;
+            case 1:
+                chargeDamage = 40;
+                break;
+            case 2:
+                chargeDamage = 55;
+                break;
+        }
+    }
+
     public float GetDotDamage()
     { return dotDamage; }
 
     public float GetMonoDamage()
     { return monoDamage; }
+
+    public float GetChargeDamage()
+    { return chargeDamage; }
 }

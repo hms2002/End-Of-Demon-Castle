@@ -164,11 +164,19 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+            if(cristal[i] = null)
+            {
+                continue;
+            }
             cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.red;
         }
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 4; i++)
         {
+            if (cristal[i] = null)
+            {
+                continue;
+            }
             cristal[i].GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
         }
     }

@@ -70,6 +70,7 @@ public class PlayerSkill_FireBreath : Skill_ID
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
         player.playerConfine();
+        player.playerConfine("Skill");
     }
 
     IEnumerator SpitFire(GameObject fireEffect)
