@@ -26722,8 +26722,10 @@ GameObject:
   - component: {fileID: 1426339784}
   - component: {fileID: 1426339786}
   - component: {fileID: 1426339785}
+  - component: {fileID: 1426339788}
+  - component: {fileID: 1426339787}
   m_Layer: 31
-  m_Name: Image (2)
+  m_Name: Thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26787,6 +26789,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426339783}
   m_CullTransparentMesh: 0
+--- !u!114 &1426339787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426339783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 43
+  skillKey: 0
+  coolTimeSlider: {fileID: 0}
+--- !u!114 &1426339788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426339783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81fd242343c6224b9c2c79132e4624d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSelect: 0
+  dragAndDropContainer: {fileID: 4323764019541425382}
+  isDragging: 0
 --- !u!4 &1444769802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3105927555115169744, guid: a88b0fc87482e574f97f3067eaeabde9,
@@ -31988,7 +32020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 12
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019013510642

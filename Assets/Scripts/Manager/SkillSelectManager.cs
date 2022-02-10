@@ -55,6 +55,7 @@ public class SkillSelectManager : MonoBehaviour
                                 skillList.Add(player.AddComponent<PlayerSkill_WhirlWind>());
                                 break;
                             case 2:
+                                skillList.Add(player.AddComponent<PlayerSkill_ChargeAttack>());
                                 break;
                         }
                         break;
@@ -97,6 +98,9 @@ public class SkillSelectManager : MonoBehaviour
                                 text = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SKillCountText"));
                                 text.transform.SetParent(shownSolts[i].transform);
                                 text.transform.localPosition = new Vector3(0, 0, 0);
+                                break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_Thunder>());
                                 break;
                         }
                         break;

@@ -29,7 +29,7 @@ public class PlayerSkill_Berserk : Skill_ID
             return;
         curTime = coolTime;
         player.speed = 10;
-        player.atkCoolTime = 0.1f;
+        player.atkCoolTime = 0.15f;
         player.damaged(20);
 
         GameObject tempObj = Instantiate(berserkEffect, player.transform);
