@@ -56,6 +56,9 @@ public class SkillSelectManager : MonoBehaviour
                                 break;
                             case 2:
                                 break;
+                            case 3:
+                                skillList.Add(player.AddComponent<PlayerSkill_FastSword>());
+                                break;
                         }
                         break;
                     case 2:
