@@ -8,6 +8,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
     Player player;
     AudioSource playerAudioSource;
     GameObject whirlwind;
+    GameObject bladeEffect;
 
     bool isSkillOn;
     float coolTime = 10.0f;
@@ -42,15 +43,15 @@ public class PlayerSkill_WhirlWind : Skill_ID
         {
             playerAudioSource.Stop();
         }
+
+        if (bladeEffect != null)
+        {
+            bladeEffect.transform.position = player.transform.position;
+        }
     }
 
     public override void SkillOn()
     {
-        if (isSkillOn)
-        {
-            StopCoroutine(ActiveWhirlwind());
-            return;
-        }
         isSkillOn = true;
 
         if (curTime > 0)
@@ -59,39 +60,37 @@ public class PlayerSkill_WhirlWind : Skill_ID
         }
         curTime = coolTime;
 
-        StartCoroutine(ActiveWhirlwind());
+        StartCoroutine("ActiveWhirlwind");
     }
 
     IEnumerator ActiveWhirlwind()
     {
-        GameObject bladeEffect = Instantiate(whirlwind);
-
-        float tempPlayerOriginSpeed = player.speed;
+        bladeEffect = Instantiate(whirlwind);
 
         player.speed = 5.0f;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
         player.playerConfine("Skill");
 
+        yield return new WaitForSeconds(0.01f);
+
         while (isSkillOn)
         {
-            Debug.Log("µå°¬³ª");
-            bladeEffect.transform.position = player.transform.position;
             skillDuration += Time.deltaTime;
 
-            if (skillDuration >= maxSkillDuration)
+            if (Input.GetKeyDown(skillKey) || skillDuration >= maxSkillDuration)
             {
                 break;
             }
+
+            yield return null;
         }
 
-        player.speed = tempPlayerOriginSpeed;
+        player.speed = 8.0f;
         player.playerFree();
 
         isSkillOn = false;
         Destroy(bladeEffect);
         skillDuration = 0.0f;
-
-        yield return null;
     }
 }
