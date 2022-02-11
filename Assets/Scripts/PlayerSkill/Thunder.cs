@@ -8,10 +8,12 @@ public class Thunder : MonoBehaviour
     BreakableObj breakableObj;
 
     BoxCollider2D boxCollider2D;
+    GameObject buffICON;
 
     float damage;
 
     float cur;
+    private GameObject tempICON;
 
     private void Start()
     {
@@ -25,8 +27,14 @@ public class Thunder : MonoBehaviour
 
         Destroy(gameObject, 10);
 
+        //#.스킬 아이콘 및 강제 초기화
+        buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_Thunder");
+        SkillSelectManager.GetInstance().Init += BeforeDEL;
+        
+        tempICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
+        BuffLayoutSetting.GetInstance().AddBuff();
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int layer = collision.gameObject.layer;
@@ -47,28 +55,32 @@ public class Thunder : MonoBehaviour
 
     private void Update()
     {
-        //cur -= Time.deltaTime;
         transform.localPosition = Vector3.zero;
-        //if (cur < 0)
-        //{
-        //    cur = 0.5f;
-        //    boxCollider2D.enabled = true;
-        //}
-        //else
-        //{
-        //    boxCollider2D.enabled = false;
-        //}
     }
 
     IEnumerator Damage()
     {
         while(true)
         {
-            Debug.Log("d");
             boxCollider2D.enabled = true;
             yield return new WaitForSeconds(0.1f);
             boxCollider2D.enabled = false;
             yield return new WaitForSeconds(0.45f);
         }
     }
+
+    public void BeforeDEL()
+    {
+        if(gameObject != null)
+            Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        SkillSelectManager.GetInstance().Init -= BeforeDEL;
+        Destroy(tempICON);
+        BuffLayoutSetting.GetInstance().SubBuff();
+
+    }
+
 }

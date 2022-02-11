@@ -8,6 +8,7 @@ public class PlayerSkill_Vampire : Skill_ID
     Boss boss;
     public GameObject healSkill;
     public GameObject absorbBlood;
+    GameObject buffICON;
     GameObject tempHeal;
 
     bool isSkillOn;
@@ -27,10 +28,16 @@ public class PlayerSkill_Vampire : Skill_ID
         healSkill = Resources.Load<GameObject>("Prefabs/Heal");
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
 
+        //#.스킬 아이콘 및 강제 초기화
+        buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_Absorption");
+        SkillSelectManager.GetInstance().Init += BeforeDEL;
+
         isSkillOn = false;
 
         curTime = 0;
         coolTime = 25;
+
+
     }
 
     private void Update()
@@ -63,10 +70,14 @@ public class PlayerSkill_Vampire : Skill_ID
 
         StartCoroutine("Absorb");
     }
-
+    //임시 변수 강제 초기화를 위해 전역으로 변경
+    GameObject aura;
+    GameObject tempICON;
     IEnumerator Absorb()
     {
-        GameObject aura = Instantiate(absorbBlood);
+        aura = Instantiate(absorbBlood);
+        tempICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
+        BuffLayoutSetting.GetInstance().AddBuff();
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
         StartCoroutine(PlayVampireLoopSound());
 
@@ -93,8 +104,10 @@ public class PlayerSkill_Vampire : Skill_ID
             yield return null;
         }
 
+        BuffLayoutSetting.GetInstance().SubBuff();
         skillDuration = 0.0f;
         Destroy(aura);
+        Destroy(tempICON);
         isSkillOn = false;
     }
 
@@ -102,5 +115,16 @@ public class PlayerSkill_Vampire : Skill_ID
     {
         yield return new WaitForSeconds(0.6f);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireLoop", 0.3f);
+    }
+
+    public void BeforeDEL()
+    {
+        if(isSkillOn == true)
+        {
+            Destroy(tempICON);
+            BuffLayoutSetting.GetInstance().SubBuff();
+            skillDuration = 0.0f;
+            Destroy(aura);
+        }
     }
 }

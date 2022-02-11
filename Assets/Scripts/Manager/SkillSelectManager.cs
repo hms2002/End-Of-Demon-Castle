@@ -2,8 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 public class SkillSelectManager : MonoBehaviour
 {
+    private static SkillSelectManager skillSelectManager;
+    public static SkillSelectManager GetInstance()
+    {
+        if(skillSelectManager == null)
+        {
+            skillSelectManager = FindObjectOfType<SkillSelectManager>();
+        }
+        return skillSelectManager;
+    }
+
+    public Action Init;
+
     public GameObject player;
     public SkillSlot[] skillSlot;
     public List<Skill_ID> skillList = new List<Skill_ID>();
@@ -14,6 +27,18 @@ public class SkillSelectManager : MonoBehaviour
     GameObject text;
 
     PlayerSkill playerSkill;
+
+    public void OpenSkillSetting()
+    {
+        if(Init != null)
+        {
+            Init();
+            Init = null;
+
+        }
+    }
+
+
     private void Awake() {
         skillSlot = slotParent.GetComponentsInChildren<SkillSlot>();
         playerSkill = FindObjectOfType<PlayerSkill>();

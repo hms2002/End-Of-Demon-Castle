@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSkill_Thunder : Skill_ID
 {
     GameObject thunder;
+    GameObject tempEffect;
 
     float coolTime;
     float curTime;
@@ -31,7 +32,9 @@ public class PlayerSkill_Thunder : Skill_ID
             return;
         curTime = coolTime;
 
-        GameObject effect = Instantiate(thunder, transform);
-        effect.transform.localPosition = new Vector3(0, 0, 0);
+        tempEffect = Instantiate(thunder, transform);
+        tempEffect.transform.localPosition = new Vector3(0, 0, 0);
     }
+
+
 }

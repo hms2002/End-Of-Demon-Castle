@@ -14,10 +14,19 @@ public class PlayerSkill_Pray : Skill_ID
     float curTime;
     bool isSliderInit = false;
 
+
+    //#.스킬 아이콘
+    GameObject buffICON;
+    GameObject tempBuffICON;
+
     private void Awake()
     {
         player = GetComponent<Player>();
         animator = GetComponent<Animator>();
+
+        //#.스킬 아이콘 및 초기화
+        buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_Pray");
+        SkillSelectManager.GetInstance().Init += BeforeDEL;
     }
 
     private void Update()
@@ -48,6 +57,10 @@ public class PlayerSkill_Pray : Skill_ID
         }
         isSkillOn = true;
 
+//#.아이콘 Instantiate
+        tempBuffICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
+        BuffLayoutSetting.GetInstance().AddBuff();
+
         StartCoroutine(ActivePray());
     }
 
@@ -69,5 +82,20 @@ public class PlayerSkill_Pray : Skill_ID
         animator.SetBool("GoIdle", true);
         player.playerFree();
         isSkillOn = false;
+
+        //#.아이콘 지우기
+        Destroy(tempBuffICON);
+        BuffLayoutSetting.GetInstance().SubBuff();
+    }
+
+    public void BeforeDEL()
+    {
+        if(isSkillOn)
+        {
+            Destroy(tempBuffICON);
+            BuffLayoutSetting.GetInstance().SubBuff();
+            player.zhonya = false;
+            animator.SetBool("GoIdle", true);
+        }
     }
 }

@@ -23,11 +23,13 @@ public class PlayerSkill_WhirlWind : Skill_ID
         playerAudioSource = player.GetComponent<AudioSource>();
         whirlwind = Resources.Load<GameObject>("Prefabs/Whirlwind_Ver2");
         isSkillOn = false;
+
+//#.강제 초기화
+        SkillSelectManager.GetInstance().Init += BeforeDEL;
     }
     
     void Update()
     {
-        Debug.Log(isSkillOn);
         curTime -= Time.deltaTime;
         if (coolTimeSlider != null)
         {
@@ -92,5 +94,13 @@ public class PlayerSkill_WhirlWind : Skill_ID
         isSkillOn = false;
         Destroy(bladeEffect);
         skillDuration = 0.0f;
+    }
+    
+    public void BeforeDEL()
+    {
+        player.speed = 8.0f;
+        player.playerFree();
+        if(bladeEffect != null)
+            Destroy(bladeEffect);
     }
 }
