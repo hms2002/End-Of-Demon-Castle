@@ -29,7 +29,7 @@ public class MainImageAnimationOutput2 : MonoBehaviour
         while (true)
         {
             StartCoroutine(FadeInImage(image));
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
             backImage.sprite = image.sprite;
             count++;
             SetAlphaZero();
@@ -51,7 +51,7 @@ public class MainImageAnimationOutput2 : MonoBehaviour
         {
             imageColor.a += 0.01f;
             fadeImage.color = imageColor;
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
