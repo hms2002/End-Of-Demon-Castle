@@ -2247,7 +2247,9 @@ MonoBehaviour:
   - {fileID: 341062355}
   CristalNum: 4
   boxCollider: {fileID: 0}
+  Phase1: 0
   Phase2: 0
+  Phase3: 0
   BossStop: 1
   rigid: {fileID: 0}
 --- !u!212 &179191267
@@ -7311,7 +7313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773024386}
   - component: {fileID: 773024387}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15849,7 +15851,7 @@ MonoBehaviour:
   dashPower: 400
   canDash: 1
   dashCoolTimeImage: {fileID: 329187638}
-  attackDamage: 30
+  attackDamage: 700
   atkCoolTime: 0.25
   attackEffect: {fileID: 50589390051191299, guid: cd0fe71a86696674598e34d1c94e4418,
     type: 3}

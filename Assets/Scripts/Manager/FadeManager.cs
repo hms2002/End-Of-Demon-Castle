@@ -17,6 +17,7 @@ public class FadeManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFadeEnd = false;
     }
+
     private void Start()
     {
         if(fadeManager != null)

@@ -40,6 +40,20 @@ public class TextManager : MonoBehaviour
         "그럼... 이 몸이 살짝 움직여 볼까?",
         " "
     };
+
+    private string[] bossPhase3Scenario =
+    {
+        " ",
+        "크윽... 이번엔 진심이다아앗~!",
+        " "
+    };
+
+    private string[] bossDeadScenario =
+    {
+        " ",
+        "죽으면 똥 지리겠네 시벌ㅋㅋ",
+        " "
+    };
     #endregion
     private void Start()
     {
@@ -55,6 +69,15 @@ public class TextManager : MonoBehaviour
     public void BossPhase2On(int scriptNum)
     {
         StartCoroutine("IBossPhase2On", scriptNum);
+    }
+
+    public void BossPhase3On(int scriptNum)
+    {
+        StartCoroutine("IBossPhase3On", scriptNum);
+    }
+    public void BossDead(int scriptNum)
+    {
+        StartCoroutine("IBossDead", scriptNum);
     }
 
     public void TextClose()
@@ -127,6 +150,13 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IBossPhase2On(int scriptNum)
     {
+        Barrage[] barrage = FindObjectsOfType<Barrage>();
+
+        for (int i = 0; i < barrage.Length; i++)
+        {
+            barrage[i].Delete();
+        }
+
         if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
         {
 
@@ -167,13 +197,6 @@ public class TextManager : MonoBehaviour
 
         if (scriptNum == 0)
         {
-            Barrage[] barrage = FindObjectsOfType<Barrage>();
-
-            for (int i = 0; i < barrage.Length; i++)
-            {
-                barrage[i].enabled = false;
-            }
-
             FadeManager.GetInstance().FadeOut(GameManager.GetInstance().fadeImage_loading);
 
             yield return new WaitForSeconds(1.3f);
@@ -190,6 +213,141 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             Boss.GetInstance().PatternManager();
+        }
+    }
+
+    IEnumerator IBossPhase3On(int scriptNum)
+    {
+        Barrage[] barrage = FindObjectsOfType<Barrage>();
+
+        for (int i = 0; i < barrage.Length; i++)
+        {
+            barrage[i].Delete();
+        }
+
+        if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
+        {
+
+            transform.GetChild(0).gameObject.SetActive(true);
+            text.text = "";
+            for (; bossPhase3Scenario[scriptNum] != " ";)
+            {
+                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < bossPhase3Scenario[scriptNum].Length; i++)//해당 대사의 길이만큼 반복하며 텍스트를 점점 띄우기
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                        break;
+
+                    //sizeCtrl.Fix(i + 1);
+                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                    text.text = bossPhase3Scenario[scriptNum].Substring(0, i + 1);
+                    yield return new WaitForSeconds(delay);
+                }
+
+                text.text = bossPhase3Scenario[scriptNum];
+
+                yield return new WaitForSeconds(0.5f);
+                while (true)
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.Log(1);
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(Time.deltaTime);
+                }
+                scriptNum++;
+            }
+            transform.GetChild(0).gameObject.SetActive(false);
+
+        }
+
+        if (scriptNum == 0)
+        {
+            FadeManager.GetInstance().FadeOut(GameManager.GetInstance().fadeImage_loading);
+
+            yield return new WaitForSeconds(1.3f);
+
+            CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
+            yield return new WaitForSeconds(2f);
+
+            BossPhase3On(1);
+        }
+        if (scriptNum == 2)
+        {
+            CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
+
+            yield return new WaitForSeconds(1.5f);
+            Boss.GetInstance().BossStop = true;
+            Boss.GetInstance().PatternManager();
+        }
+    }
+
+    IEnumerator IBossDead(int scriptNum)
+    {
+        Barrage[] barrage = FindObjectsOfType<Barrage>();
+
+        for (int i = 0; i < barrage.Length; i++)
+        {
+            barrage[i].Delete();
+        }
+
+        if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            text.text = "";
+            for (; bossDeadScenario[scriptNum] != " ";)
+            {
+                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < bossDeadScenario[scriptNum].Length; i++)//해당 대사의 길이만큼 반복하며 텍스트를 점점 띄우기
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                        break;
+
+                    //sizeCtrl.Fix(i + 1);
+                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                    text.text = bossDeadScenario[scriptNum].Substring(0, i + 1);
+                    yield return new WaitForSeconds(delay);
+                }
+
+                text.text = bossDeadScenario[scriptNum];
+
+                yield return new WaitForSeconds(0.5f);
+                while (true)
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.Log(1);
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(Time.deltaTime);
+                }
+                scriptNum++;
+            }
+            transform.GetChild(0).gameObject.SetActive(false);
+
+        }
+
+        if (scriptNum == 0)
+        {
+            FadeManager.GetInstance().FadeOut(GameManager.GetInstance().fadeImage_loading);
+
+            yield return new WaitForSeconds(1.3f);
+
+            CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
+            yield return new WaitForSeconds(2f);
+
+            BossDead(1);
+        }
+        if (scriptNum == 2)
+        {
+            CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
+
+            yield return new WaitForSeconds(1.5f);
+            Boss.GetInstance().BossStop = true;
+            Boss.GetInstance().gameObject.SetActive(false);
         }
     }
 }

@@ -73,5 +73,12 @@ public class Cristal : BreakableObj
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    public IEnumerator CristalSet()
+    {
+        GetComponentInChildren<SpriteRenderer>().material.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
+    }
 }
 
