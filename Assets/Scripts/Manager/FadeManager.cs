@@ -92,6 +92,7 @@ public class FadeManager : MonoBehaviour
         Color imageColor = fadeImage.color;
         imageColor.a = 1.0f;
         yield return new WaitForSeconds(0.5f);
+
         for (int i = 50; i > 0; i--)
         {
             imageColor.a -= 0.02f;

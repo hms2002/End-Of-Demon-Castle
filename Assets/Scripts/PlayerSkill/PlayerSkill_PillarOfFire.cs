@@ -13,8 +13,6 @@ public class PlayerSkill_PillarOfFire : Skill_ID
     float coolTime = 10f;
     float curTime = 0;
 
-
-
     private void Start()
     {
         setCursor = Camera.main.gameObject.GetComponent<SetCursor>();
@@ -44,8 +42,9 @@ public class PlayerSkill_PillarOfFire : Skill_ID
         
         while(true)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
+                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/PillarOfFire", 0.8f);
                 GameObject darkTemp = Instantiate(darkFlame, Player.GetInstance().transform);
                 darkFlame.transform.localPosition = new Vector3(0, 0, 0);
                 break;
