@@ -76,4 +76,32 @@ public class GameManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
+
+    public void Ending()
+    {
+        FadeManager.GetInstance().FadeIn(fadeImage_loading);
+    }
+
+    public IEnumerator IEnding()
+    {
+        Ending();
+        yield return new WaitForSeconds(2);
+        TextManager.GetInstance().EndingOn(0);
+    }
+
+    public void toMain()
+    {
+        StartCoroutine("ItoMain");
+    }
+    public IEnumerator ItoMain()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(0);
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
 }
