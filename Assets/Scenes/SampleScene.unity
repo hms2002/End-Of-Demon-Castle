@@ -1491,7 +1491,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 60
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2634,7 +2634,7 @@ RectTransform:
   m_Children:
   - {fileID: 611589461}
   m_Father: {fileID: 958081141}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2716,6 +2716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTextOn: 0
   text: {fileID: 0}
+  Endingtext: {fileID: 0}
   textName: {fileID: 646353800}
   textQuest: {fileID: 1377255827}
   redBox: {fileID: 1351913620}
@@ -6088,7 +6089,7 @@ RectTransform:
   m_Children:
   - {fileID: 1624459297}
   m_Father: {fileID: 958081141}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15018,11 +15019,11 @@ Transform:
   - {fileID: 1228633285}
   - {fileID: 342540856}
   - {fileID: 679294912}
-  - {fileID: 1908580870}
   - {fileID: 1272211215}
   - {fileID: 561716209}
   - {fileID: 180937835}
   - {fileID: 333344542}
+  - {fileID: 1908580870}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17239,11 +17240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6603e5bf85b88044bb175cc500875cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 1
-  isFirstMissionClear: 0
-  isSecondMissionClear1: 0
-  isSecondMissionClear2: 0
-  isMe: 0
+  start: 0
+  isFirstMissionClear: 1
+  isSecondMissionClear1: 1
+  isSecondMissionClear2: 1
+  isMe: 1
 --- !u!1 &1240897918
 GameObject:
   m_ObjectHideFlags: 0
@@ -27637,7 +27638,7 @@ RectTransform:
   - {fileID: 4323764020020171011}
   - {fileID: 539304687}
   m_Father: {fileID: 958081141}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31726,7 +31727,7 @@ RectTransform:
   - {fileID: 1351913619}
   - {fileID: 1231984431}
   m_Father: {fileID: 958081141}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

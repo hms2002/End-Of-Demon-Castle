@@ -8,6 +8,7 @@ public class TextManager : MonoBehaviour
     //private SizeCtrl sizeCtrl;
     public bool isTextOn = false; //bool 값에 따라 TextClose 실행 여부 결정
     public Text text;
+    public Text Endingtext;
     public Text textName;
     public Text textQuest;
     public Image redBox;
@@ -63,7 +64,7 @@ public class TextManager : MonoBehaviour
         " ",
         "������ �� �����ڳ� �ù�����",
         " "
-    }
+    };
     private string[] tutorialScenario=
     {
         "드디어 최상부... 이 앞이 마왕의 방이군.",
@@ -95,13 +96,23 @@ public class TextManager : MonoBehaviour
         "Tutorial 2: 스킬에 대해서 – 스킬 선택창 클릭!",
         "Tutorial 2: 스킬에 대해서 – 스킬 선택하기!"
     };
+
+    private string[] Ending =
+    {
+        "�׷��� ���� ������ �����ư�...",
+        "����� �ٽ� ��ȭ�� ��ã�� �Ǿ���...",
+        "������ ���� �𸥴�...",
+        "�� �ٸ� ������ ���� ���̴�ĥ����...",
+        " "
+    };
     #endregion
-    
+
 
     private void Start()
     {
         //sizeCtrl = transform.GetChild(0).gameObject.GetComponent<SizeCtrl>();
         text = transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();//텍스트 오브젝트 가져오기
+        Endingtext = transform.parent.GetChild(6).GetChild(0).GetComponent<Text>();
         upPos = new Vector3(200, 900, 0);
         downPos = new Vector3(200, 270, 0);
         rect = transform.GetChild(0).GetComponent<RectTransform>();
@@ -126,6 +137,11 @@ public class TextManager : MonoBehaviour
     public void BossDead(int scriptNum)
     {
         StartCoroutine("IBossDead", scriptNum);
+    }
+
+    public void EndingOn(int scriptNum)
+    {
+        StartCoroutine("IEnding", scriptNum);
     }
     public void TutorialTextOn(int scriptNum)
     {
@@ -411,28 +427,28 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
+            GameManager.GetInstance().StartCoroutine("IEnding");
             Boss.GetInstance().gameObject.SetActive(false);        
             }
         }
-    }
 
     IEnumerator ITutorialTextOn(int scriptNum)
     {
-        if(scriptNum < 11)
+        if (scriptNum < 11)
         {
             textQuest.text = "";
             Debug.Log("scriptNum" + scriptNum);
         }
-            
 
-        if(scriptNum == 0)
+
+        if (scriptNum == 0)
         {
             transform.parent.GetChild(1).gameObject.SetActive(false);
         }
         //특수한 텍스트 넘버는 위쪽에 출력하도록 설정
-        if(scriptNum == 10)
+        if (scriptNum == 10)
         {
-            if(TutorialManager.GetInstance().isSecondMissionClear1 == false)
+            if (TutorialManager.GetInstance().isSecondMissionClear1 == false)
             {
                 TutorialManager.GetInstance().isSecondMissionClear1 = true;
                 backButton.gameObject.SetActive(false);
@@ -484,7 +500,7 @@ public class TextManager : MonoBehaviour
         {
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
-            
+
             //오른쪽 위 퀘스트 텍스트 띄우기
             textQuest.text = " ";
 
@@ -563,13 +579,60 @@ public class TextManager : MonoBehaviour
             isBoxUp = false;
             TutorialTextOn(16);
         }
-        else if(scriptNum == 17)
+        else if (scriptNum == 17)
         {
             //보스룸 입장 가능
             FindObjectOfType<EnterTheBossRoom>().GetComponent<CapsuleCollider2D>().enabled = true;
             textQuest.text = "";
             TutorialManager.GetInstance().isSecondMissionClear2 = true;
             backButton.gameObject.SetActive(true);
+        }
+    }
+
+    IEnumerator IEnding(int scriptNum)
+    {
+        if (isTextOn == false)//�ٸ� ��� �ؽ�Ʈ�� ������ ���ȿ� ��µ��� �ʰ� ����
+        {
+
+            transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(true);
+            Endingtext.text = "";
+            for (; Ending[scriptNum] != " ";)
+            {
+                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < Ending[scriptNum].Length; i++)//�ش� ����� ���̸�ŭ �ݺ��ϸ� �ؽ�Ʈ�� ���� ����
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                        break;
+
+                    //sizeCtrl.Fix(i + 1);
+                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                    Endingtext.text = Ending[scriptNum].Substring(0, i + 1);
+                    yield return new WaitForSeconds(delay);
+                }
+
+                Endingtext.text = Ending[scriptNum];
+
+                yield return new WaitForSeconds(0.5f);
+                while (true)
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.Log(1);
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(Time.deltaTime);
+                }
+                scriptNum++;
+            }
+
+            if (scriptNum == 4)
+            {
+                Debug.Log("�ƴ��̰Կ����ݵ�");
+                transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(false);
+                transform.parent.GetChild(6).GetChild(1).gameObject.SetActive(true);
+            }
+
         }
     }
 }
