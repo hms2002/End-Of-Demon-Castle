@@ -375,7 +375,6 @@ public class Player : MonoBehaviour
 
     IEnumerator ShowDamaged()
     {
-        Debug.Log("야 됐냐?");
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;

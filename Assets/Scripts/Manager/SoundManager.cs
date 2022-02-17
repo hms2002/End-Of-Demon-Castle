@@ -37,7 +37,14 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
 		DontDestroyOnLoad(this.gameObject);
-		Init();
+        if (soundManager != null)
+        {
+            if (soundManager != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+        Init();
     }
 
     public void Init()
@@ -49,7 +56,6 @@ public class SoundManager : MonoBehaviour
 			Object.DontDestroyOnLoad(root);
 
 			string[] soundNames = System.Enum.GetNames(typeof(Define.Sound)); // "Bgm", "Effect"
-            Debug.Log(soundNames.Length);
 			for (int i = 0; i < soundNames.Length - 1; i++)
 			{
 				GameObject go = new GameObject { name = soundNames[i] };
