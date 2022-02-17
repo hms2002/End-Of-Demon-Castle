@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +6,19 @@ using UnityEngine.UI;
 public class TextManager : MonoBehaviour
 {
     //private SizeCtrl sizeCtrl;
-    public bool isTextOn = false; //bool °ª¿¡ µû¶ó TextClose ½ÇÇà ¿©ºÎ °áÁ¤
+    public bool isTextOn = false; //bool ê°’ì— ë”°ë¼ TextClose ì‹¤í–‰ ì—¬ë¶€ ê²°ì •
     public Text text;
-    public Text Endingtext;
-    public float delay;//ÅØ½ºÆ® Ãâ·Â ¼Óµµ
+    public Text textName;
+    public Text textQuest;
+    public Image redBox;
+    public Image redBox2;
+    public Button backButton;
+    RectTransform rect;
+    Vector3 downPos;
+    Vector3 upPos;
+    public float delay;//í…ìŠ¤íŠ¸ ì¶œë ¥ ì†ë„
+
+    bool isBoxUp = false;
 
     public static TextManager textManager;
 
@@ -26,60 +35,87 @@ public class TextManager : MonoBehaviour
 
     #region ScenarioField
     private string[] bossDoorScenario = {
-        "µåµğ¾î ¿Ô±¸³ª ¿ë»ç¿©...",
+        "ë“œë””ì–´ ì™”êµ¬ë‚˜ ìš©ì‚¬ì—¬...",
         " ",
-        "±Ùµ¥ ¿Ö ÀÌ·¸°Ô ÀÏÂï ¿Ô³Ä?",
-        "¾ÆÁ÷ ¶Ë ¸ø ½Õ´Âµ¥...",
-        "³»°¡ ³ª¼³ ÇÊ¿äµµ ¾ø°Ú´Ù. Áö±İ ¹è ¾ÆÆÄ¼­ ¿òÁ÷¸é Å«ÀÏ³ª.",//4
+        "ê·¼ë° ì™œ ì´ë ‡ê²Œ ì¼ì° ì™”ëƒ?",
+        "ì•„ì§ ë˜¥ ëª» ìŒŒëŠ”ë°...",
+        "ë‚´ê°€ ë‚˜ì„¤ í•„ìš”ë„ ì—†ê² ë‹¤. ì§€ê¸ˆ ë°° ì•„íŒŒì„œ ì›€ì§ë©´ í°ì¼ë‚˜.",//4
         " "//5
     };
 
     private string[] bossPhase2Scenario =
     {
         " ",
-        "¿ÀÈ£... ³× ³à¼® ²Ï³ª °­·ÂÇÏ±¸³ª...",
-        "±×·³... ÀÌ ¸öÀÌ »ìÂ¦ ¿òÁ÷¿© º¼±î?",
+        "ì˜¤í˜¸... ë„¤ ë…€ì„ ê½¤ë‚˜ ê°•ë ¥í•˜êµ¬ë‚˜...",
+        "ê·¸ëŸ¼... ì´ ëª¸ì´ ì‚´ì§ ì›€ì§ì—¬ ë³¼ê¹Œ?",
         " "
     };
 
     private string[] bossPhase3Scenario =
     {
         " ",
-        "Å©À¹... ÀÌ¹ø¿£ Áø½ÉÀÌ´Ù¾Æ¾Ñ~!",
+        "Å©ï¿½ï¿½... ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´Ù¾Æ¾ï¿½~!",
         " "
     };
 
     private string[] bossDeadScenario =
     {
         " ",
-        "Á×À¸¸é ¶Ë Áö¸®°Ú³× ½Ã¹ú¤»¤»",
+        "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½",
         " "
-    };
-
-    private string[] Ending =
+    }
+    private string[] tutorialScenario=
     {
-        "±×·¸°Ô ¿ë»ç´Â ¸¶¿ÕÀ» ¹°¸®ÃÆ°í...",
-        "¼¼°è´Â ´Ù½Ã ÆòÈ­¸¦ µÇÃ£°Ô µÇ¾ú´Ù...",
-        "ÇÏÁö¸¸ ¾ÆÁ÷ ¸ğ¸¥´Ù...",
-        "¶Ç ´Ù¸¥ À§ÇùÀÌ ¾ğÁ¦ µéÀÌ´ÚÄ¥Áö´Â...",
+        "ë“œë””ì–´ ìµœìƒë¶€... ì´ ì•ì´ ë§ˆì™•ì˜ ë°©ì´êµ°.",
+        "ë§ˆì§€ë§‰ì´ë¼ê³  í•´ì„œ ë°©ì‹¬í•˜ì§€ ë§ì. ì´ëŸ´ ë•Œ ì¼ìˆ˜ë¡ ê¸°ì´ˆê°€ ì¤‘ìš”í•œ ë²•ì´ì•¼.",
+        "ì¡°ì‘ì€ W(â†‘), A(â†), S(â†“), D(â†‘), ì¢Œí´ë¦­ìœ¼ë¡œ ê³µê²©ì„ í•  ìˆ˜ ìˆì§€.",
+        "ì´ë™í‚¤ì™€ ìŠ¤í˜ì´ìŠ¤ë°”ë¥¼ ëˆ„ë¥´ë©´ ëŒ€ì‰¬ë„ ê°€ëŠ¥í•˜ì§€.",
+        "ëŒ€ì‰¬ë¥¼ ì‚¬ìš©í•˜ë©´ ì ì˜ ê³µê²©ì´ë‚˜ êµ¬ë©ì´ë¥¼ ë„˜ì„ ìˆ˜ ìˆì–´",
+        "ë§ˆì¹¨ ì•ì— êµ¬ë©ì´ê°€ ìˆë„¤. ëŒ€ì‰¬ë¥¼ ì—°ìŠµí•´ë³´ì.",
+        " ",//6
+        "ì¢‹ì•„. ì†ì‰½ê²Œ êµ¬ë©ì´ë¥¼ ì „ë¶€ ë„˜ì—ˆêµ°.",
+        "ì, ì´ì   ìŠ¤í‚¬ì— ëŒ€í•´ì„œ ë‹¤ì‹œ ì§šì–´ë³´ì.",
+        " ",//9
+        "ìœ„ì˜ ìŠ¤í‚¬ ì•„ì´ì½˜ì— ë§ˆìš°ìŠ¤ ì»¤ì„œë¥¼ ê°€ì ¸ë‹¤ ëŒ€ë©´ ìŠ¤í‚¬ì˜ ì •ë³´ë¥¼ ì•Œ ìˆ˜ ìˆì–´.",
+        " ",//í…ìŠ¤íŠ¸ ìœ„ ì•„ë˜ ì˜®ê¸¸ ë•Œ êµ¬ë¶„í•˜ê¸° ìœ„í•œ ê³µë°± í…ìŠ¤íŠ¸ 11
+        "ê·¸ë¦¬ê³  ìŠ¤í‚¬ ì•„ì´ì½˜ì„ ëˆ„ë¥´ê³  ìˆìœ¼ë©´ ìŠ¤í‚¬ì´ ì¡íˆê³ ,\në°‘ì˜ ìŠ¤í‚¬ì°½ì— ê°€ì ¸ë‹¤ ë‘ë©´ ì‚¬ìš©í•  ìˆ˜ ìˆì–´.",
+        "ì„¤ì •í•œ ê¸°ì¡´ ìŠ¤í‚¬ì„ ë‹¤ë¥¸ ìŠ¤í‚¬ë¡œ ë³€ê²½í•˜ë ¤ë©´,\në³€ê²½í•  ìŠ¤í‚¬ì˜ ì•„ì´ì½˜ì„ ê¸°ì¡´ ìŠ¤í‚¬ ì•„ì´ì½˜ ìœ„ì¹˜ì— ì˜¬ë ¤ë‘ê±°ë‚˜\nê¸°ì¡´ ìŠ¤í‚¬ì˜ ì•„ì´ì½˜ì„ ìŠ¤í‚¬ ì„ íƒì°½ ì•„ë¬´ ê³³ì—ë‚˜ ë‘ë©´ ë¼.",
+        "ìŠ¤í‚¬ì€ ì´ 5ê°œê¹Œì§€ ì„¤ì • ê°€ëŠ¥í•˜ê³ , ìŠ¤í‚¬ì„ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì¡°ì‘í‚¤ëŠ”\në§ˆìš°ìŠ¤ ìš°í´ë¦­, Q, E, R, ì™¼ìª½ Shiftì•¼.",
+        " ",//í…ìŠ¤íŠ¸ ìœ„ ì•„ë˜ ì˜®ê¸¸ ë•Œ êµ¬ë¶„í•˜ê¸° ìœ„í•œ ê³µë°± í…ìŠ¤íŠ¸ 15
+        "ì°¸ê³ ë¡œ ë§ˆì™•ì˜ ë°©ì— ì…ì¥í•˜ê²Œ ë˜ë©´, ë§ˆì™•ì˜ ë°© ì•ˆì—ì„ \nì €ì£¼ë¡œ ì¸í•´ ì„¤ì •í•œ ìŠ¤í‚¬ë“¤ì„ ë°”ê¿€ ìˆ˜ ì—†ìœ¼ë‹ˆ ì‹ ì¤‘í•˜ê²Œ ìŠ¤í‚¬ì„ ì„ íƒí•˜ê³  ë“¤ì–´ê°€ì.",
+        " ",//17
+        "ì, ì´ì œ ë³µìŠµì€ ì´ì¯¤ í•˜ë©´ ëì„ê±°ì•¼.",
+        "ë§ˆì™•ì„ ê¼­ ë¬¼ë¦¬ì¹˜ê³  ì„¸ìƒì˜ í‰í™”ë¥¼ ë˜ì°¾ëŠ”ê±°ì•¼... ê°€ì!",
         " "
     };
 
+    private string[] tutorialQuestScenario =
+    {
+        "Tutorial 1: êµ¬ë©ì´ë¥¼ ì „ë¶€ ë„˜ì!",
+        "Tutorial 2: ìŠ¤í‚¬ì— ëŒ€í•´ì„œ â€“ ìŠ¤í‚¬ ì„ íƒì°½ í´ë¦­!",
+        "Tutorial 2: ìŠ¤í‚¬ì— ëŒ€í•´ì„œ â€“ ìŠ¤í‚¬ ì„ íƒí•˜ê¸°!"
+    };
     #endregion
+    
+
     private void Start()
     {
         //sizeCtrl = transform.GetChild(0).gameObject.GetComponent<SizeCtrl>();
-        text = transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();//ÅØ½ºÆ® ¿ÀºêÁ§Æ® °¡Á®¿À±â
-        Endingtext = transform.parent.GetChild(6).GetChild(0).GetComponent<Text>();
+        text = transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();//í…ìŠ¤íŠ¸ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
+        upPos = new Vector3(200, 900, 0);
+        downPos = new Vector3(200, 270, 0);
+        rect = transform.GetChild(0).GetComponent<RectTransform>();
     }
 
     public void BossTextOn(int scriptNum)
     {
+        textName.text = "ë§ˆì™•";
         StartCoroutine("IBossTextOn", scriptNum);
     }
 
     public void BossPhase2On(int scriptNum)
     {
+        textName.text = "ë§ˆì™•";
         StartCoroutine("IBossPhase2On", scriptNum);
     }
 
@@ -91,21 +127,34 @@ public class TextManager : MonoBehaviour
     {
         StartCoroutine("IBossDead", scriptNum);
     }
-
-    public void EndingOn(int scriptNum)
+    public void TutorialTextOn(int scriptNum)
     {
-        StartCoroutine("IEnding", scriptNum);
+        textName.text = "ìš©ì‚¬";
+        StartCoroutine("ITutorialTextOn", scriptNum);
     }
 
     public void TextClose()
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }
-    
+
+    public void TextPosUp()
+    {
+        rect.offsetMin = new Vector2(100, 900);
+        rect.offsetMax = new Vector2(-100, 800);
+        rect.sizeDelta = new Vector2(-200, 350);
+    }
+
+    public void TextPosDown()
+    {
+        rect.offsetMin = new Vector2(100, 270);
+        rect.offsetMax = new Vector2(-100, 160);
+        rect.sizeDelta = new Vector2(-200, 350);
+    }
 
     IEnumerator IBossTextOn(int scriptNum)
     {
-        if (isTextOn == false)//´Ù¸¥ ´ë»ç ÅØ½ºÆ®°¡ ³ª¿À´Â µ¿¾È¿¡ Ãâ·ÂµÇÁö ¾Ê°Ô ¸·±â
+        if (isTextOn == false)//ë‹¤ë¥¸ ëŒ€ì‚¬ í…ìŠ¤íŠ¸ê°€ ë‚˜ì˜¤ëŠ” ë™ì•ˆì— ì¶œë ¥ë˜ì§€ ì•Šê²Œ ë§‰ê¸°
         {
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -113,7 +162,7 @@ public class TextManager : MonoBehaviour
             for (; bossDoorScenario[scriptNum] != " ";)
             {
                 yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < bossDoorScenario[scriptNum].Length; i++)//ÇØ´ç ´ë»çÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÅØ½ºÆ®¸¦ Á¡Á¡ ¶ç¿ì±â
+                for (int i = 0; i < bossDoorScenario[scriptNum].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
                 {
                     if (Input.GetKey(KeyCode.Space))
                         break;
@@ -174,7 +223,7 @@ public class TextManager : MonoBehaviour
             barrage[i].Delete();
         }
 
-        if (isTextOn == false)//´Ù¸¥ ´ë»ç ÅØ½ºÆ®°¡ ³ª¿À´Â µ¿¾È¿¡ Ãâ·ÂµÇÁö ¾Ê°Ô ¸·±â
+        if (isTextOn == false)//ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -182,7 +231,7 @@ public class TextManager : MonoBehaviour
             for (; bossPhase2Scenario[scriptNum] != " ";)
             {
                 yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < bossPhase2Scenario[scriptNum].Length; i++)//ÇØ´ç ´ë»çÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÅØ½ºÆ®¸¦ Á¡Á¡ ¶ç¿ì±â
+                for (int i = 0; i < bossPhase2Scenario[scriptNum].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
                 {
                     if (Input.GetKey(KeyCode.Space))
                         break;
@@ -242,7 +291,7 @@ public class TextManager : MonoBehaviour
             barrage[i].Delete();
         }
 
-        if (isTextOn == false)//´Ù¸¥ ´ë»ç ÅØ½ºÆ®°¡ ³ª¿À´Â µ¿¾È¿¡ Ãâ·ÂµÇÁö ¾Ê°Ô ¸·±â
+        if (isTextOn == false)//ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -250,7 +299,7 @@ public class TextManager : MonoBehaviour
             for (; bossPhase3Scenario[scriptNum] != " ";)
             {
                 yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < bossPhase3Scenario[scriptNum].Length; i++)//ÇØ´ç ´ë»çÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÅØ½ºÆ®¸¦ Á¡Á¡ ¶ç¿ì±â
+                for (int i = 0; i < bossPhase3Scenario[scriptNum].Length; i++)//ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½Å­ ï¿½İºï¿½ï¿½Ï¸ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     if (Input.GetKey(KeyCode.Space))
                         break;
@@ -310,14 +359,14 @@ public class TextManager : MonoBehaviour
             barrage[i].Delete();
         }
 
-        if (isTextOn == false)//´Ù¸¥ ´ë»ç ÅØ½ºÆ®°¡ ³ª¿À´Â µ¿¾È¿¡ Ãâ·ÂµÇÁö ¾Ê°Ô ¸·±â
+        if (isTextOn == false)//ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             transform.GetChild(0).gameObject.SetActive(true);
             text.text = "";
             for (; bossDeadScenario[scriptNum] != " ";)
             {
                 yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < bossDeadScenario[scriptNum].Length; i++)//ÇØ´ç ´ë»çÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÅØ½ºÆ®¸¦ Á¡Á¡ ¶ç¿ì±â
+                for (int i = 0; i < bossDeadScenario[scriptNum].Length; i++)//ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½Å­ ï¿½İºï¿½ï¿½Ï¸ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     if (Input.GetKey(KeyCode.Space))
                         break;
@@ -329,7 +378,6 @@ public class TextManager : MonoBehaviour
                 }
 
                 text.text = bossDeadScenario[scriptNum];
-
                 yield return new WaitForSeconds(0.5f);
                 while (true)
                 {
@@ -346,7 +394,6 @@ public class TextManager : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
 
         }
-
         if (scriptNum == 0)
         {
             FadeManager.GetInstance().FadeOut(GameManager.GetInstance().fadeImage_loading);
@@ -364,32 +411,58 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
-            GameManager.GetInstance().StartCoroutine("IEnding");
-            Boss.GetInstance().gameObject.SetActive(false);
+            Boss.GetInstance().gameObject.SetActive(false);        
+            }
         }
     }
-    IEnumerator IEnding(int scriptNum)
+
+    IEnumerator ITutorialTextOn(int scriptNum)
     {
-        if (isTextOn == false)//´Ù¸¥ ´ë»ç ÅØ½ºÆ®°¡ ³ª¿À´Â µ¿¾È¿¡ Ãâ·ÂµÇÁö ¾Ê°Ô ¸·±â
+        if(scriptNum < 11)
+        {
+            textQuest.text = "";
+            Debug.Log("scriptNum" + scriptNum);
+        }
+            
+
+        if(scriptNum == 0)
+        {
+            transform.parent.GetChild(1).gameObject.SetActive(false);
+        }
+        //íŠ¹ìˆ˜í•œ í…ìŠ¤íŠ¸ ë„˜ë²„ëŠ” ìœ„ìª½ì— ì¶œë ¥í•˜ë„ë¡ ì„¤ì •
+        if(scriptNum == 10)
+        {
+            if(TutorialManager.GetInstance().isSecondMissionClear1 == false)
+            {
+                TutorialManager.GetInstance().isSecondMissionClear1 = true;
+                backButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                yield break;
+            }
+        }
+
+        if (isTextOn == false)//ë‹¤ë¥¸ ëŒ€ì‚¬ í…ìŠ¤íŠ¸ê°€ ë‚˜ì˜¤ëŠ” ë™ì•ˆì— ì¶œë ¥ë˜ì§€ ì•Šê²Œ ë§‰ê¸°
         {
 
-            transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(true);
-            Endingtext.text = "";
-            for (; Ending[scriptNum] != " ";)
+            transform.GetChild(0).gameObject.SetActive(true);
+            text.text = "";
+            for (; tutorialScenario[scriptNum] != " ";)
             {
                 yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < Ending[scriptNum].Length; i++)//ÇØ´ç ´ë»çÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÅØ½ºÆ®¸¦ Á¡Á¡ ¶ç¿ì±â
+                for (int i = 0; i < tutorialScenario[scriptNum].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
                 {
                     if (Input.GetKey(KeyCode.Space))
                         break;
 
                     //sizeCtrl.Fix(i + 1);
                     //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
-                    Endingtext.text = Ending[scriptNum].Substring(0, i + 1);
+                    text.text = tutorialScenario[scriptNum].Substring(0, i + 1);
                     yield return new WaitForSeconds(delay);
                 }
 
-                Endingtext.text = Ending[scriptNum];
+                text.text = tutorialScenario[scriptNum];
 
                 yield return new WaitForSeconds(0.5f);
                 while (true)
@@ -404,14 +477,99 @@ public class TextManager : MonoBehaviour
                 }
                 scriptNum++;
             }
+            transform.GetChild(0).gameObject.SetActive(false);
 
-            if (scriptNum == 4)
+        }
+        if (scriptNum == 6)
+        {
+            Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
+            
+            //ì˜¤ë¥¸ìª½ ìœ„ í€˜ìŠ¤íŠ¸ í…ìŠ¤íŠ¸ ë„ìš°ê¸°
+            textQuest.text = " ";
+
+            for (int i = 0; i < tutorialQuestScenario[0].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
             {
-                Debug.Log("¾Æ´ÏÀÌ°Ô¿ÖÁö±İµÅ");
-                transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(false);
-                transform.parent.GetChild(6).GetChild(1).gameObject.SetActive(true);
+                //sizeCtrl.Fix(i + 1);
+                //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                textQuest.text = tutorialQuestScenario[0].Substring(0, i + 1);
+                yield return new WaitForSeconds(delay);
             }
 
+            textQuest.text = tutorialQuestScenario[0];
+        }
+        else if (scriptNum == 9)
+        {
+            Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
+
+            //ì˜¤ë¥¸ìª½ ìœ„ í€˜ìŠ¤íŠ¸ í…ìŠ¤íŠ¸ ë„ìš°ê¸°
+            textQuest.text = " ";
+
+            for (int i = 0; i < tutorialQuestScenario[1].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
+            {
+                //sizeCtrl.Fix(i + 1);
+                //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                textQuest.text = tutorialQuestScenario[1].Substring(0, i + 1);
+                yield return new WaitForSeconds(delay);
+            }
+
+            textQuest.text = tutorialQuestScenario[1];
+            transform.parent.GetChild(1).gameObject.SetActive(true);
+
+
+            Color tempColor = redBox.color;
+            tempColor.a = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                tempColor.a += 0.01f;
+                redBox.color = tempColor;
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+        else if (scriptNum == 11)
+        {
+            textQuest.text = " ";
+
+            for (int i = 0; i < tutorialQuestScenario[2].Length; i++)//í•´ë‹¹ ëŒ€ì‚¬ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° í…ìŠ¤íŠ¸ë¥¼ ì ì  ë„ìš°ê¸°
+            {
+                //sizeCtrl.Fix(i + 1);
+                //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                textQuest.text = tutorialQuestScenario[2].Substring(0, i + 1);
+                yield return new WaitForSeconds(delay);
+            }
+
+            textQuest.text = tutorialQuestScenario[2];
+
+            //ë ˆë“œë°•ìŠ¤2 ë„ìš°ê¸°
+            Color tempColor = redBox2.color;
+            tempColor.a = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                tempColor.a += 0.01f;
+                redBox2.color = tempColor;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            TextPosUp();
+            isBoxUp = true;
+            TutorialTextOn(12);
+        }
+        else if (scriptNum == 15)
+        {
+            redBox2.gameObject.SetActive(false);
+
+            TextPosDown();
+            isBoxUp = false;
+            TutorialTextOn(16);
+        }
+        else if(scriptNum == 17)
+        {
+            //ë³´ìŠ¤ë£¸ ì…ì¥ ê°€ëŠ¥
+            FindObjectOfType<EnterTheBossRoom>().GetComponent<CapsuleCollider2D>().enabled = true;
+            textQuest.text = "";
+            TutorialManager.GetInstance().isSecondMissionClear2 = true;
+            backButton.gameObject.SetActive(true);
         }
     }
 }
