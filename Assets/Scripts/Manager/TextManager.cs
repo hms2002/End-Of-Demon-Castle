@@ -8,7 +8,6 @@ public class TextManager : MonoBehaviour
     //private SizeCtrl sizeCtrl;
     public bool isTextOn = false; //bool 값에 따라 TextClose 실행 여부 결정
     public Text text;
-
     public Text textName;
     public Text textQuest;
     public Image redBox;
@@ -20,10 +19,6 @@ public class TextManager : MonoBehaviour
     public float delay;//텍스트 출력 속도
 
     bool isBoxUp = false;
-
-    public Text Endingtext;
-    public float delay;//�ؽ�Ʈ ���� �ӵ�
-
 
     public static TextManager textManager;
 
@@ -94,24 +89,12 @@ public class TextManager : MonoBehaviour
         " "
     };
 
-
     private string[] tutorialQuestScenario =
     {
         "Tutorial 1: 구덩이를 전부 넘자!",
         "Tutorial 2: 스킬에 대해서 – 스킬 선택창 클릭!",
         "Tutorial 2: 스킬에 대해서 – 스킬 선택하기!"
     };
-
-    private string[] Ending =
-    {
-        "�׷��� ������ ������ �����ư�...",
-        "������ �ٽ� ��ȭ�� ��ã�� �Ǿ���...",
-        "������ ���� �𸥴�...",
-        "�� �ٸ� ������ ���� ���̴�ĥ����...",
-        " "
-    };
-
-
     #endregion
     
 
@@ -122,7 +105,6 @@ public class TextManager : MonoBehaviour
         upPos = new Vector3(200, 900, 0);
         downPos = new Vector3(200, 270, 0);
         rect = transform.GetChild(0).GetComponent<RectTransform>();
-        Endingtext = transform.parent.GetChild(6).GetChild(0).GetComponent<Text>();
     }
 
     public void BossTextOn(int scriptNum)
@@ -149,11 +131,6 @@ public class TextManager : MonoBehaviour
     {
         textName.text = "용사";
         StartCoroutine("ITutorialTextOn", scriptNum);
-    }
-
-    public void EndingOn(int scriptNum)
-    {
-        StartCoroutine("IEnding", scriptNum);
     }
 
     public void TextClose()
@@ -593,52 +570,6 @@ public class TextManager : MonoBehaviour
             textQuest.text = "";
             TutorialManager.GetInstance().isSecondMissionClear2 = true;
             backButton.gameObject.SetActive(true);
-        }
-    }
-    IEnumerator IEnding(int scriptNum)
-    {
-        if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
-        {
-
-            transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(true);
-            Endingtext.text = "";
-            for (; Ending[scriptNum] != " ";)
-            {
-                yield return new WaitForSeconds(0.5f);
-                for (int i = 0; i < Ending[scriptNum].Length; i++)//�ش� ������ ���̸�ŭ �ݺ��ϸ� �ؽ�Ʈ�� ���� ������
-                {
-                    if (Input.GetKey(KeyCode.Space))
-                        break;
-
-                    //sizeCtrl.Fix(i + 1);
-                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
-                    Endingtext.text = Ending[scriptNum].Substring(0, i + 1);
-                    yield return new WaitForSeconds(delay);
-                }
-
-                Endingtext.text = Ending[scriptNum];
-
-                yield return new WaitForSeconds(0.5f);
-                while (true)
-                {
-                    if (Input.GetKey(KeyCode.Space))
-                    {
-                        Debug.Log(1);
-                        break;
-                    }
-
-                    yield return new WaitForSeconds(Time.deltaTime);
-                }
-                scriptNum++;
-            }
-
-            if (scriptNum == 4)
-            {
-                Debug.Log("�ƴ��̰Կ����ݵ�");
-                transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(false);
-                transform.parent.GetChild(6).GetChild(1).gameObject.SetActive(true);
-            }
-
         }
     }
 }
