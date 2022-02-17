@@ -60,4 +60,9 @@ public class Barrage : MonoBehaviour
         rigid.velocity = Vector3.zero;
         rigid.AddForce(new Vector2(Forcedir.normalized.x, Forcedir.normalized.y) * Speed, ForceMode2D.Impulse);
     }
+
+    public void Delete()
+    {
+        gameObject.SetActive(false);
+    }
 }

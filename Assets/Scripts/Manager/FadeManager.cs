@@ -17,6 +17,7 @@ public class FadeManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFadeEnd = false;
     }
+
     private void Start()
     {
         if(fadeManager != null)
@@ -88,6 +89,12 @@ public class FadeManager : MonoBehaviour
 
     IEnumerator FadeOut_Loading(Image fadeImage)
     {
+        if(fadeImage == null)
+        {
+            fadeImage = GameManager.GetInstance().fadeImage_loading;
+
+
+        }
         fadeImage.transform.parent.gameObject.SetActive(true);
         Color imageColor = fadeImage.color;
         imageColor.a = 1.0f;
