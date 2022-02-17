@@ -8,6 +8,7 @@ public class TextManager : MonoBehaviour
     //private SizeCtrl sizeCtrl;
     public bool isTextOn = false; //bool 값에 따라 TextClose 실행 여부 결정
     public Text text;
+    public Text Endingtext;
     public float delay;//텍스트 출력 속도
 
     public static TextManager textManager;
@@ -54,11 +55,22 @@ public class TextManager : MonoBehaviour
         "죽으면 똥 지리겠네 시벌ㅋㅋ",
         " "
     };
+
+    private string[] Ending =
+    {
+        "그렇게 용사는 마왕을 물리쳤고...",
+        "세계는 다시 평화를 되찾게 되었다...",
+        "하지만 아직 모른다...",
+        "또 다른 위협이 언제 들이닥칠지는...",
+        " "
+    };
+
     #endregion
     private void Start()
     {
         //sizeCtrl = transform.GetChild(0).gameObject.GetComponent<SizeCtrl>();
         text = transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();//텍스트 오브젝트 가져오기
+        Endingtext = transform.parent.GetChild(6).GetChild(0).GetComponent<Text>();
     }
 
     public void BossTextOn(int scriptNum)
@@ -78,6 +90,11 @@ public class TextManager : MonoBehaviour
     public void BossDead(int scriptNum)
     {
         StartCoroutine("IBossDead", scriptNum);
+    }
+
+    public void EndingOn(int scriptNum)
+    {
+        StartCoroutine("IEnding", scriptNum);
     }
 
     public void TextClose()
@@ -347,7 +364,54 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
+            GameManager.GetInstance().StartCoroutine("IEnding");
             Boss.GetInstance().gameObject.SetActive(false);
+        }
+    }
+    IEnumerator IEnding(int scriptNum)
+    {
+        if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
+        {
+
+            transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(true);
+            Endingtext.text = "";
+            for (; Ending[scriptNum] != " ";)
+            {
+                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < Ending[scriptNum].Length; i++)//해당 대사의 길이만큼 반복하며 텍스트를 점점 띄우기
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                        break;
+
+                    //sizeCtrl.Fix(i + 1);
+                    //Debug.Log(bossDoorScenario[scriptNum].Length + "  " + i);
+                    Endingtext.text = Ending[scriptNum].Substring(0, i + 1);
+                    yield return new WaitForSeconds(delay);
+                }
+
+                Endingtext.text = Ending[scriptNum];
+
+                yield return new WaitForSeconds(0.5f);
+                while (true)
+                {
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.Log(1);
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(Time.deltaTime);
+                }
+                scriptNum++;
+            }
+
+            if (scriptNum == 4)
+            {
+                Debug.Log("아니이게왜지금돼");
+                transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(false);
+                transform.parent.GetChild(6).GetChild(1).gameObject.SetActive(true);
+            }
+
         }
     }
 }
