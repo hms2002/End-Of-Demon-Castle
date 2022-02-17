@@ -26,7 +26,18 @@ public class SetCursor : MonoBehaviour
             case "magicCircle":
                 Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
             break;
+            case "skillSetting":
+                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case "onDrag":
+                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+                break;
         }
 
+    }
+
+    public void ChangeCursor(int cursorIdx)
+    {
+        Cursor.SetCursor(cursorImg[cursorIdx], Vector2.zero, CursorMode.ForceSoftware);
     }
 }
