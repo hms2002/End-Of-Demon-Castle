@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour
         if(collision.CompareTag("CanBroke"))
         {
             BreakableObj obj = collision.GetComponent<BreakableObj>();
-            obj.breakObj();
+            obj.breakObj(Damage + DamageControler.GetInstance().GetMonoDamage());
             gameObject.SetActive(false);
         }
         if(Layer == 12)
