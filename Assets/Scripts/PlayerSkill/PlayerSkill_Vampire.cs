@@ -10,6 +10,8 @@ public class PlayerSkill_Vampire : Skill_ID
     public GameObject absorbBlood;
     GameObject buffICON;
     GameObject tempHeal;
+    AudioSource soundPlayer;
+    AudioClip continuousSound;
 
     bool isSkillOn;
     float skillDuration = 0.0f;
@@ -27,6 +29,7 @@ public class PlayerSkill_Vampire : Skill_ID
         boss = FindObjectOfType<Boss>();
         healSkill = Resources.Load<GameObject>("Prefabs/Heal");
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
+        continuousSound = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/VampireLoop");
 
         //#.스킬 아이콘 및 강제 초기화
         buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_Absorption");
@@ -36,8 +39,6 @@ public class PlayerSkill_Vampire : Skill_ID
 
         curTime = 0;
         coolTime = 25;
-
-
     }
 
     private void Update()
@@ -76,6 +77,7 @@ public class PlayerSkill_Vampire : Skill_ID
     IEnumerator Absorb()
     {
         aura = Instantiate(absorbBlood);
+        soundPlayer = aura.GetComponent<AudioSource>();
         tempICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
         BuffLayoutSetting.GetInstance().AddBuff();
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
@@ -113,8 +115,10 @@ public class PlayerSkill_Vampire : Skill_ID
 
     IEnumerator PlayVampireLoopSound()
     {
-        yield return new WaitForSeconds(0.6f);
-        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireLoop", 0.3f);
+        yield return new WaitForSeconds(0.5f);
+        soundPlayer.clip = continuousSound;
+        soundPlayer.volume = 0.3f;
+        soundPlayer.Play();
     }
 
     public void BeforeDEL()
