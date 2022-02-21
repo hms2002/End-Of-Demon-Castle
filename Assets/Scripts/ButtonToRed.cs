@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class ButtonToRed : MonoBehaviour
 {
     public GameObject startButton;
-    public GameObject optionButton;
     public GameObject exitButton;
     public Text start;
-    public Text option;
     public Text exit;
+    public GameObject startTextShadow;
+    public GameObject exitTextShadow;
 
     //버튼 색상 변환
     public void MousePointEnter(int buttonType)
@@ -21,22 +21,19 @@ public class ButtonToRed : MonoBehaviour
         {
             case 0://start
                 textColor = start.color;
-                textColor.r += 1;
+                textColor.g -= 1.0f;
+                textColor.b -= 1.0f;
                 start.color = textColor;
+                startTextShadow.SetActive(true);
 
                 break;
 
-            case 1://option
-                textColor = option.color;
-                textColor.r += 1;
-                option.color = textColor;
-
-                break;
-
-            case 2://exit
+            case 1://exit
                 textColor = exit.color;
-                textColor.r += 1;
+                textColor.g -= 1.0f;
+                textColor.b -= 1.0f;
                 exit.color = textColor;
+                exitTextShadow.SetActive(true);
 
                 break;
 
@@ -52,22 +49,19 @@ public class ButtonToRed : MonoBehaviour
         {
             case 0://start
                 textColor = start.color;
-                textColor.r -= 1;
+                textColor.g += 1.0f;
+                textColor.b += 1.0f;
                 start.color = textColor;
+                startTextShadow.SetActive(false);
 
                 break;
 
-            case 1://option
-                textColor = option.color;
-                textColor.r -= 1;
-                option.color = textColor;
-
-                break;
-
-            case 2://exit
+            case 1://exit
                 textColor = exit.color;
-                textColor.r -= 1;
+                textColor.g += 1.0f;
+                textColor.b += 1.0f;
                 exit.color = textColor;
+                exitTextShadow.SetActive(false);
 
                 break;
 

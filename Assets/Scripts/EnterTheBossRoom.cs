@@ -93,6 +93,7 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
+        player.playerFree();
     }
 
     public void FightStart()

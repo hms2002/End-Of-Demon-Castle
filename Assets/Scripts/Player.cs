@@ -375,6 +375,11 @@ public class Player : MonoBehaviour
 
     IEnumerator ShowDamaged()
     {
+        if (player.zhonya == true)
+        {
+            yield break;
+        }
+        Debug.Log("ㅗ");
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;
@@ -548,6 +553,11 @@ public class Player : MonoBehaviour
     //#.문 열 때 플레이어 제어
     public void playerConfine()
     {
+        if (player.zhonya == true)
+        {
+            return;
+        }
+
         canMove = false;
         canAttack = false;
         canDash = false;
@@ -560,11 +570,19 @@ public class Player : MonoBehaviour
 
     public void playerFree()
     {
+        rigid.velocity = Vector2.zero;
+
         if (isDead)
         {
             rigid.velocity = Vector2.zero;
             return;
         }
+
+        if (player.zhonya == true)
+        {
+            return;
+        }
+
         canAttack = true;
         canMove = true;
         canDash = true;
@@ -604,6 +622,19 @@ public class Player : MonoBehaviour
     }
     public void playerFree(string idx)
     {
+        rigid.velocity = Vector2.zero;
+
+        if (isDead)
+        {
+            rigid.velocity = Vector2.zero;
+            return;
+        }
+
+        if (player.zhonya == true)
+        {
+            return;
+        }
+
         switch (idx)
         {
             case "Attack":

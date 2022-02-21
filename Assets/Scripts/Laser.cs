@@ -63,11 +63,11 @@ public class Laser : MonoBehaviour
                     boxCollider2D.enabled = false;
                 }
             }
-            Invoke("InbokePlayerFree", 0.15f);  
+            Invoke("InvokePlayerFree", 0.15f);  
         }
     }
 
-    private void InbokePlayerFree()
+    private void InvokePlayerFree()
     {
         player.playerFree();
     }

@@ -11,6 +11,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
     GameObject bladeEffect;
 
     bool isSkillOn;
+    float walkingSpeed = 3.5f;
     float coolTime = 10.0f;
     float curTime;
     bool isSliderInit = false;
@@ -69,7 +70,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
     {
         bladeEffect = Instantiate(whirlwind);
 
-        player.speed = 5.0f;
+        player.speed = walkingSpeed;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
         player.playerConfine("Skill");

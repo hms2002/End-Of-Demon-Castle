@@ -66,12 +66,12 @@ public class PlayerSkill_Pray : Skill_ID
 
     IEnumerator ActivePray()
     {
-        player.zhonya = true;
         animator.SetBool("GoIdle", false);
         player.playerConfine("Move");
         player.playerConfine("Dash");
         player.playerConfine("Attack");
         player.playerConfine("Skill");
+        player.zhonya = true;
 
         yield return new WaitForSeconds(0.1f);
         animator.SetTrigger("prayOn");
