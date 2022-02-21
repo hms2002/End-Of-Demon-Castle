@@ -11,7 +11,7 @@ public class PlayerSkill_WhirlWind : Skill_ID
     GameObject bladeEffect;
 
     bool isSkillOn;
-    float walkingSpeed = 3.5f;
+    float walkingSpeed = 8.0f;
     float coolTime = 10.0f;
     float curTime;
     bool isSliderInit = false;
