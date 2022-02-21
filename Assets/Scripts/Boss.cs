@@ -31,6 +31,7 @@ public class Boss : MonoBehaviour
     public bool Phase3 = false;
     public bool BossStop = true;
     public Rigidbody2D rigid;
+    public Animator anim;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Boss : MonoBehaviour
         player = Player.GetInstance();
         boxCollider = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -57,7 +59,7 @@ public class Boss : MonoBehaviour
             }
         }
         if (BossHp <= 0 && Phase2)
-        {   
+        {
             StopAllCoroutines();
             Phase2 = false;
             Phase3 = true;
@@ -780,17 +782,14 @@ public class Boss : MonoBehaviour
     public void damaged(int damage)
     {
         BossHp -= damage;
-        dead();
     }
     public void damaged(float damage)
     {
         BossHp -= damage;
-        dead();
     }
     public void damaged(float damage, string attackType)
     {
         BossHp -= damage;
-        dead();
 
         if (attackType == "sword")
         {
@@ -798,9 +797,4 @@ public class Boss : MonoBehaviour
         }
     }
     //#.죽기
-    void dead()
-    {
-        if(BossHp <= 0)
-            GetComponent<SpriteRenderer>().color = Color.red;
-    }
 }
