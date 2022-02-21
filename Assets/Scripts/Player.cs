@@ -413,6 +413,7 @@ public class Player : MonoBehaviour
         sword.SetActive(true);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SwordSlash", 0.35f);
         canMove = false;
+        playerConfine("Skill");
 
         rigid.velocity = new Vector2(0, 0);
         setSwordAngle();
@@ -436,6 +437,7 @@ public class Player : MonoBehaviour
         onAttack = false;
         sword.SetActive(false);
         canMove = true;
+        playerFree("Skill");
     }
 
     

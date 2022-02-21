@@ -7,10 +7,10 @@ public class PlayerSkill_Pray : Skill_ID
     Player player;
     Animator animator;
 
-    float skillDuration = 10.0f;
+    float skillDuration = 2.0f;
     bool isSkillOn;
 
-    float coolTime = 10.5f;
+    float coolTime = 0.5f;
     float curTime;
     bool isSliderInit = false;
 
@@ -31,15 +31,19 @@ public class PlayerSkill_Pray : Skill_ID
 
     private void Update()
     {
-        curTime -= Time.deltaTime;
-        if (coolTimeSlider != null)
+        if(isSkillOn == false)
         {
-            if (!isSliderInit)
+
+            curTime -= Time.deltaTime;
+            if (coolTimeSlider != null)
             {
-                coolTimeSlider.maxValue = coolTime;
-                isSliderInit = true;
+                if (!isSliderInit)
+                {
+                    coolTimeSlider.maxValue = coolTime;
+                    isSliderInit = true;
+                }
+                coolTimeSlider.value = curTime;
             }
-            coolTimeSlider.value = curTime;
         }
     }
 
@@ -76,12 +80,14 @@ public class PlayerSkill_Pray : Skill_ID
         yield return new WaitForSeconds(0.1f);
         animator.SetTrigger("prayOn");
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Pray");
+        Debug.Log("OnZon");
         yield return new WaitForSeconds(skillDuration);
 
         player.zhonya = false;
         animator.SetBool("GoIdle", true);
         player.playerFree();
         isSkillOn = false;
+        Debug.Log("OffZon!");
 
         //#.아이콘 지우기
         Destroy(tempBuffICON);
@@ -92,6 +98,7 @@ public class PlayerSkill_Pray : Skill_ID
     {
         if(isSkillOn)
         {
+            Debug.Log("OffZon@");
             Destroy(tempBuffICON);
             BuffLayoutSetting.GetInstance().SubBuff();
             player.zhonya = false;

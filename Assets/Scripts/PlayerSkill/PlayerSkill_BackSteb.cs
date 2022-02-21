@@ -22,6 +22,7 @@ public class PlayerSkill_BackSteb : Skill_ID
     Vector3 mousePos;
     Camera cameraMain;
     bool isFirst;
+    bool OnKey = false;
 
     void Start()
     {
@@ -43,15 +44,19 @@ public class PlayerSkill_BackSteb : Skill_ID
     }
 
     private void Update() {
-        curTime -= Time.deltaTime;
-        coolTimeSlider.value = curTime;
+        if(OnKey == false)
+        {
+
+            curTime -= Time.deltaTime;
+            coolTimeSlider.value = curTime;
+        }
     }
 
     public override void SkillOn()
     {
         if(curTime > 0)
             return;
-
+        OnKey = true;
         curTime = coolTime;
         playerSkill.canSkill = false;
         setCursor.ChangeCursor("backSteb");
@@ -105,6 +110,7 @@ public class PlayerSkill_BackSteb : Skill_ID
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
+        OnKey = false;
         player.playerFree("Attack");
         player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         setCursor.ChangeCursor("base");

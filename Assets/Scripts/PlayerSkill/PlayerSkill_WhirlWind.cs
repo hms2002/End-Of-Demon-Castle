@@ -30,20 +30,22 @@ public class PlayerSkill_WhirlWind : Skill_ID
     
     void Update()
     {
-        curTime -= Time.deltaTime;
-        if (coolTimeSlider != null)
-        {
-            if (!isSliderInit)
-            {
-                coolTimeSlider.maxValue = coolTime;
-                isSliderInit = true;
-            }
-            coolTimeSlider.value = curTime;
-        }
-
         if (isSkillOn)
         {
             playerAudioSource.Stop();
+        }
+        else
+        {
+            curTime -= Time.deltaTime;
+            if (coolTimeSlider != null)
+            {
+                if (!isSliderInit)
+                {
+                    coolTimeSlider.maxValue = coolTime;
+                    isSliderInit = true;
+                }
+                coolTimeSlider.value = curTime;
+            }
         }
 
         if (bladeEffect != null)

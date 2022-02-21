@@ -13,6 +13,8 @@ public class PlayerSkill_PillarOfFire : Skill_ID
     float coolTime = 10f;
     float curTime = 0;
 
+    bool OnKey = false;
+
     private void Start()
     {
         setCursor = Camera.main.gameObject.GetComponent<SetCursor>();
@@ -32,18 +34,23 @@ public class PlayerSkill_PillarOfFire : Skill_ID
 
     private void Update()
     {
-        curTime -= Time.deltaTime;
-        coolTimeSlider.value = curTime;
+        if(OnKey == false)
+        {
+            curTime -= Time.deltaTime;
+            coolTimeSlider.value = curTime;
+        }
     }
 
     IEnumerator Setting()
     {
         setCursor.ChangeCursor("magicCircle");
-        
+        OnKey = true;
         while(true)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("H:");
+                OnKey = false;
                 SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/PillarOfFire", 0.8f);
                 GameObject darkTemp = Instantiate(darkFlame, Player.GetInstance().transform);
                 darkFlame.transform.localPosition = new Vector3(0, 0, 0);
