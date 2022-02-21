@@ -40,6 +40,7 @@ public class TextManager : MonoBehaviour
         " ",
         "근데 왜 이렇게 일찍 왔냐?",
         "아직 똥 못 쌌는데...",
+        " ",
         "내가 나설 필요도 없겠다. 지금 배 아파서 움직면 큰일나.",//4
         " "//5
     };
@@ -48,6 +49,7 @@ public class TextManager : MonoBehaviour
     {
         " ",
         "오호... 네 녀석 꽤나 강력하구나...",
+        " ",
         "그럼... 이 몸이 살짝 움직여 볼까?",
         " "
     };
@@ -132,10 +134,12 @@ public class TextManager : MonoBehaviour
 
     public void BossPhase3On(int scriptNum)
     {
+        textName.text = "마왕";
         StartCoroutine("IBossPhase3On", scriptNum);
     }
     public void BossDead(int scriptNum)
     {
+        textName.text = "마왕";
         StartCoroutine("IBossDead", scriptNum);
     }
 
@@ -170,6 +174,8 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IBossTextOn(int scriptNum)
     {
+        Player.GetInstance().playerConfine();
+
         if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
         {
 
@@ -220,23 +226,39 @@ public class TextManager : MonoBehaviour
 
             BossTextOn(2);
         }
-        else if(scriptNum == 5)
+        if(scriptNum == 4)
+        {
+            GameObject.Find("Map").transform.GetChild(6).gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(1.5f);
+
+            BossTextOn(5);
+        }
+        if(scriptNum == 6)
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
             yield return new WaitForSeconds(1.5f);
 
             EnterTheBossRoom.GetInstance().FightStart();
+            Player.GetInstance().playerFree();
         }
     }
 
     IEnumerator IBossPhase2On(int scriptNum)
     {
+        Player.GetInstance().playerConfine();
         Barrage[] barrage = FindObjectsOfType<Barrage>();
+        Laser[] laser = FindObjectsOfType<Laser>();
 
         for (int i = 0; i < barrage.Length; i++)
         {
             barrage[i].Delete();
+        }
+
+        for (int i = 0; i < laser.Length; i++)
+        {
+            laser[i].gameObject.SetActive(false);
         }
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
@@ -288,9 +310,25 @@ public class TextManager : MonoBehaviour
 
             BossPhase2On(1);
         }
-        if (scriptNum == 3)
+        if (scriptNum == 2)
+        {
+            for(int i = 0; i < 24; i++)
+            {
+                GameObject.Find("Map").transform.GetChild(6).GetChild(i).GetComponent<Animator>().SetTrigger("SkulDestroy");
+            }
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < 24; i++)
+            {
+                GameObject.Find("Map").transform.GetChild(6).GetChild(i).gameObject.SetActive(false);
+            }
+            yield return new WaitForSeconds(1.5f);
+            BossPhase2On(3);
+        }
+        if (scriptNum == 4)
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
+
+            Player.GetInstance().playerFree();
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -300,12 +338,28 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IBossPhase3On(int scriptNum)
     {
+        Player.GetInstance().playerConfine();
+
         Barrage[] barrage = FindObjectsOfType<Barrage>();
+        Laser[] laser = FindObjectsOfType<Laser>();
+        BigBarrage[] bigBarrage = FindObjectsOfType<BigBarrage>();
+
 
         for (int i = 0; i < barrage.Length; i++)
         {
             barrage[i].Delete();
         }
+
+        for (int i = 0; i < laser.Length; i++)
+        {
+            laser[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < bigBarrage.Length; i++)
+        {
+            bigBarrage[i].gameObject.SetActive(false);
+        }
+
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
         {
@@ -363,16 +417,32 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             Boss.GetInstance().PatternManager();
+
+            Player.GetInstance().playerFree();
         }
     }
 
     IEnumerator IBossDead(int scriptNum)
     {
+        Player.GetInstance().playerConfine();
+
         Barrage[] barrage = FindObjectsOfType<Barrage>();
+        Laser[] laser = FindObjectsOfType<Laser>();
+        AOE[] aoe = FindObjectsOfType<AOE>();
 
         for (int i = 0; i < barrage.Length; i++)
         {
             barrage[i].Delete();
+        }
+
+        for (int i = 0; i < laser.Length; i++)
+        {
+            laser[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < aoe.Length; i++)
+        {
+            aoe[i].gameObject.SetActive(false);
         }
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
@@ -428,7 +498,7 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             GameManager.GetInstance().StartCoroutine("IEnding");
-            Boss.GetInstance().gameObject.SetActive(false);        
+            Boss.GetInstance().gameObject.SetActive(false);
             }
         }
 

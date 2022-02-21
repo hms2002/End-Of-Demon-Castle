@@ -63,7 +63,7 @@ public class Boss : MonoBehaviour
             Phase3 = true;
             BossStop = false;
             rigid.velocity = Vector2.zero;
-            BossHp = 700;
+            StartCoroutine("HpRaise");
             TextManager.GetInstance().BossPhase3On(0);
         }
         if (BossHp <= 0 && Phase3)
@@ -116,7 +116,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 11);
+                PatternNum = Random.Range(1, 3);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -124,10 +124,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_1");
+                    StartCoroutine("Pattern_10");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_2");
+                    StartCoroutine("Pattern_10");
                     break;
                 case 3:
                     StartCoroutine("Pattern_3");
@@ -564,7 +564,7 @@ public class Boss : MonoBehaviour
             GameObject BigBarrage = objectManager.MakeObj("BigBarrage");
             BigBarrage bigBarrageLogic = BigBarrage.GetComponent<BigBarrage>();
             bigBarrageLogic.objectManager = objectManager;
-            BigBarrage.transform.position = transform.position;
+            BigBarrage.transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
             BarrageSpeed = 10f;
             Rigidbody2D rigid = BigBarrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
@@ -763,6 +763,15 @@ public class Boss : MonoBehaviour
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.velocity = new Vector2(playerdir.normalized.x * BossSpeed, playerdir.normalized.y * BossSpeed);
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private IEnumerator HpRaise()
+    {
+        for(int i = 1; i < 700; i++)
+        {
+            BossHp = i;
+            yield return new WaitForSeconds(0.001f);
         }
     }
     //#.피해 입기

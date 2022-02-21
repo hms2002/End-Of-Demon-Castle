@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
     {
         isFired = true;
         boxCollider2D.enabled = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         gameObject.SetActive(false);
     }
 

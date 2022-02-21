@@ -65,6 +65,7 @@ public class Cristal : BreakableObj
         {
             GameObject Barrage = objectManager.MakeObj("Barrage");
             barrageLogic[i] = Barrage.GetComponent<Barrage>();
+            barrageLogic[i].player = player;
             Barrage.transform.position = transform.position;
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
             rigid.velocity = Vector2.zero;

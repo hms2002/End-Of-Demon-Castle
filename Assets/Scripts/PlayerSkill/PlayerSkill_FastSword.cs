@@ -34,6 +34,8 @@ public class PlayerSkill_FastSword : Skill_ID
 
         tempObj.transform.localPosition = new Vector2(0, 0);
 
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/FastSword", 0.5f);
+
         Destroy(tempObj, 15);
 
         StartCoroutine("Off");
