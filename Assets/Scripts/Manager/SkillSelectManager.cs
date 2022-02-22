@@ -30,9 +30,16 @@ public class SkillSelectManager : MonoBehaviour
 
     public void OpenSkillSetting()
     {
-        if(Init != null)
+        Player.GetInstance().isCanFree = false;
+        Debug.Log("FreeCancle : 1");
+        Player.GetInstance().playerConfine();
+        Debug.Log("FreeConfi : 2");
+        Player.GetInstance().playerConfine("Skill");
+        Debug.Log("FreeConfi : 3");
+        if (Init != null)
         {
             Init();
+            SetCursor.GetInstance().ChangeCursor(3);
             Init = null;
 
         }
@@ -47,7 +54,11 @@ public class SkillSelectManager : MonoBehaviour
 
     public void EndSelect()
     {
-        while(skillList.Count > 0)
+        Player.GetInstance().isCanFree = true;
+        Player.GetInstance().playerFree();
+        Player.GetInstance().playerFree("Skill");
+        SetCursor.GetInstance().ChangeCursor(0);
+        while (skillList.Count > 0)
         {
             Destroy(skillList[0]);
             skillList.RemoveAt(0);

@@ -80,7 +80,7 @@ public class PlayerSkill_BackSteb : Skill_ID
                     if(hit.transform.CompareTag("CanBroke") || hit.transform.CompareTag("Boss"))
                     {
                         float distance = Mathf.Abs(Vector2.Distance(transform.position, hit.transform.position));
-                        if(distance <= 7)
+                        if(distance <= 100)
                         {
                             GameObject effect = Instantiate(backSteb, transform.position, transform.rotation);
                             AudioSource effectAudio = effect.GetComponent<AudioSource>();

@@ -41,6 +41,7 @@ public class SkillSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHa
         dragAndDropContainer.skill = skill;
         dragAndDropContainer.skillSlot = this;
         isDragging = true;
+        SetCursor.GetInstance().ChangeCursor(4);
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -55,7 +56,8 @@ public class SkillSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHa
     public void OnEndDrag(PointerEventData eventData)
     {
         //
-        if(canSelect == false)
+        SetCursor.GetInstance().ChangeCursor(3);
+        if (canSelect == false)
             return;
         if(dragAndDropContainer.image.sprite == data.sprite)
         {

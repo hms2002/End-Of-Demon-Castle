@@ -10,6 +10,10 @@ public class PlayerSkill_PillarOfFire : Skill_ID
     GameObject pillarFire;
     GameObject darkFlame;
 
+    GameObject magicCircle;
+
+    GameObject tempCircle;
+
     float coolTime = 10f;
     float curTime = 0;
 
@@ -20,6 +24,7 @@ public class PlayerSkill_PillarOfFire : Skill_ID
         setCursor = Camera.main.gameObject.GetComponent<SetCursor>();
         pillarFire = Resources.Load<GameObject>("Prefabs/PillarOfFire");
         darkFlame = Resources.Load<GameObject>("Prefabs/DarkFlame");
+        magicCircle = Resources.Load<GameObject>("Prefabs/SkillEffect_Pillar_Of_Fire_magicCircle");
 
         coolTimeSlider.maxValue = coolTime;
     }
@@ -43,7 +48,8 @@ public class PlayerSkill_PillarOfFire : Skill_ID
 
     IEnumerator Setting()
     {
-        setCursor.ChangeCursor("magicCircle");
+        setCursor.ChangeCursor(1);
+        tempCircle = Instantiate(magicCircle, transform.position, transform.rotation);
         OnKey = true;
         while(true)
         {
@@ -56,13 +62,14 @@ public class PlayerSkill_PillarOfFire : Skill_ID
                 darkFlame.transform.localPosition = new Vector3(0, 0, 0);
                 break;
             }
-
+            tempCircle.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
             yield return m_waitForSecondTimeDelta;
 
         }
 
         setCursor.ChangeCursor("base");
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Destroy(tempCircle);
 
         Instantiate(pillarFire, (Vector3)mousePos, Quaternion.Euler(0, 0, 0));
     }

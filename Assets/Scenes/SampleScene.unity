@@ -1935,7 +1935,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1142942129}
   m_HandleRect: {fileID: 0}
@@ -4908,7 +4908,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1204693284}
   m_HandleRect: {fileID: 0}
@@ -6371,7 +6371,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 700435073}
   m_HandleRect: {fileID: 0}
@@ -6643,8 +6643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorImg:
-  - {fileID: 2800000, guid: 44e2e4864ec1def43ba5f0acd40a562f, type: 3}
-  - {fileID: 2800000, guid: 072580af0622b764d91dafe765b5b0ab, type: 3}
+  - {fileID: 2800000, guid: 8f903fa10821aa2438e0e4a7c2bb9984, type: 3}
+  - {fileID: 2800000, guid: 7634751ba193a5b4b8697ca05e397e7d, type: 3}
   - {fileID: 2800000, guid: 2c9e626ac73a8444bb6fcd6754e005e0, type: 3}
   - {fileID: 2800000, guid: f9660224f59c2b649ba73ff3cc42cdf4, type: 3}
   - {fileID: 2800000, guid: 0d236a4a64d77394abc7ab1203d1e786, type: 3}
@@ -8782,7 +8782,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 241938886}
   m_HandleRect: {fileID: 0}
@@ -30685,7 +30685,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 458488250}
   m_HandleRect: {fileID: 0}
@@ -33749,7 +33749,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 580775460}
   m_HandleRect: {fileID: 0}

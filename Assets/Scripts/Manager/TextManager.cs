@@ -56,7 +56,7 @@ public class TextManager : MonoBehaviour
     private string[] bossPhase3Scenario =
     {
         " ",
-        "크윽_! 꽤나 강력하군.",
+        "크윽...! 꽤나 강력하군.",
         "좋다. 이번엔 진심을 발휘해주지",
         " "
     };
@@ -64,8 +64,8 @@ public class TextManager : MonoBehaviour
     private string[] bossDeadScenario =
     {
         " ",
-        "이럴_ 수가_!",
-        "하지만_ 이번이 끝은 아닐거다_!",
+        "이럴... 수가_!",
+        "하지만... 이번이 끝은 아닐거다...!",
         " "
     };
     private string[] tutorialScenario=
@@ -176,6 +176,7 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossTextOn(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
 
         if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
         {
@@ -243,12 +244,14 @@ public class TextManager : MonoBehaviour
 
             EnterTheBossRoom.GetInstance().FightStart();
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
         }
     }
 
     IEnumerator IBossPhase2On(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
 
@@ -331,6 +334,7 @@ public class TextManager : MonoBehaviour
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -341,6 +345,7 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossPhase3On(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
         BigBarrage[] bigBarrage = FindObjectsOfType<BigBarrage>();
@@ -421,12 +426,17 @@ public class TextManager : MonoBehaviour
             Boss.GetInstance().PatternManager();
 
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
         }
     }
 
     IEnumerator IBossDead(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
+        SkillSelectManager.GetInstance().OpenSkillSetting();
+
+        SetCursor.GetInstance().ChangeCursor(1);
 
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
@@ -446,6 +456,8 @@ public class TextManager : MonoBehaviour
         {
             aoe[i].gameObject.SetActive(false);
         }
+
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_Ending", 0.3f, Define.Sound.Bgm, 1f);
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
         {
