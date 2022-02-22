@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator StartTutorial()
     {
-        SoundManager.GetInstance().Play("Sound/BGM/BGM_FrontOf_BossRoomDoor", 0.5f, Define.Sound.Bgm, 1f);
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_BeforeEnterBossRoom", 0.5f, Define.Sound.Bgm, 1f);
         yield return new WaitForSeconds(0.01f);
         if (GetInstance().start)
         {

@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
     SpriteRenderer playerSprite;
     public Material whiteMaterial;
     public Material playerMaterial;
+        //0.5초 무적
+        bool canHit = true;
 
     //
     public static Player player;
@@ -337,9 +339,14 @@ public class Player : MonoBehaviour
     {
         if (zhonya == false)
         {
-            StartCoroutine("ShowDamaged");
-            player_hp -= damage;
-            dead();
+            if(canHit)
+            {
+                canHit = false;
+                StartCoroutine("IChangeCanHit");
+                StartCoroutine("ShowDamaged");
+                player_hp -= damage;
+                dead();
+            }
         }
     }
     //#.플레이어 체력
@@ -378,6 +385,12 @@ public class Player : MonoBehaviour
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;
+    }
+
+    IEnumerator IChangeCanHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canHit = true;
     }
 
     IEnumerator IDash()
