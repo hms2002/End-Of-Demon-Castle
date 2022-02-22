@@ -176,6 +176,7 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossTextOn(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
 
         if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
         {
@@ -243,12 +244,14 @@ public class TextManager : MonoBehaviour
 
             EnterTheBossRoom.GetInstance().FightStart();
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
         }
     }
 
     IEnumerator IBossPhase2On(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
 
@@ -331,6 +334,7 @@ public class TextManager : MonoBehaviour
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -341,6 +345,7 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossPhase3On(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
         BigBarrage[] bigBarrage = FindObjectsOfType<BigBarrage>();
@@ -421,6 +426,7 @@ public class TextManager : MonoBehaviour
             Boss.GetInstance().PatternManager();
 
             Player.GetInstance().playerFree();
+            Player.GetInstance().playerFree("Skill");
         }
     }
 
