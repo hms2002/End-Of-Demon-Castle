@@ -77,7 +77,7 @@ public class EnterTheBossRoom : MonoBehaviour
 
     public void GoToPos()
     {
-        BossHpUI.SetActive(true);
+        //BossHpUI.SetActive(true);
         //player.playerFree();
         player.gameObject.transform.position = destination.position;
 

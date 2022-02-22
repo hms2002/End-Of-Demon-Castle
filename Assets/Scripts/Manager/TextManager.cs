@@ -179,7 +179,6 @@ public class TextManager : MonoBehaviour
 
         if (isTextOn == false)//다른 대사 텍스트가 나오는 동안에 출력되지 않게 막기
         {
-
             transform.GetChild(0).gameObject.SetActive(true);
             text.text = "";
             for (; bossDoorScenario[scriptNum] != " ";)
@@ -323,6 +322,14 @@ public class TextManager : MonoBehaviour
                 GameObject.Find("Map").transform.GetChild(6).GetChild(i).gameObject.SetActive(false);
             }
             Boss.GetInstance().anim.SetTrigger("Phase2");
+            while(Boss.GetInstance().BossVanished)
+            {
+                yield return new WaitForSeconds(0.01f);
+            }
+            Boss.GetInstance().transform.position = new Vector3(0, 26, 0);
+            CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
+            yield return new WaitForSeconds(2f);
+            GameObject.Find("UI").transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
             yield return new WaitForSeconds(1.5f);
             BossPhase2On(3);
         }

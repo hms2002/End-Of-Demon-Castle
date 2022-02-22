@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
     public bool Phase2 = false;
     public bool Phase3 = false;
     public bool BossStop = true;
+    public bool BossVanished = true;
     public Rigidbody2D rigid;
     public Animator anim;
 
@@ -118,7 +119,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 3);
+                PatternNum = Random.Range(1, 11);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -126,10 +127,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_10");
+                    StartCoroutine("Pattern_1");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_10");
+                    StartCoroutine("Pattern_2");
                     break;
                 case 3:
                     StartCoroutine("Pattern_3");
@@ -775,6 +776,11 @@ public class Boss : MonoBehaviour
             BossHp = i;
             yield return new WaitForSeconds(0.001f);
         }
+    }
+
+    public void OnVanish()
+    {
+        BossVanished = false;
     }
     //#.피해 입기
 
