@@ -19,8 +19,9 @@ public class PlayerSkill_ChargeAttack : Skill_ID
 
     private void Update()
     {
-        
-        if(OnCharge)
+
+        Debug.Log("Y");
+        if (OnCharge)
         {
             chargeTime += Time.deltaTime;
 
@@ -34,6 +35,7 @@ public class PlayerSkill_ChargeAttack : Skill_ID
         {
             curTime -= Time.deltaTime;
             coolTimeSlider.value = curTime;
+            Debug.Log("J");
         }
         if (chargeTemp != null)
             chargeTemp.transform.localPosition = Vector3.zero;
@@ -54,6 +56,7 @@ public class PlayerSkill_ChargeAttack : Skill_ID
     {
         if (curTime > 0)
             return;
+        Debug.Log("H");
         curTime = coolTime;
         cnt = 0;
         chargeTime = 0;

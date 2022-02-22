@@ -154,11 +154,7 @@ public class SoundManager : MonoBehaviour
             _audioSources[(int)Define.Sound.Bgm].volume  += (float)(_volume / 100.0f);
             yield return new WaitForSeconds(0.1f * BGMChangeSpeed);
         }
-
-        yield return new WaitForSeconds(audioSource.clip.length - 15);
-
-        isBGMStarting = false;
-        StartCoroutine("StopBGM", 0);
+        
     }
 
     IEnumerator StopBGM(float term)
@@ -172,7 +168,11 @@ public class SoundManager : MonoBehaviour
         {
             _audioSources[(int)Define.Sound.Bgm].volume -= (float)(vol / 50.0f);
             yield return new WaitForSeconds(0.05f * term);
+
+            Debug.Log("Chaneg2");
         }
+
+        Debug.Log("Chaneg1");
     }
 
     IEnumerator ChangeBGM(float BGMChangeSpeed)
@@ -191,6 +191,7 @@ public class SoundManager : MonoBehaviour
             if (audioSource.isPlaying)
                 audioSource.Stop();
             StartCoroutine("StartBGM", BGMChangeSpeed);
+            Debug.Log("Chaneg");
         }
         yield return new WaitForSeconds(0);
     }

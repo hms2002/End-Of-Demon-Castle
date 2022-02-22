@@ -10,6 +10,8 @@ public class PlayerSkill_Thunder : Skill_ID
     float coolTime;
     float curTime;
 
+    bool isSkillOn = false;
+
     private void Start()
     {
         thunder = Resources.Load<GameObject>("Prefabs/Thunder");
@@ -22,8 +24,11 @@ public class PlayerSkill_Thunder : Skill_ID
 
     private void Update()
     {
-        curTime -= Time.deltaTime;
-        coolTimeSlider.value = curTime;
+        if(isSkillOn == false)
+        {
+            curTime -= Time.deltaTime;
+            coolTimeSlider.value = curTime;
+        }
     }
 
     public override void SkillOn()
@@ -31,10 +36,16 @@ public class PlayerSkill_Thunder : Skill_ID
         if (curTime > 0)
             return;
         curTime = coolTime;
-
+        isSkillOn = true;
         tempEffect = Instantiate(thunder, transform);
         tempEffect.transform.localPosition = new Vector3(0, 0, 0);
+
+        StartCoroutine(Off());
     }
 
-
+    IEnumerator Off()
+    {
+        yield return new WaitForSeconds(10);
+        isSkillOn = false;
+    }
 }

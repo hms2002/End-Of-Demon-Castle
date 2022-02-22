@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
     SpriteRenderer playerSprite;
     public Material whiteMaterial;
     public Material playerMaterial;
+        //0.5초 무적
+        bool canHit = true;
 
     //
     public static Player player;
@@ -337,9 +339,14 @@ public class Player : MonoBehaviour
     {
         if (zhonya == false)
         {
-            StartCoroutine("ShowDamaged");
-            player_hp -= damage;
-            dead();
+            if(canHit)
+            {
+                canHit = false;
+                StartCoroutine("IChangeCanHit");
+                StartCoroutine("ShowDamaged");
+                player_hp -= damage;
+                dead();
+            }
         }
     }
     //#.플레이어 체력
@@ -385,6 +392,12 @@ public class Player : MonoBehaviour
         playerSprite.material = playerMaterial;
     }
 
+    IEnumerator IChangeCanHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canHit = true;
+    }
+
     IEnumerator IDash()
     {
         canMove = false;
@@ -418,6 +431,7 @@ public class Player : MonoBehaviour
         sword.SetActive(true);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SwordSlash", 0.35f);
         canMove = false;
+        playerConfine("Skill");
 
         rigid.velocity = new Vector2(0, 0);
         setSwordAngle();
@@ -441,6 +455,7 @@ public class Player : MonoBehaviour
         onAttack = false;
         sword.SetActive(false);
         canMove = true;
+        playerFree("Skill");
     }
 
     
