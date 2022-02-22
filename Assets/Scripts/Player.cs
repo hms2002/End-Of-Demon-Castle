@@ -386,7 +386,6 @@ public class Player : MonoBehaviour
         {
             yield break;
         }
-        Debug.Log("ㅗ");
         playerSprite.material = whiteMaterial;
         yield return new WaitForSeconds(0.1f);
         playerSprite.material = playerMaterial;
