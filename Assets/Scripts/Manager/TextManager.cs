@@ -321,6 +321,7 @@ public class TextManager : MonoBehaviour
             {
                 GameObject.Find("Map").transform.GetChild(6).GetChild(i).gameObject.SetActive(false);
             }
+            Boss.GetInstance().anim.SetTrigger("Phase2");
             yield return new WaitForSeconds(1.5f);
             BossPhase2On(3);
         }
@@ -339,7 +340,6 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossPhase3On(int scriptNum)
     {
         Player.GetInstance().playerConfine();
-
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
         BigBarrage[] bigBarrage = FindObjectsOfType<BigBarrage>();
@@ -359,7 +359,6 @@ public class TextManager : MonoBehaviour
         {
             bigBarrage[i].gameObject.SetActive(false);
         }
-
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
         {
@@ -406,6 +405,8 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(1.3f);
 
             CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
+            yield return new WaitForSeconds(1f);
+            Boss.GetInstance().anim.SetTrigger("Phase3");
             yield return new WaitForSeconds(2f);
 
             BossPhase3On(1);
@@ -698,7 +699,6 @@ public class TextManager : MonoBehaviour
 
             if (scriptNum == 4)
             {
-                Debug.Log("�ƴ��̰Կ����ݵ�");
                 transform.parent.GetChild(6).GetChild(0).gameObject.SetActive(false);
                 transform.parent.GetChild(6).GetChild(1).gameObject.SetActive(true);
             }

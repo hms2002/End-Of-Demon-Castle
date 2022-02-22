@@ -148,7 +148,7 @@ public class SoundManager : MonoBehaviour
         AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
         audioSource.volume = 0;
         audioSource.Play();
-       
+
         for (int i = 0; i < 100; i++)
         {
             _audioSources[(int)Define.Sound.Bgm].volume  += (float)(_volume / 100.0f);
