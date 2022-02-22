@@ -103,6 +103,6 @@ public class EnterTheBossRoom : MonoBehaviour
         player.playerFree("Skill");
         player.playerFree();
 
-        SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.5f, Define.Sound.Bgm, 0.5f);
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.3f, Define.Sound.Bgm, 0.5f);
     }
 }
