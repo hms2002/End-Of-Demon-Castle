@@ -9,8 +9,8 @@ public class Shockwave : MonoBehaviour
     public bool isCharged = true;
     public bool isShocked = false;
     Player player;
-    Vector3 ZeroScale = new Vector3(0,0,0);
-    Vector3 Scaled = new Vector3(4, 4, 1);
+    Vector3 ZeroScale = new Vector3(0f,0f,1);
+    Vector3 Scaled = new Vector3(8f, 8f, 1);
 
     void OnEnable()
     {
@@ -38,21 +38,21 @@ public class Shockwave : MonoBehaviour
     
     IEnumerator Charge()
     {
-        for(float per = 4f; per >= 0f; per -= 0.04f)
+        for(float per = 8f; per >= 0f; per -= 0.08f)
         {
-            transform.localScale = new Vector3(per, per, per);
-
-            yield return new WaitForSeconds(Time.deltaTime);
+            transform.localScale = new Vector3(per, per, 1);
+            Debug.Log(transform.localScale);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
     IEnumerator Shock()
     {
-        for (float per = 0f; per <= 4f; per += 0.24f)
+        for (float per = 0f; per <= 8f; per += 0.24f)
         {
             transform.localScale = new Vector3(per, per, 1);
 
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(0.001f);
         }
         gameObject.SetActive(false);
     }
@@ -67,7 +67,7 @@ public class Shockwave : MonoBehaviour
             Vector2 playerdir = player.transform.position - transform.position;
 
             player.playerConfine();
-            playerRig.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * 30, ForceMode2D.Impulse);
+            playerRig.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * 15, ForceMode2D.Impulse);
             GetComponent<CircleCollider2D>().enabled = false;
             Invoke("InbokePlayerFree", 0.15f);
         }
