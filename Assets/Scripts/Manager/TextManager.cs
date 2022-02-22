@@ -56,7 +56,7 @@ public class TextManager : MonoBehaviour
     private string[] bossPhase3Scenario =
     {
         " ",
-        "크윽_! 꽤나 강력하군.",
+        "크윽...! 꽤나 강력하군.",
         "좋다. 이번엔 진심을 발휘해주지",
         " "
     };
@@ -64,8 +64,8 @@ public class TextManager : MonoBehaviour
     private string[] bossDeadScenario =
     {
         " ",
-        "이럴_ 수가_!",
-        "하지만_ 이번이 끝은 아닐거다_!",
+        "이럴... 수가_!",
+        "하지만... 이번이 끝은 아닐거다...!",
         " "
     };
     private string[] tutorialScenario=

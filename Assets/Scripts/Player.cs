@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     float v;
     bool canMove;
     int playerOrient;
+        //playerFree함수 전용 bool
+        public bool isCanFree = true;
     //#.플레이어 대쉬
     public GameObject dashEffect;
     public float dashCoolTime;
@@ -453,7 +455,7 @@ public class Player : MonoBehaviour
 
         onAttack = false;
         sword.SetActive(false);
-        canMove = true;
+        playerFree("Move");
         playerFree("Skill");
     }
 
@@ -571,7 +573,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log("D");
         canMove = false;
         canAttack = false;
         canDash = false;
@@ -585,7 +587,9 @@ public class Player : MonoBehaviour
     public void playerFree()
     {
         rigid.velocity = Vector2.zero;
-
+        if (isCanFree == false)
+            return;
+        Debug.Log("zssssssssDD");
         if (isDead)
         {
             rigid.velocity = Vector2.zero;
@@ -611,13 +615,15 @@ public class Player : MonoBehaviour
     }
     public void playerConfine(string idx)
     {
-        switch(idx)
+        Debug.Log("DD");
+        switch (idx)
         {
             case "Attack":
                 canAttack = false;
                 break;
             case "Move":
                 canMove = false;
+                Debug.Log("DD");
                 rigid.velocity = Vector2.zero;
 
                 //플레이어가 커서 방향 바라보도록 설정
@@ -637,7 +643,9 @@ public class Player : MonoBehaviour
     public void playerFree(string idx)
     {
         rigid.velocity = Vector2.zero;
-
+        Debug.Log("X");
+        if (isCanFree == false)
+            return;
         if (isDead)
         {
             rigid.velocity = Vector2.zero;
