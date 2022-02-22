@@ -29,23 +29,23 @@ public class VenomAOE : MonoBehaviour
 
     private void ElapseTime()
     {
-        if (currentDamageTime > 0)
+        currentDamageTime -= Time.deltaTime;
+        if (currentDamageTime <= 0)
         {
-            currentDamageTime -= Time.deltaTime;
+            currentDamageTime = DamageTime;
+            capsule.enabled = true;
+        }
+        else if(currentDamageTime <= DamageTime - 0.1f)
+        {
+            capsule.enabled = false;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*Debug.Log("zz");*/
         if (collision.gameObject.CompareTag("Boss"))
         {
-            if (currentDamageTime <= 0)
-            {
-                collision.GetComponent<Boss>().damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
-
-                currentDamageTime = DamageTime;
-            }
+            collision.GetComponent<Boss>().damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
         }
     }
 
