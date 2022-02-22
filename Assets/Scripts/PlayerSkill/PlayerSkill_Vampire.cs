@@ -6,6 +6,7 @@ public class PlayerSkill_Vampire : Skill_ID
 {
     Player player;
     Boss boss;
+    Cristal cristal;
     public GameObject healSkill;
     public GameObject absorbBlood;
     GameObject buffICON;
@@ -27,6 +28,7 @@ public class PlayerSkill_Vampire : Skill_ID
     {
         player = GetComponent<Player>();
         boss = FindObjectOfType<Boss>();
+        cristal = FindObjectOfType<Cristal>();
         healSkill = Resources.Load<GameObject>("Prefabs/Heal");
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
         continuousSound = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/VampireLoop");
@@ -101,6 +103,15 @@ public class PlayerSkill_Vampire : Skill_ID
                 player.player_hp += amountOfRecovery;
                 Destroy(tempHeal, 0.5f);
                 boss.wasHit = false;
+            }
+            else if (cristal.wasHit == true)
+            {
+                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireHit", 0.4f);
+                tempHeal = Instantiate(healSkill);
+                tempHeal.transform.position = player.transform.position;
+                player.player_hp += amountOfRecovery;
+                Destroy(tempHeal, 0.5f);
+                cristal.wasHit = false;
             }
 
             yield return null;

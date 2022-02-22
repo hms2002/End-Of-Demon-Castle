@@ -11,6 +11,7 @@ public class Cristal : BreakableObj
     public Vector3 playerdir;
     public static readonly WaitForSeconds waitForSecond = new WaitForSeconds(0.1f);
     int BarrageNum = 5;
+    public bool wasHit = false;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class Cristal : BreakableObj
     public override void breakObj(float damage)
     {
         Hp -= damage;
+        wasHit = true;
+
         if (Hp > 87) { }
         else if (Hp > 0)
         {

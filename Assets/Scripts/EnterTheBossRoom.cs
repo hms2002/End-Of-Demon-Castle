@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EnterTheBossRoom : MonoBehaviour
 {
+    public GameObject yesButton;
+    public GameObject noButton;
+    public Text yesText;
+    public Text noText;
+
     public static EnterTheBossRoom enterTheBoss;
+
     public static EnterTheBossRoom GetInstance()
     {
         if (enterTheBoss == null)
@@ -32,9 +38,9 @@ public class EnterTheBossRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
             return;
-            
+
         player = other.GetComponent<Player>();
 
         player.playerConfine();
@@ -44,12 +50,12 @@ public class EnterTheBossRoom : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(!other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
             return;
 
         animator.SetTrigger("close");
 
-        if(!isGoPosOn)
+        if (!isGoPosOn)
             player.playerFree();
 
         TextBox.SetActive(false);
@@ -93,7 +99,7 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
-        //player.playerFree();    
+        player.playerFree();
     }
 
     public void FightStart()
@@ -104,5 +110,59 @@ public class EnterTheBossRoom : MonoBehaviour
         player.playerFree();
 
         SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.5f, Define.Sound.Bgm, 0.5f);
+    }
+
+    public void MousePointEnter(int buttonType)
+    {
+        Color textColor;
+
+        switch (buttonType)
+        {
+            case 0:
+                textColor = yesText.color;
+                textColor.g -= 1.0f;
+                textColor.b -= 1.0f;
+                yesText.color = textColor;
+
+                break;
+
+            case 1:
+                textColor = noText.color;
+                textColor.g -= 1.0f;
+                textColor.b -= 1.0f;
+                noText.color = textColor;
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void MousePointExit(int buttonType)
+    {
+        Color textColor;
+
+        switch (buttonType)
+        {
+            case 0:
+                textColor = yesText.color;
+                textColor.g += 1.0f;
+                textColor.b += 1.0f;
+                yesText.color = textColor;
+
+                break;
+
+            case 1:
+                textColor = noText.color;
+                textColor.g += 1.0f;
+                textColor.b += 1.0f;
+                noText.color = textColor;
+
+                break;
+
+            default:
+                break;
+        }
     }
 }

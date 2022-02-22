@@ -97,6 +97,7 @@ public class PlayerSkill_ChargeAttack : Skill_ID
         atkTemp = Instantiate(AtkEffect, transform);
         atkTemp.transform.localPosition = Vector3.zero;
         atkTemp.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/ChargeSlash");
 
         if (cnt == 0)
         {
