@@ -133,6 +133,9 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                         case 2:
                             Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
                             break;
+                        case 3:
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            break;
                     }
                     break;
                 case 5:

@@ -38,11 +38,11 @@ public class TextManager : MonoBehaviour
     private string[] bossDoorScenario = {
         "드디어 왔구나 용사여...",
         " ",
-        "근데 왜 이렇게 일찍 왔냐?",
-        "아직 똥 못 쌌는데...",
+        "설마 혼자 온것인가?",
+        "참으로 대단하군. 그 실력 인정해주마.",
         " ",
-        "내가 나설 필요도 없겠다. 지금 배 아파서 움직면 큰일나.",//4
-        " "//5
+        "그럼 어디 한번 놀아볼까?",//4
+        " "//6
     };
 
     private string[] bossPhase2Scenario =
@@ -50,21 +50,22 @@ public class TextManager : MonoBehaviour
         " ",
         "오호... 네 녀석 꽤나 강력하구나...",
         " ",
-        "그럼... 이 몸이 살짝 움직여 볼까?",
+        "그럼... 이 몸이 살짝 움직여볼까?",
         " "
     };
-
     private string[] bossPhase3Scenario =
     {
         " ",
-        "ũ��... �̹��� �����̴پƾ�~!",
+        "크윽_! 꽤나 강력하군.",
+        "좋다. 이번엔 진심을 발휘해주지",
         " "
     };
 
     private string[] bossDeadScenario =
     {
         " ",
-        "������ �� �����ڳ� �ù�����",
+        "이럴_ 수가_!",
+        "하지만_ 이번이 끝은 아닐거다_!",
         " "
     };
     private string[] tutorialScenario=
@@ -101,10 +102,10 @@ public class TextManager : MonoBehaviour
 
     private string[] Ending =
     {
-        "�׷��� ���� ������ �����ư�...",
-        "����� �ٽ� ��ȭ�� ��ã�� �Ǿ���...",
-        "������ ���� �𸥴�...",
-        "�� �ٸ� ������ ���� ���̴�ĥ����...",
+        "그렇게 용사는 마왕을 물리쳤고...",
+        "세계는 다시 평화를 되찾게 되었다...",
+        "하지만 아직 모른다...",
+        "또 다른 위협이 언제 다시 들이닥칠지는...",
         " "
     };
     #endregion
@@ -410,7 +411,7 @@ public class TextManager : MonoBehaviour
 
             BossPhase3On(1);
         }
-        if (scriptNum == 2)
+        if (scriptNum == 3)
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
@@ -491,7 +492,7 @@ public class TextManager : MonoBehaviour
 
             BossDead(1);
         }
-        if (scriptNum == 2)
+        if (scriptNum == 3)
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 

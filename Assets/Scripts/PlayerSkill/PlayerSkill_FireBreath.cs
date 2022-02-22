@@ -32,15 +32,19 @@ public class PlayerSkill_FireBreath : Skill_ID
 
     private void Update()
     {
-        curTime -= Time.deltaTime;
-        if(coolTimeSlider)
+        if(isSkillOn == false)
         {
-            if(!isInitSlider)
+
+            curTime -= Time.deltaTime;
+            if (coolTimeSlider)
             {
-                coolTimeSlider.maxValue = coolTime;
-                isInitSlider = true;
+                if (!isInitSlider)
+                {
+                    coolTimeSlider.maxValue = coolTime;
+                    isInitSlider = true;
+                }
+                coolTimeSlider.value = curTime;
             }
-            coolTimeSlider.value = curTime;
         }
     }
 

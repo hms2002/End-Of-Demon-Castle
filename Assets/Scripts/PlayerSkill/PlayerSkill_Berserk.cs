@@ -31,8 +31,11 @@ public class PlayerSkill_Berserk : Skill_ID
 
     private void Update()
     {
-        curTime -= Time.deltaTime;
-        coolTimeSlider.value = curTime;
+        if(isSkillOn == false)
+        {
+            curTime -= Time.deltaTime;
+            coolTimeSlider.value = curTime;
+        }
     }
 
     public override void SkillOn()
