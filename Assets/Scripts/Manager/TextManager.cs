@@ -427,6 +427,10 @@ public class TextManager : MonoBehaviour
     IEnumerator IBossDead(int scriptNum)
     {
         Player.GetInstance().playerConfine();
+        Player.GetInstance().playerConfine("Skill");
+        SkillSelectManager.GetInstance().OpenSkillSetting();
+
+        SetCursor.GetInstance().ChangeCursor(1);
 
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
@@ -446,6 +450,8 @@ public class TextManager : MonoBehaviour
         {
             aoe[i].gameObject.SetActive(false);
         }
+
+        SoundManager.GetInstance().Play("Sound/BGM/BGM_Ending", 0.5f, Define.Sound.Bgm, 1f);
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
         {

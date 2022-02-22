@@ -35,6 +35,7 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         dragAndDropContainer.image.sprite = data.sprite;
         dragAndDropContainer.skill = skill;
         isDragging = true;
+        SetCursor.GetInstance().ChangeCursor(4);
     }
 	// 드래그 오브젝트에서 발생
     public void OnDrag(PointerEventData eventData)
@@ -50,6 +51,7 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 	// 드래그 오브젝트에서 발생
     public void OnEndDrag(PointerEventData eventData)
     {
+        SetCursor.GetInstance().ChangeCursor(3);
         if (dragAndDropContainer.image.sprite == null)
         {
             // set data from dropped object  

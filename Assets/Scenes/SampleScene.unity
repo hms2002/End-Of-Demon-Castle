@@ -2852,6 +2852,7 @@ MonoBehaviour:
   Phase3: 0
   BossStop: 1
   rigid: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!212 &179191267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3807,6 +3808,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &233578248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233578242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1
+  skillKey: 0
+  coolTimeSlider: {fileID: 0}
 --- !u!1 &235559108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,34 +3936,24 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235559108}
   m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!114 &233578248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233578242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5626ddf91b1f78e47bdf09a608df2f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
-  skillKey: 0
-  coolTimeSlider: {fileID: 0}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.03125, y: 2}
+    newSize: {x: 1.03125, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &237759872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6637,8 +6643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorImg:
-  - {fileID: 2800000, guid: 44e2e4864ec1def43ba5f0acd40a562f, type: 3}
-  - {fileID: 2800000, guid: 072580af0622b764d91dafe765b5b0ab, type: 3}
+  - {fileID: 2800000, guid: 8f903fa10821aa2438e0e4a7c2bb9984, type: 3}
+  - {fileID: 2800000, guid: 7634751ba193a5b4b8697ca05e397e7d, type: 3}
   - {fileID: 2800000, guid: 2c9e626ac73a8444bb6fcd6754e005e0, type: 3}
   - {fileID: 2800000, guid: f9660224f59c2b649ba73ff3cc42cdf4, type: 3}
   - {fileID: 2800000, guid: 0d236a4a64d77394abc7ab1203d1e786, type: 3}
@@ -18959,10 +18965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6603e5bf85b88044bb175cc500875cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 1
-  isFirstMissionClear: 0
-  isSecondMissionClear1: 0
-  isSecondMissionClear2: 0
+  start: 0
+  isFirstMissionClear: 1
+  isSecondMissionClear1: 1
+  isSecondMissionClear2: 1
   isMe: 1
 --- !u!1 &1240897918
 GameObject:

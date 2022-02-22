@@ -5,7 +5,15 @@ using UnityEngine;
 public class SetCursor : MonoBehaviour
 {
     [SerializeField] Texture2D[] cursorImg;
-
+    public static SetCursor setCursor;
+    public static SetCursor GetInstance()
+    {
+        if (setCursor == null)
+        {
+            setCursor = FindObjectOfType<SetCursor>();
+        }
+        return setCursor;
+    }
     void Start()
     {
         Cursor.SetCursor(cursorImg[0], Vector2.zero, CursorMode.ForceSoftware);
@@ -18,7 +26,7 @@ public class SetCursor : MonoBehaviour
         switch(cursorName)
         {
             case "base":
-                Cursor.SetCursor(cursorImg[0], Vector2.zero, CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[1].height / 2), CursorMode.ForceSoftware);
             break;
             case "backSteb":
                 Cursor.SetCursor(cursorImg[1], new Vector2(cursorImg[1].width/2, cursorImg[1].height/2), CursorMode.ForceSoftware);

@@ -33,6 +33,7 @@ public class SkillSelectManager : MonoBehaviour
         if(Init != null)
         {
             Init();
+            SetCursor.GetInstance().ChangeCursor(3);
             Init = null;
 
         }
@@ -47,7 +48,8 @@ public class SkillSelectManager : MonoBehaviour
 
     public void EndSelect()
     {
-        while(skillList.Count > 0)
+        SetCursor.GetInstance().ChangeCursor(0);
+        while (skillList.Count > 0)
         {
             Destroy(skillList[0]);
             skillList.RemoveAt(0);
