@@ -40,7 +40,7 @@ public class Bottle : MonoBehaviour
             StartCoroutine("delay");
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Border")
+        if (Layer == 8)
         {   
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             StartCoroutine("delay");
