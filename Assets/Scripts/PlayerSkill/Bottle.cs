@@ -20,6 +20,7 @@ public class Bottle : MonoBehaviour
         if(Vector2.Distance(VenomLogic.playerDir, transform.position) >= 8f)
         {
             Instantiate(VenomAOE, transform.position + new Vector3(0,0.5f), Quaternion.Euler(new Vector3(0, 0, 0)));
+            StartCoroutine("delay");
             Destroy(gameObject);
         }
     }
@@ -30,17 +31,25 @@ public class Bottle : MonoBehaviour
         if (collision.CompareTag("CanBroke"))
         {
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0,0,0)));
+            StartCoroutine("delay");
             Destroy(gameObject);
         }
         if (Layer == 12)
         {
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            StartCoroutine("delay");
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Border")
         {   
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            StartCoroutine("delay");
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.05f);
     }
 }

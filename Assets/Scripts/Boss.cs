@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
 
     public float BossHp = 700;
     public bool wasHit;
-    public float PatternTime = 4f;
+    public float PatternTime = 2f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed;
@@ -208,7 +208,7 @@ public class Boss : MonoBehaviour
         Shockwave.transform.position = transform.position;
         while (Shockwave.activeSelf)
             yield return new WaitForSeconds(0.1f);
-        Invoke("PatternManager", 1.5f);
+        Invoke("PatternManager", 1f);
     }
 
     private IEnumerator Boss_CristalSet()
@@ -610,7 +610,7 @@ public class Boss : MonoBehaviour
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
             }
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.05f, Define.Sound.Effect, 0.5f);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < RoundNum; i++)
             {
                 barrageLogic[i].time *= i;
