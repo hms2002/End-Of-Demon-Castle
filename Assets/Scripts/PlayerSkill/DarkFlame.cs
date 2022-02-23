@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DarkFlame : MonoBehaviour
 {
-
     Boss boss = null;
     Player player = null;
     BreakableObj breakableObj = null;
@@ -72,7 +71,7 @@ public class DarkFlame : MonoBehaviour
             if (curTime > 2)
             {
                 curTime = 0;
-                player.damaged(1);
+                player.damaged(4);
             }
         }
     }
