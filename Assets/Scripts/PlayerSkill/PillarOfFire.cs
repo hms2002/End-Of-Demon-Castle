@@ -10,7 +10,7 @@ public class PillarOfFire : MonoBehaviour
 
     GameObject darkFlame;
 
-    float flameDamage = 15f;
+    float flameDamage = 20.0f;
     float flameDamageTimer = 0;
     bool isDarkFlameOn = false;
     bool isSetMigicCircleDone = false;
@@ -22,7 +22,7 @@ public class PillarOfFire : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         transform.GetChild(0).gameObject.SetActive(false);
 
-        flameDamage = 15f;
+        flameDamage = 20.0f;
         flameDamageTimer = 0;
 
         StartCoroutine("After4");

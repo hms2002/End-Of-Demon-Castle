@@ -6,7 +6,7 @@ public class ExplosionDamage : MonoBehaviour
 {
     Boss boss;
 
-    public int Damage = 20;
+    public int Damage = 15;
     BreakableObj breakableObj;
 
     void OnTriggerEnter2D(Collider2D collision)

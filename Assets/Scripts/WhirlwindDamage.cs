@@ -7,7 +7,7 @@ public class WhirlwindDamage : MonoBehaviour
     Boss boss;
     PolygonCollider2D collisionMask;
 
-    int damage = 10;
+    int damage = 15;
     float whirlwindDamageTimer = 0.0f;
     BreakableObj breakableObj;
 

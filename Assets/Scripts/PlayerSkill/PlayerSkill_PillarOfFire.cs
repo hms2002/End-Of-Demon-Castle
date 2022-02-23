@@ -14,7 +14,7 @@ public class PlayerSkill_PillarOfFire : Skill_ID
 
     GameObject tempCircle;
 
-    float coolTime = 10f;
+    float coolTime = 30.0f;
     float curTime = 0;
 
     bool OnKey = false;

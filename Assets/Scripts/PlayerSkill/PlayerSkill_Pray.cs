@@ -7,10 +7,10 @@ public class PlayerSkill_Pray : Skill_ID
     Player player;
     Animator animator;
 
-    float skillDuration = 2.0f;
+    float skillDuration = 5.0f;
     bool isSkillOn;
 
-    float coolTime = 0.5f;
+    float coolTime = 20.0f;
     float curTime;
     bool isSliderInit = false;
 

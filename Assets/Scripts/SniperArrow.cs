@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SniperArrow : MonoBehaviour
 {
-    public int Damage = 10;
+    public int Damage = 40;
 
     void OnTriggerEnter2D(Collider2D collision)
     {

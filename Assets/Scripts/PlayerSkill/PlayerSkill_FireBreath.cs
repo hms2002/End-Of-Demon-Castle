@@ -16,7 +16,7 @@ public class PlayerSkill_FireBreath : Skill_ID
     bool isInitSlider = false;
 
 
-    float flameDuration = 0.0f;
+    float skillDuration = 0.0f;
     public float maxSkillDuration = 5.0f;
     bool isSkillOn;
 
@@ -26,7 +26,6 @@ public class PlayerSkill_FireBreath : Skill_ID
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
         sound1 = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/FireBreath");
 
-        maxSkillDuration = 5.0f;
         isSkillOn = false;
     }
 
@@ -73,7 +72,7 @@ public class PlayerSkill_FireBreath : Skill_ID
 
         //스킬 발동
         StartCoroutine("SpitFire", fireEffect);
-        player.playerConfine();
+        player.speed = 4.5f;
         player.playerConfine("Skill");
     }
 
@@ -84,9 +83,9 @@ public class PlayerSkill_FireBreath : Skill_ID
         
         while (isSkillOn)
         {
-            flameDuration += Time.deltaTime;
+            skillDuration += Time.deltaTime;
 
-            if (Input.GetKeyUp(skillKey) || flameDuration > maxSkillDuration)
+            if (Input.GetKeyUp(skillKey) || skillDuration > maxSkillDuration)
             {
                 break;
             }
@@ -99,7 +98,8 @@ public class PlayerSkill_FireBreath : Skill_ID
         isSkillOn = false;
         yield return new WaitForSeconds(0.5f);
         player.playerFree();
-        flameDuration = 0.0f;
+        player.speed = 8.0f;
+        skillDuration = 0.0f;
     }
 
     IEnumerator VolumeDown()
