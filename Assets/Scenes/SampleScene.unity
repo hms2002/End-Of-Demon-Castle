@@ -1640,7 +1640,7 @@ GameObject:
   - component: {fileID: 73831468}
   - component: {fileID: 73831467}
   - component: {fileID: 73831469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2456,7 +2456,7 @@ GameObject:
   - component: {fileID: 153806403}
   - component: {fileID: 153806402}
   - component: {fileID: 153806404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2587,7 +2587,7 @@ GameObject:
   - component: {fileID: 156573995}
   - component: {fileID: 156573994}
   - component: {fileID: 156573996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3836,7 +3836,7 @@ GameObject:
   - component: {fileID: 235559111}
   - component: {fileID: 235559110}
   - component: {fileID: 235559112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5730,7 +5730,7 @@ GameObject:
   - component: {fileID: 412296350}
   - component: {fileID: 412296349}
   - component: {fileID: 412296351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6009,7 +6009,7 @@ GameObject:
   - component: {fileID: 454080392}
   - component: {fileID: 454080391}
   - component: {fileID: 454080393}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7735,7 +7735,7 @@ GameObject:
   - component: {fileID: 650445594}
   - component: {fileID: 650445593}
   - component: {fileID: 650445595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8807,7 +8807,7 @@ GameObject:
   - component: {fileID: 800175443}
   - component: {fileID: 800175442}
   - component: {fileID: 800175444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16122,7 +16122,7 @@ GameObject:
   - component: {fileID: 954477886}
   - component: {fileID: 954477885}
   - component: {fileID: 954477887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16303,7 +16303,7 @@ GameObject:
   - component: {fileID: 996160449}
   - component: {fileID: 996160448}
   - component: {fileID: 996160450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16558,7 +16558,7 @@ GameObject:
   - component: {fileID: 1025856038}
   - component: {fileID: 1025856037}
   - component: {fileID: 1025856039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16689,7 +16689,7 @@ GameObject:
   - component: {fileID: 1042507728}
   - component: {fileID: 1042507727}
   - component: {fileID: 1042507729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17076,7 +17076,7 @@ GameObject:
   - component: {fileID: 1113606182}
   - component: {fileID: 1113606181}
   - component: {fileID: 1113606183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19282,7 +19282,7 @@ GameObject:
   - component: {fileID: 1254956146}
   - component: {fileID: 1254956145}
   - component: {fileID: 1254956147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30171,7 +30171,7 @@ GameObject:
   - component: {fileID: 1340370652}
   - component: {fileID: 1340370651}
   - component: {fileID: 1340370653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30374,7 +30374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358759900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SkulHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31120,7 +31120,7 @@ GameObject:
   - component: {fileID: 1453489980}
   - component: {fileID: 1453489979}
   - component: {fileID: 1453489981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32156,7 +32156,7 @@ GameObject:
   - component: {fileID: 1586761735}
   - component: {fileID: 1586761734}
   - component: {fileID: 1586761736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32616,7 +32616,7 @@ GameObject:
   - component: {fileID: 1638347617}
   - component: {fileID: 1638347616}
   - component: {fileID: 1638347618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33432,7 +33432,7 @@ GameObject:
   - component: {fileID: 1739941454}
   - component: {fileID: 1739941453}
   - component: {fileID: 1739941455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34170,7 +34170,7 @@ GameObject:
   - component: {fileID: 1881662102}
   - component: {fileID: 1881662101}
   - component: {fileID: 1881662103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34957,7 +34957,7 @@ GameObject:
   - component: {fileID: 1945982233}
   - component: {fileID: 1945982232}
   - component: {fileID: 1945982234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35687,7 +35687,7 @@ GameObject:
   - component: {fileID: 1976300530}
   - component: {fileID: 1976300529}
   - component: {fileID: 1976300531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_1_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36180,7 +36180,7 @@ GameObject:
   - component: {fileID: 2024411814}
   - component: {fileID: 2024411813}
   - component: {fileID: 2024411815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_3_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36317,7 +36317,7 @@ GameObject:
   - component: {fileID: 2071104842}
   - component: {fileID: 2071104841}
   - component: {fileID: 2071104843}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skul_2_0 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
