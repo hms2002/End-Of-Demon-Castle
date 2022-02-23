@@ -10,6 +10,8 @@ public class VenomAOE : MonoBehaviour
     Animator anim;
     CapsuleCollider2D capsule;
     AudioSource audioSource;
+    Boss boss;
+    BreakableObj breakableObj;
 
     void Start()
     {
@@ -22,7 +24,7 @@ public class VenomAOE : MonoBehaviour
         StartCoroutine("VenomEnd");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         ElapseTime();
     }
@@ -43,9 +45,18 @@ public class VenomAOE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Boss"))
+        int layer = collision.gameObject.layer;
+        if (layer == 12)
         {
-            collision.GetComponent<Boss>().damaged(Damage + DamageControler.GetInstance().GetMonoDamage());
+            if (boss == null)
+                boss = collision.GetComponent<Boss>();
+
+            boss.damaged(Damage + DamageControler.GetInstance().GetDotDamage());
+        }
+        else if (collision.CompareTag("CanBroke"))
+        {
+            breakableObj = collision.GetComponent<BreakableObj>();
+            breakableObj.breakObj(Damage + DamageControler.GetInstance().GetDotDamage());
         }
     }
 
