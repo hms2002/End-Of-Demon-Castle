@@ -71,13 +71,14 @@ public class PlayerSkill_Pray : Skill_ID
     IEnumerator ActivePray()
     {
         animator.SetBool("GoIdle", false);
+        animator.SetBool("isChange", false);
         player.playerConfine("Move");
         player.playerConfine("Dash");
         player.playerConfine("Attack");
         player.playerConfine("Skill");
         player.zhonya = true;
 
-        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitForSeconds(0.01f);
         animator.SetTrigger("prayOn");
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Pray");
         Debug.Log("OnZon");

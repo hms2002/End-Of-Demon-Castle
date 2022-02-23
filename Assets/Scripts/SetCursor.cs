@@ -16,7 +16,7 @@ public class SetCursor : MonoBehaviour
     }
     void Start()
     {
-        Cursor.SetCursor(cursorImg[0], Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[0].height / 2), CursorMode.ForceSoftware);
     }
 
     //base - 기본 커서
@@ -26,7 +26,7 @@ public class SetCursor : MonoBehaviour
         switch(cursorName)
         {
             case "base":
-                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[1].height / 2), CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[0].height / 2), CursorMode.ForceSoftware);
             break;
             case "backSteb":
                 Cursor.SetCursor(cursorImg[1], new Vector2(cursorImg[1].width/2, cursorImg[1].height/2), CursorMode.ForceSoftware);
@@ -35,10 +35,10 @@ public class SetCursor : MonoBehaviour
                 Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
             break;
             case "skillSetting":
-                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImg[3], Vector2.zero, CursorMode.ForceSoftware);
                 break;
             case "onDrag":
-                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImg[4], Vector2.zero, CursorMode.ForceSoftware);
                 break;
         }
 
@@ -46,6 +46,23 @@ public class SetCursor : MonoBehaviour
 
     public void ChangeCursor(int cursorIdx)
     {
-        Cursor.SetCursor(cursorImg[cursorIdx], Vector2.zero, CursorMode.ForceSoftware);
+        switch (cursorIdx)
+        {
+            case 0:
+                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[0].height / 2), CursorMode.ForceSoftware);
+                break;
+            case 1:
+                Cursor.SetCursor(cursorImg[1], new Vector2(cursorImg[1].width / 2, cursorImg[1].height / 2), CursorMode.ForceSoftware);
+                break;
+            case 2:
+                Cursor.SetCursor(cursorImg[2], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case 3:
+                Cursor.SetCursor(cursorImg[3], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case 4:
+                Cursor.SetCursor(cursorImg[4], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+        }
     }
 }
