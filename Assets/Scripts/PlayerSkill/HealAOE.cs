@@ -29,7 +29,7 @@ public class HealAOE : MonoBehaviour
             if (timer <= 0)
             {
 
-                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/HealSound", 0.4f);
+                SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/HealSound", 0.3f);
 
                 tempHeal = Instantiate(healSkill);
                 tempHeal.transform.position = player.transform.position;
