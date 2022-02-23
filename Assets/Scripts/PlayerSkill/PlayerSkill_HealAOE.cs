@@ -19,7 +19,7 @@ public class PlayerSkill_HealAOE : Skill_ID
 
         player = GetComponent<Player>();
 
-        healAOE_DurationTime = 3;
+        healAOE_DurationTime = 6;
 
         coolTimeSlider.maxValue = skillCoolTime;
     }
