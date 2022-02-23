@@ -56,7 +56,7 @@ public class EnterTheBossRoom : MonoBehaviour
         animator.SetTrigger("close");
 
         if (!isGoPosOn)
-            player.playerFree();
+            //player.playerFree();
 
         TextBox.SetActive(false);
     }
@@ -99,15 +99,20 @@ public class EnterTheBossRoom : MonoBehaviour
     public void Close()
     {
         animator.SetBool("isOpen", false);
-        player.playerFree();    
+    }
+
+    public void Close_No()
+    {
+        animator.SetBool("isOpen", false);
+        player.playerFree();
     }
 
     public void FightStart()
     {
         Boss.GetInstance().PatternManager();
 
-        player.playerFree("Skill");
-        player.playerFree();
+        //player.playerFree("Skill");
+        //player.playerFree();
 
         SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.3f, Define.Sound.Bgm, 0.5f);
     }

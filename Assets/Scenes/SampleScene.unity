@@ -16016,8 +16016,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 877360752}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: EnterTheBossRoom, Assembly-CSharp
+        m_MethodName: Close_No
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17893,8 +17893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3441576171889f34180db87e6c441f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_hp: 200
-  maxHP: 200
+  player_hp: 80
+  maxHP: 80
   speed: 8
   isCanFree: 1
   dashEffect: {fileID: 2294366240884739402, guid: b3aa8fc1280ab6b49a8d159c4cbf36b3,
@@ -17903,7 +17903,7 @@ MonoBehaviour:
   dashPower: 400
   canDash: 1
   dashCoolTimeImage: {fileID: 329187638}
-  attackDamage: 30
+  attackDamage: 10
   atkCoolTime: 0.25
   attackEffect: {fileID: 50589390051191299, guid: cd0fe71a86696674598e34d1c94e4418,
     type: 3}

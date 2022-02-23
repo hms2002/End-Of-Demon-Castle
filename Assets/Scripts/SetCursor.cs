@@ -16,7 +16,7 @@ public class SetCursor : MonoBehaviour
     }
     void Start()
     {
-        Cursor.SetCursor(cursorImg[0], Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[0].height / 2), CursorMode.ForceSoftware);
     }
 
     //base - 기본 커서
@@ -26,7 +26,7 @@ public class SetCursor : MonoBehaviour
         switch(cursorName)
         {
             case "base":
-                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[1].height / 2), CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImg[0], new Vector2(cursorImg[0].width / 2, cursorImg[0].height / 2), CursorMode.ForceSoftware);
             break;
             case "backSteb":
                 Cursor.SetCursor(cursorImg[1], new Vector2(cursorImg[1].width/2, cursorImg[1].height/2), CursorMode.ForceSoftware);

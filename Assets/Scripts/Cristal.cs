@@ -5,28 +5,45 @@ using UnityEngine.UI;
 
 public class Cristal : BreakableObj
 {
+    GameObject damagedEffect;
+
     Slider HpSlider;
     public ObjectManager objectManager;
     public Player player;
     public Vector3 playerdir;
+
     public static readonly WaitForSeconds waitForSecond = new WaitForSeconds(0.1f);
+
     int BarrageNum = 5;
     public bool wasHit = false;
+    float coolTime = 0;
 
     private void Awake()
     {
         HpSlider = transform.parent.GetChild(1).GetChild(0).GetComponent<Slider>();
         anim = GetComponent<Animator>();
 
+        damagedEffect = Resources.Load<GameObject>("Prefabs/Damaged_Effect(BOSS_CRIST)");
+
         Hp = 350;
         HpSlider.maxValue = Hp;
+    }
+
+    private void Update()
+    {
+        coolTime -= Time.deltaTime;
     }
 
     public override void breakObj(float damage)
     {
         Hp -= damage;
         wasHit = true;
+        if(coolTime <= 0)
+        {
 
+            Instantiate(damagedEffect, transform.position + new Vector3(Random.Range(0, 1f) - 0.5f, Random.Range(0, 1f) - 0.5f), transform.rotation);
+            coolTime = 0.2f;
+        }
         if (Hp > 87) { }
         else if (Hp > 0)
         {
