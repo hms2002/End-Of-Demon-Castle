@@ -26,7 +26,7 @@ public class PlayerSkill_PortalArrow : Skill_ID
         if (curTime > 0)
             return;
         curTime = coolTime;
-        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal", 0.3f,Define.Sound.Effect, 0.7f);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal", 0.5f,Define.Sound.Effect, 0.7f);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 v2 = mousePos - (Vector2)transform.position;

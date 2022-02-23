@@ -61,7 +61,7 @@ public class PlayerSkill_Explosion : Skill_ID
             Vector2 v2 = mousePos - (Vector2)transform.position;
             float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
             GameObject ExplosionEffect = Instantiate(Explosion, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
-            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Explosion", 0.1f);
+            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Explosion", 0.3f);
             StartCoroutine("SpitFire", ExplosionEffect);
             if(ChargeNum == ChargeMax)
             {

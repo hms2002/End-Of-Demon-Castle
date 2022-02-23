@@ -17896,13 +17896,14 @@ MonoBehaviour:
   player_hp: 200
   maxHP: 200
   speed: 8
+  isCanFree: 1
   dashEffect: {fileID: 2294366240884739402, guid: b3aa8fc1280ab6b49a8d159c4cbf36b3,
     type: 3}
   dashCoolTime: 0.5
   dashPower: 400
   canDash: 1
   dashCoolTimeImage: {fileID: 329187638}
-  attackDamage: 350
+  attackDamage: 30
   atkCoolTime: 0.25
   attackEffect: {fileID: 50589390051191299, guid: cd0fe71a86696674598e34d1c94e4418,
     type: 3}

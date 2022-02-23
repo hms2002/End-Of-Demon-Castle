@@ -39,7 +39,7 @@ public class PlayerSkill_Venom : Skill_ID
             playerDir = player.transform.position;
             
             Vector2 dir = v2.normalized;
-            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/PoisonBottleWhoosh", 0.5f);
+            SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/PoisonBottleWhoosh", 3f);
             BottleRig.AddForce(new Vector2(dir.x, dir.y) * BottleSpeed, ForceMode2D.Impulse);
             player.playerConfine();
             StartCoroutine("delay");
