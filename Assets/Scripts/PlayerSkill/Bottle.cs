@@ -41,7 +41,7 @@ public class Bottle : MonoBehaviour
             Destroy(gameObject);
         }
         if (Layer == 8)
-        {   
+        {
             Instantiate(VenomAOE, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             StartCoroutine("delay");
             Destroy(gameObject);
