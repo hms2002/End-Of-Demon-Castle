@@ -7,7 +7,7 @@ public class PlayerSkill_Venom : Skill_ID
     Player player;
     GameObject VenomBottle;
 
-    public float cooltime = 5f;
+    public float cooltime = 12f;
     public float curtime = 0f;
     public float BottleSpeed = 10f;
     public Vector2 playerDir;

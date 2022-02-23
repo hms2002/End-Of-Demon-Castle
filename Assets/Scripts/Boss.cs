@@ -390,7 +390,11 @@ public class Boss : MonoBehaviour
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.15f);
+            if (i % 3 == 0)
+            {
+                yield return new WaitForSeconds(1f);
+            }
         }
         if (Phase2)
         {

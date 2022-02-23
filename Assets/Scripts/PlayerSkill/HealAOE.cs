@@ -14,7 +14,7 @@ public class HealAOE : MonoBehaviour
     float delayTime = 1f;
     float timer = 0;
 
-    float amountOfRecovery = 10f;
+    float amountOfRecovery = 5f;
 
     private void Awake()
     { 
