@@ -11,6 +11,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
     GameObject bul;
 
     int layerMask;
+    int layerMask2;
     bool canLerp;
 
     float coolTime;
@@ -21,7 +22,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
         player = GetComponent<Player>();
         rigid = GetComponent<Rigidbody2D>();
         playerSkill = GetComponent<PlayerSkill>();
-        layerMask = 1 << LayerMask.NameToLayer("Wall");
+        layerMask = (1 << LayerMask.NameToLayer("Wall")) | (1 << LayerMask.NameToLayer("SkullHand"));
         shadowAssult = Resources.Load<GameObject>("Prefabs/ShadowAssultPivot");
         bul = Resources.Load<GameObject>("Prefabs/torch_side_0");
 
