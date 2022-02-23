@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
 
     public float BossHp = 700;
     public bool wasHit;
-    public float PatternTime = 2f;
+    public float PatternTime = 0f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed;
@@ -208,7 +208,7 @@ public class Boss : MonoBehaviour
         Shockwave.transform.position = transform.position;
         while (Shockwave.activeSelf)
             yield return new WaitForSeconds(0.1f);
-        Invoke("PatternManager", 1f);
+        Invoke("PatternManager", 0f);
     }
 
     private IEnumerator Boss_CristalSet()
