@@ -25,7 +25,7 @@ public class Cristal : BreakableObj
 
         damagedEffect = Resources.Load<GameObject>("Prefabs/Damaged_Effect(BOSS_CRIST)");
 
-        Hp = 350;
+        Hp = 450;
         HpSlider.maxValue = Hp;
     }
 
