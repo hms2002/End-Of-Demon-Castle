@@ -45,6 +45,13 @@ public class EnterTheBossRoom : MonoBehaviour
 
         player.playerConfine();
         player.lookUp();
+
+        Color textColor;
+        textColor = noText.color;
+        textColor.g = 1.0f;
+        textColor.b = 1.0f;
+        noText.color = textColor;
+
         TextBox.SetActive(true);
     }
 
