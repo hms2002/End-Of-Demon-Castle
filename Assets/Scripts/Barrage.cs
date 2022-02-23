@@ -7,7 +7,7 @@ public class Barrage : MonoBehaviour
     public int Damage = 10;
     public int breakableLayer = 8;
     public Player player;
-    public float time = 0.25f;
+    public float time = 0.2f;
     public static readonly WaitForSeconds waitForSecond = new WaitForSeconds(1f);
 
     void OnEnable()

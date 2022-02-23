@@ -157,6 +157,8 @@ MonoBehaviour:
   Hp: 2
   objectManager: {fileID: 0}
   player: {fileID: 0}
+  playerdir: {x: 0, y: 0, z: 0}
+  wasHit: 0
 --- !u!61 &2115277527
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.054188073, y: 0.0067620277}
+  m_Offset: {x: 0.054188073, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -181,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.566496, y: 3.0742655}
+  m_Size: {x: 1.566496, y: 3}
   m_EdgeRadius: 0
 --- !u!1 &7626464376687363206
 GameObject:
