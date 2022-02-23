@@ -385,7 +385,7 @@ public class Boss : MonoBehaviour
         {
             GameObject Barrage = objectManager.MakeObj("Barrage");
             Barrage.transform.position = transform.position;
-            BarrageSpeed = 60;
+            BarrageSpeed = 50;
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);

@@ -315,12 +315,12 @@ public class TextManager : MonoBehaviour
         }
         if (scriptNum == 2)
         {
-            for(int i = 0; i < 24; i++)
+            for(int i = 0; i < 32; i++)
             {
                 GameObject.Find("Map").transform.GetChild(6).GetChild(i).GetComponent<Animator>().SetTrigger("SkulDestroy");
             }
             yield return new WaitForSeconds(0.5f);
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 32; i++)
             {
                 GameObject.Find("Map").transform.GetChild(6).GetChild(i).gameObject.SetActive(false);
             }

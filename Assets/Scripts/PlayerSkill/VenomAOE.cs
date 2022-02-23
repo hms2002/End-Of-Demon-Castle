@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VenomAOE : MonoBehaviour
 {
-    public int Damage = 10;
+    public int Damage = 3;
     private float DamageTime = 0.5f;
     private float currentDamageTime;
     Animator anim;
