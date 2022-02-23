@@ -21,7 +21,7 @@ public class Thunder : MonoBehaviour
         damage = 3;
         cur = 0.5f;
 
-        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Thunder", 0.3f, Define.Sound.Effect, 0.7f);
+        SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Thunder", 0.6f, Define.Sound.Effect, 0.7f);
 
         boxCollider2D = GetComponent<BoxCollider2D>();
 
