@@ -34,6 +34,9 @@ public class Boss : MonoBehaviour
     public Rigidbody2D rigid;
     public Animator anim;
 
+    //피격 이펙트 프리펩
+    GameObject damagedEffect;
+
     void Start()
     {
         Phase1 = true;
@@ -43,6 +46,8 @@ public class Boss : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        damagedEffect = Resources.Load<GameObject>("Prefabs/Damaged_Effect(BOSS_CRIST)");
     }
 
     void Update()
@@ -788,14 +793,20 @@ public class Boss : MonoBehaviour
     public void damaged(int damage)
     {
         BossHp -= damage;
+        Instantiate(damagedEffect, transform.position + new Vector3(Random.Range(0, 1f) - 0.5f, Random.Range(0, 1f) - 0.5f), transform.rotation);
+
     }
     public void damaged(float damage)
     {
         BossHp -= damage;
+        Instantiate(damagedEffect, transform.position + new Vector3(Random.Range(0, 1f) - 0.5f, Random.Range(0, 1f) - 0.5f), transform.rotation);
+
     }
     public void damaged(float damage, string attackType)
     {
         BossHp -= damage;
+        Instantiate(damagedEffect, transform.position + new Vector3(Random.Range(0, 1f) - 0.5f, Random.Range(0, 1f) - 0.5f), transform.rotation);
+
 
         if (attackType == "sword")
         {
