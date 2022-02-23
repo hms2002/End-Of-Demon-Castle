@@ -11,7 +11,7 @@ public class HealAOE : MonoBehaviour
 
     public Player player;
 
-    float delayTime = 0.5f;
+    float delayTime = 1f;
     float timer = 0;
 
     float amountOfRecovery = 10f;
