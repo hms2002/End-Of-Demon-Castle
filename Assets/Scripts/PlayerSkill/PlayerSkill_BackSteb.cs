@@ -86,7 +86,7 @@ public class PlayerSkill_BackSteb : Skill_ID
                             AudioSource effectAudio = effect.GetComponent<AudioSource>();
                             Destroy(effect, 0.4f);
 
-                            SoundManager.GetInstance().Play(effectAudio, "Sound/PlayerSound/SkillSound/BackStepSound");
+                            SoundManager.GetInstance().Play(effectAudio, "Sound/PlayerSound/SkillSound/BackStepSound", 5f);
 
                             transform.position = hit.transform.CompareTag("Boss") ? hit.transform.position + (hit.transform.up * 1) : hit.transform.position + (hit.transform.up * 0.5f);
                             break;
