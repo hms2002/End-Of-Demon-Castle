@@ -27,6 +27,7 @@ public class Cristal : BreakableObj
 
         Hp = 350;
         HpSlider.maxValue = Hp;
+        HpSlider.value = Hp;
     }
 
     private void Update()
