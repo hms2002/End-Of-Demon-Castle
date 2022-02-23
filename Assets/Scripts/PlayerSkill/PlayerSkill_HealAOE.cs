@@ -10,7 +10,7 @@ public class PlayerSkill_HealAOE : Skill_ID
     Player player;
 
 
-    float skillCoolTime = 15f;
+    float skillCoolTime = 30f;
     float curTime = 0;
     float healAOE_DurationTime;
 
