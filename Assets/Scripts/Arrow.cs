@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Damage = 5;
         int Layer = collision.gameObject.layer;            
         if(collision.CompareTag("CanBroke"))
         {
