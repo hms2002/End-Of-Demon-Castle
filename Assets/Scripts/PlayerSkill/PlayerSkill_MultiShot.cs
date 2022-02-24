@@ -71,7 +71,7 @@ public class PlayerSkill_MultiShot : Skill_ID
     {
         
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/MultiShotSound",0.5f);
-        for(int i = 0; i < 7; i++)
+        for(int i = 0; i < 8; i++)
         {
             GameObject arrow = objectManager.MakeObj("Arrow");
 
@@ -79,7 +79,7 @@ public class PlayerSkill_MultiShot : Skill_ID
 
             arrow.transform.position = transform.position;
 
-            Quaternion v3Rotation = Quaternion.AngleAxis(angle + (i * 7) - (7*3), Vector3.forward);
+            Quaternion v3Rotation = Quaternion.AngleAxis(angle + (i * 5) - (7*3), Vector3.forward);
 
             arrow.transform.rotation = v3Rotation;
 
