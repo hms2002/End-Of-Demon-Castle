@@ -346,8 +346,8 @@ public class Player : MonoBehaviour
                 canHit = false;
                 StartCoroutine("IChangeCanHit");
                 StartCoroutine("ShowDamaged");
-                SoundManager.GetInstance().Play("Resources/Sound/PlayerSound/2",0.3f);
                 player_hp -= damage;
+                SoundManager.GetInstance().Play("Sound/PlayerSound/zz", 0.3f);
                 dead();
             }
         }
