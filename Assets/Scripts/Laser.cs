@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     Player player;
     Animator anim;
     BoxCollider2D boxCollider2D;
-    Vector3 HorizonScale = new Vector3(4f, 16.1f, 1);
+    Vector3 HorizonScale = new Vector3(5.6f, 30f, 1);
 
     void OnEnable()
     {
