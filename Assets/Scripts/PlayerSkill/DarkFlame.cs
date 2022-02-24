@@ -55,7 +55,7 @@ public class DarkFlame : MonoBehaviour
             if(curTime > 1)
             {
                 curTime = 0;
-                boss.damaged(4 + DamageControler.GetInstance().GetDotDamage());
+                boss.damaged(8 + DamageControler.GetInstance().GetDotDamage());
             }
         }
         else if (breakableObj != null)
@@ -63,7 +63,7 @@ public class DarkFlame : MonoBehaviour
             if (curTime > 1)
             {
                 curTime = 0;
-                breakableObj.breakObj(4 + DamageControler.GetInstance().GetDotDamage());
+                breakableObj.breakObj(8 + DamageControler.GetInstance().GetDotDamage());
             }
         }
         else if (player != null)

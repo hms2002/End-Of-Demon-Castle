@@ -22,7 +22,7 @@ public class PillarOfFire : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         transform.GetChild(0).gameObject.SetActive(false);
 
-        flameDamage = 20.0f;
+        flameDamage = 30.0f;
         flameDamageTimer = 0;
 
         StartCoroutine("After4");
