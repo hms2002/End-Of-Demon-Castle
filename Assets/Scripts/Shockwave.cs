@@ -38,7 +38,7 @@ public class Shockwave : MonoBehaviour
     
     IEnumerator Charge()
     {
-        for(float per = 8f; per >= 0f; per -= 0.08f)
+        for(float per = 8f; per >= 0f; per -= 8 * Time.deltaTime)
         {
             transform.localScale = new Vector3(per, per, 1);
             Debug.Log(transform.localScale);
@@ -48,7 +48,7 @@ public class Shockwave : MonoBehaviour
 
     IEnumerator Shock()
     {
-        for (float per = 0f; per <= 8f; per += 0.24f)
+        for (float per = 0f; per <= 8f; per += 24f * Time.deltaTime)
         {
             transform.localScale = new Vector3(per, per, 1);
 
