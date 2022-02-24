@@ -380,7 +380,7 @@ public class Boss : MonoBehaviour
         {
             StartCoroutine("playerTracking");
         }
-        for (int i = 0; i < 15; i++)
+        for (int i = 1; i <= 15; i++)
         {
             GameObject Barrage = objectManager.MakeObj("Barrage");
             Barrage.transform.position = transform.position;
@@ -621,7 +621,7 @@ public class Boss : MonoBehaviour
             }
             yield return new WaitForSeconds(4);
         }
-        if (Phase3)
+        if (Phase2 || Phase3)
         {
             StartCoroutine("Boss_Scw");
             yield break;
