@@ -51,7 +51,7 @@ public class PlayerSkill_FastSword : Skill_ID
 
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/FastSword", 0.5f);
 
-        Destroy(tempObj, 7);
+        Destroy(tempObj, 5);
 
         StartCoroutine("Off");
 
@@ -59,7 +59,7 @@ public class PlayerSkill_FastSword : Skill_ID
 
     IEnumerator Off()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(5);
         if(isSkillOn == true)
         {
             player.atkCoolTime = 0.25f;
