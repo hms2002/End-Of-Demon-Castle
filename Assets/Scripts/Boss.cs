@@ -174,7 +174,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 3);
+                PatternNum = Random.Range(1, 8);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -182,10 +182,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_12");
+                    StartCoroutine("Pattern_2");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_12");
+                    StartCoroutine("Pattern_3");
                     break;
                 case 3:
                     StartCoroutine("Pattern_7");
