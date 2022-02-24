@@ -79,7 +79,7 @@ public class FadeManager : MonoBehaviour
 
         for (int i = 0; i < 100; i++)
         {
-            imageColor.a += 0.01f;
+            imageColor.a += Time.deltaTime;
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
@@ -102,7 +102,7 @@ public class FadeManager : MonoBehaviour
 
         for (int i = 50; i > 0; i--)
         {
-            imageColor.a -= 0.02f;
+            imageColor.a -= 2*Time.deltaTime;
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
