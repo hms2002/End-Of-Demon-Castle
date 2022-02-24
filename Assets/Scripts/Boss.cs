@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
 
     public float BossHp = 700;
     public bool wasHit;
-    public float PatternTime = 0f;
+    public float PatternTime = 2f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed;
