@@ -69,6 +69,7 @@ public class Boss : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
             StopAllCoroutines();
+            boxCollider.enabled = false;
             Phase2 = false;
             Phase3 = true;
             BossStop = false;

@@ -18,7 +18,7 @@ public class VenomAOE : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         SoundManager.GetInstance().Play(audioSource, "Sound/PlayerSound/SkillSound/PoisonBottleBreak", 0.6f);
         capsule = gameObject.GetComponent<CapsuleCollider2D>();
-        DamageTime = 1.0f;
+        DamageTime = 1f;
         capsule.enabled = true;
         anim = GetComponent<Animator>();
         StartCoroutine("VenomEnd");
