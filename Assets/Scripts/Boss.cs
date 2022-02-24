@@ -89,6 +89,7 @@ public class Boss : MonoBehaviour
 
     public void PatternManager()
     {
+        SoundManager.GetInstance().Play("Sound/BossSound/PatternSound", 0.8f);
         if (Phase1 && BossStop)
         {
             do
@@ -290,7 +291,7 @@ public class Boss : MonoBehaviour
     //패턴2 : 레이저 세로발사
     private IEnumerator Pattern_2()
     {
-        transform.position = new Vector2(0, 37);
+        transform.position = new Vector2(0, 26);
         for (int j = 0; j <= 1; j++)
         {
             for (int i = 1; i <= 4; i++)
@@ -348,7 +349,7 @@ public class Boss : MonoBehaviour
     //패턴3 : 레이저 가로발사
     private IEnumerator Pattern_3()
     {
-        transform.position = new Vector2(0, 37);
+        transform.position = new Vector2(0, 26);
         for (int j = 0; j <= 1; j++)
         {
             for (int i = 1; i <= 3; i++)
@@ -600,7 +601,7 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_11()
     {
         StartCoroutine("Boss_Set");
-        transform.position = new Vector2(0, 37);
+        transform.position = new Vector2(0, 26);
         int RoundNum = 12;
         Barrage[] barrageLogic = new Barrage[RoundNum];
         for (int j = 0; j < 2; j++)
