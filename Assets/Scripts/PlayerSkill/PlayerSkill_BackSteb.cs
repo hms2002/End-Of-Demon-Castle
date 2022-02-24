@@ -81,10 +81,15 @@ public class PlayerSkill_BackSteb : Skill_ID
                 {
                     if(hit.transform.CompareTag("CanBroke") || hit.transform.CompareTag("Boss"))
                     {
-                        float distance = Mathf.Abs(Vector2.Distance(transform.position, hit.transform.position));
-                        if(distance <= 100)
+                        if (hit.transform.CompareTag("CanBroke"))
                         {
-                            GameObject effect = Instantiate(backSteb, transform.position, transform.rotation);
+                            hit.transform.GetComponent<BreakableObj>().breakObj(10);
+                        }
+                        else
+                        {
+                            hit.transform.GetComponent<Boss>().damaged(10);
+                        }
+                               GameObject effect = Instantiate(backSteb, transform.position, transform.rotation);
                             AudioSource effectAudio = effect.GetComponent<AudioSource>();
                             Destroy(effect, 0.4f);
 
@@ -92,7 +97,6 @@ public class PlayerSkill_BackSteb : Skill_ID
 
                             transform.position = hit.transform.CompareTag("Boss") ? hit.transform.position + (hit.transform.up * 1) : hit.transform.position + (hit.transform.up * 0.5f);
                             break;
-                        }
                     }
                 }
             }

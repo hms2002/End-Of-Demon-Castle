@@ -10,7 +10,7 @@ public class PillarOfFire : MonoBehaviour
 
     GameObject darkFlame;
 
-    float flameDamage = 20.0f;
+    float flameDamage;
     float flameDamageTimer = 0;
     bool isDarkFlameOn = false;
     bool isSetMigicCircleDone = false;
