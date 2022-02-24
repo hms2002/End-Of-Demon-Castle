@@ -80,6 +80,7 @@ public class Cristal : BreakableObj
             Vector2 angledir = new Vector2(Random.Range(-2.7f, 2.7f), Random.Range(-2f, 2f));
             playerdir += angledir;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
             yield return new WaitForSeconds(0.02f);
         }
     }
