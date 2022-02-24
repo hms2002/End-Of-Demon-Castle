@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSkill_PillarOfFire : Skill_ID
 {
-    public static readonly WaitForSeconds m_waitForSecondTimeDelta = new WaitForSeconds(0.01f); // Ä³½Ì
+    public static readonly WaitForSeconds m_waitForSecondTimeDelta = new WaitForSeconds(0.005f); // Ä³½Ì
 
     SetCursor setCursor;
     GameObject pillarFire;

@@ -56,6 +56,7 @@ public class Boss : MonoBehaviour
         {
             if (CristalNum == 0 && Phase1)
             {
+                gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
                 StopAllCoroutines();
                 boxCollider.enabled = true;
                 Phase1 = false;
@@ -66,6 +67,7 @@ public class Boss : MonoBehaviour
         }
         if (BossHp <= 0 && Phase2)
         {
+            gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
             StopAllCoroutines();
             Phase2 = false;
             Phase3 = true;
@@ -76,6 +78,7 @@ public class Boss : MonoBehaviour
         }
         if (BossHp <= 0 && Phase3)
         {
+            gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
             StopAllCoroutines();
             Phase3 = false;
             BossStop = false;

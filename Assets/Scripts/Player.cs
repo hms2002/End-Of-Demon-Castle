@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        player_hp = maxHP;
         dashCoolTimeImage.maxValue = dashCoolTime;
 
         playerSkill = GetComponent<PlayerSkill>();
@@ -347,6 +348,7 @@ public class Player : MonoBehaviour
                 StartCoroutine("IChangeCanHit");
                 StartCoroutine("ShowDamaged");
                 player_hp -= damage;
+                SoundManager.GetInstance().Play("Sound/PlayerSound/zz", 0.3f);
                 dead();
             }
         }

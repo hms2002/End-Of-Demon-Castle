@@ -11,7 +11,7 @@ public class DarkFlame : MonoBehaviour
     float curTime = 0;
     int count;
 
-    //#.½ºÅ³ ¾ÆÀÌÄÜ
+    //#.ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     GameObject buffICON;
     GameObject tempBuffICON;
 
@@ -39,7 +39,7 @@ public class DarkFlame : MonoBehaviour
 
         if(player != null)
         {
-            //#.½ºÅ³ ¾ÆÀÌÄÜ ¹× °­Á¦ ÃÊ±âÈ­
+            //#.ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
             buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_DarkFlame");
             tempBuffICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
             SkillSelectManager.GetInstance().Init += BeforeDEL;
@@ -57,7 +57,7 @@ public class DarkFlame : MonoBehaviour
             if(curTime > 1)
             {
                 curTime = 0;
-                boss.damaged(4 + DamageControler.GetInstance().GetDotDamage());
+                boss.damaged(8 + DamageControler.GetInstance().GetDotDamage());
             }
         }
         else if (breakableObj != null)
@@ -65,7 +65,7 @@ public class DarkFlame : MonoBehaviour
             if (curTime > 1)
             {
                 curTime = 0;
-                breakableObj.breakObj(4 + DamageControler.GetInstance().GetDotDamage());
+                breakableObj.breakObj(8 + DamageControler.GetInstance().GetDotDamage());
             }
         }
         else if (player != null)
