@@ -12,7 +12,7 @@ public class PlayerSkill_Venom : Skill_ID
 
     void Start()
     {
-        coolTime = 12f;
+        coolTime = 15f;
         player = GetComponent<Player>();
         VenomBottle = Resources.Load<GameObject>("Prefabs/VenomBottle");
         coolTimeSlider.maxValue = coolTime;
