@@ -291,6 +291,8 @@ public class Boss : MonoBehaviour
     //패턴2 : 레이저 세로발사
     private IEnumerator Pattern_2()
     {
+        StartCoroutine("Boss_Set");
+        yield return new WaitForSeconds(0.3f);
         transform.position = new Vector2(0, 26);
         for (int j = 0; j <= 1; j++)
         {
@@ -349,6 +351,8 @@ public class Boss : MonoBehaviour
     //패턴3 : 레이저 가로발사
     private IEnumerator Pattern_3()
     {
+        StartCoroutine("Boss_Set");
+        yield return new WaitForSeconds(0.3f);
         transform.position = new Vector2(0, 26);
         for (int j = 0; j <= 1; j++)
         {
@@ -380,6 +384,7 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_5()
     {
         StartCoroutine("Boss_Set");
+        yield return new WaitForSeconds(0.3f);
         if (Phase2)
         {
             StartCoroutine("playerTracking");
@@ -443,6 +448,8 @@ public class Boss : MonoBehaviour
     //패턴7 : 플레이어 방향으로 레이저
     private IEnumerator Pattern_7()
     {
+        StartCoroutine("Boss_Set");
+        yield return new WaitForSeconds(0.3f);
         int RandomNum = Random.Range(0, 1);
         Vector2 target;
         StartCoroutine("Boss_Set");
@@ -570,7 +577,7 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_10()
     {
         StartCoroutine("Boss_Set");
-        if(Phase3)
+        if (Phase3)
         {
             StartCoroutine("playerTracking");
         }
@@ -601,7 +608,10 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_11()
     {
         StartCoroutine("Boss_Set");
-        transform.position = new Vector2(0, 26);
+        if (Phase2 || Phase3)
+        {
+            transform.position = new Vector2(0, 26);
+        }   
         int RoundNum = 12;
         Barrage[] barrageLogic = new Barrage[RoundNum];
         for (int j = 0; j < 2; j++)
@@ -635,6 +645,8 @@ public class Boss : MonoBehaviour
     //패턴12 : 장판생기고 탄막난사
     public IEnumerator Pattern_12()
     {
+        StartCoroutine("Boss_Set");
+        yield return new WaitForSeconds(0.3f);
         transform.position = new Vector2(0, 37);
         for (int j = 0; j < 2; j++)
         {
@@ -716,7 +728,7 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_13()
     {
         StartCoroutine("Boss_CristalSet");
-
+        yield return new WaitForSeconds(0.3f);
         Cristal[] cristalLogic = new Cristal[4];
         for (int i = 0; i < 2; i++)
         {
@@ -758,7 +770,7 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_14()
     {
         StartCoroutine("Boss_CristalSet");
-
+        yield return new WaitForSeconds(0.3f);
         Cristal[] cristalLogic = new Cristal[4];
         for (int i = 0; i < 4; i++)
         {
