@@ -3897,6 +3897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!1 &235559108
@@ -31706,6 +31708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 43
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &1426339790
@@ -34067,6 +34071,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 32
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &1717498189
@@ -39323,6 +39329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764018830841090
@@ -39353,6 +39361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 63
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764018833848720
@@ -39368,6 +39378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 41
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764018833848727
@@ -39413,6 +39425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 12
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019013510642
@@ -39443,6 +39457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 33
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!61 &4323764019035448964
@@ -39569,6 +39585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 42
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019176235119
@@ -39614,6 +39632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019333533091
@@ -39644,6 +39664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019381812181
@@ -39674,6 +39696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 22
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019394292895
@@ -39717,6 +39741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!222 &4323764019541425376
@@ -39838,6 +39864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019710988188
@@ -39886,6 +39914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 62
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764019762268344
@@ -40043,6 +40073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 61
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020003070376
@@ -40073,6 +40105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 52
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020006109949
@@ -40103,6 +40137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 11
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!1 &4323764020020171010
@@ -40302,6 +40338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 31
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020220643499
@@ -40332,6 +40370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 53
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020341198901
@@ -40362,6 +40402,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020349421420
@@ -40410,6 +40452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 23
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020414786650
@@ -40440,6 +40484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 21
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020468701656
@@ -40455,6 +40501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020468701663
@@ -40518,6 +40566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020568170835
@@ -40548,6 +40598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 13
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020773516052
@@ -40578,6 +40630,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020789976698
@@ -40608,6 +40662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020792008992
@@ -40638,6 +40694,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}
 --- !u!114 &4323764020840883310
@@ -40668,5 +40726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 51
+  coolTime: 0
+  curTime: 0
   skillKey: 0
   coolTimeSlider: {fileID: 0}

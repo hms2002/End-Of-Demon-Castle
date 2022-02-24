@@ -6,9 +6,7 @@ public class PlayerSkill_Thunder : Skill_ID
 {
     GameObject thunder;
     GameObject tempEffect;
-
-    float coolTime;
-    float curTime;
+    
 
     bool isSkillOn = false;
 

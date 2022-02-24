@@ -12,8 +12,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
 
     bool isSkillOn;
     float walkingSpeed = 8.0f;
-    float coolTime = 10.0f;
-    float curTime;
     bool isSliderInit = false;
     float skillDuration = 0.0f;
     float maxSkillDuration = 10.0f;
@@ -24,8 +22,9 @@ public class PlayerSkill_WhirlWind : Skill_ID
         playerAudioSource = player.GetComponent<AudioSource>();
         whirlwind = Resources.Load<GameObject>("Prefabs/Whirlwind_Ver2");
         isSkillOn = false;
+        coolTime = 10.0f;
 
-//#.강제 초기화
+        //#.강제 초기화
         SkillSelectManager.GetInstance().Init += BeforeDEL;
     }
     

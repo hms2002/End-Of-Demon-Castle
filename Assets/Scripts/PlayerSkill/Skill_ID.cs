@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Skill_ID : MonoBehaviour
 {
     public int ID;
+    public float coolTime;
+    public float curTime = 0;
     public KeyCode skillKey;
     public Slider coolTimeSlider;
     

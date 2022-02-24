@@ -6,31 +6,30 @@ public class PlayerSkill_Venom : Skill_ID
 {
     Player player;
     GameObject VenomBottle;
-
-    public float cooltime = 12f;
-    public float curtime = 0f;
+    
     public float BottleSpeed = 10f;
     public Vector2 playerDir;
 
     void Start()
     {
+        coolTime = 12f;
         player = GetComponent<Player>();
         VenomBottle = Resources.Load<GameObject>("Prefabs/VenomBottle");
-        coolTimeSlider.maxValue = cooltime;
+        coolTimeSlider.maxValue = coolTime;
     }
 
     void Update()
     {
-        curtime -= Time.deltaTime;
-        coolTimeSlider.value = curtime;
+        curTime -= Time.deltaTime;
+        coolTimeSlider.value = curTime;
     }
 
     public override void SkillOn()
     {
         //스킬 발동
-        if (curtime < 0)
+        if (curTime < 0)
         {
-            curtime = cooltime;
+            curTime = coolTime;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 v2 = mousePos - (Vector2)transform.position;
             float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;

@@ -207,4 +207,13 @@ public class SkillSelectManager : MonoBehaviour
         }
         
     }
+
+    public void CoolTimeInit()
+    {
+        for(int count = 0; count < skillList.Count; count++)
+        {
+            skillList[count].curTime = 0;
+        }
+
+    }
 }

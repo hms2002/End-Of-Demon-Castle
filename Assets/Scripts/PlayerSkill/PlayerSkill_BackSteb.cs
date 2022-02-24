@@ -12,8 +12,6 @@ public class PlayerSkill_BackSteb : Skill_ID
     //백스탭 이펙트
     GameObject backSteb;
     //쿨타임
-    float coolTime;
-    float curTime;
 
     //다른 스킬 동시에 못쓰도록 플레이어 스킬 가져옴
     PlayerSkill playerSkill;

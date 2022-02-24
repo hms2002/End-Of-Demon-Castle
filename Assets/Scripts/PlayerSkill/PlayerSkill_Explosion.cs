@@ -8,9 +8,7 @@ public class PlayerSkill_Explosion : Skill_ID
     Player player;
     GameObject Explosion;
     Text text;
-
-    public float cooltime = 0.5f;
-    public float curtime = 0f;
+    
     public float Chargetime = 2f;
     public const int ChargeMax = 5;
     public int ChargeNum = 5;
@@ -19,6 +17,7 @@ public class PlayerSkill_Explosion : Skill_ID
 
     void Awake()
     {
+        coolTime = 0.5f;
         player = GetComponent<Player>();
         Explosion = Resources.Load<GameObject>("Prefabs/ExplosionPivot");
         isSkillOn = false;
@@ -26,17 +25,17 @@ public class PlayerSkill_Explosion : Skill_ID
 
     void Update()
     {
-        curtime -= Time.deltaTime;
+        curTime -= Time.deltaTime;
         if (coolTimeSlider != null)
         {
             if (isOnce)
             {
                 isOnce = false;
-                coolTimeSlider.maxValue = cooltime;
+                coolTimeSlider.maxValue = coolTime;
                 text = coolTimeSlider.transform.parent.GetChild(1).GetComponent<Text>();
                 text.text = ChargeNum.ToString();
             }
-            coolTimeSlider.value = curtime;
+            coolTimeSlider.value = curTime;
             
         }
             
@@ -48,14 +47,14 @@ public class PlayerSkill_Explosion : Skill_ID
     public override void SkillOn()
     {
         //스킬 발동
-        if (curtime < 0 && ChargeNum > 0)
+        if (curTime < 0 && ChargeNum > 0)
         {
             if (isSkillOn)
             {
                 return;
             }
             isSkillOn = true;
-            curtime = cooltime;
+            curTime = coolTime;
             //불 각도
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 v2 = mousePos - (Vector2)transform.position;

@@ -14,9 +14,6 @@ public class PlayerSkill_PillarOfFire : Skill_ID
 
     GameObject tempCircle;
 
-    float coolTime = 30.0f;
-    float curTime = 0;
-
     bool OnKey = false;
 
     private void Start()
@@ -25,7 +22,7 @@ public class PlayerSkill_PillarOfFire : Skill_ID
         pillarFire = Resources.Load<GameObject>("Prefabs/PillarOfFire");
         darkFlame = Resources.Load<GameObject>("Prefabs/DarkFlame");
         magicCircle = Resources.Load<GameObject>("Prefabs/SkillEffect_Pillar_Of_Fire_magicCircle");
-
+        coolTime = 30.0f;
         coolTimeSlider.maxValue = coolTime;
     }
 

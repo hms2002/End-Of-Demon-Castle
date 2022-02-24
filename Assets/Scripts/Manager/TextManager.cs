@@ -240,6 +240,8 @@ public class TextManager : MonoBehaviour
             SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.3f, Define.Sound.Bgm, 0.5f);
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
+            SkillSelectManager.GetInstance().CoolTimeInit();
+            Player.GetInstance().player_hp = 1000;
             yield return new WaitForSeconds(1.5f);
 
             EnterTheBossRoom.GetInstance().Invoke("FightStart", 2f);
@@ -343,6 +345,7 @@ public class TextManager : MonoBehaviour
 
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
+            SkillSelectManager.GetInstance().CoolTimeInit();
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -429,6 +432,7 @@ public class TextManager : MonoBehaviour
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
+            SkillSelectManager.GetInstance().CoolTimeInit();
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             Boss.GetInstance().PatternManager();

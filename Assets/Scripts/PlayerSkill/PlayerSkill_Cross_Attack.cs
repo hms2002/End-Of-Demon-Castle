@@ -6,30 +6,29 @@ public class PlayerSkill_Cross_Attack : Skill_ID
 {
     Player player;
     GameObject Cross;
-    public float cooltime = 15.0f;
-    public float curtime = 0.0f;
     bool isInitSlider = false;
 
     void Awake()
     {
+        coolTime = 15.0f;
         Cross = Resources.Load<GameObject>("Prefabs/Cross_Attack_Pivot");
         player = Player.GetInstance();
     }
 
     void Update()
     { 
-        curtime -= Time.deltaTime;
+        curTime -= Time.deltaTime;
         if (coolTimeSlider != null)
         {
             if (coolTimeSlider)
             {
                 if (!isInitSlider)
                 {
-                    coolTimeSlider.maxValue = cooltime;
+                    coolTimeSlider.maxValue = coolTime;
                     isInitSlider = true;
                 }
                
-                coolTimeSlider.value = curtime;
+                coolTimeSlider.value = curTime;
             }
         }
     }
@@ -37,9 +36,9 @@ public class PlayerSkill_Cross_Attack : Skill_ID
     public override void SkillOn()
     {
         //스킬 발동
-        if (curtime < 0)
+        if (curTime < 0)
         {
-            curtime = cooltime;
+            curTime = coolTime;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 v2 = mousePos - (Vector2)transform.position;
             Vector2 temp = v2.normalized * 3;
