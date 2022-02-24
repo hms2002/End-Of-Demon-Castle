@@ -43,7 +43,7 @@ public class PlayerSkill_Cross_Attack : Skill_ID
             curTime = coolTime;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 v2 = mousePos - (Vector2)transform.position;
-            Vector2 temp = v2.normalized * 3;
+            Vector2 temp = v2.normalized * 2;
             float angle = Mathf.Atan2(v2.y, v2.x) * 180 / Mathf.PI;
             Instantiate(Cross, (Vector3)temp + transform.position, transform.rotation);
             SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/CrossAttack", 0.1f);
