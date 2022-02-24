@@ -241,7 +241,7 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
 
-            EnterTheBossRoom.GetInstance().FightStart();
+            EnterTheBossRoom.GetInstance().Invoke("FightStart", 2f);
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
         }

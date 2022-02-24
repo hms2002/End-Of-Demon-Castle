@@ -4037,6 +4037,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2115277527, guid: 74f1ab48a9d00134d9b1401b2cf8610e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_RootOrder
@@ -5177,16 +5181,6 @@ PrefabInstance:
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084116783830021187, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084116783830021187, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
-        type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598307416810753627, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
@@ -9204,6 +9198,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2115277527, guid: 74f1ab48a9d00134d9b1401b2cf8610e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_RootOrder
@@ -9269,16 +9267,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7598307416810753627, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1160478600}
-    - target: {fileID: 7598307416810753627, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
-        type: 3}
-      propertyPath: objectManager
-      value: 
-      objectReference: {fileID: 1618058073}
     - target: {fileID: 7737609423601931526, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_Name
@@ -33691,6 +33679,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2115277527, guid: 74f1ab48a9d00134d9b1401b2cf8610e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_RootOrder

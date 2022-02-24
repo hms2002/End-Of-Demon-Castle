@@ -6,8 +6,8 @@ public class PlayerSkill_Cross_Attack : Skill_ID
 {
     Player player;
     GameObject Cross;
-    public float cooltime = 1f;
-    public float curtime = 0f;
+    public float cooltime = 15.0f;
+    public float curtime = 0.0f;
     bool isInitSlider = false;
 
     void Awake()
