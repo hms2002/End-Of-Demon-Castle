@@ -71,7 +71,7 @@ public class DarkFlame : MonoBehaviour
             if (curTime > 2)
             {
                 curTime = 0;
-                player.damaged(10);
+                player.damaged(7);
             }
         }
     }
