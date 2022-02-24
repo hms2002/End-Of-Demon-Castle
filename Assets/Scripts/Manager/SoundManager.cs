@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     public static SoundManager soundManager;
-
+    GameObject root;
 
     float _volume = 0;
     bool isBGMStarting = false;
@@ -36,7 +36,8 @@ public class SoundManager : MonoBehaviour
  
     private void Awake()
     {
-		//DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
+        Player.GetInstance().onDead += Dead;
         if (soundManager != null)
         {
             if (soundManager != this)
@@ -47,9 +48,15 @@ public class SoundManager : MonoBehaviour
         Init();
     }
 
+    public void Dead()
+    {
+        Destroy(root);
+        Destroy(gameObject);
+    }
+
     public void Init()
 	{
-		GameObject root = GameObject.Find("@Sound");
+		root = GameObject.Find("@Sound");
 		if (root == null)
 		{
 			root = new GameObject { name = "@Sound" };
