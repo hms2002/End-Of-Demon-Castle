@@ -601,7 +601,10 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_11()
     {
         StartCoroutine("Boss_Set");
-        transform.position = new Vector2(0, 26);
+        if(Phase2 || Phase3)
+        {
+            transform.position = new Vector2(0, 26);
+        }   
         int RoundNum = 12;
         Barrage[] barrageLogic = new Barrage[RoundNum];
         for (int j = 0; j < 2; j++)
