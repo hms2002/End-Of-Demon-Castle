@@ -648,7 +648,7 @@ public class Boss : MonoBehaviour
     {
         StartCoroutine("Boss_Set");
         yield return new WaitForSeconds(0.3f);
-        transform.position = new Vector2(0, 37);
+        transform.position = new Vector2(0, 36);
         for (int j = 0; j < 2; j++)
         {
             GameObject AOE = objectManager.MakeObj("AOE");
