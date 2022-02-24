@@ -237,6 +237,7 @@ public class TextManager : MonoBehaviour
         }
         if(scriptNum == 6)
         {
+            SoundManager.GetInstance().Play("Sound/BGM/BGM_ingameBoss", 0.3f, Define.Sound.Bgm, 0.5f);
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
             yield return new WaitForSeconds(1.5f);
