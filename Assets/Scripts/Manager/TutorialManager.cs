@@ -57,8 +57,11 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator StartTutorial()
     {
-        if (isFirstMissionClear == true)
+        if (TutorialManager.GetInstance().isFirstMissionClear == true)
+        {
             Player.GetInstance().transform.position = new Vector3(0, 0, 0);
+            Debug.Log("¾ß");
+        }
         SoundManager.GetInstance().Play("Sound/BGM/BGM_BeforeEnterBossRoom", 0.1f, Define.Sound.Bgm, 1f);
         yield return new WaitForSeconds(0.01f);
         if (GetInstance().start)

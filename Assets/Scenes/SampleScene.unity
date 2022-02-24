@@ -19546,10 +19546,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6603e5bf85b88044bb175cc500875cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 0
-  isFirstMissionClear: 1
-  isSecondMissionClear1: 1
-  isSecondMissionClear2: 1
+  start: 1
+  isFirstMissionClear: 0
+  isSecondMissionClear1: 0
+  isSecondMissionClear2: 0
   isMe: 1
 --- !u!1 &1240897918
 GameObject:
@@ -37952,7 +37952,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 700
+  m_MaxValue: 1000
   m_WholeNumbers: 1
   m_Value: 700
   m_OnValueChanged:
