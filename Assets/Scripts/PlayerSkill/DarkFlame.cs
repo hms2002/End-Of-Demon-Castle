@@ -9,6 +9,7 @@ public class DarkFlame : MonoBehaviour
     BreakableObj breakableObj = null;
 
     float curTime = 0;
+    int count;
 
     //#.스킬 아이콘
     GameObject buffICON;
@@ -16,6 +17,7 @@ public class DarkFlame : MonoBehaviour
 
     private void OnEnable()
     {
+        count = 1;
         transform.parent.CompareTag("CanBroke");
         transform.parent.CompareTag("Boss");
         transform.parent.CompareTag("Player");
@@ -68,10 +70,15 @@ public class DarkFlame : MonoBehaviour
         }
         else if (player != null)
         {
-            if (curTime > 2)
+            if (curTime > 1)
             {
+                if (count > 4)
+                {
+                    return;
+                }
                 curTime = 0;
-                player.damaged(10);
+                player.damaged(5);
+                count++;
             }
         }
     }
@@ -86,7 +93,6 @@ public class DarkFlame : MonoBehaviour
 
     private void OnDestroy()
     {
-
         Destroy(tempBuffICON);
         BuffLayoutSetting.GetInstance().SubBuff();
         SkillSelectManager.GetInstance().Init -= BeforeDEL;

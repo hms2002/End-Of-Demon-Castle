@@ -33,7 +33,6 @@ public class PlayerSkill_FireBreath : Skill_ID
     {
         if(isSkillOn == false)
         {
-
             curTime -= Time.deltaTime;
             if (coolTimeSlider)
             {
