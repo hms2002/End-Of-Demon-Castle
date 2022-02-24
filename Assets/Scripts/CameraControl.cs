@@ -42,7 +42,7 @@ public class CameraControl : MonoBehaviour
         camFollowPlayer = false;
         for (float i = 0; i < 100; i++)
         {
-            transform.position = Vector3.Lerp(transform.position, Boss.GetInstance().transform.position + new Vector3(0, 0, -10), i/100f);
+            transform.position = Vector3.Lerp(transform.position, Boss.GetInstance().transform.position + new Vector3(0, 0, -10), i*Time.deltaTime);
             yield return new WaitForSeconds(0.02f);
         }   
     }
@@ -51,7 +51,7 @@ public class CameraControl : MonoBehaviour
     {
         for (float i = 0; i < 100; i++)
         {
-            transform.position = Vector3.Lerp(transform.position, Player.GetInstance().transform.position + new Vector3(0, 0, -10), i/100f);
+            transform.position = Vector3.Lerp(transform.position, Player.GetInstance().transform.position + new Vector3(0, 0, -10), i * Time.deltaTime);
             yield return new WaitForSeconds(0.02f);
         }
         camFollowPlayer = true;

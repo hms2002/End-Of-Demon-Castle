@@ -18449,7 +18449,7 @@ MonoBehaviour:
   dashPower: 400
   canDash: 1
   dashCoolTimeImage: {fileID: 329187638}
-  attackDamage: 10
+  attackDamage: 1117
   atkCoolTime: 0.25
   attackEffect: {fileID: 50589390051191299, guid: cd0fe71a86696674598e34d1c94e4418,
     type: 3}
@@ -19626,11 +19626,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6603e5bf85b88044bb175cc500875cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 1
-  isFirstMissionClear: 0
-  isSecondMissionClear1: 0
-  isSecondMissionClear2: 0
-  isFirstBoss: 1
+  start: 0
+  isFirstMissionClear: 1
+  isSecondMissionClear1: 1
+  isSecondMissionClear2: 1
+  isFirstBoss: 0
   isMe: 1
 --- !u!1 &1240897918
 GameObject:
