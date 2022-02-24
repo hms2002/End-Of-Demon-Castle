@@ -39,7 +39,7 @@ public class PlayerSkill_Vampire : Skill_ID
         isSkillOn = false;
 
         curTime = 0;
-        coolTime = 30;
+        coolTime = 35;
     }
 
     private void Update()
