@@ -24,7 +24,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
         shadowAssult = Resources.Load<GameObject>("Prefabs/ShadowAssultPivot");
         bul = Resources.Load<GameObject>("Prefabs/torch_side_0");
 
-        coolTime = 13;
+        coolTime = 7;
         curTime = 0;
         coolTimeSlider.maxValue = coolTime;
     }
