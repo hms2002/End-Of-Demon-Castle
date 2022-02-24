@@ -17,7 +17,7 @@ public class PlayerSkill_Vampire : Skill_ID
     bool isSkillOn;
     float skillDuration = 0.0f;
     float maxSkillDuration = 3.0f;
-    int amountOfRecovery = 10;
+    int amountOfRecovery = 3;
 
     float coolTime;
     float curTime;
@@ -40,7 +40,7 @@ public class PlayerSkill_Vampire : Skill_ID
         isSkillOn = false;
 
         curTime = 0;
-        coolTime = 25;
+        coolTime = 30;
     }
 
     private void Update()

@@ -77,7 +77,7 @@ public class PlayerSkill_Explosion : Skill_ID
     IEnumerator SpitFire(GameObject ExplosionEffect)
     {
         Destroy(ExplosionEffect, 0.2f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         player.playerFree();
         isSkillOn = false;
     }
