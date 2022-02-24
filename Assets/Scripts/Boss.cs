@@ -454,7 +454,6 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         int RandomNum = Random.Range(0, 1);
         Vector2 target;
-        StartCoroutine("Boss_Set");
             for (int i = 0; i < 4; i++)
             {
                 if (RandomNum == 0)
