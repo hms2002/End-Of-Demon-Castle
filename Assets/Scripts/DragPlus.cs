@@ -88,13 +88,13 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 1");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData_1");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 2");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 3");
                             break;
                     }
                     break;
@@ -102,13 +102,13 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData_1");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 4");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 5");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 6");
                             break;
                     }
                     break;
@@ -116,13 +116,13 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData_1");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 7");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 8");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 9");
                             break;
                     }
                     break;
@@ -130,13 +130,13 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData_1");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 10");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 11");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 12");
                             break;
                     }
                     break;
@@ -144,13 +144,13 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 13");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 14");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 15");
                             break;
                     }
                     break;
@@ -158,18 +158,18 @@ public class DragPlus : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                     switch (skills)
                     {
                         case 1:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 16");
                             break;
                         case 2:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 17");
                             break;
                         case 3:
-                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData");
+                            Info = Resources.Load<GameObject>("Prefabs/UI/SkillData 18");
                             break;
                     }
                     break;
                 default:
-                    Info = Resources.Load<GameObject>("Prefabs/UI/SkillData_1");
+                   
                     break;
             }
             InfoScreen = Instantiate(Info, gameObject.transform);

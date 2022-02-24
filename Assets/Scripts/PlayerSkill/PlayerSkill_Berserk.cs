@@ -46,7 +46,7 @@ public class PlayerSkill_Berserk : Skill_ID
         isSkillOn = true;
         curTime = coolTime;
         player.speed += 2;
-        player.atkCoolTime = 0.15f;
+        player.atkCoolTime = 0.1f;
         player.damaged(20);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Berserk_Loop", 1f);
 
@@ -54,7 +54,7 @@ public class PlayerSkill_Berserk : Skill_ID
 
         tempObj.transform.localPosition = new Vector2(0, 0);
 
-        Destroy(tempObj, 20);
+        Destroy(tempObj, 15);
 
         DamageControler.GetInstance().UpgradeDamage();
 
@@ -67,7 +67,7 @@ public class PlayerSkill_Berserk : Skill_ID
         tempBuffICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
         BuffLayoutSetting.GetInstance().AddBuff();
 
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(15);
 
         DamageControler.GetInstance().DowngradeForPlayerDamage();
         player.speed -= 2;

@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
 
     public float BossHp = 700;
     public bool wasHit;
-    public float PatternTime = 0f;
+    public float PatternTime = 2f;
     public int PatternNum = 0;
     public int PrePatternNum = 0;
     public float BarrageSpeed;
@@ -798,7 +798,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator HpRaise()
     {
-        for(int i = 1; i < 700; i++)
+        for(int i = 1; i < 1000; i++)
         {
             BossHp = i;
             yield return new WaitForSeconds(0.001f);
