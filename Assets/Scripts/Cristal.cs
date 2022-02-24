@@ -37,8 +37,15 @@ public class Cristal : BreakableObj
 
     public override void breakObj(float damage)
     {
+        PlayerSkill_Vampire vampire = FindObjectOfType<PlayerSkill_Vampire>();
+
+        if (vampire.isSkillOn == true)
+        {
+            wasHit = true;
+        }
+
         Hp -= damage;
-        wasHit = true;
+
         if(coolTime <= 0)
         {
 

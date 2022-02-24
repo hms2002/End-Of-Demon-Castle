@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     public bool isFirstMissionClear = false;
     public bool isSecondMissionClear1 = false;
     public bool isSecondMissionClear2 = false;
+    public bool isFirstBoss = true;
     public bool isMe = false;
     EnterTheBossRoom bossRoom;
     public static TutorialManager GetInstance()
