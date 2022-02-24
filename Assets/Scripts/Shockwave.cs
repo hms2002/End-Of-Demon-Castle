@@ -22,7 +22,7 @@ public class Shockwave : MonoBehaviour
             StartCoroutine(Charge());
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         if (transform.localScale == ZeroScale)
         {
@@ -44,6 +44,7 @@ public class Shockwave : MonoBehaviour
             Debug.Log(transform.localScale);
             yield return new WaitForSeconds(0.001f);
         }
+        transform.localScale = ZeroScale;
     }
 
     IEnumerator Shock()
@@ -54,6 +55,7 @@ public class Shockwave : MonoBehaviour
 
             yield return new WaitForSeconds(0.001f);
         }
+        transform.localScale = Scaled;
         gameObject.SetActive(false);
     }
 
