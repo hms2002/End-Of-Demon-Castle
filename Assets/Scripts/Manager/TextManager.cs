@@ -439,6 +439,7 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
+            Boss.GetInstance().boxCollider.enabled = true;
             Boss.GetInstance().PatternManager();
 
             Player.GetInstance().playerFree();
