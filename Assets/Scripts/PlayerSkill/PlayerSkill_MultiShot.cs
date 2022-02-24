@@ -10,8 +10,6 @@ public class PlayerSkill_MultiShot : Skill_ID
     Player player;
 
     float arrowSpeed;
-    float coolTime;
-    float curTime;
 
     void Start()
     {
@@ -25,7 +23,10 @@ public class PlayerSkill_MultiShot : Skill_ID
         coolTimeSlider.maxValue = coolTime;
     }
 
-    private void Update() {
+    private void Update()
+    {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         coolTimeSlider.value = curTime;
     }

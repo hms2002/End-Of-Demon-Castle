@@ -9,23 +9,24 @@ public class PlayerSkill_HealAOE : Skill_ID
 
     Player player;
 
-
-    float skillCoolTime = 30f;
-    float curTime = 0;
+    
     float healAOE_DurationTime;
 
     private void Start(){
+        coolTime = 30f;
         HealAOEPrefabs = Resources.Load<GameObject>("Prefabs/Heal_Aoe");//0.5초 당 10 회복
 
         player = GetComponent<Player>();
 
         healAOE_DurationTime = 6;
 
-        coolTimeSlider.maxValue = skillCoolTime;
+        coolTimeSlider.maxValue = coolTime;
     }
 
     private void FixedUpdate()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         coolTimeSlider.value = curTime;
     }
@@ -34,7 +35,7 @@ public class PlayerSkill_HealAOE : Skill_ID
     {
         if (curTime > 0)
             return;
-        curTime = skillCoolTime;
+        curTime = coolTime;
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/HealAOE", 0.4f);
         tempHealAOE = Instantiate(HealAOEPrefabs);
         tempHealAOE.GetComponent<HealAOE>().player = player;

@@ -36,7 +36,9 @@ public class PlayerSkill_PillarOfFire : Skill_ID
 
     private void Update()
     {
-        if(OnKey == false)
+        if (skillCoolTimeStop == true)
+            return;
+        if (OnKey == false)
         {
             curTime -= Time.deltaTime;
             coolTimeSlider.value = curTime;

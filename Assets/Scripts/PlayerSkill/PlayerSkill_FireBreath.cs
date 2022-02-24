@@ -30,7 +30,9 @@ public class PlayerSkill_FireBreath : Skill_ID
 
     private void Update()
     {
-        if(isSkillOn == false)
+        if (skillCoolTimeStop == true)
+            return;
+        if (isSkillOn == false)
         {
             curTime -= Time.deltaTime;
             if (coolTimeSlider)
@@ -108,6 +110,10 @@ public class PlayerSkill_FireBreath : Skill_ID
 
             yield return new WaitForSeconds(0.01f);
 
+            if(soundPlayer == null)
+            {
+                yield break;
+            }
             if (soundPlayer.volume == 0)
             {
                 break;

@@ -10,8 +10,6 @@ public class PlayerSkill_Pray : Skill_ID
     float skillDuration = 5.0f;
     bool isSkillOn;
 
-    float coolTime = 20.0f;
-    float curTime;
     bool isSliderInit = false;
 
 
@@ -21,6 +19,7 @@ public class PlayerSkill_Pray : Skill_ID
 
     private void Awake()
     {
+        coolTime = 20.0f;
         player = GetComponent<Player>();
         animator = GetComponent<Animator>();
 
@@ -31,7 +30,9 @@ public class PlayerSkill_Pray : Skill_ID
 
     private void Update()
     {
-        if(isSkillOn == false)
+        if (skillCoolTimeStop == true)
+            return;
+        if (isSkillOn == false)
         {
 
             curTime -= Time.deltaTime;

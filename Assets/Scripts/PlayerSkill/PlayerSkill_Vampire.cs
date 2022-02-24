@@ -44,6 +44,8 @@ public class PlayerSkill_Vampire : Skill_ID
 
     private void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         if(coolTimeSlider != null)
         {

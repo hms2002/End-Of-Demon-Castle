@@ -25,6 +25,8 @@ public class PlayerSkill_Explosion : Skill_ID
 
     void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         if (coolTimeSlider != null)
         {

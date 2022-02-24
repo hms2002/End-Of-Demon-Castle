@@ -20,6 +20,8 @@ public class PlayerSkill_Venom : Skill_ID
 
     void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         coolTimeSlider.value = curTime;
     }
