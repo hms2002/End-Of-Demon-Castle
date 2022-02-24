@@ -57,12 +57,12 @@ public class PlayerSkill_WhirlWind : Skill_ID
 
     public override void SkillOn()
     {
-        isSkillOn = true;
 
         if (curTime > 0)
         {
             return;
         }
+        isSkillOn = true;
         curTime = coolTime;
 
         StartCoroutine("ActiveWhirlwind");
