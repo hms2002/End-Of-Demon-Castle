@@ -482,8 +482,7 @@ public class TextManager : MonoBehaviour
         {
             aoe[i].gameObject.SetActive(false);
         }
-
-        SoundManager.GetInstance().Play("Sound/BGM/BGM_Ending", 0.3f, Define.Sound.Bgm, 1f);
+        
 
         if (isTextOn == false)//�ٸ� ���� �ؽ�Ʈ�� ������ ���ȿ� ���µ��� �ʰ� ����
         {
@@ -539,7 +538,8 @@ public class TextManager : MonoBehaviour
             Boss.GetInstance().BossStop = true;
             GameManager.GetInstance().StartCoroutine("IEnding");
             Boss.GetInstance().gameObject.SetActive(false);
-            }
+            SoundManager.GetInstance().Play("Sound/BGM/BGM_Ending", 0.3f, Define.Sound.Bgm, 1f);
+        }
         }
 
     IEnumerator ITutorialTextOn(int scriptNum)
