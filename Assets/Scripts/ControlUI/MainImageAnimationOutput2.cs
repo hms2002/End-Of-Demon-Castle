@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MainImageAnimationOutput2 : MonoBehaviour
 {
     Image image;
-    public GameObject frontImageObject;
     Image backImage;
     public GameObject backImageObject;
     public Sprite[] images;
@@ -29,7 +28,7 @@ public class MainImageAnimationOutput2 : MonoBehaviour
         while (true)
         {
             StartCoroutine(FadeInImage(image));
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.35f);
             backImage.sprite = image.sprite;
             count++;
             SetAlphaZero();
