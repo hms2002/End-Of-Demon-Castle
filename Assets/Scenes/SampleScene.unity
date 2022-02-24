@@ -2983,7 +2983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossHp: 700
   wasHit: 0
-  PatternTime: 4
+  PatternTime: 0
   PatternNum: 0
   PrePatternNum: 0
   BarrageSpeed: 0
@@ -5181,6 +5181,16 @@ PrefabInstance:
     - target: {fileID: 954445929327515902, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084116783830021187, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084116783830021187, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598307416810753627, guid: 74f1ab48a9d00134d9b1401b2cf8610e,
