@@ -20,7 +20,7 @@ public class PlayerSkill_FireBreath : Skill_ID
 
     void Awake()
     {
-        coolTime = 7.0f;
+        coolTime = 12.0f;
         player = GetComponent<Player>();
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
         sound1 = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/FireBreath");

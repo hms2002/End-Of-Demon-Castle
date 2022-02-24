@@ -44,7 +44,7 @@ public class FireDamage : MonoBehaviour
         transform.localPosition = originLocalPos;
         flameDamageTimer += Time.deltaTime;
 
-        if (flameDamageTimer > 0.1f)
+        if (flameDamageTimer > 0.2f)
         {
             if (polygonCollider2D.enabled)
             {
