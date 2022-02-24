@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerSkill_BackSteb : Skill_ID
 {
+    int layerMask;
     //커서 바꾸기
     SetCursor setCursor;
     //
@@ -39,6 +40,7 @@ public class PlayerSkill_BackSteb : Skill_ID
         curTime = 0;
 
         coolTimeSlider.maxValue = coolTime;
+        layerMask = (1 << LayerMask.NameToLayer("Boss")) | (1 << LayerMask.NameToLayer("CanBroke"));
     }
 
     private void Update()
@@ -73,7 +75,7 @@ public class PlayerSkill_BackSteb : Skill_ID
             {
                 mousePos = cameraMain.ScreenToWorldPoint(Input.mousePosition);
 
-                RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, MaxDistance);
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, MaxDistance, layerMask);
                 
                 if(hit)
                 {

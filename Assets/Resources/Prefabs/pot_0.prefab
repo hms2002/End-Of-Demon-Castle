@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5533502026104819384}
   - component: {fileID: 1612715690652777739}
   - component: {fileID: 8935179583822816636}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: pot_0
   m_TagString: CanBroke
   m_Icon: {fileID: 0}
@@ -45,9 +45,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -59,6 +62,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -130,3 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd33c9246f20b554993da07eead2ec79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 2
