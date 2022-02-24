@@ -11,7 +11,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
     GameObject bladeEffect;
 
     bool isSkillOn;
-    float walkingSpeed = 8.0f;
     bool isSliderInit = false;
     float skillDuration = 0.0f;
     float maxSkillDuration = 10.0f;
@@ -73,7 +72,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
     {
         bladeEffect = Instantiate(whirlwind);
 
-        player.speed = walkingSpeed;
         player.playerConfine("Attack");
         player.playerConfine("Dash");
         player.playerConfine("Skill");
@@ -92,7 +90,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
             yield return null;
         }
 
-        player.speed = 8.0f;
         player.playerFree();
 
         isSkillOn = false;
@@ -102,7 +99,6 @@ public class PlayerSkill_WhirlWind : Skill_ID
     
     public void BeforeDEL()
     {
-        player.speed = 8.0f;
         player.playerFree();
         if(bladeEffect != null)
             Destroy(bladeEffect);

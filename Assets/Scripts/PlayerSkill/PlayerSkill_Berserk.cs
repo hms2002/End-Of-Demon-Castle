@@ -45,7 +45,7 @@ public class PlayerSkill_Berserk : Skill_ID
             return;
         isSkillOn = true;
         curTime = coolTime;
-        player.speed = 10;
+        player.speed += 2;
         player.atkCoolTime = 0.15f;
         player.damaged(20);
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/Berserk_Loop", 1f);
@@ -68,7 +68,7 @@ public class PlayerSkill_Berserk : Skill_ID
 
         yield return new WaitForSeconds(20);
         
-        player.speed = 8;
+        player.speed -= 2;
         player.atkCoolTime = 0.25f;
 
         Destroy(tempBuffICON);
