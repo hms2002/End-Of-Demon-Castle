@@ -9,7 +9,7 @@ public class PlayerSkill_PortalArrow : Skill_ID
     
     void Start()
     {
-        float coolTime = 20;
+        coolTime = 20;
         portalArrow = Resources.Load<GameObject>("Prefabs/PortalArrow");
         coolTimeSlider.maxValue = coolTime;
     }
@@ -26,6 +26,8 @@ public class PlayerSkill_PortalArrow : Skill_ID
     {
         if (curTime > 0)
             return;
+        Debug.Log("쿨타임 : " + coolTime);
+        Debug.Log("현재 : " + curTime);
         curTime = coolTime;
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/OpenPortal", 0.5f,Define.Sound.Effect, 0.7f);
 
