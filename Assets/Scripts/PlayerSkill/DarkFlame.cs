@@ -74,6 +74,7 @@ public class DarkFlame : MonoBehaviour
             {
                 if (count > 4)
                 {
+                    BeforeDEL();
                     return;
                 }
                 curTime = 0;
