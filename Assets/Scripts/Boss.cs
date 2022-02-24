@@ -247,7 +247,6 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_1()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         if(Phase2)
         {
             StartCoroutine("playerTracking");
@@ -419,7 +418,6 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_6()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         int RoundNum = 8;
         for (int j = 0; j < 2; j++)
         {
@@ -517,7 +515,6 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_8()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         if (!Phase1)
         {
             StartCoroutine("playerTracking");
@@ -549,7 +546,6 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_9()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         if (Phase2)
         {
             StartCoroutine("playerTracking");
@@ -581,7 +577,6 @@ public class Boss : MonoBehaviour
     private IEnumerator Pattern_10()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         if (Phase3)
         {
             StartCoroutine("playerTracking");
@@ -613,7 +608,6 @@ public class Boss : MonoBehaviour
     public IEnumerator Pattern_11()
     {
         StartCoroutine("Boss_Set");
-        yield return new WaitForSeconds(0.3f);
         if (Phase2 || Phase3)
         {
             transform.position = new Vector2(0, 26);
