@@ -79,11 +79,10 @@ public class FadeManager : MonoBehaviour
 
         for (int i = 0; i < 100; i++)
         {
-            imageColor.a += Time.deltaTime;
+            imageColor.a += 0.01f;
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
-        imageColor.a = 1.0f;
 
         yield return new WaitForSeconds(0.1f);
     }
@@ -93,6 +92,8 @@ public class FadeManager : MonoBehaviour
         if(fadeImage == null)
         {
             fadeImage = GameManager.GetInstance().fadeImage_loading;
+
+
         }
         fadeImage.transform.parent.gameObject.SetActive(true);
         Color imageColor = fadeImage.color;
@@ -101,7 +102,7 @@ public class FadeManager : MonoBehaviour
 
         for (int i = 50; i > 0; i--)
         {
-            imageColor.a -= 2*Time.deltaTime;
+            imageColor.a -= 0.02f;
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
