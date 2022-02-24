@@ -7,7 +7,7 @@ public class Cross : MonoBehaviour
     Boss boss;
     BoxCollider2D collid;
     Animator anim;
-    public int Damage = 20;
+    public int Damage = 50;
     BreakableObj breakableObj;
     bool isfire;
     Renderer Renderer;

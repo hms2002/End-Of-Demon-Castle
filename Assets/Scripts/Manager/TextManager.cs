@@ -175,6 +175,7 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IBossTextOn(int scriptNum)
     {
+        Debug.Log("scriptNum : " + scriptNum);
         Player.GetInstance().playerConfine();
         Player.GetInstance().playerConfine("Skill");
 
@@ -225,7 +226,10 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
-            BossTextOn(2);
+            if (TutorialManager.GetInstance().isFirstBoss)
+                BossTextOn(2);
+            else
+                BossTextOn(4);
         }
         if(scriptNum == 4)
         {
@@ -233,7 +237,10 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
 
-            BossTextOn(5);
+            if (TutorialManager.GetInstance().isFirstBoss)
+                BossTextOn(5);
+            else
+                BossTextOn(6);
         }
         if(scriptNum == 6)
         {
@@ -247,6 +254,7 @@ public class TextManager : MonoBehaviour
             EnterTheBossRoom.GetInstance().Invoke("FightStart", 2f);
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
+            TutorialManager.GetInstance().isFirstBoss = false;
         }
     }
 
