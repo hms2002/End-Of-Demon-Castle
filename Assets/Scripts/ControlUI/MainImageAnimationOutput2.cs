@@ -28,7 +28,7 @@ public class MainImageAnimationOutput2 : MonoBehaviour
         while (true)
         {
             StartCoroutine(FadeInImage(image));
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(0.4f);
             backImage.sprite = image.sprite;
             count++;
             SetAlphaZero();
