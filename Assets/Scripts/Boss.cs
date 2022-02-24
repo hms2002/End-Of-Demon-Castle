@@ -93,7 +93,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 8);
+                PatternNum = Random.Range(1, 3);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -101,7 +101,7 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_1");
+                    StartCoroutine("Pattern_5");
                     break;
                 case 2:
                     StartCoroutine("Pattern_5");
@@ -127,7 +127,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 11);
+                PatternNum = Random.Range(1, 3);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -135,10 +135,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_1");
+                    StartCoroutine("Pattern_5");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_2");
+                    StartCoroutine("Pattern_5");
                     break;
                 case 3:
                     StartCoroutine("Pattern_3");
@@ -387,12 +387,12 @@ public class Boss : MonoBehaviour
         {
             GameObject Barrage = objectManager.MakeObj("Barrage");
             Barrage.transform.position = transform.position;
-            BarrageSpeed = 50;
+            BarrageSpeed = 35;
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
             Vector2 playerdir = player.transform.position - transform.position;
             rigid.AddForce(new Vector2(playerdir.normalized.x, playerdir.normalized.y) * BarrageSpeed, ForceMode2D.Impulse);
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.1f);
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.05f);
             if (i % 3 == 0)
             {
                 yield return new WaitForSeconds(1f);
@@ -731,6 +731,7 @@ public class Boss : MonoBehaviour
                 Debug.Log("첫번째거 없음");
                 cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
                 cristalLogic[i + 2].StartCoroutine("Pattern_13");
+                SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.2f);
                 yield return new WaitForSeconds(1f);
                 continue;
             }
@@ -739,6 +740,7 @@ public class Boss : MonoBehaviour
                 Debug.Log("두번째거 없음");
                 cristalLogic[i] = cristal[i].GetComponentInChildren<Cristal>();
                 cristalLogic[i].StartCoroutine("Pattern_13");
+                SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.2f);
                 yield return new WaitForSeconds(1f);
                 continue;
             }
@@ -747,6 +749,7 @@ public class Boss : MonoBehaviour
             cristalLogic[i].StartCoroutine("Pattern_13");
             cristalLogic[i + 2] = cristal[i + 2].GetComponentInChildren<Cristal>();
             cristalLogic[i + 2].StartCoroutine("Pattern_13");
+            SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.2f);
             yield return new WaitForSeconds(1f);
         }
         Invoke("PatternManager", 2f);

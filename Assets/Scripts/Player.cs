@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
                 return;
             if (h == 0 && v == 0)
                 return;
-            SoundManager.GetInstance().Play("Sound/PlayerSound/DashSound", 2);
+            SoundManager.GetInstance().Play("Sound/PlayerSound/DashSound", 7);
             curDashCoolTime = dashCoolTime;
             animator.SetTrigger("DashOn");
             StartCoroutine("IDash");
