@@ -2980,7 +2980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossHp: 1000
   wasHit: 0
-  PatternTime: 0
+  PatternTime: 2
   PatternNum: 0
   PrePatternNum: 0
   BarrageSpeed: 0
