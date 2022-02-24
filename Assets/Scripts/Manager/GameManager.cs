@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(canvas_loading);
-        DontDestroyOnLoad(fadeImage_loading);
         SceneManager.sceneLoaded += SceneSetting;
         
         if(gameManager != null)
@@ -56,6 +54,7 @@ public class GameManager : MonoBehaviour
         FadeManager.GetInstance().FadeIn(fadeImage_loading);
         yield return new WaitForSeconds(2.0f);
         SceneManager.LoadScene(SceneNumber);
+        Destroy(gameObject);
     }
 
     public void EnterBossRoom()
@@ -92,6 +91,9 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine("ItoMain");
     }
+    private void OnDestroy()
+    {
+    }
     public IEnumerator ItoMain()
     {
         while (true)
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("왜 그래");
                 SceneManager.LoadScene(0);
+                Destroy(gameObject);
                 break;
             }
             yield return new WaitForSeconds(0.01f);
