@@ -30,6 +30,8 @@ public class PlayerSkill_WhirlWind : Skill_ID
     
     void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         if (isSkillOn)
         {
             playerAudioSource.Stop();

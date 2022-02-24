@@ -26,7 +26,9 @@ public class PlayerSkill_FastSword : Skill_ID
 
     void Update()
     {
-        if(isSkillOn == false)
+        if (skillCoolTimeStop == true)
+            return;
+        if (isSkillOn == false)
         {
             curTime -= Time.deltaTime;
             coolTimeSlider.value = curTime;

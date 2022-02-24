@@ -10,9 +10,7 @@ public class PlayerSkill_SniperArrow : Skill_ID
     GameObject SniperChargeShot;
     GameObject bow;
     float arrowSpeed;
-
-    float coolTime;
-    float curTime;
+    
 
     void Start()
     {
@@ -30,6 +28,8 @@ public class PlayerSkill_SniperArrow : Skill_ID
 
     private void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         coolTimeSlider.value = curTime;
     }

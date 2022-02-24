@@ -41,10 +41,12 @@ public class PlayerSkill_BackSteb : Skill_ID
         coolTimeSlider.maxValue = coolTime;
     }
 
-    private void Update() {
-        if(OnKey == false)
+    private void Update()
+    {
+        if (skillCoolTimeStop == true)
+            return;
+        if (OnKey == false)
         {
-
             curTime -= Time.deltaTime;
             coolTimeSlider.value = curTime;
         }
