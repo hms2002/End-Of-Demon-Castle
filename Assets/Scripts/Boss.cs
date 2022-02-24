@@ -129,7 +129,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 3);
+                PatternNum = Random.Range(1, 11);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -137,7 +137,7 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_2");
+                    StartCoroutine("Pattern_1");
                     break;
                 case 2:
                     StartCoroutine("Pattern_2");
@@ -174,7 +174,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 8);
+                PatternNum = Random.Range(1, 3);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -182,10 +182,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_2");
+                    StartCoroutine("Pattern_12");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_3");
+                    StartCoroutine("Pattern_12");
                     break;
                 case 3:
                     StartCoroutine("Pattern_7");
@@ -648,7 +648,7 @@ public class Boss : MonoBehaviour
     {
         StartCoroutine("Boss_Set");
         yield return new WaitForSeconds(0.3f);
-        transform.position = new Vector2(0, 36);
+        transform.position = new Vector2(0, 30);
         for (int j = 0; j < 2; j++)
         {
             GameObject AOE = objectManager.MakeObj("AOE");
