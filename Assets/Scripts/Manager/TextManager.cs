@@ -254,6 +254,7 @@ public class TextManager : MonoBehaviour
     {
         Player.GetInstance().playerConfine();
         Player.GetInstance().playerConfine("Skill");
+        SkillSelectManager.GetInstance().CoolTimeStop();
         Barrage[] barrage = FindObjectsOfType<Barrage>();
         Laser[] laser = FindObjectsOfType<Laser>();
 
@@ -345,7 +346,7 @@ public class TextManager : MonoBehaviour
 
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
-            SkillSelectManager.GetInstance().CoolTimeInit();
+            SkillSelectManager.GetInstance().CoolTimeGo();
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -355,6 +356,8 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IBossPhase3On(int scriptNum)
     {
+        SkillSelectManager.GetInstance().CoolTimeStop();
+
         Player.GetInstance().playerConfine();
         Player.GetInstance().playerConfine("Skill");
         Barrage[] barrage = FindObjectsOfType<Barrage>();
@@ -432,7 +435,8 @@ public class TextManager : MonoBehaviour
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
 
-            SkillSelectManager.GetInstance().CoolTimeInit();
+            SkillSelectManager.GetInstance().CoolTimeGo();
+
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             Boss.GetInstance().PatternManager();

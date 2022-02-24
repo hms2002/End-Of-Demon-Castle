@@ -17,8 +17,8 @@ public class PlayerSkill_ChargeAttack : Skill_ID
 
     private void Update()
     {
-
-        Debug.Log("Y");
+        if (skillCoolTimeStop == true)
+            return;
         if (OnCharge)
         {
             chargeTime += Time.deltaTime;

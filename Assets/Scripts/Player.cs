@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
                 return;
             if (h == 0 && v == 0)
                 return;
-            SoundManager.GetInstance().Play("Sound/PlayerSound/DashSound", 2);
+            SoundManager.GetInstance().Play("Sound/PlayerSound/DashSound", 7);
             curDashCoolTime = dashCoolTime;
             animator.SetTrigger("DashOn");
             StartCoroutine("IDash");
@@ -348,7 +348,8 @@ public class Player : MonoBehaviour
                 StartCoroutine("IChangeCanHit");
                 StartCoroutine("ShowDamaged");
                 player_hp -= damage;
-                SoundManager.GetInstance().Play("Sound/PlayerSound/zz", 0.3f);
+                if(SoundManager.GetInstance() != null)
+                    SoundManager.GetInstance().Play("Sound/PlayerSound/A_PA", 0.5f);
                 dead();
             }
         }

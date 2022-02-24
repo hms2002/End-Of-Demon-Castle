@@ -31,6 +31,8 @@ public class PlayerSkill_ShadowAssault : Skill_ID
 
     private void Update()
     {
+        if (skillCoolTimeStop == true)
+            return;
         curTime -= Time.deltaTime;
         coolTimeSlider.value = curTime;
     }

@@ -12,7 +12,7 @@ public class Barrage : MonoBehaviour
 
     void OnEnable()
     {
-        time = 0.3f;
+        time = 0.2f;
         breakableLayer = 8;
     }
 
@@ -43,7 +43,7 @@ public class Barrage : MonoBehaviour
     public IEnumerator TimeDifference()
     {
         yield return new WaitForSeconds(time);
-        float Speed = 15f;
+        float Speed = 20f;
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         Vector2 playerdir = player.transform.position - transform.position;
         Vector2 Forcedir = new Vector2(playerdir.normalized.x, playerdir.normalized.y);
