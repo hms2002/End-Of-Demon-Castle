@@ -83,6 +83,7 @@ public class FadeManager : MonoBehaviour
             fadeImage.color = imageColor;
             yield return new WaitForSeconds(0.01f);
         }
+        imageColor.a = 1.0f;
 
         yield return new WaitForSeconds(0.1f);
     }
@@ -92,8 +93,6 @@ public class FadeManager : MonoBehaviour
         if(fadeImage == null)
         {
             fadeImage = GameManager.GetInstance().fadeImage_loading;
-
-
         }
         fadeImage.transform.parent.gameObject.SetActive(true);
         Color imageColor = fadeImage.color;
