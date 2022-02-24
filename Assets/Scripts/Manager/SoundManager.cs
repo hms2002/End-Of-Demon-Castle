@@ -51,8 +51,9 @@ public class SoundManager : MonoBehaviour
 
     public void Dead()
     {
-        Destroy(root);
-        Destroy(gameObject);
+        Destroy(root.transform.GetChild(0).gameObject);
+        _audioSources[(int)Define.Sound.Bgm].loop = false;
+        SoundManager.GetInstance().Play("Sound/LevelSound/DeadScene", 0.7f, Define.Sound.Effect);
     }
 
     public void Init()

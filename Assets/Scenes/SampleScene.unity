@@ -19630,6 +19630,7 @@ MonoBehaviour:
   isFirstMissionClear: 0
   isSecondMissionClear1: 0
   isSecondMissionClear2: 0
+  isFirstBoss: 1
   isMe: 1
 --- !u!1 &1240897918
 GameObject:

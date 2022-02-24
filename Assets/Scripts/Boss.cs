@@ -208,6 +208,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator Boss_Scw()
     {
+        yield return new WaitForSeconds(PatternTime);
         GameObject Shockwave = objectManager.MakeObj("Shockwave");
         Shockwave.transform.position = transform.position;
         while (Shockwave.activeSelf)
@@ -453,7 +454,6 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         int RandomNum = Random.Range(0, 1);
         Vector2 target;
-        StartCoroutine("Boss_Set");
             for (int i = 0; i < 4; i++)
             {
                 if (RandomNum == 0)

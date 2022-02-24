@@ -15,7 +15,7 @@ public class PlayerSkill_Vampire : Skill_ID
     AudioSource soundPlayer;
     AudioClip continuousSound;
 
-    bool isSkillOn;
+    public bool isSkillOn;
     float skillDuration = 0.0f;
     float maxSkillDuration = 5.5f;
     int amountOfRecovery = 3;
