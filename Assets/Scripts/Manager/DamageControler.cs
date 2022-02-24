@@ -19,6 +19,7 @@ public class DamageControler : MonoBehaviour
     float dotDamage = 0;
     float monoDamage = 0;
     float chargeDamage = 0;
+    float forPlayerDamage = 0;
 
     public void UpgradeDamage()
     {
@@ -47,6 +48,15 @@ public class DamageControler : MonoBehaviour
                 break;
         }
     }
+    public void UpgradeForPlayerDamage()
+    {
+        forPlayerDamage = 3;
+    }
+
+    public void DowngradeForPlayerDamage()
+    {
+        forPlayerDamage = 0;
+    }
 
     public float GetDotDamage()
     { return dotDamage; }
@@ -56,4 +66,7 @@ public class DamageControler : MonoBehaviour
 
     public float GetChargeDamage()
     { return chargeDamage; }
+
+    public float GetForPlayerDamage()
+    { return forPlayerDamage; }
 }

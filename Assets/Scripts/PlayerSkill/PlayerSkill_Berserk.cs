@@ -63,11 +63,13 @@ public class PlayerSkill_Berserk : Skill_ID
 
     IEnumerator OnBerserk()
     {
+        DamageControler.GetInstance().UpgradeForPlayerDamage();
         tempBuffICON = Instantiate(buffICON, BuffLayoutSetting.GetInstance().transform);
         BuffLayoutSetting.GetInstance().AddBuff();
 
         yield return new WaitForSeconds(20);
-        
+
+        DamageControler.GetInstance().DowngradeForPlayerDamage();
         player.speed -= 2;
         player.atkCoolTime = 0.25f;
 
@@ -87,6 +89,7 @@ public class PlayerSkill_Berserk : Skill_ID
     {
         if(isSkillOn == true)
         {
+            DamageControler.GetInstance().DowngradeForPlayerDamage();
             player.speed = 8;
             player.atkCoolTime = 0.25f;
             Destroy(tempBuffICON);

@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     public float maxHP;
 
     PlayerSkill playerSkill;
-
+    //#.데미지 컨트롤러
+    DamageControler damageControler;
     //#.플레이어 이동
     AudioSource audioSrc;
     public float speed;
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        damageControler = DamageControler.GetInstance();
         player_hp = maxHP;
         dashCoolTimeImage.maxValue = dashCoolTime;
 
@@ -104,6 +106,8 @@ public class Player : MonoBehaviour
 
         onAttack = false;
         canAttack = true;
+
+        damageControler = DamageControler.GetInstance();
     }
 
     void Update()
@@ -349,7 +353,7 @@ public class Player : MonoBehaviour
                 canHit = false;
                 StartCoroutine("IChangeCanHit");
                 StartCoroutine("ShowDamaged");
-                player_hp -= damage;
+                player_hp -= damage + damageControler.GetForPlayerDamage();
                 dead();
             }
         }
