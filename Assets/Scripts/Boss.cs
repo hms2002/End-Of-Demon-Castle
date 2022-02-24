@@ -208,6 +208,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator Boss_Scw()
     {
+        yield return new WaitForSeconds(PatternTime);
         GameObject Shockwave = objectManager.MakeObj("Shockwave");
         Shockwave.transform.position = transform.position;
         while (Shockwave.activeSelf)
