@@ -204,7 +204,6 @@ public class TextManager : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.Space))
                     {
-                        Debug.Log(1);
                         break;
                     }
                         
