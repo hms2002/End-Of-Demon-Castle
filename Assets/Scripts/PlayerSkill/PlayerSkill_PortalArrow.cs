@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerSkill_PortalArrow : Skill_ID
 {
     GameObject portalArrow;
-
-    float coolTime = 20;
-    float curTime = 0;
+    
     
     void Start()
     {
+        float coolTime = 20;
         portalArrow = Resources.Load<GameObject>("Prefabs/PortalArrow");
         coolTimeSlider.maxValue = coolTime;
     }

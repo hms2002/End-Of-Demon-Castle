@@ -13,9 +13,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
     int layerMask;
     int layerMask2;
     bool canLerp;
-
-    float coolTime;
-    float curTime;
+    
 
     void Start()
     {

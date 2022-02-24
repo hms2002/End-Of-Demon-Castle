@@ -11,16 +11,14 @@ public class PlayerSkill_FastSword : Skill_ID
     //#.스킬 아이콘
     GameObject buffICON;
     GameObject tempBuffICON;
-
-    float coolTime = 30f;
-    float curTime = 0;
+    
 
     void Start()
     {
         player = Player.GetInstance();
         FastSwordEffect = Resources.Load<GameObject>("Prefabs/FastSword");
+        coolTime = 30f;
         coolTimeSlider.maxValue = coolTime;
-
         //#.스킬 아이콘 및 초기화
         buffICON = Resources.Load<GameObject>("Prefabs/Buff/Buff_FastSword");
         SkillSelectManager.GetInstance().Init += BeforeDEL;

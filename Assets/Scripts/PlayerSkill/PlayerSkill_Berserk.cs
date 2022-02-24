@@ -6,9 +6,7 @@ public class PlayerSkill_Berserk : Skill_ID
 {
     Player player;
     GameObject berserkEffect;
-
-    float coolTime = 60;
-    float curTime = 0;
+    
 
     //#.스킬 아이콘
     GameObject buffICON;
@@ -19,6 +17,7 @@ public class PlayerSkill_Berserk : Skill_ID
 
     private void Start()
     {
+        coolTime = 60;
         player = Player.GetInstance();
         berserkEffect = Resources.Load<GameObject>("Prefabs/Berserk_Pivot");
 

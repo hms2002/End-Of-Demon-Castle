@@ -20,9 +20,6 @@ public class PlayerSkill_Vampire : Skill_ID
     float maxSkillDuration = 3.0f;
     int amountOfRecovery = 3;
 
-    float coolTime;
-    float curTime;
-
     bool isSliderInit = false;
 
     private void Awake()

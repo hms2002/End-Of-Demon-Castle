@@ -13,8 +13,6 @@ public class PlayerSkill_ChargeAttack : Skill_ID
 
     int cnt = 0;
     float chargeTime;
-    float coolTime;
-    float curTime;
     bool OnCharge = false;
 
     private void Update()

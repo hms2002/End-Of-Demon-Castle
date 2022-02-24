@@ -10,9 +10,7 @@ public class PlayerSkill_FireBreath : Skill_ID
     Animator fireAnimator;
     AudioSource soundPlayer;
     public AudioClip sound1;
-
-    float coolTime = 7.0f;
-    float curTime = 0f;
+    
     bool isInitSlider = false;
 
 
@@ -22,6 +20,7 @@ public class PlayerSkill_FireBreath : Skill_ID
 
     void Awake()
     {
+        coolTime = 7.0f;
         player = GetComponent<Player>();
         fireBreath = Resources.Load<GameObject>("Prefabs/FlamePibot");
         sound1 = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/FireBreath");

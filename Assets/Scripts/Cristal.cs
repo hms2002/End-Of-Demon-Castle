@@ -65,6 +65,14 @@ public class Cristal : BreakableObj
         for (int i = 0; i < 25; i++)
         {
             float BarrageSpeed = Random.Range(8f, 15f);
+            if(objectManager == null)
+            {
+                objectManager = FindObjectOfType<ObjectManager>();
+                Debug.Log("옵젝 비었다"); }
+            if(player == null)
+            {
+                player = Player.GetInstance();
+            }
             GameObject Barrage = objectManager.MakeObj("Barrage");
             Barrage.transform.position = transform.position;
             Rigidbody2D rigid = Barrage.GetComponent<Rigidbody2D>();
@@ -78,6 +86,10 @@ public class Cristal : BreakableObj
 
     public IEnumerator Pattern_14()
     {
+        if(player == null)
+            player = Player.GetInstance();
+        if (objectManager == null)
+            objectManager = FindObjectOfType<ObjectManager>();
         Barrage[] barrageLogic = new Barrage[BarrageNum];
         int BarrageSpeed = 14;
         playerdir = player.transform.position;
