@@ -580,7 +580,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        Debug.Log("D");
+
         canMove = false;
         canAttack = false;
         canDash = false;

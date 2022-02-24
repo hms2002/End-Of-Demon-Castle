@@ -41,7 +41,6 @@ public class Shockwave : MonoBehaviour
         for(float per = 8f; per >= 0f; per -= 8 * Time.deltaTime)
         {
             transform.localScale = new Vector3(per, per, 1);
-            Debug.Log(transform.localScale);
             yield return new WaitForSeconds(0.001f);
         }
         transform.localScale = ZeroScale;
