@@ -37,7 +37,8 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         //DontDestroyOnLoad(this.gameObject);
-        Player.GetInstance().onDead += Dead;
+        if(Player.GetInstance() != null)
+            Player.GetInstance().onDead += Dead;
         if (soundManager != null)
         {
             if (soundManager != this)
