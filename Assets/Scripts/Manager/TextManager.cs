@@ -334,6 +334,7 @@ public class TextManager : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
             Boss.GetInstance().transform.position = new Vector3(0, 26, 0);
+            Boss.GetInstance().BossVanished = true;
             CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
             yield return new WaitForSeconds(2f);
             GameObject.Find("UI").transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
@@ -350,6 +351,7 @@ public class TextManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
+
             Boss.GetInstance().PatternManager();
         }
     }
@@ -427,6 +429,13 @@ public class TextManager : MonoBehaviour
             CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
             yield return new WaitForSeconds(1f);
             Boss.GetInstance().anim.SetTrigger("Phase3");
+            while (Boss.GetInstance().BossVanished)
+            {
+                yield return new WaitForSeconds(0.01f);
+            }
+            Boss.GetInstance().BossVanished = true;
+            Boss.GetInstance().transform.position = new Vector3(0, 26, 0);
+            CameraControl.GetInstance().StartCoroutine("setCameraToBoss");
             yield return new WaitForSeconds(2f);
 
             BossPhase3On(1);

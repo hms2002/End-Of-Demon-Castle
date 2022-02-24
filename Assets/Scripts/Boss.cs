@@ -798,7 +798,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator HpRaise()
     {
-        for(int i = 1; i < 700; i++)
+        for(int i = 1; i < 1000; i++)
         {
             BossHp = i;
             yield return new WaitForSeconds(0.001f);
