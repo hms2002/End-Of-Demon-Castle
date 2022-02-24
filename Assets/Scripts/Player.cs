@@ -342,14 +342,14 @@ public class Player : MonoBehaviour
     {
         if (zhonya == false)
         {
-            if(canHit)
+            if (canHit)
             {
+                if (SoundManager.GetInstance() != null)
+                    SoundManager.GetInstance().Play("Sound/PlayerSound/apa", 0.5f);
                 canHit = false;
                 StartCoroutine("IChangeCanHit");
                 StartCoroutine("ShowDamaged");
                 player_hp -= damage;
-                if(SoundManager.GetInstance() != null)
-                    SoundManager.GetInstance().Play("Sound/PlayerSound/A_PA", 0.5f);
                 dead();
             }
         }
