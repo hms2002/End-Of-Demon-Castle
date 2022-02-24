@@ -477,7 +477,7 @@ public class Boss : MonoBehaviour
                         transform.position = target;
                         break;
                     }
-                }
+                }   
                 if (RandomNum == 1)
                 {
                     switch (i)
@@ -801,7 +801,7 @@ public class Boss : MonoBehaviour
         for(int i = 1; i < 1000; i++)
         {
             BossHp = i;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.0007f);
         }
     }
 
