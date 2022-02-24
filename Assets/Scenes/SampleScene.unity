@@ -6839,7 +6839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorImg:
   - {fileID: 2800000, guid: 8f903fa10821aa2438e0e4a7c2bb9984, type: 3}
-  - {fileID: 2800000, guid: 7634751ba193a5b4b8697ca05e397e7d, type: 3}
+  - {fileID: 2800000, guid: 52623c5b8fb2b5647a15f2e922e1be5c, type: 3}
   - {fileID: 2800000, guid: 2c9e626ac73a8444bb6fcd6754e005e0, type: 3}
   - {fileID: 2800000, guid: f9660224f59c2b649ba73ff3cc42cdf4, type: 3}
   - {fileID: 2800000, guid: 0d236a4a64d77394abc7ab1203d1e786, type: 3}
@@ -38169,7 +38169,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128476423}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
