@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        player_hp = maxHP;
         dashCoolTimeImage.maxValue = dashCoolTime;
 
         playerSkill = GetComponent<PlayerSkill>();

@@ -11,6 +11,7 @@ public class PlayerUIControl : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
+        sliderHp.maxValue = player.player_hp;
     }
 
     private void Update()
