@@ -93,7 +93,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 3);
+                PatternNum = Random.Range(1, 8);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -101,7 +101,7 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_5");
+                    StartCoroutine("Pattern_1");
                     break;
                 case 2:
                     StartCoroutine("Pattern_5");
@@ -127,7 +127,7 @@ public class Boss : MonoBehaviour
         {
             do
             {
-                PatternNum = Random.Range(1, 3);
+                PatternNum = Random.Range(1, 11);
             } while (PatternNum == PrePatternNum);
 
             PrePatternNum = PatternNum;
@@ -135,10 +135,10 @@ public class Boss : MonoBehaviour
             switch (PatternNum)
             {
                 case 1:
-                    StartCoroutine("Pattern_5");
+                    StartCoroutine("Pattern_1");
                     break;
                 case 2:
-                    StartCoroutine("Pattern_5");
+                    StartCoroutine("Pattern_2");
                     break;
                 case 3:
                     StartCoroutine("Pattern_3");
@@ -607,12 +607,11 @@ public class Boss : MonoBehaviour
         {
             for (int i = 0; i < RoundNum; i++)
             {
-                BarrageSpeed = 18;
                 GameObject Barrage = objectManager.MakeObj("Barrage");
                 barrageLogic[i] = Barrage.GetComponent<Barrage>();
                 barrageLogic[i].breakableLayer = 14;
                 barrageLogic[i].player = player;
-                Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 8, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 8);
+                Vector2 Rounddir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / RoundNum) * 6, Mathf.Sin(Mathf.PI * 2 * i / RoundNum) * 6);
                 Barrage.transform.position = new Vector2(player.transform.position.x + Rounddir.x, player.transform.position.y + Rounddir.y);
             }
             SoundManager.GetInstance().Play("Sound/BossSound/BarrageSound", 0.05f, Define.Sound.Effect, 0.5f);
@@ -622,7 +621,7 @@ public class Boss : MonoBehaviour
                 barrageLogic[i].time *= i;
                 barrageLogic[i].StartCoroutine("TimeDifference");
             }
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.5f);
         }
         if (Phase2 || Phase3)
         {
