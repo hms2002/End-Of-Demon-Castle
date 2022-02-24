@@ -11,6 +11,7 @@ public class PlayerSkill_Vampire : Skill_ID
     public GameObject absorbBlood;
     GameObject buffICON;
     GameObject tempHeal;
+    GameObject darkFlame;
     AudioSource soundPlayer;
     AudioClip continuousSound;
 
@@ -30,6 +31,7 @@ public class PlayerSkill_Vampire : Skill_ID
         boss = FindObjectOfType<Boss>();
         cristal = FindObjectsOfType<Cristal>();
         healSkill = Resources.Load<GameObject>("Prefabs/Heal");
+        darkFlame = Resources.Load<GameObject>("Prefabs/DarkFlame");
         absorbBlood = Resources.Load<GameObject>("Prefabs/AbsorbBlood");
         continuousSound = Resources.Load<AudioClip>("Sound/PlayerSound/SkillSound/VampireLoop");
 
@@ -84,6 +86,9 @@ public class PlayerSkill_Vampire : Skill_ID
         BuffLayoutSetting.GetInstance().AddBuff();
         SoundManager.GetInstance().Play("Sound/PlayerSound/SkillSound/VampireWave", 0.35f);
         StartCoroutine(PlayVampireLoopSound());
+
+        GameObject darkTemp = Instantiate(darkFlame, Player.GetInstance().transform);
+        darkFlame.transform.localPosition = new Vector3(0, 0, 0);
 
         while (isSkillOn)
         {

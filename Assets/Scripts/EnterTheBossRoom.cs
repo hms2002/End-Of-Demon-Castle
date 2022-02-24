@@ -63,7 +63,7 @@ public class EnterTheBossRoom : MonoBehaviour
         animator.SetTrigger("close");
 
         if (!isGoPosOn)
-            //player.playerFree();
+            player.playerFree();
 
         TextBox.SetActive(false);
     }

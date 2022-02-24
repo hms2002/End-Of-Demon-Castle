@@ -116,7 +116,7 @@ public class PlayerSkill_ShadowAssault : Skill_ID
         
         if(canLerp)
         {
-            for (float i = 0; i <= 100; i += 5)
+            for (float i = 0; i <= 100; i += 500 * Time.deltaTime)
             {
                 if(i == 50 && i == 70 && i == 90)
                 {
