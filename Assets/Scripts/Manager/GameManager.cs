@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(0);
+                break;
             }
             yield return new WaitForSeconds(0.01f);
         }
