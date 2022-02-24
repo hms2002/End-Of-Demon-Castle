@@ -345,7 +345,6 @@ public class TextManager : MonoBehaviour
 
             Player.GetInstance().playerFree();
             Player.GetInstance().playerFree("Skill");
-            SkillSelectManager.GetInstance().CoolTimeInit();
 
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
@@ -431,8 +430,7 @@ public class TextManager : MonoBehaviour
         if (scriptNum == 3)
         {
             CameraControl.GetInstance().StartCoroutine("setCameraToPlayer");
-
-            SkillSelectManager.GetInstance().CoolTimeInit();
+            
             yield return new WaitForSeconds(1.5f);
             Boss.GetInstance().BossStop = true;
             Boss.GetInstance().PatternManager();
